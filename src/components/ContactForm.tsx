@@ -121,16 +121,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-md border border-white/10 bg-[#111622]/80 p-6 sm:p-8 backdrop-blur-sm shadow-xl shadow-black/20">
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-[#F4EFE6] tracking-tight mb-1">
-          Send a Direct Message
-        </h3>
-        <p className="text-xs sm:text-sm text-[#9E9A91] leading-relaxed">
-          Fill out the form below or email directly. Every inquiry arrives in my primary inbox.
-        </p>
-      </div>
-
+    <div className="rounded border border-slate-800/80 bg-slate-900/30 p-5 sm:p-6 shadow-sm">
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
         {/* Honeypot field (hidden from real users) */}
         <div className="hidden" aria-hidden="true">
@@ -148,11 +139,11 @@ export function ContactForm() {
 
         {/* Inline Success Notification */}
         {status === "success" && (
-          <div className="flex items-start gap-3 p-4 bg-emerald-950/40 border border-emerald-500/30 rounded text-emerald-300 text-sm animate-in fade-in">
-            <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-400 mt-0.5" />
+          <div className="flex items-start gap-3 p-3.5 bg-emerald-950/40 border border-emerald-500/30 rounded text-emerald-300 text-xs sm:text-sm animate-in fade-in">
+            <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" />
             <div>
               <p className="font-semibold text-emerald-200">Message dispatched successfully!</p>
-              <p className="text-xs text-emerald-300/80 mt-1 leading-relaxed">
+              <p className="text-xs text-emerald-300/80 mt-0.5 leading-relaxed">
                 Thank you for reaching out. I review all technical inquiries and will respond within 24–48 hours.
               </p>
             </div>
@@ -161,8 +152,8 @@ export function ContactForm() {
 
         {/* Inline Error Notification */}
         {status === "error" && (
-          <div className="flex items-start gap-3 p-4 bg-rose-950/40 border border-rose-500/30 rounded text-rose-300 text-sm animate-in fade-in">
-            <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400 mt-0.5" />
+          <div className="flex items-start gap-3 p-3.5 bg-rose-950/40 border border-rose-500/30 rounded text-rose-300 text-xs sm:text-sm animate-in fade-in">
+            <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-400 mt-0.5" />
             <div className="space-y-2">
               <div>
                 <p className="font-semibold text-rose-200">Message dispatch notice</p>
@@ -174,7 +165,7 @@ export function ContactForm() {
                 )}&body=${encodeURIComponent(
                   `Hi Vaibhav,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
                 )}`}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#E8913A] hover:bg-[#F0A04B] text-black font-semibold text-xs transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-copper hover:bg-copper-hover text-slate-950 font-semibold text-xs transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>Open in Email Client ({fallbackEmail || "contact@vaibhv19.dev"})</span>
@@ -184,10 +175,10 @@ export function ContactForm() {
         )}
 
         {/* Name & Email Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label htmlFor="contact-name" className="block text-xs font-mono uppercase tracking-wider text-[#9E9A91]">
-              Your Name <span className="text-[#E8913A]">*</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="space-y-1">
+            <label htmlFor="contact-name" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
+              Your Name <span className="text-copper">*</span>
             </label>
             <input
               type="text"
@@ -197,8 +188,8 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="e.g. Jane Doe"
               disabled={status === "loading"}
-              className={`w-full px-3.5 py-2.5 text-sm text-[#F4EFE6] bg-black/40 border rounded placeholder:text-[#9E9A91]/40 focus:placeholder:text-[#9E9A91]/80 transition-colors focus:outline-none focus:ring-1 focus:ring-[#E8913A] focus:border-[#E8913A] ${
-                fieldErrors.name ? "border-rose-500/80" : "border-white/10"
+              className={`w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border rounded-sm placeholder:text-slate-500/50 transition-colors focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper ${
+                fieldErrors.name ? "border-rose-500/80" : "border-slate-800/80"
               }`}
             />
             {fieldErrors.name && (
@@ -206,9 +197,9 @@ export function ContactForm() {
             )}
           </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="contact-email" className="block text-xs font-mono uppercase tracking-wider text-[#9E9A91]">
-              Your Email <span className="text-[#E8913A]">*</span>
+          <div className="space-y-1">
+            <label htmlFor="contact-email" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
+              Your Email <span className="text-copper">*</span>
             </label>
             <input
               type="email"
@@ -218,8 +209,8 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="e.g. jane@company.com"
               disabled={status === "loading"}
-              className={`w-full px-3.5 py-2.5 text-sm text-[#F4EFE6] bg-black/40 border rounded placeholder:text-[#9E9A91]/40 focus:placeholder:text-[#9E9A91]/80 transition-colors focus:outline-none focus:ring-1 focus:ring-[#E8913A] focus:border-[#E8913A] ${
-                fieldErrors.email ? "border-rose-500/80" : "border-white/10"
+              className={`w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border rounded-sm placeholder:text-slate-500/50 transition-colors focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper ${
+                fieldErrors.email ? "border-rose-500/80" : "border-slate-800/80"
               }`}
             />
             {fieldErrors.email && (
@@ -229,9 +220,9 @@ export function ContactForm() {
         </div>
 
         {/* Topic / Subject Selection */}
-        <div className="space-y-1.5">
-          <label htmlFor="contact-subject" className="block text-xs font-mono uppercase tracking-wider text-[#9E9A91]">
-            Topic / Conversation Type
+        <div className="space-y-1">
+          <label htmlFor="contact-subject" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
+            Conversation Topic
           </label>
           <select
             id="contact-subject"
@@ -239,41 +230,41 @@ export function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             disabled={status === "loading"}
-            className="w-full px-3.5 py-2.5 text-sm text-[#F4EFE6] bg-black/40 border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-[#E8913A] focus:border-[#E8913A] transition-colors"
+            className="w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border border-slate-800/80 rounded-sm focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper transition-colors"
           >
-            <option value="Engineering Role / Opportunity" className="bg-[#111622] text-[#F4EFE6]">
-              Engineering Role / Full-Time Opportunity
+            <option value="Engineering Role / Opportunity" className="bg-[#0a0d14] text-slate-100">
+              Full-Time Software Engineering Role
             </option>
-            <option value="System Architecture / Consulting" className="bg-[#111622] text-[#F4EFE6]">
-              System Architecture / Technical Consulting
+            <option value="System Architecture / Consulting" className="bg-[#0a0d14] text-slate-100">
+              Technical Architecture / Consulting
             </option>
-            <option value="Freelance / Contract Project" className="bg-[#111622] text-[#F4EFE6]">
+            <option value="Freelance / Contract Project" className="bg-[#0a0d14] text-slate-100">
               Contract / Full-Stack Web Platform
             </option>
-            <option value="Open-Source Collaboration" className="bg-[#111622] text-[#F4EFE6]">
-              Open-Source Project Collaboration
+            <option value="Open-Source Collaboration" className="bg-[#0a0d14] text-slate-100">
+              Open-Source Collaboration
             </option>
-            <option value="General Technical Inquiry" className="bg-[#111622] text-[#F4EFE6]">
+            <option value="General Technical Inquiry" className="bg-[#0a0d14] text-slate-100">
               General Technical Inquiry
             </option>
           </select>
         </div>
 
         {/* Message Field */}
-        <div className="space-y-1.5">
-          <label htmlFor="contact-message" className="block text-xs font-mono uppercase tracking-wider text-[#9E9A91]">
-            Your Message <span className="text-[#E8913A]">*</span>
+        <div className="space-y-1">
+          <label htmlFor="contact-message" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
+            Your Note <span className="text-copper">*</span>
           </label>
           <textarea
             id="contact-message"
             name="message"
-            rows={5}
+            rows={4}
             value={formData.message}
             onChange={handleChange}
             placeholder="Share details about the role, project requirements, architectural challenges, or collaboration scope..."
             disabled={status === "loading"}
-            className={`w-full px-3.5 py-2.5 text-sm text-[#F4EFE6] bg-black/40 border rounded placeholder:text-[#9E9A91]/40 focus:placeholder:text-[#9E9A91]/80 transition-colors resize-y min-h-[120px] focus:outline-none focus:ring-1 focus:ring-[#E8913A] focus:border-[#E8913A] ${
-              fieldErrors.message ? "border-rose-500/80" : "border-white/10"
+            className={`w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border rounded-sm placeholder:text-slate-500/50 transition-colors resize-y min-h-[100px] focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper ${
+              fieldErrors.message ? "border-rose-500/80" : "border-slate-800/80"
             }`}
           />
           {fieldErrors.message && (
@@ -282,24 +273,24 @@ export function ContactForm() {
         </div>
 
         {/* Submit Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
-          <p className="text-xs text-[#9E9A91] italic font-mono">
-            Typical response window: 24–48 hours.
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-1">
+          <p className="text-xs text-slate-400 italic">
+            I typically respond within 24–48 hours.
           </p>
           <button
             type="submit"
             disabled={status === "loading"}
-            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold tracking-wide text-black bg-[#E8913A] hover:bg-[#F0A04B] disabled:opacity-60 disabled:cursor-not-allowed rounded transition-all cursor-pointer shadow-md focus:outline-none focus:ring-2 focus:ring-[#E8913A]/50 shrink-0"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold tracking-wide text-slate-950 bg-copper hover:bg-copper-hover disabled:opacity-60 disabled:cursor-not-allowed rounded-sm transition-all cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-copper/50 shrink-0"
           >
             {status === "loading" ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-black" />
-                <span>Sending Message...</span>
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-slate-950" />
+                <span>Sending...</span>
               </>
             ) : (
               <>
-                <span>Send Message</span>
-                <Send className="w-4 h-4 text-black" />
+                <span>Send Note</span>
+                <Send className="w-3.5 h-3.5 text-slate-950" />
               </>
             )}
           </button>

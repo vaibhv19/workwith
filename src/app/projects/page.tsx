@@ -13,253 +13,266 @@ export const metadata: Metadata = {
   },
 };
 
-// Curated selection of projects with verified, working live deployments
-const MUST_CHECKOUT_IDS = [
-  "checkmate-analyze",
-  "trajectory",
-  "1nfinity",
-  "the-tiffin-dispatch",
-  "birthday-wish",
+interface MustCheckoutProject {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  techStack: string[];
+  demoUrl: string;
+  githubUrl?: string;
+  image?: string;
+}
+
+const MUST_CHECKOUT: MustCheckoutProject[] = [
+  {
+    id: "checkmate-analyze",
+    title: "CheckMate",
+    tagline: "Post-chess clarity, engine-assisted — built so tactical blunders get analyzed instead of ignored.",
+    description:
+      "A client-side chess analysis workbench running Stockfish 16 WASM in a dedicated Web Worker with SharedArrayBuffer concurrency, requiring zero backend servers, subscriptions, or telemetry.",
+    techStack: ["TypeScript", "React", "Stockfish 16 WASM", "Web Workers", "SharedArrayBuffer", "Tailwind CSS"],
+    demoUrl: "https://checkmate.vaibhv19.dev/",
+    githubUrl: "https://github.com/vaibhv19/Check-Mate-Analyse",
+    image: "/images/projects/checkmate-preview.png",
+  },
+  {
+    id: "trajectory",
+    title: "Trajectory",
+    tagline: "Started as a spreadsheet fix and ended up needing its own AWS bill.",
+    description:
+      "An enterprise career operations platform with dual-token JWT auth rotation, automated ghost-detection cron schedulers, AWS S3 resume versioning, Groq LLM parsing, and EC2 production deployment.",
+    techStack: ["Java 21", "Spring Boot 3.3.1", "PostgreSQL", "AWS EC2 / RDS / S3", "Docker", "React 19"],
+    demoUrl: "https://trajectory.vaibhv19.dev",
+    githubUrl: "https://github.com/vaibhv19/Trajectory",
+  },
+  {
+    id: "1nfinity",
+    title: "1nfinity.online",
+    tagline: "High-credibility digital agency platform designed from scratch with a 99/92 Lighthouse score.",
+    description:
+      "A bespoke production web platform designed and engineered from scratch for an influencer marketing agency, guided by 'Restraint Over Decoration' with desktop-only entrance animations and serverless email delivery.",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Resend API", "Vercel"],
+    demoUrl: "https://1nfinity.online",
+    image: "/images/projects/1nfinity-preview.webp",
+  },
+  {
+    id: "the-tiffin-dispatch",
+    title: "The Tiffin Dispatch",
+    tagline: "Real-time subscription food delivery web platform with role-based ordering.",
+    description:
+      "Full-stack MERN application handling recurring meal subscriptions, daily order state transitions, and real-time delivery status coordination across customers and kitchen admins.",
+    techStack: ["React", "Vite", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    demoUrl: "https://the-tiffin-dispatch.vercel.app",
+    githubUrl: "https://github.com/vaibhv19/The-Tiffin-Dispatch",
+  },
+  {
+    id: "birthday-wish",
+    title: "Birthday Wish",
+    tagline: "Interactive 3D canvas balloon-bursting experience with particle physics.",
+    description:
+      "Pure browser canvas interactive celebration experience featuring custom particle explosion physics, multi-layer depth rendering, and responsive audio triggers with zero third-party framework overhead.",
+    techStack: ["HTML5 Canvas", "JavaScript (ES6+)", "CSS3 Animations", "Web Audio API"],
+    demoUrl: "https://birthday-wish-three.vercel.app",
+    githubUrl: "https://github.com/vaibhv19/Birthday-Wish",
+  },
 ];
 
-const PREVIEW_ASSETS: Record<string, string> = {
-  "checkmate-analyze": "/images/projects/checkmate-preview.png",
-  "1nfinity": "/images/projects/1nfinity-preview.webp",
-};
+// Developed software catalog categorized
+const CATEGORIZED_SOFTWARE = [
+  {
+    group: "Systems & Infrastructure",
+    description: "Distributed architectures, AI orchestration, and memory-safe tooling",
+    items: PROJECTS.filter((p) =>
+      ["conclave", "phoenix", "email-job-scheduler", "redis-lite", "load-balancer"].includes(p.id)
+    ),
+  },
+  {
+    group: "Applied Web Applications",
+    description: "Production web platforms, full-stack backends, and multi-tenant architectures",
+    items: PROJECTS.filter((p) =>
+      ["fintrack", "eventhub", "devconnect", "studylink", "ai-mock-interview"].includes(p.id)
+    ),
+  },
+  {
+    group: "Security Guardrails & DevSecOps",
+    description: "System integrity scanners, automated auditing, and baseline enforcement",
+    items: PROJECTS.filter((p) => p.category === "System Integrity & DevSecOps Guardrails"),
+  },
+  {
+    group: "Academic Milestones & Experiments",
+    description: "Low-level implementations, algorithm visualizers, and core computing foundations",
+    items: PROJECTS.filter((p) =>
+      p.category === "Academic Milestones — Formal Coursework Projects" ||
+      p.category === "Built for No Reason Other Than Wanting To"
+    ),
+  },
+];
 
 export default function ProjectsPage() {
-  const mustCheckoutProjects = MUST_CHECKOUT_IDS.map((id) =>
-    PROJECTS.find((p) => p.id === id)
-  ).filter((p): p is Project => p !== undefined && Boolean(p.demoUrl));
-
-  // All developed software excluding redundant display in section 1
-  const developedProjects = PROJECTS;
-
-  // Distinct category names for organization
-  const categories = Array.from(
-    new Set(developedProjects.map((p) => p.category))
-  );
-
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-16 space-y-12 text-slate-300">
-      {/* Page Title & Mission Statement */}
-      <header className="space-y-2 border-b border-slate-800/80 pb-5">
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
+      {/* Editorial Page Header */}
+      <div className="space-y-2 border-b border-slate-800/80 pb-6">
+        <div className="text-xs font-mono font-semibold tracking-widest text-copper uppercase">
+          ENGINEERING REPERTOIRE
+        </div>
+        <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-100">
           Projects
         </h1>
-        <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
-          A spectrum of software built, explored, and shipped. From client-side
-          WebAssembly engines to distributed backends, AI orchestration systems,
-          and automated resilience suites.
+        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed italic pt-1">
+          A curated selection of interactive deployed applications visitors can experience directly, alongside the broader catalog of developed systems, developer tooling, and distributed software.
         </p>
-      </header>
+      </div>
 
-      {/* SECTION 1: MUST CHECKOUT */}
-      <section aria-labelledby="must-checkout-heading" className="space-y-6">
-        <div className="border-b border-slate-800/80 pb-2 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-          <h2
-            id="must-checkout-heading"
-            className="text-xs sm:text-sm font-bold text-copper font-mono uppercase tracking-wider"
-          >
-            01 / Must Checkout
-          </h2>
-          <span className="text-xs font-mono text-slate-400">
-            Live, interactive deployments
-          </span>
+      {/* SECTION 1: MUST CHECKOUT (FLAGSHIP DEPLOYED SOFTWARE) */}
+      <section className="space-y-8">
+        <div className="space-y-2">
+          <div className="text-xs font-mono font-bold tracking-widest text-copper flex items-center justify-between">
+            <span>01 / MUST CHECKOUT</span>
+            <span className="text-[11px] text-slate-400 font-normal">Interactive Live Deployments</span>
+          </div>
+          <div className="border-b border-slate-800/80" />
         </div>
 
-        <p className="text-xs sm:text-sm text-slate-400 font-sans leading-relaxed">
-          Curated applications you can open and test directly in your browser.
-          Each project solves a concrete problem, runs live in production, and
-          does not require account creation to explore.
-        </p>
-
-        <div className="space-y-6">
-          {mustCheckoutProjects.map((project) => {
-            const previewImage = PREVIEW_ASSETS[project.id];
-
-            return (
-              <article
-                key={project.id}
-                className="group border border-slate-800/80 bg-[#111622]/50 hover:border-slate-700/90 transition-all rounded-sm p-4 sm:p-5 space-y-4"
-              >
-                {/* Visual Preview Screenshot (if verified asset exists) */}
-                {previewImage && (
-                  <div className="relative aspect-video w-full rounded-sm overflow-hidden border border-slate-800 bg-[#0a0d14]">
-                    <Image
-                      src={previewImage}
-                      alt={`${project.title} live interface preview`}
-                      fill
-                      className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
-                      sizes="(max-width: 768px) 100vw, 768px"
-                    />
-                  </div>
-                )}
-
-                {/* Header: Title and Live Badge */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight">
-                    {project.title}
-                  </h3>
-                  <span className="inline-flex items-center gap-1.5 self-start text-[11px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/60 px-2 py-0.5 rounded-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Live Deployment
+        <div className="space-y-10">
+          {MUST_CHECKOUT.map((project, idx) => (
+            <article
+              key={project.id}
+              className="space-y-3.5 pb-8 border-b border-slate-800/60 last:border-b-0"
+            >
+              {/* Header: Number, Title, & Live Badge */}
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <div className="flex items-baseline gap-2.5">
+                  <span className="text-xs font-mono font-bold text-copper">
+                    0{idx + 1} /
                   </span>
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-100">
+                    {project.title}
+                  </h2>
                 </div>
+                <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 self-start sm:self-auto">
+                  Live Deployed
+                </span>
+              </div>
 
-                {/* Description / Tagline */}
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-                  {project.tagline}
-                </p>
+              {/* Tagline */}
+              <p className="text-xs font-mono text-slate-400 italic">
+                &ldquo;{project.tagline}&rdquo;
+              </p>
 
-                {/* Key Technical Highlights */}
-                {project.bullets && project.bullets.length > 0 && (
-                  <ul className="space-y-1.5 text-xs text-slate-400 font-sans list-disc list-inside">
-                    {project.bullets.slice(0, 2).map((bullet, idx) => (
-                      <li key={idx} className="leading-relaxed">
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                {project.description}
+              </p>
+
+              {/* Genuine Preview Asset when available */}
+              {project.image && (
+                <div className="relative mt-2 mb-2 rounded border border-slate-800/90 overflow-hidden bg-slate-950/60 aspect-[16/9] max-h-56 w-full">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} live interface preview`}
+                    fill
+                    className="object-cover object-top opacity-85 hover:opacity-100 transition-opacity duration-200"
+                    sizes="(max-width: 768px) 100vw, 650px"
+                  />
+                </div>
+              )}
+
+              {/* Tech Stack Row */}
+              <div className="text-[11px] font-mono text-slate-400">
+                {project.techStack.join(" · ")}
+              </div>
+
+              {/* Actions: Verified Live Application & Repository */}
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-copper hover:bg-copper-hover text-slate-950 font-semibold text-xs tracking-wide transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-copper/50"
+                >
+                  <span>Open Live Application</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-950" />
+                </a>
+
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-sky-400 hover:underline transition-colors"
+                  >
+                    <GithubIcon className="w-3.5 h-3.5 text-current" />
+                    <span>Source Code</span>
+                    <ExternalLink className="w-2.5 h-2.5 opacity-60 ml-0.5" />
+                  </a>
                 )}
-
-                {/* Tech Stack Chips */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[11px] font-mono text-slate-400 bg-[#0a0d14] border border-slate-800 px-2 py-0.5 rounded-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions: Live Application & Repository */}
-                <div className="pt-2 border-t border-slate-800/60 flex flex-wrap items-center gap-3">
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-950 bg-copper hover:bg-copper-hover rounded-sm transition-all focus:outline-none focus:ring-1 focus:ring-copper/50 cursor-pointer"
-                    >
-                      <span>Open Application</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-slate-950" />
-                    </a>
-                  )}
-
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-slate-300 hover:text-sky-400 border border-slate-800 hover:border-slate-700 bg-[#0a0d14]/70 rounded-sm transition-all focus:outline-none cursor-pointer"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5" />
-                      <span>Source Code</span>
-                    </a>
-                  )}
-                </div>
-              </article>
-            );
-          })}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* SECTION 2: DEVELOPED SOFTWARE */}
-      <section aria-labelledby="developed-software-heading" className="space-y-8 pt-6">
-        <div className="border-b border-slate-800/80 pb-2 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-          <h2
-            id="developed-software-heading"
-            className="text-xs sm:text-sm font-bold text-copper font-mono uppercase tracking-wider"
-          >
-            02 / Developed Software
-          </h2>
-          <span className="text-xs font-mono text-slate-400">
-            {developedProjects.length} Systems &amp; Projects Catalogued
-          </span>
+      {/* SECTION 2: DEVELOPED SOFTWARE (BROADER CATALOGUE) */}
+      <section className="space-y-8 pt-4">
+        <div className="space-y-2">
+          <div className="text-xs font-mono font-bold tracking-widest text-slate-400 flex items-center justify-between">
+            <span>02 / DEVELOPED SOFTWARE</span>
+            <span className="text-[11px] text-slate-400 font-normal">Broader Engineering Catalog</span>
+          </div>
+          <div className="border-b border-slate-800/80" />
         </div>
 
-        <p className="text-xs sm:text-sm text-slate-400 font-sans leading-relaxed">
-          The wider body of software engineering, distributed systems, backend
-          architectures, and technical experiments developed over time. Each
-          entry includes its technical stack, architecture focus, and direct
-          repository link.
-        </p>
-
-        {/* Grouped by Category for Editorial Clarity */}
         <div className="space-y-10">
-          {categories.map((category) => {
-            const categoryProjects = developedProjects.filter(
-              (p) => p.category === category
-            );
+          {CATEGORIZED_SOFTWARE.map((category) => {
+            if (category.items.length === 0) return null;
 
             return (
-              <div key={category} className="space-y-4">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-sky-400 border-b border-slate-800/40 pb-1">
-                  {category}
-                </h3>
+              <div key={category.group} className="space-y-4">
+                {/* Category Header */}
+                <div>
+                  <h3 className="text-sm font-bold font-mono text-copper uppercase tracking-wider">
+                    {category.group}
+                  </h3>
+                  <p className="text-xs text-slate-400 italic">
+                    {category.description}
+                  </p>
+                </div>
 
-                <div className="space-y-3">
-                  {categoryProjects.map((project) => (
-                    <article
-                      key={project.id}
-                      className="border border-slate-800/70 bg-[#111622]/30 hover:border-slate-700/80 p-3.5 sm:p-4 rounded-sm transition-all space-y-2.5"
+                {/* Compact Item List */}
+                <div className="space-y-4 pl-0">
+                  {category.items.map((item: Project) => (
+                    <div
+                      key={item.id}
+                      className="group pt-2 pb-3 border-b border-slate-800/40 last:border-b-0 space-y-1.5"
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
-                        <div className="space-y-1 flex-1">
-                          <h4 className="text-base font-bold text-slate-100 tracking-tight">
-                            {project.title}
-                          </h4>
-                          <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-                            {project.tagline}
-                          </p>
-                        </div>
-
-                        {/* External Actions (Repo or Demo) */}
-                        <div className="flex items-center gap-2 self-start sm:self-center shrink-0">
-                          {project.githubUrl && (
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${project.title} GitHub repository`}
-                              title={`${project.title} GitHub repository`}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-mono text-slate-400 hover:text-sky-400 hover:border-slate-700 border border-slate-800/80 rounded-sm bg-[#0a0d14] transition-all"
-                            >
-                              <GithubIcon className="w-3 h-3" />
-                              <span>Repo</span>
-                            </a>
-                          )}
-                          {project.demoUrl && (
-                            <a
-                              href={project.demoUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${project.title} Live Application`}
-                              title={`${project.title} Live Application`}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-mono text-copper hover:text-copper-hover hover:border-copper/40 border border-copper/20 rounded-sm bg-[#0a0d14] transition-all"
-                            >
-                              <ExternalLink className="w-3 h-3" />
-                              <span>Live</span>
-                            </a>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Stack Tags */}
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {project.techStack.map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-[10px] sm:text-[11px] font-mono text-slate-400 bg-[#0a0d14]/80 border border-slate-800/70 px-2 py-0.5 rounded-sm"
+                      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                        <h4 className="text-sm sm:text-base font-bold text-slate-100 group-hover:text-sky-400 transition-colors">
+                          {item.title}
+                        </h4>
+                        {item.githubUrl && (
+                          <a
+                            href={item.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-400 hover:text-sky-400 hover:underline transition-colors shrink-0"
                           >
-                            {tech}
-                          </span>
-                        ))}
+                            <GithubIcon className="w-3 h-3 text-current" />
+                            <span>Repository</span>
+                            <ExternalLink className="w-2.5 h-2.5 opacity-60" />
+                          </a>
+                        )}
                       </div>
-                    </article>
+
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        {item.tagline}
+                      </p>
+
+                      <div className="text-[11px] font-mono text-slate-400">
+                        {item.techStack.join(" · ")}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>

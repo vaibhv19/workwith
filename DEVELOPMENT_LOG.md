@@ -152,6 +152,7 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run build` compiled 16/16 routes with static pre-rendering across all 6 case studies.
 
 ### Milestone 8 — Redesign: Editorial Engineering Archive Direction
+- **Commit:** `b40cadf`
 - **Scope:**
   - Re-architected `/case-study` into an editorial engineering archive layout:
     - Added small copper editorial eyebrow `ENGINEERING JOURNAL` (`text-xs font-mono font-semibold tracking-widest text-copper uppercase`).
@@ -165,6 +166,25 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run lint` exited code 0 (0 errors, 0 warnings).
   - `npm run build` compiled all 16 static/dynamic routes in 1.2s.
   - Full browser visual inspection performed using `browser_subagent` across desktop and mobile viewports (`375x667`), verifying typography scale, vertical rhythm, responsive collapse into hamburger menu, and image scaling without horizontal overflow.
+
+### Milestone 9 — Cohesive Editorial Redesign Across All Three Pages
+- **Scope:**
+  - Unified the entire website (`Projects`, `Case Study`, `Start a Conversation`) under the established blog design system (`max-w-3xl mx-auto px-4 sm:px-6 lg:px-8` matching `Header` and `Footer`).
+  - **Projects (`/projects`):**
+    - Redesigned into an editorial layout with copper eyebrow `ENGINEERING REPERTOIRE` and clear visual hierarchy.
+    - Section 1 ("01 / Must Checkout"): Prominently showcases curated interactive live deployments (CheckMate, Trajectory, 1nfinity, The Tiffin Dispatch, Birthday Wish) with genuine visuals, status badges, and direct application actions (`Open Live Application ↗` and `Source Code ↗`). Zero case-study links present.
+    - Section 2 ("02 / Developed Software"): High-density, elegant catalog organized by category (Systems & Infrastructure, Web Applications, Security Guardrails, Academic & Experiments) with GitHub repository actions.
+  - **Start a Conversation (`/start-conversation`):**
+    - Replaced wide card layout with an editorial contact composition matching BLog's intimate style.
+    - Added copper eyebrow `DIRECT COMMUNICATION`, concise invitation subhead, and prominent direct contact bar (`contact@vaibhv19.dev` with 1-click clipboard copy and mailto launcher).
+    - Refined `ContactForm.tsx` to use slate-800 borders, dark obsidian surfaces, copper focus rings, and streamlined input heights.
+    - Integrated clean 4-area welcome guide covering full-time engineering roles, technical architecture reviews, production web platforms, and open-source collaborations.
+- **Verification:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run lint` exited code 0 (0 errors, 0 warnings).
+  - `npm run build` compiled all 16 routes in 1.9s.
+  - End-to-end browser inspection via `browser_subagent` confirming visual cohesion, typography scale, responsive collapse, and interactive states across all three pages on desktop and mobile viewports.
+
 
 
 
