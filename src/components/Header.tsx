@@ -2,12 +2,50 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import Container from "@/components/ui/Container";
 
 export function Header() {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  // Handle ESC key to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     {
@@ -28,80 +66,132 @@ export function Header() {
   ];
 
   return (
-    <header className="w-full pt-6">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pb-4 border-b border-slate-800/80 flex items-center justify-between">
-          {/* Left Side: Brand Identity */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="https://vaibhv19.dev"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-copper transition-all focus:outline-none"
-            >
+    <>
+      <header
+        className={`sticky top-0 left-0 right-0 z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#232220] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isScrolled ? "py-3.5 shadow-[0_4px_24px_rgba(0,0,0,0.6)]" : "py-5 sm:py-6"
+        }`}
+      >
+        <Container size="default" className="flex items-center justify-between">
+          {/* Brand Wordmark & Identity */}
+          <Link
+            href="/"
+            className="group flex items-center space-x-3 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+            aria-label="Vaibhav Gupta — MyWork Home"
+          >
+            <span className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground group-hover:text-white uppercase leading-none">
               Vaibhav Gupta
-            </Link>
-          </div>
+            </span>
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-[2px] bg-surface-elevated border border-border text-accent uppercase tracking-widest select-none">
+              MyWork
+            </span>
+          </Link>
 
-          {/* Right Side: Desktop Navigation Links */}
+          {/* Desktop Navigation Links */}
           <nav
-            aria-label="Primary Navigation"
-            className="hidden md:flex items-center gap-5 sm:gap-6 font-mono text-xs uppercase tracking-wider"
+            aria-label="Main Navigation"
+            className="hidden md:flex items-center space-x-2 sm:space-x-4 lg:space-x-6"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors focus:outline-none text-sky-400 ${
+                className={`px-3 lg:px-4 py-1.5 text-xs lg:text-[13px] font-medium tracking-[0.14em] uppercase transition-colors duration-300 relative group ${
                   link.isActive
-                    ? "font-bold underline decoration-sky-400"
-                    : "hover:underline"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground-muted hover:text-white"
                 }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {/* Active / Hover accent line */}
+                <span
+                  className={`absolute bottom-0 left-3 right-3 lg:left-4 lg:right-4 h-[1px] bg-accent transition-all duration-300 ${
+                    link.isActive
+                      ? "opacity-100 scale-x-100"
+                      : "opacity-0 scale-x-0 group-hover:opacity-60 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             ))}
           </nav>
 
-          {/* Mobile Navigation Toggle */}
+          {/* Mobile Menu Trigger */}
           <div className="flex md:hidden items-center">
             <button
-              type="button"
-              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
-              aria-label="Toggle navigation menu"
-              className="p-1.5 rounded-sm border border-slate-800 bg-[#111622] text-slate-300 hover:text-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400/50"
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              className="p-2 rounded-[2px] text-foreground-muted hover:text-foreground bg-surface border border-border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent transition-colors"
             >
-              {mobileMenuOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <Menu className="w-5 h-5" />
-              )}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-        </div>
+        </Container>
+      </header>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <nav
-            aria-label="Mobile Primary Navigation"
-            className="md:hidden py-4 border-b border-slate-800/80 flex flex-col gap-3 font-mono text-xs uppercase tracking-wider animate-page-transition"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`py-1 text-sky-400 transition-colors focus:outline-none ${
-                  link.isActive
-                    ? "font-bold underline decoration-sky-400"
-                    : "hover:underline"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+      {/* Editorial Mobile Menu Overlay (1nfinity System) */}
+      {mobileMenuOpen && (
+        <div
+          id="mobile-navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site Navigation"
+          className="fixed inset-0 z-40 bg-[#0B0B0B] flex flex-col justify-between pt-24 pb-8 px-6 sm:px-10 md:hidden overflow-y-auto animate-fade-in"
+        >
+          {/* Subtle background glow */}
+          <div className="absolute inset-0 bg-ambient-glow pointer-events-none" />
+
+          {/* Mobile Nav Links */}
+          <nav className="relative z-10 flex flex-col space-y-3 pt-6">
+            <span className="text-[10px] font-sans font-semibold tracking-[0.25em] uppercase text-accent mb-2">
+              MENU NAVIGATION
+            </span>
+
+            {navLinks.map((link, index) => {
+              const formattedIndex = `0${index + 1}`;
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`group flex items-center justify-between py-3.5 border-b border-[#232220] transition-colors ${
+                    link.isActive ? "text-foreground font-semibold" : "text-foreground-muted hover:text-white"
+                  }`}
+                >
+                  <div className="flex items-baseline space-x-3">
+                    <span className="font-satoshi text-xs font-bold text-accent">
+                      {formattedIndex}
+                    </span>
+                    <span className="font-display text-2xl font-medium tracking-tight uppercase">
+                      {link.label}
+                    </span>
+                  </div>
+                  <ArrowUpRight
+                    size={18}
+                    className={`transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
+                      link.isActive ? "text-accent" : "text-foreground-subtle group-hover:text-accent"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </nav>
-        )}
-      </div>
-    </header>
+
+          {/* Mobile Bottom Details & Contact Route */}
+          <div className="relative z-10 pt-8 border-t border-[#232220] space-y-4">
+            <div className="flex flex-col pt-2 text-xs text-foreground-subtle space-y-1">
+              <span className="font-mono text-accent uppercase tracking-wider text-[10px]">DIRECT INQUIRIES</span>
+              <a
+                href="mailto:contact@vaibhv19.dev"
+                className="text-foreground hover:text-accent transition-colors font-mono text-sm"
+              >
+                contact@vaibhv19.dev
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

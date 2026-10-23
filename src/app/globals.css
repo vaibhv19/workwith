@@ -1,63 +1,300 @@
 @import "tailwindcss";
 
 @theme {
-  --font-syne: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-sans: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-syne), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --color-copper: #E8913A;
-  --color-copper-hover: #F0A04B;
+  --color-background: #0B0B0B;
+  --color-canvas-deep: #070707;
+  
+  --color-surface: #121212;
+  --color-surface-elevated: #181716;
+  --color-surface-subtle: #1F1E1C;
+  --color-surface-glass: rgba(18, 18, 18, 0.75);
+
+  --color-border: #232220;
+  --color-border-light: #32302C;
+  --color-border-subtle: #1A1918;
+  --color-border-accent: #8C7355;
+
+  --color-foreground: #F4EFE6;
+  --color-foreground-ivory: #F9F6EE;
+  --color-foreground-muted: #9E9A91;
+  --color-foreground-subtle: #66635D;
+
+  --color-accent: #C4A482;
+  --color-accent-muted: #8C7355;
+  --color-accent-tan: #A38F78;
+  --color-accent-champagne: #E3D7C7;
+  --color-accent-dark: #5D4822;
+
+  --font-display: 'Clash Display', var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-numeric: 'Satoshi', var(--font-inter), sans-serif;
+  --font-satoshi: 'Satoshi', var(--font-inter), sans-serif;
+  --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 :root {
-  --background: #0a0d14;
-  --foreground: #f8fafc;
-  --surface: #111622;
-  --surface-border: rgba(255, 255, 255, 0.08);
-  --gold-accent: #d4af37;
-  --muted-text: #94a3b8;
+  /* 1nfinity Core Palette Variables */
+  --bg-black: #0B0B0B;
+  --bg-deep: #070707;
+  
+  --surface-default: #121212;
+  --surface-elevated: #181716;
+  --surface-subtle: #1F1E1C;
+  --surface-glass: rgba(18, 18, 18, 0.75);
+  
+  --border-default: #232220;
+  --border-light: #32302C;
+  --border-subtle: #1A1918;
+  --border-accent: #8C7355;
+  
+  --text-primary: #F4EFE6;
+  --text-ivory: #F9F6EE;
+  --text-muted: #9E9A91;
+  --text-subtle: #66635D;
+  
+  --accent-primary: #C4A482;
+  --accent-muted: #8C7355;
+  --accent-tan: #A38F78;
+  --accent-champagne: #E3D7C7;
+  --accent-subtle: rgba(196, 164, 130, 0.08);
+
+  /* Font stacks */
+  --font-clash: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-inter-fallback: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-satoshi: 'Satoshi', 'Inter', -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-black);
+  color: var(--text-primary);
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-syne), system-ui, sans-serif;
+  background-color: var(--bg-black);
+  color: var(--text-primary);
   overflow-x: hidden;
-  line-height: 1.6;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-inter, var(--font-inter-fallback));
 }
 
 input, textarea, button, select {
   font-family: inherit;
 }
 
-.font-serif-editorial {
-  font-family: var(--font-syne), sans-serif;
+/* ==========================================================================
+   FIXED ARCHITECTURAL SUBTLE GRID BACKGROUND (1nfinity System)
+   ========================================================================== */
+.fixed-bg-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #0B0B0B;
+  background-image: 
+    linear-gradient(to right, rgba(244, 239, 230, 0.048) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 239, 230, 0.048) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: translateZ(0);
 }
 
-/* Custom minimal scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* ==========================================================================
+   TYPOGRAPHY FOUNDATION & HIERARCHY
+   ========================================================================== */
+
+.font-display-hero {
+  font-family: var(--font-clash);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
-::-webkit-scrollbar-track {
-  background: var(--background);
+.font-display-h1 {
+  font-family: var(--font-clash);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
+.font-display-h2 {
+  font-family: var(--font-clash);
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.font-display-h3 {
+  font-family: var(--font-clash);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.font-body-lead {
+  font-family: var(--font-inter, var(--font-inter-fallback));
+  font-size: clamp(0.95rem, 1.15vw, 1.15rem);
+  line-height: 1.65;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.font-body {
+  font-family: var(--font-inter, var(--font-inter-fallback));
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.font-body-sm {
+  font-family: var(--font-inter, var(--font-inter-fallback));
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--text-subtle);
+}
+
+.font-eyebrow {
+  font-family: var(--font-inter, var(--font-inter-fallback));
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.font-metric {
+  font-family: var(--font-satoshi);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   BUTTON & CTA FOUNDATION
+   ========================================================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background-color: var(--text-primary);
+  color: var(--bg-black);
+  font-family: var(--font-inter, var(--font-inter-fallback));
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
   border-radius: 2px;
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+.btn-primary:hover {
+  background-color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -6px rgba(244, 239, 230, 0.15);
 }
 
-/* Page Route Transition Animation */
-@keyframes pageTransition {
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-inter, var(--font-inter-fallback));
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-primary);
+  background-color: var(--surface-elevated);
+  color: #FFFFFF;
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-inter, var(--font-inter-fallback));
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  transition: color 300ms ease;
+  text-decoration: none;
+}
+
+.btn-text:hover {
+  color: var(--accent-primary);
+}
+
+/* ==========================================================================
+   SURFACES, BORDERS & RESTRAINED GLASS
+   ========================================================================== */
+
+.surface-card {
+  background-color: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-radius: 2px;
+  transition: border-color 400ms ease, background-color 400ms ease, transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.surface-card:hover {
+  border-color: var(--border-light);
+}
+
+.surface-glass {
+  background-color: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.divider-subtle {
+  height: 1px;
+  background-color: var(--border-default);
+  width: 100%;
+}
+
+.bg-ambient-glow {
+  background: 
+    radial-gradient(ellipse 60% 45% at 50% 20%, rgba(196, 164, 130, 0.04) 0%, rgba(11, 11, 11, 0) 70%),
+    #0B0B0B;
+}
+
+@keyframes pageTransitionFadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -66,14 +303,39 @@ input, textarea, button, select {
 }
 
 .animate-page-transition {
-  animation: pageTransition 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: opacity, transform;
+  animation: pageTransitionFadeIn 360ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+
+/* ==========================================================================
+   CUSTOM MINIMAL SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232220;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #32302C;
+}
+
+/* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .animate-page-transition {
-    animation: none !important;
-    transform: none !important;
-    opacity: 1 !important;
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

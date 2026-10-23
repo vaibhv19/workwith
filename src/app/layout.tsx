@@ -1,16 +1,22 @@
-import type { Metadata } from "next";
-import { Syne } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { StarryNightBackground } from "@/components/StarryNightBackground";
-import { PageTransition } from "@/components/PageTransition";
 
-const syne = Syne({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-syne",
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#0B0B0B",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mywork.vaibhv19.dev"),
@@ -78,14 +84,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} h-full antialiased dark`}>
-      <body className="min-h-full flex flex-col bg-[#0a0d14] text-slate-100 selection:bg-copper/20 selection:text-copper relative">
-        <StarryNightBackground />
-        <Header />
-        <main className="flex-grow">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+    <html lang="en" className={`${inter.variable} dark`}>
+      <head>
+        {/* Fontshare CDN for Clash Display (Headings) and Satoshi (Numerals & Accents) */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=satoshi@300,400,500,700,900&display=swap"
+        />
+      </head>
+      <body className="min-h-screen bg-[#0B0B0B] text-[#F4EFE6] font-sans selection:bg-[#C4A482]/25 selection:text-[#F9F6EE] antialiased relative">
+        {/* Fixed subtle architectural grid layer */}
+        <div className="fixed-bg-layer" aria-hidden="true" />
+
+        {/* Content layer above the fixed background */}
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

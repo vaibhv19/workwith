@@ -167,71 +167,33 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run build` compiled all 16 static/dynamic routes in 1.2s.
   - Full browser visual inspection performed using `browser_subagent` across desktop and mobile viewports (`375x667`), verifying typography scale, vertical rhythm, responsive collapse into hamburger menu, and image scaling without horizontal overflow.
 
-### Milestone 9 — Cohesive Editorial Redesign Across All Three Pages
-- **Scope:**
-  - Unified the entire website (`Projects`, `Case Study`, `Start a Conversation`) under the established blog design system (`max-w-3xl mx-auto px-4 sm:px-6 lg:px-8` matching `Header` and `Footer`).
-  - **Projects (`/projects`):**
-    - Redesigned into an editorial layout with copper eyebrow `ENGINEERING REPERTOIRE` and clear visual hierarchy.
-    - Section 1 ("01 / Must Checkout"): Prominently showcases curated interactive live deployments (CheckMate, Trajectory, 1nfinity, The Tiffin Dispatch, Birthday Wish) with genuine visuals, status badges, and direct application actions (`Open Live Application ↗` and `Source Code ↗`). Zero case-study links present.
-    - Section 2 ("02 / Developed Software"): High-density, elegant catalog organized by category (Systems & Infrastructure, Web Applications, Security Guardrails, Academic & Experiments) with GitHub repository actions.
-  - **Start a Conversation (`/start-conversation`):**
-    - Replaced wide card layout with an editorial contact composition matching BLog's intimate style.
-    - Added copper eyebrow `DIRECT COMMUNICATION`, concise invitation subhead, and prominent direct contact bar (`contact@vaibhv19.dev` with 1-click clipboard copy and mailto launcher).
-    - Refined `ContactForm.tsx` to use slate-800 borders, dark obsidian surfaces, copper focus rings, and streamlined input heights.
-    - Integrated clean 4-area welcome guide covering full-time engineering roles, technical architecture reviews, production web platforms, and open-source collaborations.
-- **Verification:**
+### Milestone 12 — Design Reference Migration to 1nfinity Visual System
+- **Phase 0: Source of Truth & Project Audit (`DESIGN_MIGRATION_AUDIT.md`, Commit `f7ff20f`):**
+  - Inspected `D:\Work\Projects----Commercial\1nfinity\website` and documented its complete design system:
+    - Typography: Clash Display (display/headings), Satoshi (metrics/numerals), Inter (body/labels).
+    - Palette: `#0B0B0B` (canvas base), `#070707` (deep navbar/footer), `#121212` / `#181716` / `#1F1E1C` (surfaces), `#232220` (border default), `#F4EFE6` (warm ivory text), `#C4A482` (champagne/tan accent).
+    - Architectural Grid: `.fixed-bg-layer` with 40px grid texture (`rgba(244, 239, 230, 0.048) 1px`), replacing organic blog canvas background (`StarryNightBackground.tsx`).
+    - Layout & Motion: Modular `Container` widths, native CSS transitions with `cubic-bezier(0.16, 1, 0.3, 1)`, and `SectionReveal` with reduced-motion support.
+  - Established strict boundary matrix: Content & functionality frozen (all 36 projects, 6 case study narratives, Resend contact pipeline); presentation open to redesign.
+- **Phase 1: Migrated Design System & Foundation:**
+  - Configured `@theme` and `:root` variables in `src/app/globals.css`.
+  - Added Fontshare CDN for Clash Display and Satoshi in `src/app/layout.tsx`.
+  - Built reusable primitives in `src/components/ui/`: `Button.tsx`, `Container.tsx`, `SectionReveal.tsx`.
+  - Rebuilt `Header.tsx` (sticky `#070707`/90 backdrop blur, active champagne indicator, full-screen mobile drawer with numbered links) and `Footer.tsx` (architectural wordmark, direct contact bar).
+  - Cleaned up obsolete `StarryNightBackground.tsx`.
+- **Phase 2: Redesigned Projects Page (`/projects`):**
+  - Replaced blog container with responsive 1nfinity layout.
+  - Section 1 ("Must Checkout"): 5 verified live projects with preview artwork, Satoshi counter badges, and direct application CTAs.
+  - Section 2 ("Developed Software"): All 36 canonical catalogue projects organized across 8 categories with dark surface cards and verified repository links. Strict zero case-study links on project cards preserved.
+- **Phase 3: Redesigned Case Study Section (`/case-study` & `/case-study/[slug]`):**
+  - Editorial archive index page with left-rail Satoshi counter and publication date, Clash Display project titles, and text CTA buttons.
+  - Deep narrative detail page with responsive TOC, quick metric grid, research verification badge, callouts (invariants, dilemmas, caveats), ASCII architecture diagrams, and syntax-highlighted code blocks.
+- **Phase 4: Redesigned Start a Conversation (`/start-conversation`) & `ContactForm.tsx`:**
+  - Direct communication bar with 1-click clipboard copy and verified mailto launcher.
+  - Replaced copper/slate form styling with 1nfinity surface tokens, warm ivory inputs, and champagne focus states.
+  - Preserved Resend serverless dispatch API with honeypot and client-side validation.
+  - Rebuilt 4 welcome topic cards with Satoshi index numbers.
+- **Phase 5 & 6: Verification & Validation:**
   - `npx tsc --noEmit` exited code 0 (0 errors).
-  - `npm run lint` exited code 0 (0 errors, 0 warnings).
-  - `npm run build` compiled all 16 routes in 1.9s.
-  - End-to-end browser inspection via `browser_subagent` confirming visual cohesion, typography scale, responsive collapse, and interactive states across all three pages on desktop and mobile viewports.
-
-### Milestone 10 — Critical Content Audit and Reconstruction: Engineering Case Studies
-- **Audit Findings (Phase 1, Commit `0623c7d`):**
-  - Confirmed that previous case-study pages were shallow summaries relying on catalog taglines and a uniform 4-bullet template.
-  - Omitted crucial technical depths from `CASE_STUDY_DATABASE.md`, such as COOP/COEP SharedArrayBuffer multithreading in CheckMate, dual-token rotation in Trajectory, prompt token adapters and pessimistic locking in Conclave, the mathematical CS formula and 85% CS ceiling in Phoenix, atomic SQL claiming and Lua rate-limiting in EJS, and the desktop-only entrance LCP bypass in 1nfinity.
-  - Documented complete answers to all 7 audit inquiries in `CASE_STUDY_CONTENT_AUDIT.md`.
-- **Architectural Reconstruction (Phase 2 & 3):**
-  - Created modular narrative modules in `src/data/caseStudiesData/`:
-    - `types.ts`: Structured types for deep narrative sections, callouts (invariants, insights, dilemmas, caveats), ASCII architecture diagrams, syntax-highlighted code blocks, structured tables, and evidence tags.
-    - `checkmate.ts`: Web Worker UCI streaming, `stop` interrupt queue clearing, `SharedArrayBuffer` with `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp` in `vercel.json` (commit `ea74c3e`), centipawn normalization formula, immutable What-If exploration, and PR #15 board flip.
-    - `trajectory.ts`: Reconciled spreadsheet-to-app organic evolution with compressed July 13, 2026 commits, dual-token JWT auth with PostgreSQL `refresh_tokens` rotation, `MockOAuth2RedirectFilter` for offline dev, Spring AI Groq extraction with regex fallbacks, S3 versioning, EC2/RDS/Nginx/Certbot setup, and `GhostDetectionScheduler`.
-    - `conclave.ts`: Context Tax origin, 3-stage evolution (Cloud APIs -> Mock ChatClients -> 100% Local Ollama), prompt token adapters (`LlamaAdapter.java`, `MistralAdapter.java`, `GemmaAdapter.java`), STOMP WebSockets with PostgreSQL `SELECT FOR UPDATE` pessimistic locking for human intervention (`isIntervention`), `WorkflowStateService` Context Janitor, and physical laptop thermal throttling limits.
-    - `phoenix.ts`: Cognitive invariant ("knowing when you don't know"), subword tokenizer failures on dot-separated config keys, dual-backend split suggested by LLMs, hybrid fusion equation (`0.7 * Sim_vector + 0.3 * Score_bm25_norm`), composite confidence formula (`CS = 0.6 * MaxSim + 0.4 * Agreement`), 4-tier fallback state machine (Green, Yellow HyDE, Orange FlashRank, Red Clarification), and the documented ~85% CS ceiling.
-    - `emailJobScheduler.ts`: 48-hour hiring assignment context across 10 phases and honest rejection record, post-submission debranding (commit `151ceba9`), Zero-Cron invariant, atomic database claiming SQL, atomic Redis Lua rate-limiting with non-destructive BullMQ `moveToDelayed` rescheduling, pre-send `email_attempts` crash recovery, and Elasticsearch outbox sync.
-    - `oneInfinity.ts`: Commercial client work attribution, "Restraint Over Decoration" philosophy (zero Framer Motion), 4-second desktop-only entrance sequence with ESC bypass (disabled on mobile to protect LCP), founder's pricing pivot (commit `62012c7`), and serverless Resend contact route.
-  - Updated `src/data/caseStudies.ts` to bind full narrative payloads to listing items.
-  - Reconstructed `src/app/case-study/[slug]/page.tsx` with rich editorial typography, quick metric cards, research verification badges, in-page section outlines, interactive callout boxes, ASCII diagrams, code excerpts, data tables, and explicit sections on deliberate omissions and open technical inquiries.
-- **Verification:**
-  - `npx tsc --noEmit` exited code 0 (0 errors).
-  - `npm run lint` exited code 0 (0 errors, 0 warnings).
-  - `npm run build` compiled all 16 static HTML pages in 3.2s.
-  - End-to-end browser inspection via `browser_subagent` recording complete visual elegance and responsive layout.
-
-### Milestone 11 — Audit and Reconstruction of the Projects Page Using Canonical Catalogue
-- **Audit Findings (Phase 1, Commit `749c4da`):**
-  - Audited canonical source `data/projects.ts` (36 total projects across 8 categories, plus 3 parent training frameworks).
-  - Uncovered that previous `src/app/projects/page.tsx` maintained an inline, hardcoded `MUST_CHECKOUT` array that duplicated data, drifted descriptions, and contained broken links (e.g., `the-tiffin-dispatch.vercel.app` returning HTTP 404 instead of canonical `thetiffindispatch.vaibhv19.dev`).
-  - Uncovered that Section 2 ("Developed Software") filtered for fictional/phantom project IDs (`redis-lite`, `load-balancer`, `fintrack`, `eventhub`, `devconnect`, `ai-mock-interview`) that do not exist in the catalogue, completely omitting 27 out of 36 canonical projects (75% omission).
-  - Conducted live HTTP HEAD checks verifying that canonical domains for `checkmate`, `trajectory`, `1nfinity`, `thetiffindispatch`, `zoya`, `vaibhv19.dev`, and `life` all return status 200 OK.
-  - Documented complete audit findings in `PROJECTS_PAGE_AUDIT.md`.
-- **Architectural Reconstruction (Phase 2 & 3):**
-  - Augmented `data/projects.ts` with minimal optional schema fields: `mustCheckout?: boolean;` and `previewImage?: string;`.
-  - Tagged the 5 verified flagship deployed applications with `mustCheckout: true`: CheckMate, Trajectory, 1nfinity, The Tiffin Dispatch, and Birthday Wish.
-  - Reconstructed `src/app/projects/page.tsx` to derive Section 1 dynamically: `PROJECTS.filter((p) => p.mustCheckout)`, eliminating all hardcoded secondary arrays.
-  - Reconstructed Section 2 to render the complete 36-project catalogue categorized across all 8 canonical groups, featuring parent framework badges (Lenovo LEAP, IBM SkillsBuild, IBM-PBEL), technology pills, verified repository links, and graceful handling for private client work.
-  - Enforced strict absence of case-study links on project cards (navbar remains the sole entry point).
-- **Verification:**
-  - `npx tsc --noEmit` exited code 0 (0 errors).
-  - `npm run lint` exited code 0 (0 errors, 0 warnings).
-  - `npm run build` compiled all 16 static HTML routes in 8.5s.
-  - Visual inspection via `browser_subagent` across desktop and mobile (412px) confirming typography, image previews, and layout integrity.
-
-
-
-
-
-
-
-
-
-
+  - Next.js production build (`npm run build`) compiled all 16 static HTML routes successfully in 3.0s.
+  - Visual verification via `browser_subagent` across desktop and mobile (375x812) confirming layout integrity, typography hierarchy, mobile drawer functionality, and high visual polish.

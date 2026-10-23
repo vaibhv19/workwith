@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Send, Loader2, CheckCircle2, AlertCircle, Mail } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 interface FormData {
   name: string;
@@ -121,8 +122,8 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded border border-slate-800/80 bg-slate-900/30 p-5 sm:p-6 shadow-sm">
-      <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <div className="surface-card bg-surface border border-border p-6 sm:p-8 rounded-md transition-colors">
+      <form onSubmit={handleSubmit} noValidate className="space-y-5">
         {/* Honeypot field (hidden from real users) */}
         <div className="hidden" aria-hidden="true">
           <label htmlFor="website">Website</label>
@@ -139,11 +140,11 @@ export function ContactForm() {
 
         {/* Inline Success Notification */}
         {status === "success" && (
-          <div className="flex items-start gap-3 p-3.5 bg-emerald-950/40 border border-emerald-500/30 rounded text-emerald-300 text-xs sm:text-sm animate-in fade-in">
-            <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" />
+          <div className="flex items-start gap-3 p-4 bg-emerald-950/30 border border-emerald-500/30 rounded text-emerald-200 text-sm">
+            <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-400 mt-0.5" />
             <div>
-              <p className="font-semibold text-emerald-200">Message dispatched successfully!</p>
-              <p className="text-xs text-emerald-300/80 mt-0.5 leading-relaxed">
+              <p className="font-semibold text-emerald-100">Message dispatched successfully</p>
+              <p className="text-xs text-emerald-300/80 mt-1 leading-relaxed">
                 Thank you for reaching out. I review all technical inquiries and will respond within 24–48 hours.
               </p>
             </div>
@@ -152,12 +153,12 @@ export function ContactForm() {
 
         {/* Inline Error Notification */}
         {status === "error" && (
-          <div className="flex items-start gap-3 p-3.5 bg-rose-950/40 border border-rose-500/30 rounded text-rose-300 text-xs sm:text-sm animate-in fade-in">
-            <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-400 mt-0.5" />
-            <div className="space-y-2">
+          <div className="flex items-start gap-3 p-4 bg-rose-950/30 border border-rose-500/30 rounded text-rose-200 text-sm">
+            <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400 mt-0.5" />
+            <div className="space-y-3 flex-1">
               <div>
-                <p className="font-semibold text-rose-200">Message dispatch notice</p>
-                <p className="text-xs text-rose-300/80 mt-0.5 leading-relaxed">{errorMessage}</p>
+                <p className="font-semibold text-rose-100">Message dispatch notice</p>
+                <p className="text-xs text-rose-300/80 mt-1 leading-relaxed">{errorMessage}</p>
               </div>
               <a
                 href={`mailto:${fallbackEmail || "contact@vaibhv19.dev"}?subject=${encodeURIComponent(
@@ -165,7 +166,7 @@ export function ContactForm() {
                 )}&body=${encodeURIComponent(
                   `Hi Vaibhav,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
                 )}`}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-copper hover:bg-copper-hover text-slate-950 font-semibold text-xs transition-colors"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-accent text-[#0B0B0B] font-semibold text-xs transition-colors hover:bg-accent-champagne"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>Open in Email Client ({fallbackEmail || "contact@vaibhv19.dev"})</span>
@@ -175,10 +176,10 @@ export function ContactForm() {
         )}
 
         {/* Name & Email Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-          <div className="space-y-1">
-            <label htmlFor="contact-name" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
-              Your Name <span className="text-copper">*</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <label htmlFor="contact-name" className="block text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted">
+              Your Name <span className="text-accent">*</span>
             </label>
             <input
               type="text"
@@ -188,18 +189,18 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="e.g. Jane Doe"
               disabled={status === "loading"}
-              className={`w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border rounded-sm placeholder:text-slate-500/50 transition-colors focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper ${
-                fieldErrors.name ? "border-rose-500/80" : "border-slate-800/80"
+              className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent ${
+                fieldErrors.name ? "border-rose-500/80" : "border-border hover:border-border-light"
               }`}
             />
             {fieldErrors.name && (
-              <p className="text-xs text-rose-400 font-mono">{fieldErrors.name}</p>
+              <p className="text-xs text-rose-400 font-mono mt-1">{fieldErrors.name}</p>
             )}
           </div>
 
-          <div className="space-y-1">
-            <label htmlFor="contact-email" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
-              Your Email <span className="text-copper">*</span>
+          <div className="space-y-1.5">
+            <label htmlFor="contact-email" className="block text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted">
+              Your Email <span className="text-accent">*</span>
             </label>
             <input
               type="email"
@@ -209,19 +210,19 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="e.g. jane@company.com"
               disabled={status === "loading"}
-              className={`w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border rounded-sm placeholder:text-slate-500/50 transition-colors focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper ${
-                fieldErrors.email ? "border-rose-500/80" : "border-slate-800/80"
+              className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent ${
+                fieldErrors.email ? "border-rose-500/80" : "border-border hover:border-border-light"
               }`}
             />
             {fieldErrors.email && (
-              <p className="text-xs text-rose-400 font-mono">{fieldErrors.email}</p>
+              <p className="text-xs text-rose-400 font-mono mt-1">{fieldErrors.email}</p>
             )}
           </div>
         </div>
 
         {/* Topic / Subject Selection */}
-        <div className="space-y-1">
-          <label htmlFor="contact-subject" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
+        <div className="space-y-1.5">
+          <label htmlFor="contact-subject" className="block text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted">
             Conversation Topic
           </label>
           <select
@@ -230,30 +231,30 @@ export function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             disabled={status === "loading"}
-            className="w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border border-slate-800/80 rounded-sm focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper transition-colors"
+            className="w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border border-border hover:border-border-light rounded-[2px] focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent transition-colors"
           >
-            <option value="Engineering Role / Opportunity" className="bg-[#0a0d14] text-slate-100">
+            <option value="Engineering Role / Opportunity" className="bg-[#121212] text-[#F4EFE6]">
               Full-Time Software Engineering Role
             </option>
-            <option value="System Architecture / Consulting" className="bg-[#0a0d14] text-slate-100">
+            <option value="System Architecture / Consulting" className="bg-[#121212] text-[#F4EFE6]">
               Technical Architecture / Consulting
             </option>
-            <option value="Freelance / Contract Project" className="bg-[#0a0d14] text-slate-100">
+            <option value="Freelance / Contract Project" className="bg-[#121212] text-[#F4EFE6]">
               Contract / Full-Stack Web Platform
             </option>
-            <option value="Open-Source Collaboration" className="bg-[#0a0d14] text-slate-100">
+            <option value="Open-Source Collaboration" className="bg-[#121212] text-[#F4EFE6]">
               Open-Source Collaboration
             </option>
-            <option value="General Technical Inquiry" className="bg-[#0a0d14] text-slate-100">
+            <option value="General Technical Inquiry" className="bg-[#121212] text-[#F4EFE6]">
               General Technical Inquiry
             </option>
           </select>
         </div>
 
         {/* Message Field */}
-        <div className="space-y-1">
-          <label htmlFor="contact-message" className="block text-xs font-mono uppercase tracking-wider text-slate-400">
-            Your Note <span className="text-copper">*</span>
+        <div className="space-y-1.5">
+          <label htmlFor="contact-message" className="block text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted">
+            Your Note <span className="text-accent">*</span>
           </label>
           <textarea
             id="contact-message"
@@ -263,37 +264,40 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder="Share details about the role, project requirements, architectural challenges, or collaboration scope..."
             disabled={status === "loading"}
-            className={`w-full px-3 py-2 text-xs sm:text-sm text-slate-100 bg-slate-950/60 border rounded-sm placeholder:text-slate-500/50 transition-colors resize-y min-h-[100px] focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper ${
-              fieldErrors.message ? "border-rose-500/80" : "border-slate-800/80"
+            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors resize-y min-h-[110px] focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent ${
+              fieldErrors.message ? "border-rose-500/80" : "border-border hover:border-border-light"
             }`}
           />
           {fieldErrors.message && (
-            <p className="text-xs text-rose-400 font-mono">{fieldErrors.message}</p>
+            <p className="text-xs text-rose-400 font-mono mt-1">{fieldErrors.message}</p>
           )}
         </div>
 
         {/* Submit Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-1">
-          <p className="text-xs text-slate-400 italic">
-            I typically respond within 24–48 hours.
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
+          <p className="text-xs text-foreground-subtle italic">
+            Directly delivered to personal inbox · Response within 24–48 hours.
           </p>
-          <button
+
+          <Button
             type="submit"
+            variant="accent"
+            size="md"
             disabled={status === "loading"}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold tracking-wide text-slate-950 bg-copper hover:bg-copper-hover disabled:opacity-60 disabled:cursor-not-allowed rounded-sm transition-all cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-copper/50 shrink-0"
+            className="shrink-0"
           >
             {status === "loading" ? (
-              <>
-                <Loader2 className="w-3.5 h-3.5 animate-spin text-slate-950" />
+              <span className="flex items-center gap-2">
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 <span>Sending...</span>
-              </>
+              </span>
             ) : (
-              <>
+              <span className="flex items-center gap-2">
                 <span>Send Note</span>
-                <Send className="w-3.5 h-3.5 text-slate-950" />
-              </>
+                <Send className="w-3.5 h-3.5" />
+              </span>
             )}
-          </button>
+          </Button>
         </div>
       </form>
     </div>
