@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
       "Executed Stockfish 16 UCI engine compiled into WebAssembly for zero-latency in-browser evaluation.",
       "Built multi-threaded analysis worker threads leveraging SharedArrayBuffer and Web Workers.",
       "Implemented dynamic move-branch trees, centipawn evaluation charts, and automated blunder detection.",
-      "Test engine evaluation trees directly via the [live WebAssembly application](https://checkmate.vaibhv19.dev/)."
+      "Configured Cross-Origin Isolation headers (COOP/COEP) enabling SharedArrayBuffer concurrency for multi-PV engine evaluation."
     ],
     category: "Applied Projects",
     techStack: ["TypeScript", "React", "WebAssembly", "Web Workers", "SharedArrayBuffer", "chess.js"],
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
       "Built Spring Boot REST microservices and PostgreSQL relational schemas for tracking application pipelines.",
       "Implemented JWT session authorization, OAuth2 workflows, recruiter sequences, and funnel metrics.",
       "Containerized services via Docker Compose and deployed to AWS EC2 behind an Nginx reverse proxy.",
-      "Explore candidate workflows and recruitment tracking in the [live deployment](https://trajectory.vaibhv19.dev)."
+      "Integrated Spring AI with Groq for automated job description parsing and scheduled cron workers for application ghost detection."
     ],
     category: "Applied Projects",
     techStack: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "AWS EC2", "Docker", "Nginx", "GitHub Actions"],
@@ -92,13 +92,13 @@ export const PROJECTS: Project[] = [
     title: "Phoenix",
     tagline: "A hybrid RAG engine that shows its retrieval score math instead of bluffing when it's unsure.",
     bullets: [
-      "Engineered a multi-stage hybrid retrieval pipeline fusing sparse BM25 scoring with dense vector search via pgvector.",
-      "Applied Cross-Encoder reranking to maximize context precision delivered to LLMs.",
-      "Exposed step-by-step query scoring math and execution traces to eliminate hallucinated context.",
-      "Built Redis caching layers and FastAPI async endpoints for low-latency vector retrieval."
+      "Engineered a dual-backend hybrid RAG pipeline pairing a Spring Boot 3.3 gateway with a FastAPI retrieval orchestrator.",
+      "Fused dense semantic vector search (PostgreSQL pgvector) with sparse BM25 scoring via Weighted Linear Combination.",
+      "Implemented self-healing fallback loops triggering query rewrites, FlashRank Cross-Encoder reranking, or user clarification prompts.",
+      "Exposed step-by-step query scoring math, agreement confidence metrics, and visual execution traces in a React console."
     ],
     category: "Applied Projects",
-    techStack: ["Python", "FastAPI", "PostgreSQL", "pgvector", "SentenceTransformers", "BM25", "Redis", "Docker"],
+    techStack: ["Java", "Spring Boot", "Python", "FastAPI", "PostgreSQL", "pgvector", "SentenceTransformers", "BM25", "Docker"],
     featured: true,
     homepagePreview: true,
     githubUrl: "https://github.com/vaibhv19/Phoenix"
@@ -108,13 +108,13 @@ export const PROJECTS: Project[] = [
     title: "Conclave",
     tagline: "Models arguing in a single structured room instead of eight disconnected browser tabs.",
     bullets: [
-      "Orchestrated multi-model agent debates bridging local Ollama instances and cloud API endpoints.",
+      "Orchestrated multi-model agent collaboration workflows across local Ollama instances (Llama 3, Mistral, Gemma).",
       "Implemented shared canonical state management over real-time WebSocket and STOMP event streams.",
-      "Handled dynamic prompt context translation across distinct model tokenizers and debate rounds.",
-      "Built a React and Zustand frontend for visualizing turn-by-turn debate transcripts."
+      "Implemented pessimistic database locking (SELECT FOR UPDATE) to allow real-time human pauses and interventions during active pipelines.",
+      "Built dynamic prompt context translation across distinct model token formats with automated context compression."
     ],
     category: "Applied Projects",
-    techStack: ["Java", "Spring Boot", "Spring AI", "WebSockets", "STOMP", "React", "Zustand", "Ollama"],
+    techStack: ["Java", "Spring Boot", "Spring AI", "WebSockets", "STOMP", "React", "Zustand", "Ollama", "PostgreSQL"],
     featured: false,
     homepagePreview: false,
     githubUrl: "https://github.com/vaibhv19/Conclave"
@@ -140,13 +140,13 @@ export const PROJECTS: Project[] = [
     title: "Shard",
     tagline: "Building an in-memory cache from scratch so I stop trusting Redis blindly.",
     bullets: [
-      "Developed a distributed in-memory caching cluster in Python leveraging non-blocking Asyncio event loops.",
-      "Implemented consistent hashing ring topology for uniform key distribution across cache nodes.",
-      "Built automated background TTL key eviction loops and dynamic node discovery routines.",
+      "Developed an in-memory concurrent key-value cache service in Python using Django and Django REST Framework.",
+      "Implemented Murmur3-32 consistent hashing with 150 virtual nodes per physical host for uniform key distribution.",
+      "Engineered thread-safe LRU/LFU eviction strategies and background daemon thread TTL sweeps.",
       "Integrated Prometheus metrics handlers to track p50/p99 cache hit and miss latencies."
     ],
     category: "Applied Projects",
-    techStack: ["Python", "Asyncio", "Daphne", "Consistent Hashing", "Prometheus", "Docker"],
+    techStack: ["Python", "Django", "Django REST Framework", "Consistent Hashing", "Prometheus", "Docker"],
     featured: false,
     homepagePreview: false,
     githubUrl: "https://github.com/vaibhv19/Shard"
@@ -156,13 +156,13 @@ export const PROJECTS: Project[] = [
     title: "Cairn",
     tagline: "Same distributed cache architecture as Shard, rebuilt in Java 21 to see which runtime complains less under load.",
     bullets: [
-      "Rebuilt distributed key-value cache engine in Java 21 leveraging lightweight Virtual Threads (Project Loom).",
-      "Applied Murmur3 consistent hashing with virtual node allocation to minimize scale-event key churn.",
-      "Utilized thread-safe ConcurrentHashMap structures for high-concurrency read/write throughput.",
+      "Rebuilt distributed key-value cache engine in Java 21 and Spring Boot leveraging OS-level multi-threading and fine-grained lock-striping.",
+      "Applied Murmur3 consistent hashing across a TreeMap-backed ring with 150 virtual nodes to minimize scale-event key churn.",
+      "Utilized thread-safe ConcurrentHashMap structures and ReentrantReadWriteLock controls for high-concurrency throughput.",
       "Exposed Prometheus scrapers and Grafana dashboards for monitoring memory pools and request latencies."
     ],
     category: "Applied Projects",
-    techStack: ["Java", "Spring Boot", "Virtual Threads", "Consistent Hashing", "Prometheus", "Grafana", "Docker"],
+    techStack: ["Java", "Spring Boot", "ConcurrentHashMap", "Consistent Hashing", "Prometheus", "Grafana", "Docker"],
     featured: false,
     homepagePreview: true,
     githubUrl: "https://github.com/vaibhv19/Cairn"
@@ -172,13 +172,13 @@ export const PROJECTS: Project[] = [
     title: "StudyLink",
     tagline: "Study notes that don't vanish into dead group chats, and textbooks that stay indexed.",
     bullets: [
-      "Built educational note repository featuring semantic search across course PDFs and textbooks.",
-      "Generated vector embeddings using pgvector in PostgreSQL for document similarity matching.",
-      "Implemented granular role-based access control (RBAC) for students and course instructors.",
-      "Designed responsive document upload interfaces using React, Django REST, and Tailwind CSS."
+      "Built an academic resource vault featuring RAG document Q&A over course PDFs using Google Gemini and pgvector cosine search.",
+      "Engineered a peer-to-peer textbook marketplace with an ACID listing state machine and pessimistic row locking (select_for_update).",
+      "Integrated JWT authentication, Supabase S3-compatible cloud storage, and community discussion boards.",
+      "Designed a responsive client using React 18, Zustand, Tailwind CSS, and in-browser PDF rendering."
     ],
     category: "Applied Projects",
-    techStack: ["Python", "Django", "React", "PostgreSQL", "pgvector", "Tailwind CSS"],
+    techStack: ["Python", "Django", "React", "PostgreSQL", "pgvector", "Google Gemini API", "Tailwind CSS"],
     featured: false,
     homepagePreview: false,
     githubUrl: "https://github.com/vaibhv19/StudyLink"
@@ -188,13 +188,13 @@ export const PROJECTS: Project[] = [
     title: "Vigil",
     tagline: "Watches autonomous AI agents run inside isolated sandboxes, just in case they get ideas.",
     bullets: [
-      "Developed AI agent safety harness executing agent tool calls inside ephemeral Docker containers.",
-      "Implemented custom Pytest plugins to intercept system calls and enforce CPU/RAM resource quotas.",
-      "Conducted automated prompt injection stress-tests against predefined security policy baselines.",
-      "Built real-time container log streaming and policy violation alerting endpoints."
+      "Developed AI agent safety harness executing agent tool calls inside ephemeral Docker containers with CPU/RAM resource limits.",
+      "Implemented tool call interception capturing stdout, exit codes, and execution durations across bash and filesystem actions.",
+      "Engineered real-time anomaly detection identifying path traversal attempts, shell injection metacharacters, and command loops.",
+      "Built run comparison analytics and evaluation reporting backed by PostgreSQL, FastAPI, and a Typer CLI."
     ],
     category: "Applied Projects",
-    techStack: ["Python", "FastAPI", "LangGraph", "Docker SDK", "Pytest", "Container Isolation"],
+    techStack: ["Python", "FastAPI", "Docker SDK", "PostgreSQL", "SQLAlchemy", "Typer", "LangGraph"],
     featured: true,
     homepagePreview: true,
     githubUrl: "https://github.com/vaibhv19/Vigil"
@@ -223,12 +223,12 @@ export const PROJECTS: Project[] = [
     title: "Aegis",
     tagline: "Tests my own apps so I don't have to pretend they work.",
     bullets: [
-      "Built continuous integration test harness executing automated regression suites across REST services.",
-      "Enforced OpenAPI contract validations to prevent API schema drift during deployment.",
-      "Integrated synthetic fault injection testing into GitHub Actions containerized pipelines."
+      "Built an enterprise test automation framework and continuous integration pipeline targeting the Trajectory platform.",
+      "Implemented modular Page Object Models and programmatic API client verification layers using TypeScript and Playwright.",
+      "Integrated automated HTML and Allure test reports into containerized GitHub Actions CI workflows."
     ],
     category: "System Integrity & DevSecOps Guardrails",
-    techStack: ["Python", "Pytest", "Docker", "REST API", "GitHub Actions"],
+    techStack: ["TypeScript", "Playwright", "Allure", "Docker", "GitHub Actions"],
     githubUrl: "https://github.com/vaibhv19/Aegis"
   },
   {
@@ -236,12 +236,12 @@ export const PROJECTS: Project[] = [
     title: "Pulse",
     tagline: "Finds out how many users it takes to break something I built.",
     bullets: [
-      "Engineered a high-concurrency synthetic load generator using Python Asyncio and Locust.",
-      "Evaluated database connection pool saturation, RPS limits, and latency degradation curves.",
-      "Exported structured performance telemetry to Prometheus for identifying system bottlenecks."
+      "Engineered an automated load, stress, and resilience testing framework using k6 to validate backend service limits.",
+      "Defined centralized performance budgets and evaluated latency degradation curves across Phoenix and Trajectory endpoints.",
+      "Configured InfluxDB telemetry persistence and provisioned Grafana dashboards for real-time concurrency metrics."
     ],
     category: "System Integrity & DevSecOps Guardrails",
-    techStack: ["Python", "Locust", "Asyncio", "Prometheus", "Docker"],
+    techStack: ["k6", "JavaScript", "InfluxDB", "Grafana", "Docker", "GitHub Actions"],
     githubUrl: "https://github.com/vaibhv19/Pulse"
   },
   {
@@ -249,12 +249,13 @@ export const PROJECTS: Project[] = [
     title: "Warden",
     tagline: "Politely tries to break into my own apps before someone else does.",
     bullets: [
-      "Developed automated DevSecOps audit scanner targeting common web application vulnerabilities.",
-      "Implemented automated checks for SQL injection, missing security headers, and improper CORS policies.",
-      "Integrated secret scanning routines to detect leaked API keys before code merges."
+      "Developed automated security audit suite integrating a custom OWASP ZAP API client with Python and Pydantic.",
+      "Implemented evidence-based vulnerability scanners targeting SQL injection, cross-site scripting (XSS), and missing auth guards.",
+      "Engineered multi-tenant broken access control (IDOR) verification and parameter-based intelligent input fuzzing.",
+      "Built structured JSON and human-readable Markdown reporting engines with signature-based finding deduplication."
     ],
     category: "System Integrity & DevSecOps Guardrails",
-    techStack: ["Python", "Security Audit", "OWASP", "Docker", "Shell Scripts"],
+    techStack: ["Python", "OWASP ZAP", "Pydantic", "Docker", "Security Audit", "Click"],
     githubUrl: "https://github.com/vaibhv19/Warden"
   },
 
@@ -270,22 +271,25 @@ export const PROJECTS: Project[] = [
     ],
     category: "Academic Milestones — Formal Coursework Projects",
     techStack: ["Python", "OpenCV", "YOLOv8", "PyTorch", "Flask"],
-    githubUrl: "https://github.com/vaibhv19/Automated-Litter-detection-System"
+    githubUrl: "https://github.com/vaibhv19/EcoLens"
   },
   {
     id: "smart-surveillance-system",
     title: "Smart Surveillance System",
-    tagline: "Computer vision and automated video monitoring framework for surveillance analysis.",
+    tagline: "Automated campus surveillance rule-violation detection pipeline with real-time incident alerting and evidence compilation.",
     bullets: [
-      "Developed video processing pipeline for real-time surveillance feed analysis and automated event tracking.",
-      "Implemented computer vision algorithms to process incoming camera streams and flag detected anomalies."
+      "Architected backend integration services using FastAPI, Pydantic v2, and SQLAlchemy (SQLite WAL / PostgreSQL) for campus rule violation monitoring.",
+      "Built two-phase evidence compilation pipelines generating OpenCV-annotated keyframes and background FFmpeg H.264 video clips with HTTP 206 partial streaming.",
+      "Implemented real-time WebSocket incident dispatch (/ws/alerts) for immediate alerting on detected campus violations (unauthorized entry, parking, safety).",
+      "Engineered the master pipeline runner integrating YOLOv8 detection streams, multi-object tracking feeds, and review audit logging."
     ],
     category: "Academic Milestones — Formal Coursework Projects",
-    techStack: ["Python", "Computer Vision", "Video Processing"],
+    techStack: ["Python", "FastAPI", "OpenCV", "FFmpeg", "SQLAlchemy", "WebSockets", "Pydantic"],
     featured: false,
     homepagePreview: false,
-    githubUrl: "https://github.com/vaibhv19/Smart-Surveillance-System"
+    githubUrl: "https://github.com/vaibhv19/Smart-Survellience-System"
   },
+
   // 4. Technical Training Frameworks and Practical Modules
   {
     id: "vidyalink",
@@ -322,12 +326,12 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Designed an editorial vintage ordering interface with dynamic menu navigation.",
       "Built client-side cart state managers, item customizers, and checkout ledgers.",
-      "Experience the vintage guest checkout flow in the [live application](https://food-ordering-system-ruddy-sigma.vercel.app/)."
+      "Implemented responsive order summaries, modal customization workflows, and delivery validation."
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
-    demoUrl: "https://food-ordering-system-ruddy-sigma.vercel.app/",
+    demoUrl: "https://thetiffindispatch.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/food-ordering-system"
   },
   {
@@ -381,11 +385,11 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Crafted interactive celebration web app with custom HTML5 Canvas particle physics.",
       "Integrated embedded audio controllers and smooth visual state animations.",
-      "View the interactive celebration sequence in the [deployed application](https://happybirthdayzoya.vaibhv19.dev/)."
+      "Synchronized interactive stage reveals with background audio playback and responsive canvas viewports."
     ],
     category: "Built for No Reason Other Than Wanting To",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Canvas API"],
-    demoUrl: "https://happybirthdayzoya.vaibhv19.dev/",
+    demoUrl: "https://zoya.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Happy-Birthday-Zoya"
   },
 
@@ -529,10 +533,9 @@ export const PROJECTS: Project[] = [
     title: "1nfinity",
     tagline: "Client website and digital presence for an influencer marketing and creator partnership agency.",
     bullets: [
-      "Designed and developed the brand showcase website for an influencer marketing agency.",
+      "Designed and developed the brand showcase website for an influencer marketing and creator partnership agency.",
       "Implemented a responsive dark aesthetic using Next.js App Router, Tailwind CSS, and custom typography.",
-      "Built fluid marquee motion tracks, video media integrations, and consultation booking call-to-actions.",
-      "Explore agency services and creator campaign capabilities on the [live website](https://1nfinity.online)."
+      "Built fluid marquee motion tracks, video media integrations, and consultation lead-capture workflows."
     ],
     category: "Client Work & Collaborations",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
@@ -546,10 +549,9 @@ export const PROJECTS: Project[] = [
     tagline: "Main personal portfolio and technical blog covering distributed systems, AI tooling, and engineering essays.",
     bullets: [
       "Designed and built primary professional portfolio and publication platform using Next.js 16 App Router and React 19.",
-      "Developed custom Markdown parsers, dark aesthetic token system, and static route generation.",
+      "Developed custom Markdown parsing pipelines, dark aesthetic token system, and static route generation.",
       "Authored long-form technical essays and engineering deep dives spanning systems architecture and developer tooling.",
-      "Implemented responsive editorial layouts, interactive project catalog indexes, and technical writeups.",
-      "Read engineering articles and project writeups on the [live portfolio](https://vaibhv19.dev)."
+      "Implemented interactive project catalog indexes, responsive reading layouts, and dynamic metadata."
     ],
     category: "Personal Websites & Platforms",
     techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Markdown"],
@@ -563,9 +565,9 @@ export const PROJECTS: Project[] = [
     title: "Life",
     tagline: "A personal digital scrapbook for the parts of life that don't fit on a résumé.",
     bullets: [
-      "Curated a personal digital archive and scrapbook showcasing creative artwork, sketches, and fitness milestones.",
+      "Curated a personal digital scrapbook showcasing creative artwork, sketches, and fitness milestones.",
       "Designed an editorial journal layout with paper grain textures, typography pairings, and responsive image galleries.",
-      "Browse creative sketches and fitness moments on the [live scrapbook](https://life.vaibhv19.dev)."
+      "Built with Next.js App Router and Tailwind CSS for smooth client transitions and lightweight media presentation."
     ],
     category: "Personal Websites & Platforms",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
