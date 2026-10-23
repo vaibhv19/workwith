@@ -106,6 +106,7 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:** `npx tsc --noEmit` exited with code 0.
 
 ### Milestone 4 — Case Study Landing Page
+- **Commit:** `173ca90`
 - **Scope:**
   - Built `src/app/case-study/page.tsx` as an independent primary navigation destination (strictly isolated from Projects page cards).
   - Implemented the premise and evidence layer derived authentically from `CASE_STUDY_DATABASE.md` covering six key projects: CheckMate, Trajectory, Conclave, Phoenix, Email Job Scheduler (EJS), and 1nfinity.online.
@@ -113,6 +114,17 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Added interactive deep-dive dossiers exposing core narrative, architectural pivots, verified evidence ledger citations, open questions, and claims deliberately avoided.
   - Highlighted authentic engineering constraints without marketing inflation (e.g., local Ollama thermal limits, unresolved ~85% confidence score ceiling, hiring assignment debranding, and client-side COOP/COEP multithreading headers).
 - **Verification:** `npx tsc --noEmit` passed with 0 errors. Dev server running and compiling cleanly.
+
+### Milestone 5 — Start a Conversation Page
+- **Scope:**
+  - Built `src/app/start-conversation/page.tsx` providing an authentic, direct contact interface without simulated states or fake placeholders.
+  - Articulated the specific kinds of conversations that are welcome: Engineering Roles & Placements, Systems Architecture & Consulting, Contract Web Platforms, and Open-Source Collaborations.
+  - Displayed verified direct contact details: `contact@vaibhv19.dev` (with instant copy-to-clipboard functionality), location context (Greater Noida / New Delhi, IST · UTC+5:30), response window expectations (24–48 hours), and direct links to GitHub, LinkedIn, X, and Bluesky profiles.
+  - Implemented `ContactForm.tsx` matching BLog's verified design language (copper focus rings, dark surface container, honeypot bot trap, field validation, loading spinner, and responsive sizing).
+  - Created server-side API route `src/app/api/contact/route.ts` powered by Resend SDK with input sanitization, error reporting, and transparent failure fallback offering an instant pre-populated mailto client launcher.
+  - Installed `resend` package.
+- **Verification:** `npx tsc --noEmit` passed with 0 errors. `npm run build` compiled all routes cleanly with dynamic route `/api/contact` and static pre-rendering for `/`, `/projects`, `/case-study`, and `/start-conversation`.
+
 
 
 
