@@ -127,6 +127,7 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:** `npx tsc --noEmit` passed with 0 errors. `npm run build` compiled all routes cleanly with dynamic route `/api/contact` and static pre-rendering for `/`, `/projects`, `/case-study`, and `/start-conversation`.
 
 ### Milestone 6 — Production Domain Preparation, SEO, and Verification
+- **Commit:** `595d95b`
 - **Scope:**
   - Generated `src/app/robots.ts` and `src/app/sitemap.ts` configured for the canonical production domain `https://mywork.vaibhv19.dev`.
   - Upgraded `StarryNightBackground.tsx` to Next.js `<Image />` with `fill`, `priority`, and responsive sizing to eliminate LCP warnings and layout shifts.
@@ -136,6 +137,19 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run lint` exited code 0 (clean).
   - `npx tsc --noEmit` exited code 0 (clean).
   - `npm run build` exited code 0 (Turbopack production build succeeded in 1.5s).
+
+### Milestone 7 — UI Alignment: Case Studies with Blog All Posts Page
+- **Scope:**
+  - Audited `D:\Work\Projects----Personal\BLog\src\app\posts\page.tsx` and refactored `src/app/case-study/page.tsx` to mirror its exact editorial layout, container width (`max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-6 text-slate-300`), header styling (`space-y-2.5 border-b border-slate-800/80 pb-5`), title hierarchy (`text-2xl sm:text-4xl font-bold tracking-tight text-slate-100`), and italic description.
+  - Stripped oversized hero elements, colored `[REPO]`/`[CONFIRM]` classification badges, and large methodology cards from the public listing.
+  - Rebuilt the case study listing as a clean vertical chronological archive grouped by period (`OCTOBER 2026`, `AUGUST 2026`, `JULY 2026`) with index notation (`{n} / {title}`), metadata row (`text-xs font-mono text-slate-400`), and concise descriptions (`text-xs sm:text-sm text-slate-300 leading-relaxed`).
+  - Implemented `src/data/caseStudies.ts` with authentic summaries and created `src/app/case-study/[slug]/page.tsx` detail pages mirroring BLog's `posts/[slug]` layout with static generation (`generateStaticParams`).
+  - Updated `src/app/sitemap.ts` with all dynamic case study URLs.
+- **Verification:**
+  - `npx tsc --noEmit` passed with 0 errors.
+  - `npm run lint` exited code 0 (0 errors, 0 warnings).
+  - `npm run build` compiled 16/16 routes with static pre-rendering across all 6 case studies.
+
 
 
 
