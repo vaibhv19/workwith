@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export function StarryNightBackground() {
   return (
     <div
@@ -11,10 +13,13 @@ export function StarryNightBackground() {
 
       {/* Starry Night painting layer with soft blur */}
       <div className="absolute inset-0 w-full h-full transform-gpu scale-105">
-        <img
+        <Image
           src="/images/starry-night-bg.webp"
           alt=""
-          className="w-full h-full object-cover filter blur-[10px] sm:blur-[14px] opacity-75"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover filter blur-[10px] sm:blur-[14px] opacity-75"
         />
       </div>
 

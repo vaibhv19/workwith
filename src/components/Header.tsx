@@ -34,7 +34,7 @@ export function Header() {
           {/* Left Side: Brand Identity */}
           <div className="flex items-center gap-3">
             <Link
-              href="/projects"
+              href="https://vaibhv19.dev"
               className="text-2xl sm:text-3xl font-bold tracking-tight text-copper transition-all focus:outline-none"
             >
               Vaibhav Gupta

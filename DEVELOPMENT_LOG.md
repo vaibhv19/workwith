@@ -116,6 +116,7 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:** `npx tsc --noEmit` passed with 0 errors. Dev server running and compiling cleanly.
 
 ### Milestone 5 — Start a Conversation Page
+- **Commit:** `c7a380f`
 - **Scope:**
   - Built `src/app/start-conversation/page.tsx` providing an authentic, direct contact interface without simulated states or fake placeholders.
   - Articulated the specific kinds of conversations that are welcome: Engineering Roles & Placements, Systems Architecture & Consulting, Contract Web Platforms, and Open-Source Collaborations.
@@ -124,6 +125,18 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Created server-side API route `src/app/api/contact/route.ts` powered by Resend SDK with input sanitization, error reporting, and transparent failure fallback offering an instant pre-populated mailto client launcher.
   - Installed `resend` package.
 - **Verification:** `npx tsc --noEmit` passed with 0 errors. `npm run build` compiled all routes cleanly with dynamic route `/api/contact` and static pre-rendering for `/`, `/projects`, `/case-study`, and `/start-conversation`.
+
+### Milestone 6 — Production Domain Preparation, SEO, and Verification
+- **Scope:**
+  - Generated `src/app/robots.ts` and `src/app/sitemap.ts` configured for the canonical production domain `https://mywork.vaibhv19.dev`.
+  - Upgraded `StarryNightBackground.tsx` to Next.js `<Image />` with `fill`, `priority`, and responsive sizing to eliminate LCP warnings and layout shifts.
+  - Removed unused imports across project pages and resolved all ESLint warnings.
+  - Executed full end-to-end linting (`npm run lint` — 0 errors, 0 warnings) and production bundle compilation (`npm run build` — 10 static/dynamic routes pre-rendered successfully).
+- **Verification:**
+  - `npm run lint` exited code 0 (clean).
+  - `npx tsc --noEmit` exited code 0 (clean).
+  - `npm run build` exited code 0 (Turbopack production build succeeded in 1.5s).
+
 
 
 

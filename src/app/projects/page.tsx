@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { ExternalLink, Code2 } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/BrandIcons";
 import { PROJECTS, Project } from "../../../data/projects";
 
