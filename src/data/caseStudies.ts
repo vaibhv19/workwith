@@ -1,10 +1,14 @@
 export interface CaseStudy {
   slug: string;
+  number: string;
   title: string;
+  subtitle: string;
+  period: string;
   date: string; // YYYY-MM-DD
   category: string;
   techFocus: string;
   status: string;
+  image?: string;
   excerpt: string;
   description: string;
   overview: string;
@@ -16,11 +20,15 @@ export interface CaseStudy {
 export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "1nfinity",
+    number: "06",
     title: "1nfinity.online",
+    subtitle: "Performance Budgets & Anti-Overdesign Correction",
+    period: "October 2026",
     date: "2026-10-15",
     category: "Commercial Client Work",
     techFocus: "Next.js · Tailwind CSS · Resend · Core Web Vitals",
     status: "Production Live",
+    image: "/images/case-studies/1nfinity-preview.webp",
     excerpt: "Bespoke agency web presence engineered from scratch under an uncompromising 'Restraint Over Decoration' philosophy, achieving 99/92 Lighthouse performance.",
     description: "A commercial client agency web platform designed and engineered from scratch (with the sole exception of the provided logo), rejecting generic AI styling tropes in favor of strict performance budgets and serverless email delivery.",
     overview: "Built for a creator and influencer marketing agency, the platform's core requirement was establishing authentic credibility and high performance without relying on template animations or visual bloat. The engineering was authored entirely from scratch, including custom design tokens, responsive typography hierarchies, and serverless contact pipelines.",
@@ -38,7 +46,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "email-job-scheduler",
+    number: "05",
     title: "Email Job Scheduler",
+    subtitle: "Distributed Worker Queues Under 48-Hour Constraint",
+    period: "October 2026",
     date: "2026-10-14",
     category: "Distributed Systems & Queues",
     techFocus: "Node.js · BullMQ · Redis Lua · PostgreSQL · Elasticsearch · Caddy",
@@ -60,11 +71,15 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "conclave",
+    number: "04",
     title: "Conclave",
+    subtitle: "Multi-Agent Consensus & Local Inference Limits",
+    period: "August 2026",
     date: "2026-08-02",
     category: "Local AI & Concurrency",
     techFocus: "Java 21 · Spring AI · Ollama (Llama 3/Mistral/Gemma) · STOMP WebSocket",
     status: "v1.0.0 Architecture",
+    image: "/images/case-studies/conclave-live.png",
     excerpt: "Real-time multi-agent debate platform exploring local LLM consensus, documenting prompt adapter transformations alongside consumer hardware thermal ceilings.",
     description: "A meeting room platform orchestrating structured multi-LLM debates in a single WebSocket session, documenting the architectural migration from cloud APIs to 100% local Ollama inference.",
     overview: "Conclave addresses the 'context tax' and friction of manually copying conversation fragments across separate AI tools. Built on Java 21 and Spring AI, it explores how multiple language models can participate in structured sequential debate, negotiate consensus, and accept mid-flight human intervention.",
@@ -82,11 +97,15 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "phoenix",
+    number: "03",
     title: "Phoenix",
+    subtitle: "Self-Healing RAG Engine & Reasoning Trace Observability",
+    period: "July 2026",
     date: "2026-07-28",
     category: "Cognitive Architecture & RAG",
     techFocus: "Python FastAPI · pgvector HNSW · BM25 Okapi · FlashRank · Spring Boot",
     status: "Architecture Verified",
+    image: "/images/case-studies/phoenix-console.png",
     excerpt: "Hybrid RAG engine with a 4-tier fallback state machine designed around transparent reasoning traces and knowing when retrieval confidence is insufficient.",
     description: "A hybrid retrieval engine combining dense vector search and sparse lexical search, featuring a 4-tier fallback state machine that exposes mathematical confidence scores instead of bluffing.",
     overview: "Standard vector RAG frequently fails on exact alphanumeric configuration keys and hallucinates over weak context. Phoenix implements a transparent cognitive architecture: it computes a composite confidence score, executes a multi-tier fallback cascade (HyDE expansion -> cross-encoder reranking -> clarification), and renders an audit trail for every query.",
@@ -104,7 +123,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "trajectory",
+    number: "02",
     title: "Trajectory",
+    subtitle: "Organic Scope Evolution & Enterprise Cloud Infrastructure",
+    period: "July 2026",
     date: "2026-07-21",
     category: "Enterprise Full-Stack",
     techFocus: "Java 21 · Spring Boot 3.3.1 · AWS EC2/RDS/S3 · Groq LLM · JWT Rotation",
@@ -126,11 +148,15 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "checkmate",
+    number: "01",
     title: "CheckMate",
+    subtitle: "Local-First Stockfish 16 WASM & Cross-Origin Threading",
+    period: "July 2026",
     date: "2026-07-01",
     category: "Client-Side WebAssembly",
     techFocus: "TypeScript · React 19 · Stockfish 16 WASM · Web Workers · COOP/COEP",
     status: "v1.0.0 Released",
+    image: "/images/case-studies/checkmate-workbench.png",
     excerpt: "Local-first chess analysis workbench running Stockfish 16 entirely inside browser Web Workers with SharedArrayBuffer concurrency, requiring zero servers.",
     description: "A browser-based chess analysis workbench running a full Stockfish 16 engine entirely client-side via WebAssembly, requiring zero backend servers, subscriptions, or telemetry.",
     overview: "Built as a free, privacy-first alternative to platform subscription paywalls for chess engine analysis. The engineering bet was that running a full chess engine at acceptable speed in the browser is achievable if the threading model and cross-origin security headers are solved.",

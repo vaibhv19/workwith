@@ -139,6 +139,7 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run build` exited code 0 (Turbopack production build succeeded in 1.5s).
 
 ### Milestone 7 — UI Alignment: Case Studies with Blog All Posts Page
+- **Commit:** `9108660`
 - **Scope:**
   - Audited `D:\Work\Projects----Personal\BLog\src\app\posts\page.tsx` and refactored `src/app/case-study/page.tsx` to mirror its exact editorial layout, container width (`max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 space-y-6 text-slate-300`), header styling (`space-y-2.5 border-b border-slate-800/80 pb-5`), title hierarchy (`text-2xl sm:text-4xl font-bold tracking-tight text-slate-100`), and italic description.
   - Stripped oversized hero elements, colored `[REPO]`/`[CONFIRM]` classification badges, and large methodology cards from the public listing.
@@ -149,6 +150,22 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npx tsc --noEmit` passed with 0 errors.
   - `npm run lint` exited code 0 (0 errors, 0 warnings).
   - `npm run build` compiled 16/16 routes with static pre-rendering across all 6 case studies.
+
+### Milestone 8 — Redesign: Editorial Engineering Archive Direction
+- **Scope:**
+  - Re-architected `/case-study` into an editorial engineering archive layout:
+    - Added small copper editorial eyebrow `ENGINEERING JOURNAL` (`text-xs font-mono font-semibold tracking-widest text-copper uppercase`).
+    - Modest, prominent title `Case Studies` (`text-2xl sm:text-4xl font-bold tracking-tight text-slate-100`) with italic introductory description.
+    - Two-column responsive editorial grid: narrow metadata column (`md:col-span-3`) presenting copper sequence numbering (`06 /` to `01 /`), category, and period, paired with main content column (`md:col-span-9`) for title, premise subtitle, readable description, and technology focus.
+    - Curated selective genuine project screenshots for projects with verifiable assets: `1nfinity` (`1nfinity-preview.webp`), `Conclave` (`live_usecase_chat_conclave.png`), `Phoenix` (`investigation-console-demo.png`), and `CheckMate` (`workbench.png`), while keeping `Trajectory` and `Email Job Scheduler` as elegant typography-led entries without artificial filler artwork.
+    - Added subtle interactive indication (`Read Case Study →` in `text-sky-400 hover:underline` with title hover arrow transitions).
+    - Enhanced case study detail pages (`/case-study/[slug]`) to render the genuine screenshots alongside verified architectural decisions and trade-offs.
+- **Verification:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run lint` exited code 0 (0 errors, 0 warnings).
+  - `npm run build` compiled all 16 static/dynamic routes in 1.2s.
+  - Full browser visual inspection performed using `browser_subagent` across desktop and mobile viewports (`375x667`), verifying typography scale, vertical rhythm, responsive collapse into hamburger menu, and image scaling without horizontal overflow.
+
 
 
 

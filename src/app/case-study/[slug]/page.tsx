@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { CASE_STUDIES } from "@/data/caseStudies";
 
 interface PageProps {
@@ -72,6 +73,18 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <p className="text-base sm:text-lg text-slate-300 font-serif italic border-l-2 border-copper/80 pl-4 py-1 leading-relaxed">
           {study.excerpt}
         </p>
+
+        {study.image && (
+          <div className="relative rounded border border-slate-800/90 overflow-hidden bg-slate-950/60 aspect-[16/9] max-h-72 w-full mt-5">
+            <Image
+              src={study.image}
+              alt={`${study.title} preview`}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+        )}
       </header>
 
       {/* Case Study Content */}
