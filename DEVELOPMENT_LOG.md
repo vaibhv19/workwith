@@ -185,6 +185,29 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run build` compiled all 16 routes in 1.9s.
   - End-to-end browser inspection via `browser_subagent` confirming visual cohesion, typography scale, responsive collapse, and interactive states across all three pages on desktop and mobile viewports.
 
+### Milestone 10 — Critical Content Audit and Reconstruction: Engineering Case Studies
+- **Audit Findings (Phase 1, Commit `0623c7d`):**
+  - Confirmed that previous case-study pages were shallow summaries relying on catalog taglines and a uniform 4-bullet template.
+  - Omitted crucial technical depths from `CASE_STUDY_DATABASE.md`, such as COOP/COEP SharedArrayBuffer multithreading in CheckMate, dual-token rotation in Trajectory, prompt token adapters and pessimistic locking in Conclave, the mathematical CS formula and 85% CS ceiling in Phoenix, atomic SQL claiming and Lua rate-limiting in EJS, and the desktop-only entrance LCP bypass in 1nfinity.
+  - Documented complete answers to all 7 audit inquiries in `CASE_STUDY_CONTENT_AUDIT.md`.
+- **Architectural Reconstruction (Phase 2 & 3):**
+  - Created modular narrative modules in `src/data/caseStudiesData/`:
+    - `types.ts`: Structured types for deep narrative sections, callouts (invariants, insights, dilemmas, caveats), ASCII architecture diagrams, syntax-highlighted code blocks, structured tables, and evidence tags.
+    - `checkmate.ts`: Web Worker UCI streaming, `stop` interrupt queue clearing, `SharedArrayBuffer` with `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp` in `vercel.json` (commit `ea74c3e`), centipawn normalization formula, immutable What-If exploration, and PR #15 board flip.
+    - `trajectory.ts`: Reconciled spreadsheet-to-app organic evolution with compressed July 13, 2026 commits, dual-token JWT auth with PostgreSQL `refresh_tokens` rotation, `MockOAuth2RedirectFilter` for offline dev, Spring AI Groq extraction with regex fallbacks, S3 versioning, EC2/RDS/Nginx/Certbot setup, and `GhostDetectionScheduler`.
+    - `conclave.ts`: Context Tax origin, 3-stage evolution (Cloud APIs -> Mock ChatClients -> 100% Local Ollama), prompt token adapters (`LlamaAdapter.java`, `MistralAdapter.java`, `GemmaAdapter.java`), STOMP WebSockets with PostgreSQL `SELECT FOR UPDATE` pessimistic locking for human intervention (`isIntervention`), `WorkflowStateService` Context Janitor, and physical laptop thermal throttling limits.
+    - `phoenix.ts`: Cognitive invariant ("knowing when you don't know"), subword tokenizer failures on dot-separated config keys, dual-backend split suggested by LLMs, hybrid fusion equation (`0.7 * Sim_vector + 0.3 * Score_bm25_norm`), composite confidence formula (`CS = 0.6 * MaxSim + 0.4 * Agreement`), 4-tier fallback state machine (Green, Yellow HyDE, Orange FlashRank, Red Clarification), and the documented ~85% CS ceiling.
+    - `emailJobScheduler.ts`: 48-hour hiring assignment context across 10 phases and honest rejection record, post-submission debranding (commit `151ceba9`), Zero-Cron invariant, atomic database claiming SQL, atomic Redis Lua rate-limiting with non-destructive BullMQ `moveToDelayed` rescheduling, pre-send `email_attempts` crash recovery, and Elasticsearch outbox sync.
+    - `oneInfinity.ts`: Commercial client work attribution, "Restraint Over Decoration" philosophy (zero Framer Motion), 4-second desktop-only entrance sequence with ESC bypass (disabled on mobile to protect LCP), founder's pricing pivot (commit `62012c7`), and serverless Resend contact route.
+  - Updated `src/data/caseStudies.ts` to bind full narrative payloads to listing items.
+  - Reconstructed `src/app/case-study/[slug]/page.tsx` with rich editorial typography, quick metric cards, research verification badges, in-page section outlines, interactive callout boxes, ASCII diagrams, code excerpts, data tables, and explicit sections on deliberate omissions and open technical inquiries.
+- **Verification:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run lint` exited code 0 (0 errors, 0 warnings).
+  - `npm run build` compiled all 16 static HTML pages in 3.2s.
+  - End-to-end browser inspection via `browser_subagent` recording complete visual elegance and responsive layout.
+
+
 
 
 

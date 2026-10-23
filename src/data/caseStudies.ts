@@ -1,3 +1,5 @@
+import { CaseStudyNarrative, CASE_STUDY_NARRATIVES } from "./caseStudiesData";
+
 export interface CaseStudy {
   slug: string;
   number: string;
@@ -15,6 +17,7 @@ export interface CaseStudy {
   keyDecisions: string[];
   tradeoffs: string[];
   currentStatus: string;
+  narrative: CaseStudyNarrative;
 }
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -42,7 +45,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Removing Static Export: Converted from static export to serverless deployment to accommodate Next.js API routes for Resend email processing.",
       "Bypassing Animation Libraries: Custom CSS keyframes and cubic-bezier curves required manual engineering but eliminated third-party bundle weight."
     ],
-    currentStatus: "Delivered to production at 1nfinity.online with documented 99 Desktop / 92 Mobile Lighthouse performance ratings."
+    currentStatus: "Delivered to production at 1nfinity.online with documented 99 Desktop / 92 Mobile Lighthouse performance ratings.",
+    narrative: CASE_STUDY_NARRATIVES["1nfinity"],
   },
   {
     slug: "email-job-scheduler",
@@ -67,7 +71,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       "48-Hour Execution Speed: Prioritized complete system resilience, test coverage, and documentation over non-essential UI decoration.",
       "Vite Over Full-Stack Framework: Selected React 18 + Vite for the frontend dashboard to maintain strict service isolation from the Express API."
     ],
-    currentStatus: "Architecture fully verified; repository debranded and archived as a distributed systems case retrospective."
+    currentStatus: "Architecture fully verified; repository debranded and archived as a distributed systems case retrospective.",
+    narrative: CASE_STUDY_NARRATIVES["email-job-scheduler"],
   },
   {
     slug: "conclave",
@@ -93,7 +98,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Consumer Hardware Thermal Limits: Running multiple concurrent local models pushes consumer laptop hardware to thermal throttling limits — an authentic constraint documented in the research.",
       "Execution Cadence: Local inference latency is significantly higher than cloud APIs, requiring clear streaming progress indicators over WebSockets."
     ],
-    currentStatus: "v1.0.0 completed including UI redesign; preserved as a local AI orchestration case study."
+    currentStatus: "v1.0.0 completed including UI redesign; preserved as a local AI orchestration case study.",
+    narrative: CASE_STUDY_NARRATIVES["conclave"],
   },
   {
     slug: "phoenix",
@@ -119,7 +125,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       "The ~85% Confidence Score Plateau: Observed during manual testing that composite confidence scores rarely exceeded ~85% even on correct retrievals, documenting the discrete nature of BM25 intersection agreement.",
       "Dual Language Operational Complexity: Maintaining both Python and Java runtimes added deployment complexity in exchange for leveraging Python's ML ecosystem alongside Spring's security boundaries."
     ],
-    currentStatus: "v1.0.0 architecture verified; documented in repository engineering guides."
+    currentStatus: "v1.0.0 architecture verified; documented in repository engineering guides.",
+    narrative: CASE_STUDY_NARRATIVES["phoenix"],
   },
   {
     slug: "trajectory",
@@ -144,7 +151,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Production Complexity vs Simplicity: What started as a quick script grew to require Nginx configurations, Certbot timers, and a monthly AWS bill.",
       "Data Table vs Kanban Board: Chose a high-density, sortable data table with status history audit logs rather than a drag-and-drop Kanban interface."
     ],
-    currentStatus: "v1.0.0 deployed in production at trajectory.vaibhv19.dev."
+    currentStatus: "v1.0.0 deployed in production at trajectory.vaibhv19.dev.",
+    narrative: CASE_STUDY_NARRATIVES["trajectory"],
   },
   {
     slug: "checkmate",
@@ -170,6 +178,10 @@ export const CASE_STUDIES: CaseStudy[] = [
       "COOP/COEP Isolation Constraints: Strict cross-origin isolation headers prevent embedding third-party un-isolated iframes or external resources.",
       "Deliberate Aesthetic Minimalism: Chose functional clarity and engine responsiveness over decorative UI polish passes."
     ],
-    currentStatus: "v1.0.0 released and active at checkmate.vaibhv19.dev; final target version achieved."
+    currentStatus: "v1.0.0 released and active at checkmate.vaibhv19.dev; final target version achieved.",
+    narrative: CASE_STUDY_NARRATIVES["checkmate"],
   }
 ];
+
+export { CASE_STUDY_NARRATIVES };
+export type { CaseStudyNarrative } from "./caseStudiesData";
