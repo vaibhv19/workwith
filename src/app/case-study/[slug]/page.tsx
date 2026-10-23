@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import TextReveal from "@/components/ui/TextReveal";
 import { CASE_STUDIES } from "@/data/caseStudies";
 
 interface PageProps {
@@ -61,9 +62,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <nav aria-label="Breadcrumb" className="text-xs font-mono text-foreground-subtle pb-6">
           <Link
             href="/case-study"
-            className="text-accent hover:text-white transition-colors font-medium inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+            className="text-accent hover:text-white transition-colors font-medium inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
           >
-            &larr; Back to Case Studies
+            <span className="transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
+            <span>Back to Case Studies</span>
           </Link>
         </nav>
 
@@ -80,9 +82,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             {study.title}
           </h1>
 
-          <p className="font-display text-lg sm:text-2xl text-foreground-muted leading-snug">
-            {study.subtitle}
-          </p>
+          <TextReveal
+            text={study.subtitle}
+            as="p"
+            charDelayMs={14}
+            className="font-display text-lg sm:text-2xl text-foreground-muted leading-snug"
+          />
 
           {/* Metadata Ribbon */}
           <div className="pt-1 flex flex-wrap items-center gap-2.5 text-xs font-mono text-foreground-muted">
@@ -135,12 +140,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
           {/* Visual Preview */}
           {study.image && (
-            <div className="relative rounded-[2px] border border-border overflow-hidden bg-surface-elevated aspect-[16/9] max-h-80 w-full mt-4">
+            <div className="relative rounded-[2px] border border-border overflow-hidden bg-surface-elevated aspect-[16/9] max-h-80 w-full mt-4 group">
               <Image
                 src={study.image}
                 alt={`${study.title} visual preview`}
                 fill
-                className="object-cover object-top opacity-90"
+                className="object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                 sizes="(max-width: 768px) 100vw, 850px"
                 priority
               />
@@ -359,9 +364,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           {prevStudy ? (
             <Link
               href={`/case-study/${prevStudy.slug}`}
-              className="text-foreground-muted hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="text-foreground-muted hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
             >
-              <span>&larr; Prev: {prevStudy.title}</span>
+              <span className="transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
+              <span>Prev: {prevStudy.title}</span>
             </Link>
           ) : (
             <span className="text-foreground-subtle">Start of Case Studies</span>
@@ -370,9 +376,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           {nextStudy ? (
             <Link
               href={`/case-study/${nextStudy.slug}`}
-              className="text-foreground-muted hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="text-foreground-muted hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
             >
-              <span>Next: {nextStudy.title} &rarr;</span>
+              <span>Next: {nextStudy.title}</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </Link>
           ) : (
             <span className="text-foreground-subtle">End of Case Studies</span>

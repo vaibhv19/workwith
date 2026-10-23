@@ -3,6 +3,7 @@ import Image from "next/image";
 import { GithubIcon } from "@/components/BrandIcons";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import Marquee from "@/components/ui/Marquee";
 import { PROJECTS, Project, TRAINING_PARENTS, ProjectCategory } from "../../../data/projects";
 
 export const metadata: Metadata = {
@@ -145,12 +146,12 @@ export default function ProjectsPage() {
 
                 {/* Genuine Preview Asset when available */}
                 {project.previewImage && (
-                  <div className="relative rounded-[2px] border border-border overflow-hidden bg-surface-elevated aspect-[16/9] max-h-64 w-full">
+                  <div className="relative rounded-[2px] border border-border overflow-hidden bg-surface-elevated aspect-[16/9] max-h-64 w-full group/img">
                     <Image
                       src={project.previewImage}
                       alt={`${project.title} live interface preview`}
                       fill
-                      className="object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-300"
+                      className="object-cover object-top opacity-90 group-hover/img:opacity-100 group-hover/img:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                       sizes="(max-width: 768px) 100vw, 800px"
                     />
                   </div>
@@ -192,6 +193,30 @@ export default function ProjectsPage() {
           </div>
         </div>
       </Container>
+
+      {/* ARCHITECTURE CAPABILITIES MARQUEE (1NFINITY CONTINUOUS TRACK) */}
+      <div className="border-y border-border/70 bg-surface/30 py-3.5 my-4 sm:my-8 overflow-hidden">
+        <Marquee speed="normal" pauseOnHover fadeEdges>
+          <div className="flex items-center space-x-8 text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-foreground-muted px-4">
+            <span>DISTRIBUTED ARCHITECTURES</span>
+            <span className="text-accent/60 select-none">✦</span>
+            <span>LOCAL LLM ORCHESTRATION</span>
+            <span className="text-accent/60 select-none">✦</span>
+            <span>STOCKFISH WASM &amp; WEB WORKERS</span>
+            <span className="text-accent/60 select-none">✦</span>
+            <span>ATOMIC WORKER QUEUES</span>
+            <span className="text-accent/60 select-none">✦</span>
+            <span>HYBRID RAG RETRIEVAL</span>
+            <span className="text-accent/60 select-none">✦</span>
+            <span>DEVSECOPS GUARDRAILS</span>
+            <span className="text-accent/60 select-none">✦</span>
+            <span>ZERO-CRON ENGINE SCHEDULING</span>
+            <span className="text-accent/60 select-none">✦</span>
+            <span>LIGHTHOUSE 95+ COMPLIANCE</span>
+            <span className="text-accent/60 select-none">✦</span>
+          </div>
+        </Marquee>
+      </div>
 
       {/* SECTION 2: DEVELOPED SOFTWARE (HIGH-DENSITY EDITORIAL CATALOGUE LEDGER) */}
       <Container size="default">

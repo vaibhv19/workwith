@@ -91,7 +91,7 @@ export default function CaseStudiesPage() {
                       src={study.image}
                       alt={`${study.title} runtime preview`}
                       fill
-                      className="object-cover object-top opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                      className="object-cover object-top opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                       sizes="(max-width: 768px) 100vw, 650px"
                     />
                   </div>

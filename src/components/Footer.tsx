@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import {
@@ -14,9 +14,50 @@ import Container from "@/components/ui/Container";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const footerRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.08 }
+    );
+
+    const el = footerRef.current;
+    if (el) observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <footer className="relative w-full bg-[#070707] text-foreground-muted border-t border-[#232220] overflow-hidden mt-auto">
+    <footer
+      ref={footerRef}
+      className="relative w-full bg-[#070707] text-foreground-muted border-t border-[#232220] overflow-hidden mt-auto"
+      style={{
+        clipPath: isVisible ? "inset(0 0% 0 0%)" : "inset(0 4% 0 4%)",
+        transform: isVisible ? "scale(1)" : "scale(0.98)",
+        opacity: isVisible ? 1 : 0.4,
+        transition:
+          "clip-path 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 900ms cubic-bezier(0.16, 1, 0.3, 1), opacity 900ms cubic-bezier(0.16, 1, 0.3, 1)",
+        willChange: "clip-path, transform, opacity",
+      }}
+    >
       <Container size="default" className="pt-10 sm:pt-14 pb-12 sm:pb-16 space-y-10">
         {/* Contact Bar & Social Row */}
         <div className="py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-[#232220]">
