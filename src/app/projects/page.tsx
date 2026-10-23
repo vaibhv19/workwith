@@ -3,7 +3,6 @@ import Image from "next/image";
 import { GithubIcon } from "@/components/BrandIcons";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import Marquee from "@/components/ui/Marquee";
 import { PROJECTS, Project, TRAINING_PARENTS, ProjectCategory } from "../../../data/projects";
 
 export const metadata: Metadata = {
@@ -86,7 +85,7 @@ export default function ProjectsPage() {
             Projects &amp; Systems
           </h1>
           <p className="font-body-lead text-foreground-muted max-w-3xl">
-            A curated selection of interactive deployed applications visitors can experience directly, alongside the broader catalog of 36 developed systems, developer tooling, and distributed software.
+            A curated selection of interactive live applications alongside the complete catalog of 36 software projects, distributed systems, and developer tools.
           </p>
         </header>
       </Container>
@@ -99,7 +98,7 @@ export default function ProjectsPage() {
               Must Checkout
             </h2>
             <span className="text-xs text-foreground-muted">
-              Curated interactive deployments
+              Live applications you can explore
             </span>
           </div>
 
@@ -161,7 +160,7 @@ export default function ProjectsPage() {
                       size="sm"
                       icon="arrow-up-right"
                     >
-                      Open Live Application
+                      Open Application
                     </Button>
                   )}
 
@@ -183,30 +182,6 @@ export default function ProjectsPage() {
         </div>
       </Container>
 
-      {/* ARCHITECTURE CAPABILITIES MARQUEE (1NFINITY CONTINUOUS TRACK) */}
-      <div className="border-y border-border/70 bg-surface/30 py-3.5 my-4 sm:my-8 overflow-hidden">
-        <Marquee speed="normal" pauseOnHover fadeEdges>
-          <div className="flex items-center space-x-6 text-xs font-sans font-medium text-foreground-muted px-4">
-            <span>Distributed Architectures</span>
-            <span className="text-foreground-subtle select-none">·</span>
-            <span>Local LLM Orchestration</span>
-            <span className="text-foreground-subtle select-none">·</span>
-            <span>Stockfish WASM &amp; Web Workers</span>
-            <span className="text-foreground-subtle select-none">·</span>
-            <span>Atomic Worker Queues</span>
-            <span className="text-foreground-subtle select-none">·</span>
-            <span>Hybrid RAG Retrieval</span>
-            <span className="text-foreground-subtle select-none">·</span>
-            <span>DevSecOps Guardrails</span>
-            <span className="text-foreground-subtle select-none">·</span>
-            <span>Zero-Cron Engine Schedulers</span>
-            <span className="text-foreground-subtle select-none">·</span>
-            <span>Lighthouse 95+ Platforms</span>
-            <span className="text-foreground-subtle select-none">·</span>
-          </div>
-        </Marquee>
-      </div>
-
       {/* SECTION 2: DEVELOPED SOFTWARE (HIGH-DENSITY EDITORIAL CATALOGUE LEDGER) */}
       <Container size="default">
         <div className="space-y-8">
@@ -215,7 +190,7 @@ export default function ProjectsPage() {
               Developed Software
             </h2>
             <span className="text-xs text-foreground-muted">
-              Complete engineering catalogue ({PROJECTS.length} systems)
+              Complete catalogue of {PROJECTS.length} projects and systems
             </span>
           </div>
 
@@ -282,14 +257,14 @@ export default function ProjectsPage() {
                               href={item.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground-muted hover:text-white transition-colors"
+                              className="inline-flex items-center gap-1.5 text-xs text-foreground-muted hover:text-white transition-colors"
                             >
                               <GithubIcon className="w-3.5 h-3.5 text-current" />
-                              <span>Repository ↗</span>
+                              <span>Source ↗</span>
                             </a>
                           ) : (
-                            <span className="text-[10px] font-mono text-foreground-subtle italic">
-                              Private / Client
+                            <span className="text-xs text-foreground-subtle italic">
+                              Private repository
                             </span>
                           )}
                         </div>

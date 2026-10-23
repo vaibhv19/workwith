@@ -137,10 +137,7 @@ export function Footer() {
         <div className="pt-6 border-t border-[#232220] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans tracking-[0.15em] text-foreground-subtle uppercase">
           <div className="flex flex-col items-center sm:items-start space-y-1">
             <div>
-              &copy; {currentYear} VAIBHAV GUPTA. ALL RIGHTS RESERVED.
-            </div>
-            <div className="text-[11px] tracking-[0.12em] text-foreground-subtle">
-              MYWORK.VAIBHV19.DEV · STANDALONE PORTFOLIO
+              &copy; {currentYear} Vaibhav Gupta. All rights reserved.
             </div>
           </div>
 

@@ -94,7 +94,7 @@ export default function StartConversationPage() {
               external
               icon="arrow-up-right"
             >
-              Mailto Link
+              Send Email
             </Button>
           </div>
         </div>
@@ -148,21 +148,21 @@ export default function StartConversationPage() {
       <section className="space-y-4">
         <div className="space-y-1.5">
           <h2 className="font-display-h2 text-foreground text-xl sm:text-2xl">
-            Send a Direct Note
+            Send a Message
           </h2>
           <p className="text-xs sm:text-sm text-foreground-muted">
-            Messages are dispatched directly to my personal inbox via serverless pipeline.
+            Messages are sent directly to my personal inbox.
           </p>
         </div>
 
         <ContactForm />
       </section>
 
-      {/* Welcome Conversation Topics (Clean typographic list, not card boxes) */}
+      {/* Welcome Conversation Topics */}
       <section className="space-y-6 pt-4 border-t border-border">
         <div className="space-y-1.5">
           <h2 className="font-display-h2 text-foreground text-xl sm:text-2xl">
-            Topics Welcome Here
+            What We Can Discuss
           </h2>
           <p className="text-xs sm:text-sm text-foreground-muted">
             Core areas where I can contribute technical depth, engineering leadership, or architecture review.

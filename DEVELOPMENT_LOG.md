@@ -292,4 +292,32 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run build` compiled all 16 static HTML routes successfully in 1.3s.
   - Browser subagent validation confirmed natural typographic hierarchy, absence of template-like dashboard badges, and calm visual confidence across desktop and mobile.
 
+### Milestone 17 — Visitor-First Content Audit & Removal of Developer-Facing UI Clutter
+- **Core Principle & Audit:**
+  - Evaluated every visible UI element through a visitor-first lens: removing developer-facing jargon, build-process vocabulary, technical theater, and internal implementation labels.
+- **Projects Page (`src/app/projects/page.tsx`):**
+  - Refined header description: replaced prompt-like phrasing ("visitors can experience directly") with natural, confident summary ("A curated selection of interactive live applications alongside the complete catalog of 36 software projects...").
+  - Changed card button text from developer phrasing "Open Live Application" to natural "Open Application".
+  - Removed the continuous capabilities ticker between Section 1 and Section 2, eliminating decorative technology buzzwords that merely repeated project details below.
+  - Refined catalogue ledger action links to standard "Source ↗" and "Private repository" labels.
+- **Case Study Detail Pages (`src/app/case-study/[slug]/page.tsx`):**
+  - Removed internal research database artifact "Evidence Ledger: ...", letting substantive narrative text present evidence naturally.
+  - Removed redundant status tag (`Production Deployed` / `Active Architecture Study`) from article header.
+  - Simplified role label to natural "Role:" instead of formal "Engineering Role:".
+  - Updated primary action buttons to visitor-focused "Open Application" and "Source Code".
+  - Refactored section navigation to standard "Table of Contents", and renamed research-paper term "Deliberate Omissions & Limits" to professional engineering term "Scope Boundaries & Engineering Trade-offs" (`#scope-and-tradeoffs`).
+- **Start a Conversation (`src/app/start-conversation/page.tsx`):**
+  - Changed action button from developer term "Mailto Link" to visitor-facing "Send Email".
+  - Replaced overly formal "Send a Direct Note" with "Send a Message".
+  - Removed implementation theater ("via serverless pipeline") from the contact form subtitle ("Messages are sent directly to my personal inbox.").
+  - Changed "Topics Welcome Here" to natural "What We Can Discuss".
+- **Contact Form (`src/components/ContactForm.tsx`):**
+  - Changed technical notification messages from "Message dispatched successfully" / "Message dispatch notice" to clear, human feedback: "Message sent successfully" and "Unable to send message".
+- **Footer (`src/components/Footer.tsx`):**
+  - Removed developer portfolio note "MYWORK.VAIBHV19.DEV · STANDALONE PORTFOLIO" from the copyright area.
+- **Verification & Git Hygiene:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run build` compiled all 16 static HTML routes successfully in 1.2s.
+  - Browser subagent verified smooth, uncluttered visitor experience across all routes.
+
 

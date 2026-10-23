@@ -92,14 +92,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           {/* Metadata Row */}
           <div className="pt-1 flex flex-wrap items-center gap-2 text-xs text-foreground-muted">
             <span>{study.techFocus}</span>
-            <span className="text-foreground-subtle">·</span>
-            <span>{study.status}</span>
           </div>
 
           {/* Role & Links */}
           <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border text-xs">
             <div>
-              <span className="text-foreground-muted">Engineering Role: </span>
+              <span className="text-foreground-muted">Role: </span>
               <span className="text-foreground font-medium">{narrative.role}</span>
             </div>
 
@@ -112,7 +110,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                   size="sm"
                   icon="arrow-up-right"
                 >
-                  Live Production
+                  Open Application
                 </Button>
               )}
               {narrative.repoUrl && (
@@ -123,7 +121,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                   size="sm"
                   icon="arrow-up-right"
                 >
-                  Source Repository
+                  Source Code
                 </Button>
               )}
             </div>
@@ -166,22 +164,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               ))}
             </div>
           )}
-
-          {/* Evidence Ledger */}
-          <div className="pt-2 flex flex-wrap items-center gap-2 text-xs text-foreground-muted">
-            <span className="text-foreground font-medium">Evidence Ledger:</span>
-            {narrative.evidenceTags.map((tag, idx) => (
-              <span key={idx} className="text-foreground-subtle">
-                {tag.label}{idx < narrative.evidenceTags.length - 1 ? " ·" : ""}
-              </span>
-            ))}
-          </div>
         </header>
 
         {/* Table of Contents */}
         <section className="p-5 my-8 rounded-[2px] bg-surface/60 border border-border space-y-3">
           <h2 className="text-xs font-semibold text-foreground">
-            Section Outline
+            Table of Contents
           </h2>
           <nav className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs font-mono">
             {narrative.sections.map((sec, idx) => (
@@ -195,10 +183,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             ))}
             {narrative.openQuestionsAndExclusions.length > 0 && (
               <a
-                href="#deliberate-exclusions"
+                href="#scope-and-tradeoffs"
                 className="text-foreground-muted hover:text-accent transition-colors truncate"
               >
-                Deliberate Omissions &amp; Limits
+                Scope &amp; Trade-offs
               </a>
             )}
           </nav>
@@ -314,18 +302,18 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </section>
           ))}
 
-          {/* Deliberate Omissions & Unresolved Questions */}
+          {/* Scope Boundaries & Engineering Trade-offs */}
           {narrative.openQuestionsAndExclusions.length > 0 && (
             <section
-              id="deliberate-exclusions"
+              id="scope-and-tradeoffs"
               className="space-y-5 scroll-mt-24 pt-4 border-b border-border pb-12"
             >
               <div className="space-y-1">
                 <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
-                  Deliberate Omissions &amp; Open Constraints
+                  Scope Boundaries &amp; Engineering Trade-offs
                 </h2>
                 <p className="font-body-lead text-foreground-muted text-xs sm:text-sm">
-                  Documented trade-offs, scope boundaries, and unresolved questions recorded in research.
+                  Documented trade-offs, scope decisions, and architectural boundaries.
                 </p>
               </div>
 

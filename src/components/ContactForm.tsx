@@ -99,7 +99,7 @@ export function ContactForm() {
         if (data.fallbackEmail) {
           setFallbackEmail(data.fallbackEmail);
         }
-        throw new Error(data.error || "Failed to dispatch message. You can reach out directly via email.");
+        throw new Error(data.error || "Unable to send message. Please reach out directly via email.");
       }
 
       setStatus("success");
@@ -143,9 +143,9 @@ export function ContactForm() {
           <div className="flex items-start gap-3 p-4 bg-emerald-950/30 border border-emerald-500/30 rounded text-emerald-200 text-sm">
             <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-400 mt-0.5" />
             <div>
-              <p className="font-semibold text-emerald-100">Message dispatched successfully</p>
+              <p className="font-semibold text-emerald-100">Message sent successfully</p>
               <p className="text-xs text-emerald-300/80 mt-1 leading-relaxed">
-                Thank you for reaching out. I review all technical inquiries and will respond within 24–48 hours.
+                Thank you for reaching out. I review all inquiries and will respond within 24–48 hours.
               </p>
             </div>
           </div>
@@ -157,7 +157,7 @@ export function ContactForm() {
             <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400 mt-0.5" />
             <div className="space-y-3 flex-1">
               <div>
-                <p className="font-semibold text-rose-100">Message dispatch notice</p>
+                <p className="font-semibold text-rose-100">Unable to send message</p>
                 <p className="text-xs text-rose-300/80 mt-1 leading-relaxed">{errorMessage}</p>
               </div>
               <a
