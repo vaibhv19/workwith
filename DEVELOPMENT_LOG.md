@@ -84,6 +84,7 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:** Verified clean working tree, valid git log sequence.
 
 ### Milestone 2 — Architecture Foundation
+- **Commit:** `76b4527`
 - **Scope:**
   - Configured `@theme` and `:root` design tokens in `src/app/globals.css` (`--color-copper: #E8913A`, `--background: #0a0d14`, `--surface: #111622`, editorial scrollbar, `@keyframes pageTransition` with reduced-motion support).
   - Implemented `StarryNightBackground.tsx` matching Van Gogh painting blur/contrast mask layers.
@@ -94,4 +95,13 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Replaced coming soon screen in `src/app/page.tsx` with server-side `redirect("/projects")`.
   - Installed `lucide-react` dependency and imported public assets (`starry-night-bg.webp`, fonts, favicons).
 - **Verification:** `npx tsc --noEmit` passed with 0 errors. Dev server running and compiling cleanly.
+
+### Milestone 3 — Projects Page Structure
+- **Scope:**
+  - Built `src/app/projects/page.tsx` featuring two strictly ordered, visually distinct sections:
+    1. **01 / Must Checkout**: Curated flagship interactive applications visitors can experience directly (CheckMate, Trajectory, 1nfinity.online, The Tiffin Dispatch, Birthday Wish). Integrated real preview visuals (`checkmate-preview.png`, `1nfinity-preview.webp`), verified live application actions (`demoUrl`), and repository links.
+    2. **02 / Developed Software**: Comprehensive engineering catalog derived from `data/projects.ts`, categorized into Web Applications, Systems & Infrastructure, Mobile Applications, CLI & Developer Tools, and Academic & Experiments. Each card features project name, status/year, description, technology tags, and verified GitHub repository action.
+  - **Rule Enforcement:** Zero case-study links or "Read Case Study" CTAs added to any project cards.
+- **Verification:** `npx tsc --noEmit` exited with code 0.
+
 
