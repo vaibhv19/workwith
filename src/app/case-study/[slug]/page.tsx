@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import SectionReveal from "@/components/ui/SectionReveal";
 import { CASE_STUDIES } from "@/data/caseStudies";
 
 interface PageProps {
@@ -69,9 +68,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </nav>
 
         {/* Article Header */}
-        <header className="space-y-6 border-b border-[#232220] pb-10">
+        <header className="space-y-6 border-b border-border pb-10">
           <div className="flex items-center justify-between text-xs font-mono text-foreground-subtle">
-            <span className="font-satoshi text-xs font-bold text-accent tracking-widest uppercase">
+            <span className="font-metric text-xs font-bold text-accent tracking-widest">
               CASE STUDY #{study.number}
             </span>
             <span>{study.period}</span>
@@ -86,8 +85,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           </p>
 
           {/* Metadata Ribbon */}
-          <div className="pt-2 flex flex-wrap items-center gap-2.5 text-xs font-mono text-foreground-muted">
-            <span className="px-2.5 py-1 rounded-[2px] bg-surface border border-border text-foreground">
+          <div className="pt-1 flex flex-wrap items-center gap-2.5 text-xs font-mono text-foreground-muted">
+            <span className="px-2 py-0.5 rounded-[2px] bg-surface border border-border text-foreground">
               {study.category}
             </span>
             <span className="text-foreground-subtle">·</span>
@@ -97,13 +96,13 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           </div>
 
           {/* Role & Links */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs font-mono border-t border-[#232220] pt-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border text-xs font-mono">
             <div>
               <span className="text-foreground-subtle uppercase tracking-wider text-[11px]">Engineering Role: </span>
-              <span className="text-foreground font-sans">{narrative.role}</span>
+              <span className="text-foreground font-sans font-medium">{narrative.role}</span>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {narrative.liveUrl && (
                 <Button
                   href={narrative.liveUrl}
@@ -130,7 +129,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           </div>
 
           {/* Excerpt Lead */}
-          <div className="text-sm sm:text-base text-foreground font-sans italic border-l-2 border-accent pl-5 py-3 leading-relaxed bg-surface/50 rounded-r-[2px]">
+          <div className="text-sm sm:text-base text-foreground font-sans italic border-l-2 border-accent pl-5 py-2.5 leading-relaxed bg-surface/40 rounded-r-[2px]">
             {study.excerpt}
           </div>
 
@@ -148,18 +147,15 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Quick Metrics Grid */}
+          {/* Quick Metrics Strip (Architectural, not a box card landfill) */}
           {narrative.quickMetrics && narrative.quickMetrics.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-border">
               {narrative.quickMetrics.map((metric, idx) => (
-                <div
-                  key={idx}
-                  className="p-3.5 rounded-[2px] bg-surface border border-border space-y-1"
-                >
+                <div key={idx} className="space-y-1">
                   <div className="text-[10px] font-mono text-accent uppercase tracking-wider font-semibold">
                     {metric.label}
                   </div>
-                  <div className="font-satoshi text-base sm:text-lg font-bold text-foreground">
+                  <div className="font-metric text-lg sm:text-xl font-bold text-foreground">
                     {metric.value}
                   </div>
                   <div className="text-[11px] text-foreground-subtle leading-tight">
@@ -170,13 +166,13 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Evidence Ledger Badges */}
+          {/* Evidence Ledger */}
           <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-mono text-foreground-subtle">
-            <span className="uppercase tracking-wider text-[10px] text-accent">Research Verification:</span>
+            <span className="uppercase tracking-wider text-[10px] text-accent font-semibold">Evidence Ledger:</span>
             {narrative.evidenceTags.map((tag, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono border bg-surface-elevated border-border text-foreground-muted"
+                className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono border bg-surface border-border text-foreground-muted"
               >
                 [{tag.label}]
               </span>
@@ -185,7 +181,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </header>
 
         {/* Table of Contents */}
-        <section className="p-5 my-8 rounded-[2px] bg-surface border border-border space-y-3">
+        <section className="p-5 my-8 rounded-[2px] bg-surface/60 border border-border space-y-3">
           <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-accent font-semibold">
             Section Outline
           </h2>
@@ -216,7 +212,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             <section
               key={sec.id}
               id={sec.id}
-              className="space-y-5 scroll-mt-24 border-b border-[#232220] pb-12 last:border-b-0"
+              className="space-y-5 scroll-mt-24 border-b border-border pb-12 last:border-b-0"
             >
               <div className="space-y-1.5">
                 <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground uppercase">
@@ -236,9 +232,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 ))}
               </div>
 
-              {/* Callout Box (1nfinity Surface Styling) */}
+              {/* Callout Box */}
               {sec.callout && (
-                <div className="p-4 sm:p-5 rounded-r-[2px] border-l-2 border-accent bg-surface-elevated my-5 space-y-1.5">
+                <div className="p-4 sm:p-5 rounded-r-[2px] border-l-2 border-accent bg-surface-elevated/70 my-5 space-y-1.5">
                   <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-accent font-semibold">
                     {sec.callout.title}
                   </div>
@@ -321,33 +317,36 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </section>
           ))}
 
-          {/* Deliberate Omissions & Unresolved Questions Section */}
+          {/* Deliberate Omissions & Unresolved Questions */}
           {narrative.openQuestionsAndExclusions.length > 0 && (
             <section
               id="deliberate-exclusions"
-              className="space-y-5 scroll-mt-24 pt-6 border-t border-[#232220]"
+              className="space-y-5 scroll-mt-24 pt-4 border-b border-border pb-12"
             >
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground uppercase">
-                  Deliberate Omissions &amp; Open Technical Inquiries
+                  Deliberate Omissions &amp; Open Constraints
                 </h2>
-                <p className="font-body-sm text-foreground-subtle">
-                  To maintain evidence integrity, the following questions were examined against the research database and either omitted from factual claims or addressed with explicit limitations.
+                <p className="font-body-lead text-foreground-muted text-xs sm:text-sm">
+                  Documented trade-offs, scope boundaries, and unresolved questions recorded in research.
                 </p>
               </div>
 
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 {narrative.openQuestionsAndExclusions.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-[2px] bg-surface border border-border space-y-1.5"
+                    className="p-4 rounded-[2px] bg-surface/60 border border-border space-y-1"
                   >
-                    <div className="text-xs sm:text-[13px] font-semibold font-mono text-accent">
-                      Q: {item.question}
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-accent text-xs">&bull;</span>
+                      <h3 className="font-mono text-xs sm:text-[13px] font-semibold text-foreground">
+                        {item.question}
+                      </h3>
                     </div>
-                    <div className="text-xs sm:text-[13px] text-foreground-muted leading-relaxed font-sans">
+                    <p className="text-xs text-foreground-muted leading-relaxed pl-3.5">
                       {item.resolutionOrLimitation}
-                    </div>
+                    </p>
                   </div>
                 ))}
               </div>
@@ -355,41 +354,29 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           )}
         </main>
 
-        {/* Article Footer & Adjacent Navigation */}
-        <footer className="pt-10 border-t border-[#232220] space-y-6 mt-16">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            {prevStudy ? (
-              <Link
-                href={`/case-study/${prevStudy.slug}`}
-                className="group text-left text-xs font-mono text-foreground-muted hover:text-accent transition-colors"
-              >
-                <span className="block text-[10px] uppercase text-foreground-subtle">&larr; Previous Case Study</span>
-                <span className="font-medium text-foreground group-hover:text-accent">
-                  #{prevStudy.number} {prevStudy.title}
-                </span>
-              </Link>
-            ) : (
-              <div />
-            )}
+        {/* Case Study Pagination */}
+        <footer className="pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
+          {prevStudy ? (
+            <Link
+              href={`/case-study/${prevStudy.slug}`}
+              className="text-foreground-muted hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+            >
+              <span>&larr; Prev: {prevStudy.title}</span>
+            </Link>
+          ) : (
+            <span className="text-foreground-subtle">Start of Case Studies</span>
+          )}
 
-            <Button href="/case-study" variant="secondary" size="sm">
-              All Case Studies
-            </Button>
-
-            {nextStudy ? (
-              <Link
-                href={`/case-study/${nextStudy.slug}`}
-                className="group text-right text-xs font-mono text-foreground-muted hover:text-accent transition-colors"
-              >
-                <span className="block text-[10px] uppercase text-foreground-subtle">Next Case Study &rarr;</span>
-                <span className="font-medium text-foreground group-hover:text-accent">
-                  #{nextStudy.number} {nextStudy.title}
-                </span>
-              </Link>
-            ) : (
-              <div />
-            )}
-          </div>
+          {nextStudy ? (
+            <Link
+              href={`/case-study/${nextStudy.slug}`}
+              className="text-foreground-muted hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+            >
+              <span>Next: {nextStudy.title} &rarr;</span>
+            </Link>
+          ) : (
+            <span className="text-foreground-subtle">End of Case Studies</span>
+          )}
         </footer>
       </Container>
     </article>

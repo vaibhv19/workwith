@@ -144,10 +144,6 @@ export function Header() {
 
           {/* Mobile Nav Links */}
           <nav className="relative z-10 flex flex-col space-y-3 pt-6">
-            <span className="text-[10px] font-sans font-semibold tracking-[0.25em] uppercase text-accent mb-2">
-              MENU NAVIGATION
-            </span>
-
             {navLinks.map((link, index) => {
               const formattedIndex = `0${index + 1}`;
 
@@ -155,12 +151,12 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`group flex items-center justify-between py-3.5 border-b border-[#232220] transition-colors ${
+                  className={`group flex items-center justify-between py-4 border-b border-border transition-colors ${
                     link.isActive ? "text-foreground font-semibold" : "text-foreground-muted hover:text-white"
                   }`}
                 >
                   <div className="flex items-baseline space-x-3">
-                    <span className="font-satoshi text-xs font-bold text-accent">
+                    <span className="font-metric text-xs font-bold text-accent">
                       {formattedIndex}
                     </span>
                     <span className="font-display text-2xl font-medium tracking-tight uppercase">
@@ -178,17 +174,14 @@ export function Header() {
             })}
           </nav>
 
-          {/* Mobile Bottom Details & Contact Route */}
-          <div className="relative z-10 pt-8 border-t border-[#232220] space-y-4">
-            <div className="flex flex-col pt-2 text-xs text-foreground-subtle space-y-1">
-              <span className="font-mono text-accent uppercase tracking-wider text-[10px]">DIRECT INQUIRIES</span>
-              <a
-                href="mailto:contact@vaibhv19.dev"
-                className="text-foreground hover:text-accent transition-colors font-mono text-sm"
-              >
-                contact@vaibhv19.dev
-              </a>
-            </div>
+          {/* Mobile Bottom Details */}
+          <div className="relative z-10 pt-8 border-t border-border">
+            <a
+              href="mailto:contact@vaibhv19.dev"
+              className="text-foreground hover:text-accent transition-colors font-mono text-sm inline-flex items-center gap-2"
+            >
+              <span>contact@vaibhv19.dev</span>
+            </a>
           </div>
         </div>
       )}

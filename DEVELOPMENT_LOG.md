@@ -214,3 +214,24 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run build` compiled all 16 static HTML routes in 1.5s.
   - Inspected real-time browser rendering via `browser_subagent` across `/projects`, `/case-study`, and `/start-conversation`, confirming tactile depth, seamless tiling, and high reading clarity.
 
+### Milestone 14 — Comprehensive Anti-AI-Slop Design Audit & Refinement
+- **Audit & Problem Identification (`ANTI_AI_SLOP_AUDIT.md`):**
+  - Audited all routes, identifying formulaic AI patterns: repetitive uppercase eyebrows (`ENGINEERING REPERTOIRE`, `ENGINEERING JOURNAL`, `DIRECT COMMUNICATION`, `COLLABORATION AREAS`), "card landfill" wrapping all 36 catalogue projects in identical bordered boxes, `SectionReveal` animation delays on every list item, and decorative filler labels in navigation.
+- **Projects Page Refinement (`/projects`):**
+  - Removed artificial eyebrows; opened directly with authoritative typography and clear summary.
+  - Section 1 ("Must Checkout"): Preserved high-craft showcase presentation for the 5 flagship deployed applications.
+  - Section 2 ("Developed Software"): Replaced the 36-card landfill with an elegant, high-density editorial catalogue ledger (clean architectural rows with subtle borders, aligned columns for title, framework, stack, and direct action). Instant rendering without scroll delays.
+- **Case Study Refinement (`/case-study` & `/case-study/[slug]`):**
+  - Removed artificial eyebrows and staggered delay wrappers for immediate loading.
+  - Detail page (`[slug]`): Replaced boxed metric cards with a clean architectural stat strip with vertical dividers. Streamlined section outline and inline evidence ledger.
+- **Start a Conversation Refinement (`/start-conversation`):**
+  - Removed all 3 redundant eyebrows.
+  - Replaced the 4 conversation area card boxes with an editorial 2-column typographic list (`01`, `02`, `03`, `04`).
+- **Header & Navigation Refinement:**
+  - Removed ornamental filler text (`MENU NAVIGATION`, `DIRECT INQUIRIES`) from the mobile menu drawer.
+- **Verification & Testing:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run build` compiled all 16 static HTML routes successfully in 1.4s.
+  - Visual verification via `browser_subagent` across desktop and mobile confirming high readability, calm visual density, and human-crafted quality.
+
+
