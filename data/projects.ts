@@ -4,7 +4,9 @@ export type ProjectCategory =
   | "Academic Milestones — Formal Coursework Projects"
   | "Technical Training Frameworks and Practical Modules"
   | "Built for No Reason Other Than Wanting To"
-  | "Retired Explorations and Early Builds Used to Learn System Architecture";
+  | "Retired Explorations and Early Builds Used to Learn System Architecture"
+  | "Client Work & Collaborations"
+  | "Personal Websites & Platforms";
 
 export interface ParentFramework {
   id: string;
@@ -23,7 +25,7 @@ export interface Project {
   featured?: boolean;
   homepagePreview?: boolean;
   demoUrl?: string;
-  githubUrl: string;
+  githubUrl?: string;
   highlights?: string[];
   parentFrameworkId?: string;
 }
@@ -197,6 +199,23 @@ export const PROJECTS: Project[] = [
     homepagePreview: true,
     githubUrl: "https://github.com/vaibhv19/Vigil"
   },
+  {
+    id: "email-job-scheduler",
+    title: "Email Job Scheduler",
+    tagline: "Distributed email scheduling engine with delayed queues, atomic rate limits, and multi-tenant search.",
+    bullets: [
+      "Architected distributed email scheduling system using BullMQ, Redis, and PostgreSQL for delayed job processing.",
+      "Engineered atomic per-sender rate limiting with minimum interval spacing and sliding hourly quotas via Redis Lua scripts.",
+      "Integrated Elasticsearch for isolated full-text search across scheduled and delivered email records.",
+      "Built React dashboard with batch CSV recipient uploads, Ethereal SMTP preview capture, and queue monitoring."
+    ],
+    category: "Applied Projects",
+    techStack: ["TypeScript", "React", "Node.js", "Express", "BullMQ", "Redis", "PostgreSQL", "Elasticsearch", "Docker"],
+    featured: false,
+    homepagePreview: false,
+    demoUrl: "https://email-job-scheduler.vaibhv19.dev",
+    githubUrl: "https://github.com/vaibhv19/Email-Job-Scheduler"
+  },
 
   // 2. System Integrity & DevSecOps Guardrails
   {
@@ -253,7 +272,20 @@ export const PROJECTS: Project[] = [
     techStack: ["Python", "OpenCV", "YOLOv8", "PyTorch", "Flask"],
     githubUrl: "https://github.com/vaibhv19/Automated-Litter-detection-System"
   },
-
+  {
+    id: "smart-surveillance-system",
+    title: "Smart Surveillance System",
+    tagline: "Computer vision and automated video monitoring framework for surveillance analysis.",
+    bullets: [
+      "Developed video processing pipeline for real-time surveillance feed analysis and automated event tracking.",
+      "Implemented computer vision algorithms to process incoming camera streams and flag detected anomalies."
+    ],
+    category: "Academic Milestones — Formal Coursework Projects",
+    techStack: ["Python", "Computer Vision", "Video Processing"],
+    featured: false,
+    homepagePreview: false,
+    githubUrl: "https://github.com/vaibhv19/Smart-Surveillance-System"
+  },
   // 4. Technical Training Frameworks and Practical Modules
   {
     id: "vidyalink",
@@ -355,19 +387,6 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "TypeScript", "Tailwind CSS", "Canvas API"],
     demoUrl: "https://happybirthdayzoya.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Happy-Birthday-Zoya"
-  },
-  {
-    id: "portfolio-blog",
-    title: "Portfolio-BLog",
-    tagline: "In case you wanted the backstory too.",
-    bullets: [
-      "Built custom editorial portfolio and blog using Next.js 16 App Router and React 19.",
-      "Developed custom Markdown parsers, dark aesthetic token system, and static route generation.",
-      "Implemented responsive navigation drawers, interactive project indexes, and technical writeups."
-    ],
-    category: "Built for No Reason Other Than Wanting To",
-    techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Markdown"],
-    githubUrl: "https://github.com/vaibhv19/Portfolio-BLog"
   },
 
   // 6. Retired Explorations and Early Builds Used to Learn System Architecture
@@ -502,5 +521,54 @@ export const PROJECTS: Project[] = [
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
     techStack: ["HTML5", "CSS3", "JavaScript"],
     githubUrl: "https://github.com/vaibhv19/My-Portfolio"
+  },
+
+  // 7. Client Work & Collaborations
+  {
+    id: "1nfinity",
+    title: "1nfinity",
+    tagline: "Client website and digital presence for an influencer marketing and creator partnership agency.",
+    bullets: [
+      "Designed and developed the brand showcase website for an influencer marketing agency.",
+      "Implemented a responsive dark aesthetic using Next.js App Router, Tailwind CSS, and custom typography.",
+      "Built fluid marquee motion tracks, video media integrations, and consultation booking call-to-actions.",
+      "Explore agency services and creator campaign capabilities on the [live website](https://1nfinity.online)."
+    ],
+    category: "Client Work & Collaborations",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    demoUrl: "https://1nfinity.online"
+  },
+
+  // 8. Personal Websites & Platforms
+  {
+    id: "portfolio-blog",
+    title: "vaibhv19.dev",
+    tagline: "Main personal portfolio and technical blog covering distributed systems, AI tooling, and engineering essays.",
+    bullets: [
+      "Designed and built primary professional portfolio and publication platform using Next.js 16 App Router and React 19.",
+      "Developed custom Markdown parsers, dark aesthetic token system, and static route generation.",
+      "Authored long-form technical essays and engineering deep dives spanning systems architecture and developer tooling.",
+      "Implemented responsive editorial layouts, interactive project catalog indexes, and technical writeups.",
+      "Read engineering articles and project writeups on the [live portfolio](https://vaibhv19.dev)."
+    ],
+    category: "Personal Websites & Platforms",
+    techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Markdown"],
+    featured: true,
+    homepagePreview: false,
+    demoUrl: "https://vaibhv19.dev",
+    githubUrl: "https://github.com/vaibhv19/Portfolio-BLog"
+  },
+  {
+    id: "life",
+    title: "Life",
+    tagline: "A personal digital scrapbook for the parts of life that don't fit on a résumé.",
+    bullets: [
+      "Curated a personal digital archive and scrapbook showcasing creative artwork, sketches, and fitness milestones.",
+      "Designed an editorial journal layout with paper grain textures, typography pairings, and responsive image galleries.",
+      "Browse creative sketches and fitness moments on the [live scrapbook](https://life.vaibhv19.dev)."
+    ],
+    category: "Personal Websites & Platforms",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    demoUrl: "https://life.vaibhv19.dev"
   }
 ];
