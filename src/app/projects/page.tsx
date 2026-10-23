@@ -93,38 +93,27 @@ export default function ProjectsPage() {
 
       {/* SECTION 1: MUST CHECKOUT (CURATED DEPLOYED EXPERIENCES) */}
       <Container size="default">
-        <div className="space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-4">
-            <div className="flex items-baseline space-x-3">
-              <span className="font-metric text-xs font-bold text-accent">01 /</span>
-              <h2 className="font-sans text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-foreground">
-                Must Checkout
-              </h2>
-            </div>
-            <span className="text-[11px] font-mono text-foreground-subtle">
-              Curated Interactive Deployments
+        <div className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
+            <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+              Must Checkout
+            </h2>
+            <span className="text-xs text-foreground-muted">
+              Curated interactive deployments
             </span>
           </div>
 
-          <div className="space-y-12">
-            {mustCheckoutProjects.map((project, idx) => (
+          <div className="space-y-8">
+            {mustCheckoutProjects.map((project) => (
               <article
                 key={project.id}
-                className="surface-card bg-surface/90 border border-border p-6 sm:p-8 space-y-6 rounded-md hover:border-border-light transition-colors"
+                className="surface-card bg-surface/90 border border-border p-6 sm:p-8 space-y-5 rounded-md hover:border-border-light transition-colors"
               >
-                {/* Header: Title & Deployment Status */}
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-4">
-                  <div className="flex items-baseline space-x-3">
-                    <span className="font-metric text-xs font-bold text-accent">
-                      0{idx + 1}
-                    </span>
-                    <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground uppercase">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-accent bg-accent/10 border border-accent/30 px-2 py-0.5 rounded-[2px] self-start sm:self-auto">
-                    Live Deployed
-                  </span>
+                {/* Header: Title */}
+                <div>
+                  <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+                    {project.title}
+                  </h3>
                 </div>
 
                 {/* Tagline */}
@@ -137,7 +126,7 @@ export default function ProjectsPage() {
                   <ul className="space-y-2 text-xs sm:text-sm text-foreground-muted leading-relaxed list-none pl-0">
                     {project.bullets.slice(0, 2).map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-2.5">
-                        <span className="text-accent font-mono text-xs select-none mt-0.5">&gt;</span>
+                        <span className="text-foreground-subtle select-none">&bull;</span>
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -158,12 +147,12 @@ export default function ProjectsPage() {
                 )}
 
                 {/* Tech Stack Row */}
-                <div className="text-[11px] font-mono text-foreground-subtle tracking-wide">
+                <div className="text-xs text-foreground-muted">
                   {project.techStack.join(" · ")}
                 </div>
 
                 {/* Actions: Verified Live Application & Repository */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
+                <div className="flex flex-wrap items-center gap-3 pt-1">
                   {project.demoUrl && (
                     <Button
                       href={project.demoUrl}
@@ -197,39 +186,36 @@ export default function ProjectsPage() {
       {/* ARCHITECTURE CAPABILITIES MARQUEE (1NFINITY CONTINUOUS TRACK) */}
       <div className="border-y border-border/70 bg-surface/30 py-3.5 my-4 sm:my-8 overflow-hidden">
         <Marquee speed="normal" pauseOnHover fadeEdges>
-          <div className="flex items-center space-x-8 text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-foreground-muted px-4">
-            <span>DISTRIBUTED ARCHITECTURES</span>
-            <span className="text-accent/60 select-none">✦</span>
-            <span>LOCAL LLM ORCHESTRATION</span>
-            <span className="text-accent/60 select-none">✦</span>
-            <span>STOCKFISH WASM &amp; WEB WORKERS</span>
-            <span className="text-accent/60 select-none">✦</span>
-            <span>ATOMIC WORKER QUEUES</span>
-            <span className="text-accent/60 select-none">✦</span>
-            <span>HYBRID RAG RETRIEVAL</span>
-            <span className="text-accent/60 select-none">✦</span>
-            <span>DEVSECOPS GUARDRAILS</span>
-            <span className="text-accent/60 select-none">✦</span>
-            <span>ZERO-CRON ENGINE SCHEDULING</span>
-            <span className="text-accent/60 select-none">✦</span>
-            <span>LIGHTHOUSE 95+ COMPLIANCE</span>
-            <span className="text-accent/60 select-none">✦</span>
+          <div className="flex items-center space-x-6 text-xs font-sans font-medium text-foreground-muted px-4">
+            <span>Distributed Architectures</span>
+            <span className="text-foreground-subtle select-none">·</span>
+            <span>Local LLM Orchestration</span>
+            <span className="text-foreground-subtle select-none">·</span>
+            <span>Stockfish WASM &amp; Web Workers</span>
+            <span className="text-foreground-subtle select-none">·</span>
+            <span>Atomic Worker Queues</span>
+            <span className="text-foreground-subtle select-none">·</span>
+            <span>Hybrid RAG Retrieval</span>
+            <span className="text-foreground-subtle select-none">·</span>
+            <span>DevSecOps Guardrails</span>
+            <span className="text-foreground-subtle select-none">·</span>
+            <span>Zero-Cron Engine Schedulers</span>
+            <span className="text-foreground-subtle select-none">·</span>
+            <span>Lighthouse 95+ Platforms</span>
+            <span className="text-foreground-subtle select-none">·</span>
           </div>
         </Marquee>
       </div>
 
       {/* SECTION 2: DEVELOPED SOFTWARE (HIGH-DENSITY EDITORIAL CATALOGUE LEDGER) */}
       <Container size="default">
-        <div className="space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-4">
-            <div className="flex items-baseline space-x-3">
-              <span className="font-metric text-xs font-bold text-accent">02 /</span>
-              <h2 className="font-sans text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-foreground">
-                Developed Software
-              </h2>
-            </div>
-            <span className="text-[11px] font-mono text-foreground-subtle">
-              Complete Engineering Catalogue ({PROJECTS.length} Systems)
+        <div className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
+            <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+              Developed Software
+            </h2>
+            <span className="text-xs text-foreground-muted">
+              Complete engineering catalogue ({PROJECTS.length} systems)
             </span>
           </div>
 
@@ -242,7 +228,7 @@ export default function ProjectsPage() {
                 <div key={group.category} className="space-y-4">
                   {/* Category Header */}
                   <div className="border-b border-border pb-2">
-                    <h3 className="font-display text-base sm:text-lg font-medium text-foreground tracking-tight uppercase">
+                    <h3 className="font-display text-base sm:text-lg font-medium text-foreground tracking-tight">
                       {group.name}
                     </h3>
                     <p className="text-xs text-foreground-muted pt-0.5">
@@ -250,7 +236,7 @@ export default function ProjectsPage() {
                     </p>
                   </div>
 
-                  {/* Clean Editorial Catalogue Ledger (No redundant card landfill) */}
+                  {/* Clean Editorial Catalogue Ledger */}
                   <div className="divide-y divide-border/60">
                     {items.map((item: Project) => (
                       <article
@@ -259,18 +245,13 @@ export default function ProjectsPage() {
                       >
                         {/* Left Column: Title, Framework, Description & Stack */}
                         <div className="space-y-1.5 flex-1 max-w-3xl">
-                          <div className="flex items-center gap-2.5 flex-wrap">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <h4 className="font-sans text-sm font-semibold text-foreground group-hover:text-white transition-colors">
                               {item.title}
                             </h4>
                             {item.parentFrameworkId && (
-                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-[2px] bg-surface-elevated border border-border text-accent">
-                                {PARENT_FRAMEWORK_MAP[item.parentFrameworkId] || item.parentFrameworkId}
-                              </span>
-                            )}
-                            {item.demoUrl && !item.mustCheckout && (
-                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-[2px] bg-accent/10 border border-accent/30 text-accent uppercase tracking-wider">
-                                Deployed
+                              <span className="text-xs text-foreground-subtle">
+                                ({PARENT_FRAMEWORK_MAP[item.parentFrameworkId] || item.parentFrameworkId})
                               </span>
                             )}
                           </div>
@@ -279,7 +260,7 @@ export default function ProjectsPage() {
                             {item.tagline}
                           </p>
 
-                          <div className="text-[11px] font-mono text-foreground-subtle pt-0.5">
+                          <div className="text-xs text-foreground-subtle pt-0.5">
                             {item.techStack.join(" · ")}
                           </div>
                         </div>

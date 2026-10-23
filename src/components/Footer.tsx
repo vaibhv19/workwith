@@ -61,11 +61,7 @@ export function Footer() {
       <Container size="default" className="pt-10 sm:pt-14 pb-12 sm:pb-16 space-y-10">
         {/* Contact Bar & Social Row */}
         <div className="py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-[#232220]">
-          <div className="flex items-center space-x-3">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-accent">
-              DIRECT CHANNEL
-            </span>
-            <span className="text-foreground-subtle">·</span>
+          <div className="flex items-center space-x-2">
             <a
               href="mailto:contact@vaibhv19.dev"
               className="text-xs sm:text-sm font-mono text-foreground hover:text-accent transition-colors"

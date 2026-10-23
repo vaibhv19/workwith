@@ -261,4 +261,35 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Production build (`npm run build`): All 16 static routes successfully generated.
   - Browser subagent validation on desktop and mobile confirming smooth marquee looping, crisp image zooms, accessible text reveals, and responsive stability.
 
+### Milestone 16 — Removal of Artificial Editorial Styling & Decorative Metadata
+- **Audit & Problem Resolution:**
+  - Audited all routes and components for artificial dashboard conventions: boxed brand tags, `LIVE DEPLOYED` status badges, oversized ordinal numbering (`01 /`, `02 /`), redundant numbering inside cards (`01 CHECKMATE`), forced uppercase headings, wide letter-spacing (`tracking-[0.2em]`, `tracking-widest`), thin dividing rules, and gold/bronze microcopy.
+- **Navigation (`src/components/Header.tsx`):**
+  - Replaced the boxed `MYWORK` rectangle with clean, unboxed text branding (`Vaibhav Gupta / work`).
+  - Removed ordinal numbers (`01`, `02`, `03`) from mobile navigation links.
+- **Projects Landing Page (`src/app/projects/page.tsx`):**
+  - Replaced `01 / MUST CHECKOUT` with natural, confident section heading `Must Checkout` and subtitle `Curated interactive deployments`.
+  - Removed `0{idx + 1}` ordinal numbering and decorative `LIVE DEPLOYED` status badge from all project cards.
+  - Formatted project titles in natural title case without forced uppercase or dividing horizontal rules.
+  - Converted the Capabilities Marquee to natural title case with bullet separators instead of uppercase tracking and star marks.
+  - Replaced `02 / DEVELOPED SOFTWARE` with natural section heading `Developed Software` and subtitle `Complete engineering catalogue (36 systems)`.
+  - Removed parent framework bordered miniature tags and `Deployed` badges from Section 2 ledger items; deployment is represented cleanly by the direct action links (`Live Demo ↗`).
+- **Case Studies Archive & Detail Pages (`src/app/case-study/`):**
+  - Removed oversized `{study.number} /` ordinal numbers from archive rows; let natural category and period columns establish hierarchy.
+  - Converted case study titles and subtitles to natural case without forced uppercase or gold mono styling.
+  - Removed `CASE STUDY #{study.number}` badge, miniature category border tags, and gold tracking from article headers.
+  - Replaced boxed excerpt callout cards with clean, readable editorial lead paragraphs.
+  - Streamlined Section Outline and Evidence Ledger to clean, unbordered inline text lists.
+  - Removed uppercase yelling from section titles, deliberate exclusions, and code block headers.
+- **Start a Conversation (`src/app/start-conversation/page.tsx`):**
+  - Removed ordinal numbers (`01 /`, `02 /`) from conversation topic headings, letting clear titles and descriptions communicate structure naturally.
+- **Footer (`src/components/Footer.tsx`):**
+  - Removed artificial `DIRECT CHANNEL` gold tracking tag; preserved direct contact email.
+- **Buttons & Shared Components (`src/components/ui/Button.tsx`):**
+  - Updated text variant buttons to natural tracking without wide letter spacing.
+- **Verification & Git Hygiene:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run build` compiled all 16 static HTML routes successfully in 1.3s.
+  - Browser subagent validation confirmed natural typographic hierarchy, absence of template-like dashboard badges, and calm visual confidence across desktop and mobile.
+
 

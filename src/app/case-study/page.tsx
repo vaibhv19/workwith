@@ -48,15 +48,12 @@ export default function CaseStudiesPage() {
               key={study.slug}
               className="group py-8 sm:py-12 first:pt-0 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start"
             >
-              {/* Left Column: Sequence Number & Metadata (Narrow Column) */}
-              <div className="md:col-span-3 flex md:flex-col justify-between md:justify-start items-baseline md:items-start gap-1.5 font-mono">
-                <span className="font-metric text-base sm:text-xl font-bold text-accent tracking-tight">
-                  {study.number} /
-                </span>
-                <span className="text-xs text-foreground font-medium">
+              {/* Left Column: Category & Period */}
+              <div className="md:col-span-3 flex md:flex-col justify-between md:justify-start items-baseline md:items-start gap-1">
+                <span className="text-sm font-medium text-foreground">
                   {study.category}
                 </span>
-                <span className="text-[11px] text-foreground-subtle">
+                <span className="text-xs text-foreground-muted">
                   {study.period}
                 </span>
               </div>
@@ -64,7 +61,7 @@ export default function CaseStudiesPage() {
               {/* Right Column: Title, Subtitle, Description, Preview & Action */}
               <div className="md:col-span-9 space-y-4">
                 <div>
-                  <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground uppercase group-hover:text-white transition-colors">
+                  <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground group-hover:text-white transition-colors">
                     <Link
                       href={`/case-study/${study.slug}`}
                       className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
@@ -75,7 +72,7 @@ export default function CaseStudiesPage() {
                       </span>
                     </Link>
                   </h2>
-                  <p className="text-xs sm:text-[13px] font-mono text-accent/90 mt-1">
+                  <p className="text-xs sm:text-sm text-foreground-muted mt-1">
                     {study.subtitle}
                   </p>
                 </div>
@@ -98,7 +95,7 @@ export default function CaseStudiesPage() {
                 )}
 
                 {/* Technology Focus Row */}
-                <div className="text-[11px] font-mono text-foreground-subtle pt-1">
+                <div className="text-xs text-foreground-subtle pt-1">
                   <span>{study.techFocus}</span>
                 </div>
 

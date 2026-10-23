@@ -70,15 +70,15 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </nav>
 
         {/* Article Header */}
-        <header className="space-y-6 border-b border-border pb-10">
-          <div className="flex items-center justify-between text-xs font-mono text-foreground-subtle">
-            <span className="font-metric text-xs font-bold text-accent tracking-widest">
-              CASE STUDY #{study.number}
+        <header className="space-y-6 border-b border-border pb-8">
+          <div className="flex items-center justify-between text-xs text-foreground-muted">
+            <span className="font-medium text-foreground">
+              {study.category}
             </span>
             <span>{study.period}</span>
           </div>
 
-          <h1 className="font-display-hero text-foreground uppercase">
+          <h1 className="font-display-hero text-foreground">
             {study.title}
           </h1>
 
@@ -89,22 +89,18 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             className="font-display text-lg sm:text-2xl text-foreground-muted leading-snug"
           />
 
-          {/* Metadata Ribbon */}
-          <div className="pt-1 flex flex-wrap items-center gap-2.5 text-xs font-mono text-foreground-muted">
-            <span className="px-2 py-0.5 rounded-[2px] bg-surface border border-border text-foreground">
-              {study.category}
-            </span>
-            <span className="text-foreground-subtle">·</span>
+          {/* Metadata Row */}
+          <div className="pt-1 flex flex-wrap items-center gap-2 text-xs text-foreground-muted">
             <span>{study.techFocus}</span>
             <span className="text-foreground-subtle">·</span>
-            <span className="text-accent font-medium">{study.status}</span>
+            <span>{study.status}</span>
           </div>
 
           {/* Role & Links */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border text-xs font-mono">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border text-xs">
             <div>
-              <span className="text-foreground-subtle uppercase tracking-wider text-[11px]">Engineering Role: </span>
-              <span className="text-foreground font-sans font-medium">{narrative.role}</span>
+              <span className="text-foreground-muted">Engineering Role: </span>
+              <span className="text-foreground font-medium">{narrative.role}</span>
             </div>
 
             <div className="flex items-center gap-3">
@@ -134,9 +130,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           </div>
 
           {/* Excerpt Lead */}
-          <div className="text-sm sm:text-base text-foreground font-sans italic border-l-2 border-accent pl-5 py-2.5 leading-relaxed bg-surface/40 rounded-r-[2px]">
+          <p className="text-base sm:text-lg text-foreground-muted font-sans leading-relaxed pt-1">
             {study.excerpt}
-          </div>
+          </p>
 
           {/* Visual Preview */}
           {study.image && (
@@ -152,18 +148,18 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Quick Metrics Strip (Architectural, not a box card landfill) */}
+          {/* Quick Metrics Strip */}
           {narrative.quickMetrics && narrative.quickMetrics.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-border">
               {narrative.quickMetrics.map((metric, idx) => (
                 <div key={idx} className="space-y-1">
-                  <div className="text-[10px] font-mono text-accent uppercase tracking-wider font-semibold">
+                  <div className="text-xs text-foreground-muted font-medium">
                     {metric.label}
                   </div>
                   <div className="font-metric text-lg sm:text-xl font-bold text-foreground">
                     {metric.value}
                   </div>
-                  <div className="text-[11px] text-foreground-subtle leading-tight">
+                  <div className="text-xs text-foreground-subtle leading-tight">
                     {metric.detail}
                   </div>
                 </div>
@@ -172,14 +168,11 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           )}
 
           {/* Evidence Ledger */}
-          <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-mono text-foreground-subtle">
-            <span className="uppercase tracking-wider text-[10px] text-accent font-semibold">Evidence Ledger:</span>
+          <div className="pt-2 flex flex-wrap items-center gap-2 text-xs text-foreground-muted">
+            <span className="text-foreground font-medium">Evidence Ledger:</span>
             {narrative.evidenceTags.map((tag, idx) => (
-              <span
-                key={idx}
-                className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono border bg-surface border-border text-foreground-muted"
-              >
-                [{tag.label}]
+              <span key={idx} className="text-foreground-subtle">
+                {tag.label}{idx < narrative.evidenceTags.length - 1 ? " ·" : ""}
               </span>
             ))}
           </div>
@@ -187,7 +180,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
         {/* Table of Contents */}
         <section className="p-5 my-8 rounded-[2px] bg-surface/60 border border-border space-y-3">
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-accent font-semibold">
+          <h2 className="text-xs font-semibold text-foreground">
             Section Outline
           </h2>
           <nav className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs font-mono">
@@ -220,11 +213,11 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               className="space-y-5 scroll-mt-24 border-b border-border pb-12 last:border-b-0"
             >
               <div className="space-y-1.5">
-                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground uppercase">
+                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
                   {sec.title}
                 </h2>
                 {sec.lead && (
-                  <p className="font-body-lead text-accent/90">
+                  <p className="font-body-lead text-foreground-muted">
                     {sec.lead}
                   </p>
                 )}
@@ -239,8 +232,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
               {/* Callout Box */}
               {sec.callout && (
-                <div className="p-4 sm:p-5 rounded-r-[2px] border-l-2 border-accent bg-surface-elevated/70 my-5 space-y-1.5">
-                  <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-accent font-semibold">
+                <div className="p-4 sm:p-5 rounded-[2px] border border-border bg-surface-elevated/70 my-5 space-y-1.5">
+                  <div className="text-xs font-semibold text-foreground">
                     {sec.callout.title}
                   </div>
                   <div className="text-xs sm:text-sm text-foreground-muted leading-relaxed font-sans">
@@ -254,9 +247,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 <div className="space-y-2 my-6">
                   <div className="flex items-center justify-between text-xs font-mono text-foreground-subtle">
                     <span className="font-medium text-foreground">{sec.diagram.title}</span>
-                    <span className="text-[10px] text-accent font-mono uppercase tracking-wider">Architecture Map</span>
                   </div>
-                  <pre className="overflow-x-auto text-[11px] sm:text-xs font-mono bg-[#070707] border border-border rounded-[2px] p-5 text-accent/90 leading-tight selection:bg-accent/20">
+                  <pre className="overflow-x-auto text-[11px] sm:text-xs font-mono bg-[#070707] border border-border rounded-[2px] p-5 text-foreground-muted leading-tight selection:bg-accent/20">
                     {sec.diagram.ascii}
                   </pre>
                   <p className="text-[11px] text-foreground-subtle italic">
@@ -270,7 +262,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 <div className="space-y-0 my-6">
                   <div className="flex items-center justify-between px-4 py-2 rounded-t-[2px] bg-surface-elevated border border-b-0 border-border text-xs font-mono text-foreground-muted">
                     <span className="font-medium text-foreground">{sec.codeBlock.title}</span>
-                    <span className="text-accent text-[11px] uppercase tracking-wider">{sec.codeBlock.language}</span>
+                    <span className="text-foreground-muted text-xs font-mono">{sec.codeBlock.language}</span>
                   </div>
                   <pre className="overflow-x-auto text-xs font-mono bg-[#070707] border border-border rounded-b-[2px] p-4 text-foreground-muted leading-relaxed">
                     <code>{sec.codeBlock.code}</code>
@@ -283,7 +275,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 <div className="space-y-2 my-6">
                   <div className="overflow-x-auto rounded-[2px] border border-border">
                     <table className="w-full text-left text-xs sm:text-sm">
-                      <thead className="bg-surface-elevated text-foreground font-mono text-[11px] uppercase tracking-wider border-b border-border">
+                      <thead className="bg-surface-elevated text-foreground text-xs font-medium border-b border-border">
                         <tr>
                           {sec.table.headers.map((h, hIdx) => (
                             <th key={hIdx} className="px-4 py-3 font-semibold">
@@ -329,7 +321,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               className="space-y-5 scroll-mt-24 pt-4 border-b border-border pb-12"
             >
               <div className="space-y-1">
-                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground uppercase">
+                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
                   Deliberate Omissions &amp; Open Constraints
                 </h2>
                 <p className="font-body-lead text-foreground-muted text-xs sm:text-sm">
@@ -344,7 +336,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                     className="p-4 rounded-[2px] bg-surface/60 border border-border space-y-1"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-accent text-xs">&bull;</span>
+                      <span className="text-foreground-subtle select-none">&bull;</span>
                       <h3 className="font-mono text-xs sm:text-[13px] font-semibold text-foreground">
                         {item.question}
                       </h3>

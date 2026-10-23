@@ -171,16 +171,11 @@ export default function StartConversationPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
           {CONVERSATION_AREAS.map((topic) => (
-            <div key={topic.number} className="space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="font-metric text-xs font-semibold text-accent">
-                  {topic.number} /
-                </span>
-                <h3 className="text-sm font-semibold text-foreground">
-                  {topic.title}
-                </h3>
-              </div>
-              <p className="text-xs text-foreground-muted leading-relaxed pl-5">
+            <div key={topic.title} className="space-y-1">
+              <h3 className="text-sm font-semibold text-foreground">
+                {topic.title}
+              </h3>
+              <p className="text-xs text-foreground-muted leading-relaxed">
                 {topic.description}
               </p>
             </div>

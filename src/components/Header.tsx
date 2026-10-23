@@ -76,14 +76,14 @@ export function Header() {
           {/* Brand Wordmark & Identity */}
           <Link
             href="/"
-            className="group flex items-center space-x-3 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
-            aria-label="Vaibhav Gupta — MyWork Home"
+            className="group flex items-baseline gap-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+            aria-label="Vaibhav Gupta — Portfolio"
           >
             <span className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground group-hover:text-white uppercase leading-none">
               Vaibhav Gupta
             </span>
-            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-[2px] bg-surface-elevated border border-border text-accent uppercase tracking-widest select-none">
-              MyWork
+            <span className="text-xs text-foreground-muted font-sans font-normal lowercase select-none">
+              / work
             </span>
           </Link>
 
@@ -144,34 +144,25 @@ export function Header() {
 
           {/* Mobile Nav Links */}
           <nav className="relative z-10 flex flex-col space-y-3 pt-6">
-            {navLinks.map((link, index) => {
-              const formattedIndex = `0${index + 1}`;
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`group flex items-center justify-between py-4 border-b border-border transition-colors ${
-                    link.isActive ? "text-foreground font-semibold" : "text-foreground-muted hover:text-white"
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`group flex items-center justify-between py-4 border-b border-border transition-colors ${
+                  link.isActive ? "text-foreground font-semibold" : "text-foreground-muted hover:text-white"
+                }`}
+              >
+                <span className="font-display text-2xl font-medium tracking-tight">
+                  {link.label}
+                </span>
+                <ArrowUpRight
+                  size={18}
+                  className={`transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
+                    link.isActive ? "text-accent" : "text-foreground-subtle group-hover:text-accent"
                   }`}
-                >
-                  <div className="flex items-baseline space-x-3">
-                    <span className="font-metric text-xs font-bold text-accent">
-                      {formattedIndex}
-                    </span>
-                    <span className="font-display text-2xl font-medium tracking-tight uppercase">
-                      {link.label}
-                    </span>
-                  </div>
-                  <ArrowUpRight
-                    size={18}
-                    className={`transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
-                      link.isActive ? "text-accent" : "text-foreground-subtle group-hover:text-accent"
-                    }`}
-                  />
-                </Link>
-              );
-            })}
+                />
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile Bottom Details */}

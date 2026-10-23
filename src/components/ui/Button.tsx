@@ -45,9 +45,9 @@ export default function Button({
 
   // Text variant size overrides (no padding)
   const textSizeClasses: Record<ButtonSize, string> = {
-    sm: "text-[11px] py-1 tracking-[0.15em]",
-    md: "text-xs py-1 tracking-[0.15em]",
-    lg: "text-sm py-1 tracking-[0.15em]",
+    sm: "text-xs py-1 tracking-normal",
+    md: "text-xs py-1 tracking-normal",
+    lg: "text-sm py-1 tracking-normal",
   };
 
   // Visual variants
