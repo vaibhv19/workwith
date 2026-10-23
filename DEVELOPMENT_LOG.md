@@ -73,3 +73,25 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Milestone 4:** Case Study landing page (`/case-study` independent destination with verified evidence summaries from `CASE_STUDY_DATABASE.md`).
 - **Milestone 5:** Start a Conversation page (`/start-conversation` with direct personal intro, welcome topics, working contact form, direct email fallback, and social channels).
 - **Milestone 6:** Responsive refinement, metadata alignment (`mywork.vaibhv19.dev`), accessibility, and lint/build verification.
+
+---
+
+## Milestone Execution Record
+
+### Milestone 1 — Baseline Documentation
+- **Commit:** `fd132ad`
+- **Scope:** Documented initial repository audit, design tokens extracted from BLog (`D:\Work\Projects----Personal\BLog`), architecture differences, and development milestones.
+- **Verification:** Verified clean working tree, valid git log sequence.
+
+### Milestone 2 — Architecture Foundation
+- **Scope:**
+  - Configured `@theme` and `:root` design tokens in `src/app/globals.css` (`--color-copper: #E8913A`, `--background: #0a0d14`, `--surface: #111622`, editorial scrollbar, `@keyframes pageTransition` with reduced-motion support).
+  - Implemented `StarryNightBackground.tsx` matching Van Gogh painting blur/contrast mask layers.
+  - Built `Header.tsx` with brand identity and exactly 3 navigation destinations (`PROJECTS`, `CASE STUDY`, `START A CONVERSATION`), active underline indication, and responsive mobile toggle menu.
+  - Built `Footer.tsx` with editorial source link and verified SVG social/contact endpoints in `BrandIcons.tsx`.
+  - Built `PageTransition.tsx` route wrapper.
+  - Updated `src/app/layout.tsx` to load Google font **Syne**, dark theme, canonical metadata for `https://mywork.vaibhv19.dev`.
+  - Replaced coming soon screen in `src/app/page.tsx` with server-side `redirect("/projects")`.
+  - Installed `lucide-react` dependency and imported public assets (`starry-night-bg.webp`, fonts, favicons).
+- **Verification:** `npx tsc --noEmit` passed with 0 errors. Dev server running and compiling cleanly.
+

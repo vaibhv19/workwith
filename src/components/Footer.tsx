@@ -1,0 +1,92 @@
+"use client";
+
+import { Mail } from "lucide-react";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  BlueskyIcon,
+  XIcon,
+  ThreadsIcon,
+} from "@/components/BrandIcons";
+
+export function Footer() {
+  return (
+    <footer className="w-full mt-auto py-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Left Side: Editorial Platform Note */}
+          <a
+            href="https://vaibhv19.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono text-slate-400 hover:text-sky-400 hover:underline transition-all focus:outline-none"
+          >
+            vaibhv19.dev &rarr;
+          </a>
+
+          {/* Right Side: Contact & Social Endpoints */}
+          <div className="flex items-center gap-5">
+            <a
+              href="https://github.com/vaibhv19"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
+            >
+              <GithubIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/vaibhv19"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
+            >
+              <LinkedinIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://bsky.app/profile/vaibhv19.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Bluesky"
+              title="Bluesky"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
+            >
+              <BlueskyIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://x.com/vaibhv_19"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              title="X (Twitter)"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
+            >
+              <XIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="https://www.threads.com/@vaibhv_19"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Threads"
+              title="Threads"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
+            >
+              <ThreadsIcon className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href="mailto:contact@vaibhv19.dev"
+              aria-label="Email"
+              title="Email"
+              className="text-slate-400 hover:text-sky-400 transition-colors focus:outline-none"
+            >
+              <Mail className="w-[18px] h-[18px]" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
