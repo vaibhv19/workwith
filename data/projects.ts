@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     title: "CheckMate",
     tagline: "Post-chess clarity, engine-assisted — built so tactical blunders get analyzed instead of ignored.",
     bullets: [
-      "Executed Stockfish 16 UCI engine compiled into WebAssembly for zero-latency in-browser evaluation.",
+      "Executed Stockfish 16 UCI engine compiled into WebAssembly for local, in-browser chess analysis.",
       "Built multi-threaded analysis worker threads leveraging SharedArrayBuffer and Web Workers.",
       "Implemented dynamic move-branch trees, centipawn evaluation charts, and automated blunder detection.",
       "Configured Cross-Origin Isolation headers (COOP/COEP) enabling SharedArrayBuffer concurrency for multi-PV engine evaluation."
@@ -205,7 +205,7 @@ export const PROJECTS: Project[] = [
     tagline: "Distributed email scheduling engine with delayed queues, atomic rate limits, and multi-tenant search.",
     bullets: [
       "Architected distributed email scheduling system using BullMQ, Redis, and PostgreSQL for delayed job processing.",
-      "Engineered atomic per-sender rate limiting with minimum interval spacing and sliding hourly quotas via Redis Lua scripts.",
+      "Engineered atomic per-sender rate limiting with minimum interval spacing and hourly quotas via Redis Lua scripts.",
       "Integrated Elasticsearch for isolated full-text search across scheduled and delivered email records.",
       "Built React dashboard with batch CSV recipient uploads, Ethereal SMTP preview capture, and queue monitoring."
     ],
@@ -263,28 +263,28 @@ export const PROJECTS: Project[] = [
   {
     id: "ecolens",
     title: "EcoLens",
-    tagline: "Taught a model to spot litter. College happened to give me marks for it.",
+    tagline: "Prototype Flask application using Google Gemini to detect litter, waste, and hazards from geotagged photos.",
     bullets: [
-      "Trained custom YOLOv8 object detection model on annotated urban waste datasets.",
-      "Built real-time video frame inference pipeline with bounding-box classification overlay.",
-      "Integrated PyTorch model weights with OpenCV frame grabs and Flask API handlers."
+      "Built a prototype web application integrating the Google Gemini API to identify litter, garbage, and environmental hazards in uploaded images.",
+      "Extracted GPS coordinates from image EXIF metadata to plot identified hazard locations on an interactive Leaflet map.",
+      "Designed a browser dashboard featuring image uploads, severity-tagged alert generation, and recent analysis history."
     ],
     category: "Academic Milestones — Formal Coursework Projects",
-    techStack: ["Python", "OpenCV", "YOLOv8", "PyTorch", "Flask"],
+    techStack: ["Python", "Flask", "Google Gemini API", "Leaflet", "Pillow", "HTML/CSS"],
     githubUrl: "https://github.com/vaibhv19/EcoLens"
   },
   {
     id: "smart-surveillance-system",
     title: "Smart Surveillance System",
-    tagline: "Automated campus surveillance rule-violation detection pipeline with real-time incident alerting and evidence compilation.",
+    tagline: "Academic system design and integration specifications for an AI-based campus surveillance rule-violation detection system.",
     bullets: [
-      "Architected backend integration services using FastAPI, Pydantic v2, and SQLAlchemy (SQLite WAL / PostgreSQL) for campus rule violation monitoring.",
-      "Built two-phase evidence compilation pipelines generating OpenCV-annotated keyframes and background FFmpeg H.264 video clips with HTTP 206 partial streaming.",
-      "Implemented real-time WebSocket incident dispatch (/ws/alerts) for immediate alerting on detected campus violations (unauthorized entry, parking, safety).",
-      "Engineered the master pipeline runner integrating YOLOv8 detection streams, multi-object tracking feeds, and review audit logging."
+      "Authored technical specifications and integration contracts for campus surveillance rule-violation monitoring as team Integration Lead (M4).",
+      "Designed architectural blueprints for proposed FastAPI services, SQLAlchemy database schemas, and WebSocket alert dispatch channels.",
+      "Specified a two-phase evidence compilation workflow detailing keyframe extraction, FFmpeg H.264 video clipping, and HTTP 206 streaming protocols.",
+      "Defined cross-module interface boundaries, event payload contracts, and verification test plans across detection, tracking, and UI teams."
     ],
     category: "Academic Milestones — Formal Coursework Projects",
-    techStack: ["Python", "FastAPI", "OpenCV", "FFmpeg", "SQLAlchemy", "WebSockets", "Pydantic"],
+    techStack: ["System Architecture", "Integration Planning", "Technical Documentation", "API Specification"],
     featured: false,
     homepagePreview: false,
     githubUrl: "https://github.com/vaibhv19/Smart-Survellience-System"
@@ -294,86 +294,86 @@ export const PROJECTS: Project[] = [
   {
     id: "vidyalink",
     title: "VidyaLink",
-    tagline: "Open-access resource vault running entirely on localStorage because server costs are a scam.",
+    tagline: "Open-access resource vault and Q&A prototype running entirely client-side on browser storage.",
     bullets: [
-      "Built zero-server educational resource vault operating entirely client-side.",
-      "Engineered state persistence schemas utilizing browser LocalStorage and IndexedDB APIs.",
-      "Designed lightweight offline resource indexing and fast client-side text filtering."
+      "Built a zero-backend educational resource vault and community Q&A board prototype operating entirely in the browser.",
+      "Utilized localStorage for resource and doubt persistence, with sessionStorage tracking to prevent duplicate upvotes.",
+      "Implemented real-time client-side keyword search, subject filtering, and solution-acceptance toggles in vanilla JavaScript."
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "lenovo-leap",
-    techStack: ["JavaScript", "HTML5", "CSS3", "LocalStorage", "IndexedDB"],
+    techStack: ["JavaScript", "HTML5", "CSS3", "LocalStorage", "SessionStorage"],
     githubUrl: "https://github.com/vaibhv19/VidyaLink"
   },
   {
     id: "startup-blueprint-generator",
     title: "Startup Blueprint Generator",
-    tagline: "Agentic RAG that's more organized about your startup than you are.",
+    tagline: "Sequential multi-agent AI pipeline built with Langflow to convert startup concepts into investor-ready blueprints.",
     bullets: [
-      "Developed document retrieval agent framework synthesizing technical project blueprints.",
-      "Configured LangChain vector store pipelines for analyzing market data and tech stacks.",
-      "Built Streamlit interactive frontend for real-time document output generation."
+      "Orchestrated a sequential multi-agent pipeline across 4 specialized domain agents (Market, Business Model, Financials, Synthesis).",
+      "Constructed visual pipeline graph and node execution definitions in Langflow to synthesize comprehensive venture blueprints.",
+      "Integrated regulatory alignment, 9-box Business Model Canvas generation, and 12-24 month seed runway projections."
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-skillsbuild",
-    techStack: ["Python", "LangChain", "OpenAI API", "Streamlit", "Vector DB"],
+    techStack: ["Python", "Langflow", "Multi-Agent Systems", "Prompt Engineering"],
     githubUrl: "https://github.com/vaibhv19/startup-blueprint-generator"
   },
   {
     id: "the-tiffin-dispatch",
     title: "The Tiffin Dispatch",
-    tagline: "A vintage cafe ordering experience, because dinner shouldn't feel like debugging an API.",
+    tagline: "A vintage cafe frontend ordering simulation with deterministic pricing, guest checkout, and printable receipts.",
     bullets: [
-      "Designed an editorial vintage ordering interface with dynamic menu navigation.",
-      "Built client-side cart state managers, item customizers, and checkout ledgers.",
-      "Implemented responsive order summaries, modal customization workflows, and delivery validation."
+      "Developed a client-side restaurant ordering simulation consuming TheMealDB API with deterministic INR pricing and dietary filters.",
+      "Engineered shopping cart state via React Context API, featuring item steppers, modal ingredient recipes, and favorite bookmarks.",
+      "Simulated guest pickup and delivery checkout flows generating uniquely numbered kitchen tickets and printable receipts."
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    techStack: ["React", "JavaScript", "Tailwind CSS", "React Router", "Vite", "Context API"],
     demoUrl: "https://thetiffindispatch.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/food-ordering-system"
   },
   {
     id: "e-commerce-website",
     title: "E-commerce Website",
-    tagline: "Auth, cart ledger, invoice checks — a shopping catalog that actually persists state.",
+    tagline: "Auth, cart ledger, order history — a full-stack catalog backed by Express and MongoDB.",
     bullets: [
-      "Built full-stack retail app featuring persistent user sessions and order tracking.",
-      "Implemented JWT authentication guards and relational MongoDB data storage.",
-      "Designed dynamic product inventory filters and responsive cart checkout flows."
+      "Built full-stack catalog web app featuring user signup/login with JWT stored in HTTP-only cookies and bcrypt password hashing.",
+      "Engineered a session-persistent client cart with server-side order recalculation, order history, and product catalog filters.",
+      "Persisted user accounts and order records to MongoDB document storage using Mongoose models."
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
-    techStack: ["Node.js", "Express", "MongoDB", "React", "JWT"],
+    techStack: ["Node.js", "Express", "MongoDB", "React", "JWT", "Tailwind CSS"],
     githubUrl: "https://github.com/vaibhv19/E--commerce-Website"
   },
   {
     id: "social-media-backend",
     title: "Social Media Backend",
-    tagline: "Follows, feeds, and an admin who can moderate them.",
+    tagline: "Social graph backend with posts, likes, comments, and role-based moderation.",
     bullets: [
-      "Engineered RESTful social graph backend supporting user connections and feeds.",
-      "Built Django REST Framework serializers, custom moderation routes, and RBAC filters.",
-      "Optimized database queries using relational index strategies and select_related joins."
+      "Engineered a Node.js and Express REST backend with EJS views supporting posts, comments, likes, and user relationships.",
+      "Implemented user authentication via JWT in HTTP-only cookies, password hashing with bcrypt, and session handling.",
+      "Built role-based moderation rules allowing administrators to delete flagged content across the platform."
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
-    techStack: ["Python", "Django", "Django REST Framework", "PostgreSQL"],
+    techStack: ["Node.js", "Express", "MongoDB", "Mongoose", "EJS", "JWT"],
     githubUrl: "https://github.com/vaibhv19/Social-Media-Backend"
   },
   {
     id: "weather-app",
     title: "Weather App",
-    tagline: "Debounced city search, weekly forecast, no drama.",
+    tagline: "Industrial telemetry console featuring debounced city search and 5-day forecast.",
     bullets: [
-      "Developed responsive meteorological dashboard consuming external forecast APIs.",
-      "Implemented input debouncing on city search queries to minimize API rate consumption.",
-      "Cached recent API responses locally for instant re-query loading and reduced latency."
+      "Developed responsive meteorological dashboard consuming Open-Meteo geocoding and forecast APIs without server keys.",
+      "Implemented input debouncing on city search queries with a keyboard-navigable autocomplete dropdown.",
+      "Engineered real-time telemetry readouts for temperature, wind direction compass, relative humidity, and 5-day outlook."
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
-    techStack: ["JavaScript", "REST APIs", "Tailwind CSS", "Vercel"],
+    techStack: ["JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Open-Meteo API"],
     githubUrl: "https://github.com/vaibhv19/Weather-App"
   },
 
@@ -399,11 +399,12 @@ export const PROJECTS: Project[] = [
     title: "Fitness Application",
     tagline: "Overengineered for a to-do list, honestly.",
     bullets: [
-      "Developed early full-stack health tracker to master REST API integration patterns.",
-      "Implemented workout CRUD endpoints, calorie analytics algorithms, and MongoDB storage."
+      "Architected a distributed microservices fitness platform using Spring Boot 3.4, Spring Cloud Gateway, Eureka, and Config Server.",
+      "Implemented event-driven activity ingestion via RabbitMQ, profile storage in PostgreSQL, and activity logs in MongoDB.",
+      "Secured endpoints with Keycloak OAuth2 PKCE/JWT authorization and integrated Google Gemini for personalized workout advice."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    techStack: ["Java", "Spring Boot", "Spring Cloud", "RabbitMQ", "PostgreSQL", "MongoDB", "Keycloak", "React", "Gemini API"],
     githubUrl: "https://github.com/vaibhv19/AI-Powered-Fittness-application"
   },
   {
@@ -411,11 +412,12 @@ export const PROJECTS: Project[] = [
     title: "Audio Transcriber",
     tagline: "Made a computer listen so I didn't have to.",
     bullets: [
-      "Built local audio transcription desktop tool wrapping OpenAI Whisper models.",
-      "Processed multi-format audio files using FFmpeg pipelines and Gradio UI components."
+      "Built a decoupled audio transcription web app pairing a Java 21 Spring Boot backend with a React 19 and Vite frontend.",
+      "Integrated OpenAI Whisper models through Spring AI to process audio file uploads and stream back transcribed text.",
+      "Configured CORS-enabled REST endpoints for browser audio uploads and real-time transcription display."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["Python", "Whisper AI", "FFmpeg", "Gradio"],
+    techStack: ["Java 21", "Spring Boot", "Spring AI", "React 19", "Vite", "OpenAI Whisper"],
     githubUrl: "https://github.com/vaibhv19/AI-Audio-Transcriber"
   },
   {
@@ -423,11 +425,12 @@ export const PROJECTS: Project[] = [
     title: "Authentication Service",
     tagline: "Everyone builds one of these eventually.",
     bullets: [
-      "Created identity service exploring password security and token rotation middleware.",
-      "Applied bcrypt password hashing, JWT refresh rotation, and protected endpoint guards."
+      "Created a stateless authentication service in Java 21 and Spring Boot 3.2 using Spring Security and Spring Data JPA.",
+      "Implemented user registration, login authentication, BCrypt password hashing, and MySQL database persistence.",
+      "Engineered JWT access-token generation with refresh-token creation and validation via a custom security filter."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["Node.js", "Express", "JWT", "bcrypt", "PostgreSQL"],
+    techStack: ["Java 21", "Spring Boot", "Spring Security", "Spring Data JPA", "MySQL", "JWT", "BCrypt", "Gradle"],
     githubUrl: "https://github.com/vaibhv19/Authentication-Service"
   },
   {
@@ -435,11 +438,12 @@ export const PROJECTS: Project[] = [
     title: "Ticket Booking System",
     tagline: "Concurrency practice disguised as a booking app.",
     bullets: [
-      "Built event booking prototype evaluating relational database transaction locks.",
-      "Implemented pessimistic SQL row locking (SELECT FOR UPDATE) to eliminate booking race conditions."
+      "Built a menu-driven CLI train ticket booking application in Core Java 21 simulating railway reservation workflows.",
+      "Implemented user management, train search, interactive seat booking, and cancellation with JSON file persistence.",
+      "Applied BCrypt password hashing, Jackson data-binding, and Java Streams without relying on external database engines."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["Java", "Spring Boot", "PostgreSQL", "SQL Locking"],
+    techStack: ["Java 21", "Jackson", "BCrypt", "Gradle", "OOP", "JSON"],
     githubUrl: "https://github.com/vaibhv19/Ticket-booking-system"
   },
   {
@@ -447,11 +451,12 @@ export const PROJECTS: Project[] = [
     title: "Desktop Applications Suite",
     tagline: "Because browsers felt too easy.",
     bullets: [
-      "Built cross-platform desktop utilities utilizing Electron and Node.js APIs.",
-      "Explored native OS file access, IPC message passing, and custom window controls."
+      "Developed a collection of desktop GUI utilities in Java SE using the Swing framework and event-driven architectures.",
+      "Built interactive applications including a Calculator, Tic Tac Toe, Paint canvas, To-Do list, and real-time Morse code translator.",
+      "Implemented custom canvas mouse listeners, color selectors, and audio tone playback using the Java Sound API."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["Electron", "JavaScript", "Node.js API", "HTML/CSS"],
+    techStack: ["Java SE", "Swing", "Java Sound API", "Event-Driven Programming", "OOP"],
     githubUrl: "https://github.com/vaibhv19/Desktop-Applications-Suite"
   },
   {
@@ -459,11 +464,12 @@ export const PROJECTS: Project[] = [
     title: "StreamVerse UI",
     tagline: "AI helped, I take the credit.",
     bullets: [
-      "Designed dark-themed streaming media dashboard prototype with responsive sliders.",
-      "Created custom video player controls and responsive media card layouts."
+      "Developed a responsive, multi-page streaming media interface prototype using semantic HTML5, CSS3, and vanilla JavaScript.",
+      "Built a searchable movie catalog browse page, sticky navigation, and a dynamic watch page updating per selected title.",
+      "Implemented lightweight client-side state handling and layout transitions without external frontend frameworks."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["React", "Tailwind CSS", "HTML5 Video API"],
+    techStack: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
     githubUrl: "https://github.com/vaibhv19/StreamVerse-UI"
   },
   {
@@ -471,35 +477,38 @@ export const PROJECTS: Project[] = [
     title: "High-Performance Socket Servers",
     tagline: "Talked to sockets until they talked back.",
     bullets: [
-      "Programmed low-level TCP socket servers in C++ using POSIX network APIs.",
-      "Implemented non-blocking socket polling, custom packet framing, and multi-client threads."
+      "Programmed low-level TCP socket server architectures in Java demonstrating network I/O and resource concurrency.",
+      "Implemented single-threaded, multi-threaded per-connection, and fixed thread pool models using Java ExecutorService.",
+      "Enforced socket and stream resource cleanup using try-with-resources patterns and structured request-response exchanges."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["C++", "POSIX Sockets", "TCP/IP", "Multithreading"],
+    techStack: ["Java", "TCP Sockets", "Multithreading", "ExecutorService", "Network I/O"],
     githubUrl: "https://github.com/vaibhv19/High-Performance-Socket-Servers"
   },
   {
     id: "smart-research-assistant",
     title: "Smart Research Assistant",
-    tagline: "Read the internet so I didn't have to.",
+    tagline: "AI-powered browser research companion for webpage summarisation and contextual analysis.",
     bullets: [
-      "Built web scraping utility extracting research articles with BeautifulSoup.",
-      "Integrated LLM summarization chains for automated insight extraction and display."
+      "Developed a browser extension paired with a Java and Spring Boot REST backend for real-time web research.",
+      "Integrated the Google Gemini API to generate concise webpage summaries and contextual insights directly in the browser side panel.",
+      "Built client-server communication channels to capture active webpage content and return structured research notes."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["Python", "BeautifulSoup", "OpenAI API", "Streamlit"],
+    techStack: ["Java", "Spring Boot", "Google Gemini API", "Browser Extension", "REST API", "JavaScript"],
     githubUrl: "https://github.com/vaibhv19/Smart-Research-Assistant"
   },
   {
     id: "content-generator-platform",
     title: "Content Generator Platform",
-    tagline: "Prompted a machine, called it a project.",
+    tagline: "Full-stack AI studio for text chat, stock image generation, and recipe creation.",
     bullets: [
-      "Created generative AI web application wrapping language model API endpoints.",
-      "Designed template selectors for producing blog drafts and technical code outlines."
+      "Built a decoupled full-stack generative AI application pairing a Java 21 Spring Boot backend with a React dashboard.",
+      "Integrated Spring AI with OpenAI endpoints for conversational chat, prompt-to-image synthesis, and custom recipe generation.",
+      "Implemented CORS-enabled REST endpoints connecting React state managers to backend AI service handlers."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["Python", "Flask", "OpenAI API", "Bootstrap"],
+    techStack: ["Java 21", "Spring Boot", "Spring AI", "React", "OpenAI API"],
     githubUrl: "https://github.com/vaibhv19/AI-Content-Generator-Platform"
   },
   {
@@ -507,11 +516,12 @@ export const PROJECTS: Project[] = [
     title: "CA Portfolio",
     tagline: "Practiced being organized, once.",
     bullets: [
-      "Built static showcase website for a financial consultancy practice.",
-      "Designed responsive service lists, credential displays, and contact forms."
+      "Built a full-stack executive monorepo portfolio pairing a Next.js App Router frontend with a Django REST Framework backend.",
+      "Implemented AES-256 Fernet symmetric database encryption at rest for sensitive client inquiries and contact submissions.",
+      "Engineered server-side parallel fetching via Promise.all and responsive dark theme styling with Tailwind CSS."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    techStack: ["Next.js", "TypeScript", "Django REST Framework", "Python", "Tailwind CSS", "Cryptography (AES-256)"],
     githubUrl: "https://github.com/vaibhv19/CA----Portfolio"
   },
   {
@@ -519,11 +529,11 @@ export const PROJECTS: Project[] = [
     title: "My-Portfolio",
     tagline: "My personal portfolio.",
     bullets: [
-      "Created initial static portfolio site archiving early student projects and milestones.",
-      "Implemented basic CSS grid layouts and vanilla JavaScript page interactions."
+      "Explored rapid generative UI prototyping using Google AI Studio with React 19, TypeScript, and Vite.",
+      "Integrated the Google Gen AI SDK (@google/genai) alongside Tailwind CSS 4 and Motion animations."
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
-    techStack: ["HTML5", "CSS3", "JavaScript"],
+    techStack: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "@google/genai", "Motion"],
     githubUrl: "https://github.com/vaibhv19/My-Portfolio"
   },
 
