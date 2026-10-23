@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { WaveBackground } from "@/components/WaveBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -94,8 +95,8 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-[#0B0B0B] text-[#F4EFE6] font-sans selection:bg-[#C4A482]/25 selection:text-[#F9F6EE] antialiased relative">
-        {/* Fixed subtle architectural grid layer */}
-        <div className="fixed-bg-layer" aria-hidden="true" />
+        {/* Fixed subtle wave texture background (Narrow Design inspired) */}
+        <WaveBackground />
 
         {/* Content layer above the fixed background */}
         <div className="relative z-10 flex flex-col min-h-screen">

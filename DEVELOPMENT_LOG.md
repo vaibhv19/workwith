@@ -197,3 +197,20 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npx tsc --noEmit` exited code 0 (0 errors).
   - Next.js production build (`npm run build`) compiled all 16 static HTML routes successfully in 3.0s.
   - Visual verification via `browser_subagent` across desktop and mobile (375x812) confirming layout integrity, typography hierarchy, mobile drawer functionality, and high visual polish.
+
+### Milestone 13 — Independent Visual Identity & Subtle Wave Background
+- **Visual Reference & Inspiration Audit:**
+  - Inspected the Narrow Design reference screenshot (`narrowdesign.com`): analyzed its signature horizontal, fine, closely spaced, flowing undulating wave contours.
+  - Identified requirement for an original, non-proprietary, static texture adapted for MyWork's dark `#0B0B0B` canvas with zero disorienting motion (no continuous rotation, spinning, or liquid distortion).
+- **Original Wave Texture Implementation:**
+  - Designed and generated an original, mathematically seamless vector wave texture in `public/subtle-wave-pattern.svg` (320px × 180px tile, 13 KB, periodic boundary conditions across both $X$ and $Y$ planes).
+  - Configured subtle low-contrast stroke (`#F4EFE6` warm ivory with `0.045` opacity, 0.85px stroke width) and paired with a soft radial vignette in `.fixed-bg-layer` (`src/app/globals.css`).
+  - Created reusable `src/components/WaveBackground.tsx` and mounted it in `src/app/layout.tsx`.
+- **Zero Disorienting Motion & Accessibility:**
+  - Background is 100% static by default. Zero CSS keyframe animations, zero WebGL/Canvas rendering loops, zero CPU/GPU overhead.
+  - Full adherence to `prefers-reduced-motion` and accessibility guidelines; does not compete with text contrast, interactive buttons, or focus indicators.
+- **Verification & Testing:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run build` compiled all 16 static HTML routes in 1.5s.
+  - Inspected real-time browser rendering via `browser_subagent` across `/projects`, `/case-study`, and `/start-conversation`, confirming tactile depth, seamless tiling, and high reading clarity.
+
