@@ -207,6 +207,26 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - `npm run build` compiled all 16 static HTML pages in 3.2s.
   - End-to-end browser inspection via `browser_subagent` recording complete visual elegance and responsive layout.
 
+### Milestone 11 — Audit and Reconstruction of the Projects Page Using Canonical Catalogue
+- **Audit Findings (Phase 1, Commit `749c4da`):**
+  - Audited canonical source `data/projects.ts` (36 total projects across 8 categories, plus 3 parent training frameworks).
+  - Uncovered that previous `src/app/projects/page.tsx` maintained an inline, hardcoded `MUST_CHECKOUT` array that duplicated data, drifted descriptions, and contained broken links (e.g., `the-tiffin-dispatch.vercel.app` returning HTTP 404 instead of canonical `thetiffindispatch.vaibhv19.dev`).
+  - Uncovered that Section 2 ("Developed Software") filtered for fictional/phantom project IDs (`redis-lite`, `load-balancer`, `fintrack`, `eventhub`, `devconnect`, `ai-mock-interview`) that do not exist in the catalogue, completely omitting 27 out of 36 canonical projects (75% omission).
+  - Conducted live HTTP HEAD checks verifying that canonical domains for `checkmate`, `trajectory`, `1nfinity`, `thetiffindispatch`, `zoya`, `vaibhv19.dev`, and `life` all return status 200 OK.
+  - Documented complete audit findings in `PROJECTS_PAGE_AUDIT.md`.
+- **Architectural Reconstruction (Phase 2 & 3):**
+  - Augmented `data/projects.ts` with minimal optional schema fields: `mustCheckout?: boolean;` and `previewImage?: string;`.
+  - Tagged the 5 verified flagship deployed applications with `mustCheckout: true`: CheckMate, Trajectory, 1nfinity, The Tiffin Dispatch, and Birthday Wish.
+  - Reconstructed `src/app/projects/page.tsx` to derive Section 1 dynamically: `PROJECTS.filter((p) => p.mustCheckout)`, eliminating all hardcoded secondary arrays.
+  - Reconstructed Section 2 to render the complete 36-project catalogue categorized across all 8 canonical groups, featuring parent framework badges (Lenovo LEAP, IBM SkillsBuild, IBM-PBEL), technology pills, verified repository links, and graceful handling for private client work.
+  - Enforced strict absence of case-study links on project cards (navbar remains the sole entry point).
+- **Verification:**
+  - `npx tsc --noEmit` exited code 0 (0 errors).
+  - `npm run lint` exited code 0 (0 errors, 0 warnings).
+  - `npm run build` compiled all 16 static HTML routes in 8.5s.
+  - Visual inspection via `browser_subagent` across desktop and mobile (412px) confirming typography, image previews, and layout integrity.
+
+
 
 
 

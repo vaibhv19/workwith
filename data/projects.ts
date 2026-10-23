@@ -28,6 +28,8 @@ export interface Project {
   githubUrl?: string;
   highlights?: string[];
   parentFrameworkId?: string;
+  mustCheckout?: boolean;
+  previewImage?: string;
 }
 
 export const TRAINING_PARENTS: ParentFramework[] = [
@@ -67,6 +69,8 @@ export const PROJECTS: Project[] = [
     techStack: ["TypeScript", "React", "WebAssembly", "Web Workers", "SharedArrayBuffer", "chess.js"],
     featured: true,
     homepagePreview: false,
+    mustCheckout: true,
+    previewImage: "/images/projects/checkmate-preview.png",
     demoUrl: "https://checkmate.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Check-Mate-Analyse"
   },
@@ -84,6 +88,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "AWS EC2", "Docker", "Nginx", "GitHub Actions"],
     featured: true,
     homepagePreview: true,
+    mustCheckout: true,
     demoUrl: "https://trajectory.vaibhv19.dev",
     githubUrl: "https://github.com/vaibhv19/Trajectory"
   },
@@ -331,6 +336,7 @@ export const PROJECTS: Project[] = [
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
     techStack: ["React", "JavaScript", "Tailwind CSS", "React Router", "Vite", "Context API"],
+    mustCheckout: true,
     demoUrl: "https://thetiffindispatch.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/food-ordering-system"
   },
@@ -341,7 +347,7 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Built full-stack catalog web app featuring user signup/login with JWT stored in HTTP-only cookies and bcrypt password hashing.",
       "Engineered a session-persistent client cart with server-side order recalculation, order history, and product catalog filters.",
-      "Persisted user accounts and order records to MongoDB document storage using Mongoose models."
+      "Persisted user accounts and order records to MongoDB document storage using Mongoose models.",
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
@@ -355,7 +361,7 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Engineered a Node.js and Express REST backend with EJS views supporting posts, comments, likes, and user relationships.",
       "Implemented user authentication via JWT in HTTP-only cookies, password hashing with bcrypt, and session handling.",
-      "Built role-based moderation rules allowing administrators to delete flagged content across the platform."
+      "Built role-based moderation rules allowing administrators to delete flagged content across the platform.",
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
@@ -369,7 +375,7 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Developed responsive meteorological dashboard consuming Open-Meteo geocoding and forecast APIs without server keys.",
       "Implemented input debouncing on city search queries with a keyboard-navigable autocomplete dropdown.",
-      "Engineered real-time telemetry readouts for temperature, wind direction compass, relative humidity, and 5-day outlook."
+      "Engineered real-time telemetry readouts for temperature, wind direction compass, relative humidity, and 5-day outlook.",
     ],
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
@@ -389,6 +395,7 @@ export const PROJECTS: Project[] = [
     ],
     category: "Built for No Reason Other Than Wanting To",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Canvas API"],
+    mustCheckout: true,
     demoUrl: "https://zoya.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Happy-Birthday-Zoya"
   },
@@ -549,6 +556,8 @@ export const PROJECTS: Project[] = [
     ],
     category: "Client Work & Collaborations",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    mustCheckout: true,
+    previewImage: "/images/projects/1nfinity-preview.webp",
     demoUrl: "https://1nfinity.online"
   },
 
