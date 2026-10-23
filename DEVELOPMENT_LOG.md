@@ -97,11 +97,22 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:** `npx tsc --noEmit` passed with 0 errors. Dev server running and compiling cleanly.
 
 ### Milestone 3 — Projects Page Structure
+- **Commit:** `320bdce`
 - **Scope:**
   - Built `src/app/projects/page.tsx` featuring two strictly ordered, visually distinct sections:
     1. **01 / Must Checkout**: Curated flagship interactive applications visitors can experience directly (CheckMate, Trajectory, 1nfinity.online, The Tiffin Dispatch, Birthday Wish). Integrated real preview visuals (`checkmate-preview.png`, `1nfinity-preview.webp`), verified live application actions (`demoUrl`), and repository links.
     2. **02 / Developed Software**: Comprehensive engineering catalog derived from `data/projects.ts`, categorized into Web Applications, Systems & Infrastructure, Mobile Applications, CLI & Developer Tools, and Academic & Experiments. Each card features project name, status/year, description, technology tags, and verified GitHub repository action.
   - **Rule Enforcement:** Zero case-study links or "Read Case Study" CTAs added to any project cards.
 - **Verification:** `npx tsc --noEmit` exited with code 0.
+
+### Milestone 4 — Case Study Landing Page
+- **Scope:**
+  - Built `src/app/case-study/page.tsx` as an independent primary navigation destination (strictly isolated from Projects page cards).
+  - Implemented the premise and evidence layer derived authentically from `CASE_STUDY_DATABASE.md` covering six key projects: CheckMate, Trajectory, Conclave, Phoenix, Email Job Scheduler (EJS), and 1nfinity.online.
+  - Sourced and tagged evidence with explicit integrity indicators: `[REPO] Codebase Verified`, `[CONVERSATION] Confirmed Context`, `[CONFIRM] Open Inquiry`, and `[CATALOG] Catalog Specification`.
+  - Added interactive deep-dive dossiers exposing core narrative, architectural pivots, verified evidence ledger citations, open questions, and claims deliberately avoided.
+  - Highlighted authentic engineering constraints without marketing inflation (e.g., local Ollama thermal limits, unresolved ~85% confidence score ceiling, hiring assignment debranding, and client-side COOP/COEP multithreading headers).
+- **Verification:** `npx tsc --noEmit` passed with 0 errors. Dev server running and compiling cleanly.
+
 
 
