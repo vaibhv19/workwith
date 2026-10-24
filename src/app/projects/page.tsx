@@ -69,7 +69,7 @@ export default function ProjectsPage() {
           <h2 id="must-checkout-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground">
             Must Checkout
           </h2>
-          <span className="text-xs text-foreground-muted">
+          <span className="text-xs font-mono text-accent-secondary">
             {mustCheckoutProjects.length} live applications deployed on Vercel
           </span>
         </div>
@@ -87,7 +87,7 @@ export default function ProjectsPage() {
           <h2 id="developed-software-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground">
             Developed Software
           </h2>
-          <span className="text-xs text-foreground-muted">
+          <span className="text-xs font-mono text-accent-secondary">
             Curated selection of {developedSoftwareProjects.length} engineering systems
           </span>
         </div>
@@ -105,7 +105,7 @@ export default function ProjectsPage() {
             href="https://github.com/vaibhv19"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:text-accent underline decoration-border/70 hover:decoration-accent font-medium transition-colors inline-flex items-center gap-1"
+            className="text-accent-secondary hover:text-accent-secondary-hover underline decoration-accent-secondary/40 hover:decoration-accent-secondary font-medium transition-colors inline-flex items-center gap-1"
           >
             Explore all projects on GitHub ↗
           </a>

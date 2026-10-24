@@ -100,7 +100,7 @@ export default function StartConversationPage() {
         </div>
 
         <div className="pt-4 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-foreground-subtle">
-          <span>Greater Noida / New Delhi, India (IST · UTC+5:30)</span>
+          <span className="text-accent-secondary">Greater Noida / New Delhi, India (IST · UTC+5:30)</span>
 
           {/* Social Channels */}
           <div className="flex items-center gap-4 text-foreground-muted">
@@ -172,10 +172,15 @@ export default function StartConversationPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
           {CONVERSATION_AREAS.map((topic) => (
             <div key={topic.title} className="space-y-1">
-              <h3 className="text-sm font-semibold text-foreground">
-                {topic.title}
-              </h3>
-              <p className="text-xs text-foreground-muted leading-relaxed">
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs font-semibold text-accent-secondary select-none">
+                  {topic.number}
+                </span>
+                <h3 className="text-sm font-semibold text-foreground">
+                  {topic.title}
+                </h3>
+              </div>
+              <p className="text-xs text-foreground-muted leading-relaxed pl-5 sm:pl-5">
                 {topic.description}
               </p>
             </div>

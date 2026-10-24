@@ -14,8 +14,8 @@
   --color-border-subtle: #F0F0F0;
   --color-border-accent: #D32F2F;
 
-  --color-foreground: #111111;
-  --color-foreground-ivory: #000000;
+  --color-foreground: #171717;
+  --color-foreground-ivory: #0A0A0A;
   --color-foreground-muted: #555555;
   --color-foreground-subtle: #767676;
 
@@ -25,6 +25,10 @@
   --color-accent-champagne: #FFEBEE;
   --color-accent-dark: #8B0000;
 
+  --color-accent-secondary: #355C7D;
+  --color-accent-secondary-hover: #26435C;
+  --color-accent-secondary-subtle: #EBF1F5;
+
   --font-display: 'Clash Display', var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-numeric: 'Satoshi', var(--font-inter), sans-serif;
   --font-satoshi: 'Satoshi', var(--font-inter), sans-serif;
@@ -33,7 +37,7 @@
 }
 
 :root {
-  /* Core Palette Variables - White, Black & Red */
+  /* Core Palette Variables - White, Near-Black, Red & Muted Blue */
   --bg-black: #FFFFFF;
   --bg-deep: #FAFAFA;
   
@@ -47,8 +51,8 @@
   --border-subtle: #F0F0F0;
   --border-accent: #D32F2F;
   
-  --text-primary: #111111;
-  --text-ivory: #000000;
+  --text-primary: #171717;
+  --text-ivory: #0A0A0A;
   --text-muted: #555555;
   --text-subtle: #767676;
   
@@ -57,6 +61,10 @@
   --accent-tan: #C62828;
   --accent-champagne: #FFEBEE;
   --accent-subtle: rgba(211, 47, 47, 0.08);
+
+  --accent-secondary: #355C7D;
+  --accent-secondary-hover: #26435C;
+  --accent-secondary-subtle: #EBF1F5;
 
   /* Font stacks */
   --font-clash: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -235,9 +243,9 @@ input, textarea, button, select {
 }
 
 .btn-secondary:hover {
-  border-color: var(--accent-primary);
+  border-color: var(--accent-secondary);
   background-color: var(--surface-elevated);
-  color: var(--accent-primary);
+  color: var(--accent-secondary);
 }
 
 .btn-text {

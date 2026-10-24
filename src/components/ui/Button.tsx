@@ -53,13 +53,13 @@ export default function Button({
   // Visual variants
   const variantClasses: Record<ButtonVariant, string> = {
     primary:
-      "bg-[#111111] text-white hover:bg-black hover:shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)] hover:-translate-y-[1px]",
+      "bg-[#171717] text-white hover:bg-black hover:shadow-[0_8px_24px_-6px_rgba(0,0,0,0.15)] hover:-translate-y-[1px]",
     secondary:
-      "bg-transparent text-[#111111] border border-[#E5E5E5] hover:border-[#D32F2F] hover:bg-[#FAFAFA] hover:text-[#D32F2F]",
+      "bg-transparent text-[#171717] border border-[#E5E5E5] hover:border-[#355C7D] hover:bg-[#FAFAFA] hover:text-[#355C7D]",
     accent:
       "bg-[#D32F2F] text-white hover:bg-[#B71C1C] hover:shadow-[0_8px_24px_-6px_rgba(211,47,47,0.2)] hover:-translate-y-[1px]",
     text:
-      "bg-transparent text-[#111111] hover:text-[#D32F2F] font-semibold border-none !p-0",
+      "bg-transparent text-[#171717] hover:text-[#D32F2F] font-semibold border-none !p-0",
   };
 
   const appliedSize = variant === "text" ? textSizeClasses[size] : sizeClasses[size];

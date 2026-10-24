@@ -71,7 +71,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         {/* Article Header */}
         <header className="space-y-6 border-b border-border pb-8">
           <div className="flex items-center justify-between text-xs text-foreground-muted">
-            <span className="font-medium text-foreground">
+            <span className="font-medium text-accent-secondary font-mono">
               {study.category}
             </span>
             <span>{study.period}</span>
@@ -205,8 +205,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
               {/* Callout Box */}
               {sec.callout && (
-                <div className="p-4 sm:p-5 rounded-[2px] border border-border bg-surface-elevated/70 my-5 space-y-1.5">
-                  <div className="text-xs font-semibold text-foreground">
+                <div className="p-4 sm:p-5 rounded-[2px] border border-border border-l-2 border-l-accent-secondary bg-surface-elevated/70 my-5 space-y-1.5">
+                  <div className="text-xs font-semibold text-accent-secondary font-mono">
                     {sec.callout.title}
                   </div>
                   <div className="text-xs sm:text-sm text-foreground-muted leading-relaxed font-sans">
@@ -235,7 +235,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 <div className="space-y-0 my-6">
                   <div className="flex items-center justify-between px-4 py-2 rounded-t-[2px] bg-surface-elevated border border-b-0 border-border text-xs font-mono text-foreground-muted">
                     <span className="font-medium text-foreground">{sec.codeBlock.title}</span>
-                    <span className="text-foreground-muted text-xs font-mono">{sec.codeBlock.language}</span>
+                    <span className="text-accent-secondary text-xs font-mono font-medium">{sec.codeBlock.language}</span>
                   </div>
                   <pre className="overflow-x-auto text-xs font-mono bg-[#F8F8F8] border border-border rounded-b-[2px] p-4 text-foreground leading-relaxed">
                     <code>{sec.codeBlock.code}</code>

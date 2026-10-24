@@ -565,3 +565,46 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors in 1.3s.
   - Visual Browser Inspection: Desktop (1440x900) and Mobile (390x844) verification confirmed CheckMate navigates to the live demo, Phoenix navigates to GitHub, secondary links are completely gone, and wrapping behaves seamlessly with zero horizontal overflow.
+
+### Milestone 27 — Introduce a Distinct Third Color (Muted Blue Secondary Accent)
+- **Objective:**
+  - Introduce a distinct third color to add visual depth and refine informational hierarchy across the entire website:
+    - Primary background: white (`#FFFFFF`)
+    - Primary text: near-black (`#171717`)
+    - Primary accent: red (`#D32F2F`)
+    - Secondary accent: muted blue (`#355C7D`, hover: `#26435C`, subtle: `#EBF1F5`)
+    - Secondary text and borders: neutral grays (`#555555`, `#767676`, `#E5E5E5`)
+- **Design Token & Global Centralization:**
+  - **`src/app/globals.css`:**
+    - Defined Tailwind v4 tokens: `--color-accent-secondary: #355C7D`, `--color-accent-secondary-hover: #26435C`, `--color-accent-secondary-subtle: #EBF1F5`.
+    - Updated primary text token to near-black (`--color-foreground: #171717`).
+    - Added corresponding `:root` CSS custom variables (`--accent-secondary`, `--accent-secondary-hover`, `--accent-secondary-subtle`, `--text-primary: #171717`).
+    - Updated `.btn-secondary:hover` to use `var(--accent-secondary)` for border and text color.
+- **Selective Hierarchy Applications (No Arbitrary Recoloring):**
+  - **Navigation (`src/components/Header.tsx`):**
+    - Retained red (`#D32F2F`) as the primary active page indicator line.
+    - Hovering an inactive tab reveals a subtle muted blue (`#355C7D`) line and text transition (`hover:text-accent-secondary`), distinguishing tab preview from the active page indicator.
+  - **Buttons (`src/components/ui/Button.tsx`):**
+    - Primary button uses inverse near-black (`#171717`).
+    - Accent button uses primary red (`#D32F2F`).
+    - Secondary button hover uses muted blue (`border-[#355C7D] text-[#355C7D]`), creating clear semantic alignment.
+  - **Projects (`src/app/projects/page.tsx`):**
+    - Applied muted blue (`text-accent-secondary font-mono`) to section scope counters (*"8 live applications deployed on Vercel"* and *"Curated selection of 8 engineering systems"*).
+    - Preserved red hover on primary project titles.
+    - Styled the section-level GitHub archive link (*"Explore all projects on GitHub ↗"*) in muted blue (`text-accent-secondary hover:text-accent-secondary-hover`), clearly separating the secondary archive action from primary on-page projects.
+  - **Case Studies (`src/app/case-study/page.tsx` & `src/app/case-study/[slug]/page.tsx`):**
+    - Applied muted blue to category classification tags (`study.category`) in monospace, creating instant editorial taxonomy.
+    - Highlighted code block language tags (`sec.codeBlock.language`) in monospace muted blue.
+    - Added an understated `border-l-2 border-l-accent-secondary` to editorial callout boxes.
+  - **Start a Conversation (`src/app/start-conversation/page.tsx`):**
+    - Styled direct contact bar location / timezone (*"Greater Noida / New Delhi, India (IST · UTC+5:30)"*) in muted blue.
+    - Rendered conversation area index numbers (`01`, `02`, `03`, `04`) in muted blue monospace typography.
+- **Preserved Core Constraints:**
+  - White background and near-black text remain overwhelmingly dominant.
+  - Wave background remains subtle and static gray on white.
+  - Centered middle-column layout, compact project lists, single title-link behavior, and 3-link mobile navigation preserved.
+  - No decorative badges, glow effects, or card wrappers added.
+  - Contrast ratio of `#355C7D` on white is 7.09:1 (exceeds WCAG AAA).
+- **Validation:**
+  - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.4s with 0 errors.
+  - Visual Browser Verification: Checked desktop (1440x900) and mobile (390x844) viewports across `/projects`, `/case-study`, `/case-study/checkmate`, and `/start-conversation`. Verified WCAG contrast, tab hover feedback, metadata taxonomy, and responsive layout without horizontal overflow.

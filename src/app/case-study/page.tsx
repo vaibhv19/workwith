@@ -46,7 +46,7 @@ export default function CaseStudiesPage() {
           >
             {/* Top Row: Category & Period */}
             <div className="flex items-baseline justify-between text-xs text-foreground-subtle font-mono">
-              <span className="text-foreground-muted">{study.category}</span>
+              <span className="text-accent-secondary font-medium">{study.category}</span>
               <span>{study.period}</span>
             </div>
 
