@@ -95,44 +95,47 @@ export default function WorkWithMePage() {
         </p>
       </header>
 
-
-      {/* 4. How I Work (Editorial Two-Column Section) */}
+      {/* 5. Book a Meeting (Inline Google Calendar Embed) */}
       <section
-        aria-labelledby="how-i-work-heading"
-        className="space-y-6 border-t border-border pt-8 sm:pt-10"
+        id="book-meeting"
+        aria-labelledby="book-meeting-heading"
+        className="space-y-4 sm:space-y-5 border-t border-border pt-8 sm:pt-10"
       >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
-          <div className="md:col-span-5 space-y-1.5 sm:space-y-2">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-2.5">
+          <div className="space-y-1">
             <h2
-              id="how-i-work-heading"
-              className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading leading-tight uppercase"
+              id="book-meeting-heading"
+              className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading uppercase"
             >
-              How I Work
+              Book a Meeting
             </h2>
-            <p className="text-xs sm:text-sm text-[#171717]/70 font-normal leading-relaxed">
-              Engineering principles grounded in production systems, architectural constraints, and measured outcomes.
-            </p>
-          </div>
-
-          <div className="md:col-span-7">
-            <div className="border-l-2 border-border pl-5 sm:pl-6 space-y-3.5 text-xs sm:text-sm text-[#171717] leading-relaxed font-normal">
-              <p>
-                <strong className="font-semibold text-heading">Constraints Precede Architecture:</strong>{" "}
-                System architecture begins with real-world operating limits rather than idealized patterns. In CheckMate, running Stockfish 16 WASM in the browser required strict Web Worker isolation and COOP/COEP headers to unlock SharedArrayBuffer multithreading while preserving 60 FPS UI rendering.
-              </p>
-              <p>
-                <strong className="font-semibold text-heading">Restraint Over Decoration:</strong>{" "}
-                Frontend systems are engineered under strict performance budgets, targeting 98+ Lighthouse scores by eliminating third-party runtime bloat and layout shifts. On 1nfinity.online, rejecting heavy external animation frameworks in favor of native CSS keyframes secured documented 99 Desktop / 92 Mobile Lighthouse performance in production.
-              </p>
-              <p>
-                <strong className="font-semibold text-heading">Verifiable Reliability:</strong>{" "}
-                Prioritizing idempotency, recovery state machines, and transparent logs over black-box complexity. In Email Job Scheduler, atomic Redis Lua scripts and BullMQ claim patterns guaranteed zero duplicate dispatches during worker crashes.
-              </p>
-            </div>
           </div>
         </div>
-      </section>
 
+        {/* Embedded Google Calendar Appointment Schedule */}
+        <div className="w-full rounded-[2px] border border-border bg-white overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <iframe
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Z-l5Ev8LHzyxn4ZiIv8APZDEqI7ES5_XmRJKdy_5W7XnAru7iM4pV9srd4kIZU1QneAY8UDws?gv=true"
+            title="Book an appointment with Vaibhav Gupta via Google Calendar"
+            className="w-full border-0 block"
+            style={{ minHeight: "600px", height: "600px" }}
+            loading="lazy"
+          />
+        </div>
+
+        <p className="text-[11px] font-mono text-[#171717]/60 text-center">
+          Schedule managed directly by Google Calendar. If the scheduler does not load, use the{" "}
+          <a
+            href="https://calendar.app.google/9SPAp6kwTNYcksBb8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link hover:text-link-hover underline underline-offset-2"
+          >
+            direct booking link
+          </a>
+          .
+        </p>
+      </section>
 
       {/* 2. Horizontal Marquee of Core Disciplines */}
       <div
@@ -160,48 +163,6 @@ export default function WorkWithMePage() {
           ))}
         </Marquee>
       </div>
-
-      {/* 6. Contact & Collaboration */}
-      <section
-        aria-labelledby="contact-heading"
-        className="space-y-5 border-t border-border pt-8 sm:pt-10"
-      >
-        <div className="space-y-1.5">
-          <h2
-            id="contact-heading"
-            className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading uppercase"
-          >
-            Start a Conversation
-          </h2>
-          <p className="text-xs sm:text-sm text-[#171717] leading-relaxed max-w-xl font-normal">
-            I am open to full-time software engineering roles, complex systems challenges, and technical consulting. If you have an opportunity or want to discuss an architecture, let&apos;s talk.
-          </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3 pt-1">
-          <Button href="/start-conversation" variant="primary" size="sm" icon="arrow-right">
-            Send a Message
-          </Button>
-          <Button
-            href="mailto:contact@vaibhv19.dev"
-            variant="secondary"
-            size="sm"
-            icon="arrow-up-right"
-            external
-          >
-            contact@vaibhv19.dev
-          </Button>
-          <Button
-            href="https://www.linkedin.com/in/vaibhv19"
-            variant="secondary"
-            size="sm"
-            icon="arrow-up-right"
-            external
-          >
-            LinkedIn
-          </Button>
-        </div>
-      </section>
     </Container>
   );
 }

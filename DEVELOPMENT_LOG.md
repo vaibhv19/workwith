@@ -945,3 +945,14 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:**
   - Production build (`npm run build`) succeeded with 0 errors across all 16 static/SSG routes.
 
+---
+
+### Milestone 41: Inline Google Calendar Appointment Booking Integration (2026-10-24)
+- **Inline Appointment Scheduling ([page.tsx](file:///d:/Work/Projects----Personal/MyWork/src/app/page.tsx)):**
+  - Integrated a dedicated `Book a Meeting` section (`id="book-meeting"`) within the shared centered container on the Work With Me landing page (`/`).
+  - Embedded Google Calendar Appointment Schedule iframe (`https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Z-l5Ev8LHzyxn4ZiIv8APZDEqI7ES5_XmRJKdy_5W7XnAru7iM4pV9srd4kIZU1QneAY8UDws?gv=true`) with 600px height, responsive width constraints, and accessible title (`Book an appointment with Vaibhav Gupta via Google Calendar`).
+  - Added a discreet, verified external fallback link (`Open booking calendar ↗` and direct fallback text) pointing to `https://calendar.app.google/9SPAp6kwTNYcksBb8` for browsers blocking third-party iframes.
+  - Positioned seamlessly alongside the contact section with consistent typography, red accent `#D32F2F`, and border tokens without introducing extraneous dependencies.
+- **Verification:**
+  - `npm run build` executed cleanly with 0 errors across all 16 static and dynamic routes.
+
