@@ -654,3 +654,33 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Static compilation (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.3s with 0 errors.
   - Visual Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports across `/projects`, `/case-study`, `/case-study/checkmate`, and `/start-conversation`. Strong typographic hierarchy, high WCAG contrast, and seamless responsive layout verified.
+
+### Milestone 29 — Project Title Links Changed to Muted Blue
+
+- **Objective:**
+  - Make a focused color adjustment to all project-title links in **Checkout** (Must Checkout) and **Developed Software** from red (`#D32F2F`) to muted blue (`#355C7D`).
+  - Apply the muted blue consistently across default, hover, focus, and visited states while maintaining clear interactive feedback.
+  - Keep project titles underlined; avoid decorative badges, icons, or buttons.
+  - Preserve title-only link resolution: clicking a project title opens its live demo when available, otherwise its source repository.
+  - Retain ordinary body text as near-black (`#171717`), background as pure white (`#FFFFFF`), and static wave texture as light gray.
+  - Keep red (`#D32F2F`) for the primary navigation active indicator and other existing red accents (section headings, archive links, footer email, active markers).
+  - Inspect shared link styles and design tokens before editing; prefer updating the relevant reusable style rather than scattered overrides.
+- **Shared Design Token & Reusable Link Class (`src/app/globals.css`):**
+  - Utilized existing `@theme` and `:root` tokens: `--color-accent-secondary: #355C7D`, `--color-accent-secondary-hover: #26435C`, `--accent-secondary: #355C7D`, and `--accent-secondary-hover: #26435C`.
+  - Introduced centralized `.link-project-title` utility in `src/app/globals.css`:
+    - Default state: `color: var(--accent-secondary)` (`#355C7D`), `text-decoration: underline`, `text-decoration-color: rgba(53, 92, 125, 0.4)`, `text-underline-offset: 2px`.
+    - Visited state: `color: var(--accent-secondary)` (`#355C7D`) to prevent browser purple visited overrides on external domains.
+    - Hover state: `color: var(--accent-secondary-hover)` (`#26435C`), `text-decoration-color: var(--accent-secondary-hover)`.
+    - Focus-visible state: `outline: none`, `box-shadow: 0 0 0 1.5px var(--accent-secondary)`.
+- **Project List Implementation (`src/app/projects/page.tsx`):**
+  - Updated `ProjectListItem` component to use `.link-project-title` on linked project titles.
+  - Updated unlinked fallback to `text-accent-secondary` (`#355C7D`).
+  - Preserved user's working copy edits: removal of redundant page header block, simplified "Checkout" section title, and omission of item counter chips.
+- **Preserved Core Constraints & Layout:**
+  - Navigation active indicator, section headings ("Checkout", "Developed Software"), and GitHub archive link remain red (`#D32F2F`).
+  - Project descriptions and em dashes remain crisp near-black (`#171717`).
+  - Background remains pure white (`#FFFFFF`) with subtle light gray wave texture.
+  - Title-only link destination logic intact (live demo prioritized over source repository).
+- **Validation:**
+  - Static compilation (`npm run build`): All 16 static HTML routes generated with 0 errors via Turbopack.
+  - Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports on `/projects`. Confirmed computed styles (`rgb(53, 92, 125)` default, `rgb(38, 67, 92)` hover, `rgb(53, 92, 125)` visited), clear underline, no horizontal overflow, and responsive text wrapping.

@@ -25,12 +25,12 @@ function ProjectListItem({ project }: { project: Project }) {
           href={destinationUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium text-accent underline decoration-accent/40 hover:text-accent-muted hover:decoration-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-xs transition-colors"
+          className="link-project-title"
         >
           {project.title}
         </a>
       ) : (
-        <span className="font-medium text-accent">
+        <span className="font-medium text-accent-secondary">
           {project.title}
         </span>
       )}
@@ -53,25 +53,14 @@ export default function ProjectsPage() {
 
   return (
     <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-10 sm:space-y-14">
-      {/* Page Header */}
-      <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
-        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-accent leading-[1.15]">
-          Projects &amp; Systems
-        </h1>
-        <p className="font-body text-sm sm:text-base text-[#171717] leading-relaxed max-w-2xl font-normal">
-          Live applications deployed on Vercel, a curated selection of systems and backend engineering projects, and the complete repository archive on GitHub.
-        </p>
-      </header>
+
 
       {/* SECTION 1: MUST CHECKOUT */}
       <section aria-labelledby="must-checkout-heading" className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
           <h2 id="must-checkout-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-accent">
-            Must Checkout
+          Checkout
           </h2>
-          <span className="text-xs font-mono text-[#171717]">
-            {mustCheckoutProjects.length} live applications deployed on Vercel
-          </span>
         </div>
 
         <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
@@ -87,9 +76,6 @@ export default function ProjectsPage() {
           <h2 id="developed-software-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-accent">
             Developed Software
           </h2>
-          <span className="text-xs font-mono text-[#171717]">
-            Curated selection of {developedSoftwareProjects.length} engineering systems
-          </span>
         </div>
 
         <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
