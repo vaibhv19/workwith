@@ -218,6 +218,7 @@ export const PROJECTS: Project[] = [
     techStack: ["TypeScript", "React", "Node.js", "Express", "BullMQ", "Redis", "PostgreSQL", "Elasticsearch", "Docker"],
     featured: false,
     homepagePreview: false,
+    mustCheckout: true,
     demoUrl: "https://email-job-scheduler.vaibhv19.dev",
     githubUrl: "https://github.com/vaibhv19/Email-Job-Scheduler"
   },
@@ -576,6 +577,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Markdown"],
     featured: true,
     homepagePreview: false,
+    mustCheckout: true,
     demoUrl: "https://vaibhv19.dev",
     githubUrl: "https://github.com/vaibhv19/Portfolio-BLog"
   },
@@ -590,6 +592,7 @@ export const PROJECTS: Project[] = [
     ],
     category: "Personal Websites & Platforms",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    mustCheckout: true,
     demoUrl: "https://life.vaibhv19.dev"
   }
 ];

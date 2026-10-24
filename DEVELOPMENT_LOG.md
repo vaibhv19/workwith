@@ -409,3 +409,35 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Tablet (768x1024): Fluid column utilizing width with `sm:px-6` side padding.
   - Mobile (390x844 & 320x650): Clean readability; verified zero horizontal overflow (`scrollWidth <= innerWidth`).
   - Production build (`npm run build`): All 16 static HTML routes compiled cleanly via Turbopack with zero errors.
+
+### Milestone 22 — Populate Must Checkout from All Verified Vercel Deployments & Deduplicate Developed Software
+- **Objective:**
+  - Audit all projects deployed on the user's Vercel account and populate the "Must Checkout" section on the Projects page with every distinct, eligible live project.
+  - Eliminate duplication between Must Checkout and Developed Software, ensuring each project appears exactly once on the page while preserving the full catalogue metadata.
+- **Audit & Deployment Inventory:**
+  - **Environment Discovery:** Vercel CLI session was unauthenticated (`Logged out`). Used GitHub API (`https://api.github.com/users/vaibhv19/repos?per_page=100`), repository configurations, and live HTTP probing with header inspection (`x-vercel-id`, `x-vercel-cache`, `server: Vercel`).
+  - **8 Verified Live Vercel Deployments Identified & Included in Must Checkout:**
+    1. **CheckMate** (`https://checkmate.vaibhv19.dev/`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: sin1::5cdzt...`). Production chess platform with stockfish analysis.
+    2. **Trajectory** (`https://trajectory.vaibhv19.dev`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: sin1::th9fd...`). Interactive student path visualizer and roadmap tracker.
+    3. **Email Job Scheduler** (`https://email-job-scheduler.vaibhv19.dev`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: sin1::vll6x...`). Distributed job scheduling platform with BullMQ and Redis.
+    4. **The Tiffin Dispatch** (`https://thetiffindispatch.vaibhv19.dev/`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: sin1::4sl7c...`). Commercial meal delivery and ordering engine.
+    5. **Birthday Wish (Zoya)** (`https://zoya.vaibhv19.dev/`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: sin1::jjln2...`). Interactive 3D/canvas visual experience.
+    6. **1nfinity** (`https://1nfinity.online`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: sin1::dk582...`). Full-stack digital studio and client platform.
+    7. **Personal Blog (vaibhv19.dev)** (`https://vaibhv19.dev`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: sin1::6kl85...`). MDX-powered technical engineering journal.
+    8. **Life** (`https://life.vaibhv19.dev`) — Status: `200 OK`, Server: Vercel (`x-vercel-id: hkg1::iad1::l4bgm...`). Personal digital life tracker and habit journal.
+  - **Exclusions & Alias Handling:**
+    - `food-ordering-system-ruddy-sigma.vercel.app`: HTTP 307 redirect to canonical domain `https://thetiffindispatch.vaibhv19.dev/`. Listed once under the canonical project entry.
+    - `vaibhv19.vercel.app` (My-Portfolio): HTTP 404 (`X-Vercel-Error: DEPLOYMENT_NOT_FOUND`). Retired previous portfolio deployment; preserved in Developed Software catalogue without an invalid live demo link.
+    - `workwith.vaibhv19.dev`: DNS unresolvable. Active portfolio is hosted at `mywork.vaibhv19.dev`.
+- **Implementation Details:**
+  - **Data Catalogue (`data/projects.ts`):**
+    - Flagged `email-job-scheduler`, `portfolio-blog`, and `life` with `mustCheckout: true`, matching their verified live Vercel deployments. Exactly 8 projects now carry this flag.
+  - **Projects Landing Page (`src/app/projects/page.tsx`):**
+    - Updated Section 1 title counter: `8 live applications deployed on Vercel`.
+    - Added deduplication logic (`mustCheckoutIds = new Set(mustCheckoutProjects.map((p) => p.id))`) to filter Section 2 (Developed Software): `PROJECTS.filter((p) => p.category === group.category && !mustCheckoutIds.has(p.id))`.
+    - Cleanly omits category headings when all projects in that group are in Must Checkout (e.g. `Client Work & Collaborations` and `Personal Websites & Platforms`).
+    - Updated Section 2 title counter: `Systems architecture & software catalog (28 projects)`.
+    - 8 Must Checkout + 28 Developed Software = 36 canonical projects represented without duplication.
+- **Validation:**
+  - Desktop (1440x900) & Mobile (390x844) visual review: All 8 Must Checkout projects display text-led cards with verified links; Developed Software lists the remaining 28 distinct projects with zero duplicate occurrences.
+  - Build validation (`npm run build`): All 16 static HTML routes generated cleanly with zero errors in Next.js Turbopack.

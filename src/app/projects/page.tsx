@@ -72,8 +72,10 @@ const CATALOG_GROUPS: CatalogGroup[] = [
 ];
 
 export default function ProjectsPage() {
-  // Section 1: Flagship live deployed projects
+  // Section 1: All verified projects deployed on Vercel
   const mustCheckoutProjects = PROJECTS.filter((p) => p.mustCheckout);
+  const mustCheckoutIds = new Set(mustCheckoutProjects.map((p) => p.id));
+  const remainingCatalogCount = PROJECTS.length - mustCheckoutProjects.length;
 
   return (
     <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
@@ -87,14 +89,14 @@ export default function ProjectsPage() {
         </p>
       </header>
 
-      {/* SECTION 1: MUST CHECKOUT (CURATED DEPLOYED EXPERIENCES) */}
+      {/* SECTION 1: MUST CHECKOUT (ALL VERIFIED VERCEL DEPLOYMENTS) */}
       <section aria-labelledby="must-checkout-heading" className="space-y-6 sm:space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
           <h2 id="must-checkout-heading" className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
             Must Checkout
           </h2>
           <span className="text-xs text-foreground-muted">
-            Live applications you can explore
+            {mustCheckoutProjects.length} live applications deployed on Vercel
           </span>
         </div>
 
@@ -171,13 +173,15 @@ export default function ProjectsPage() {
             Developed Software
           </h2>
           <span className="text-xs text-foreground-muted">
-            Complete catalogue of {PROJECTS.length} projects and systems
+            Systems architecture &amp; software catalog ({remainingCatalogCount} projects)
           </span>
         </div>
 
         <div className="space-y-12">
           {CATALOG_GROUPS.map((group) => {
-            const items = PROJECTS.filter((p) => p.category === group.category);
+            const items = PROJECTS.filter(
+              (p) => p.category === group.category && !mustCheckoutIds.has(p.id)
+            );
             if (items.length === 0) return null;
 
             return (
