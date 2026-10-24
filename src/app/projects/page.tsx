@@ -19,23 +19,23 @@ function ProjectListItem({ project }: { project: Project }) {
   const destinationUrl = project.demoUrl || project.githubUrl;
 
   return (
-    <li className="text-xs sm:text-sm leading-relaxed text-foreground-muted">
+    <li className="text-xs sm:text-sm leading-relaxed text-[#171717]">
       {destinationUrl ? (
         <a
           href={destinationUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium text-foreground underline decoration-border/80 hover:text-accent hover:decoration-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-xs transition-colors"
+          className="font-medium text-accent underline decoration-accent/40 hover:text-accent-muted hover:decoration-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-xs transition-colors"
         >
           {project.title}
         </a>
       ) : (
-        <span className="font-medium text-foreground">
+        <span className="font-medium text-accent">
           {project.title}
         </span>
       )}
-      <span className="text-foreground-subtle mx-1.5 sm:mx-2 select-none">—</span>
-      <span className="text-foreground-muted font-light">
+      <span className="text-[#171717] mx-1.5 sm:mx-2 select-none">—</span>
+      <span className="text-[#171717] font-normal">
         {project.shortDescription || project.tagline}
       </span>
     </li>
@@ -55,10 +55,10 @@ export default function ProjectsPage() {
     <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-10 sm:space-y-14">
       {/* Page Header */}
       <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
-        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
+        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-accent leading-[1.15]">
           Projects &amp; Systems
         </h1>
-        <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
+        <p className="font-body text-sm sm:text-base text-[#171717] leading-relaxed max-w-2xl font-normal">
           Live applications deployed on Vercel, a curated selection of systems and backend engineering projects, and the complete repository archive on GitHub.
         </p>
       </header>
@@ -66,10 +66,10 @@ export default function ProjectsPage() {
       {/* SECTION 1: MUST CHECKOUT */}
       <section aria-labelledby="must-checkout-heading" className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
-          <h2 id="must-checkout-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground">
+          <h2 id="must-checkout-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-accent">
             Must Checkout
           </h2>
-          <span className="text-xs font-mono text-accent-secondary">
+          <span className="text-xs font-mono text-[#171717]">
             {mustCheckoutProjects.length} live applications deployed on Vercel
           </span>
         </div>
@@ -84,10 +84,10 @@ export default function ProjectsPage() {
       {/* SECTION 2: DEVELOPED SOFTWARE */}
       <section aria-labelledby="developed-software-heading" className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
-          <h2 id="developed-software-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground">
+          <h2 id="developed-software-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-accent">
             Developed Software
           </h2>
-          <span className="text-xs font-mono text-accent-secondary">
+          <span className="text-xs font-mono text-[#171717]">
             Curated selection of {developedSoftwareProjects.length} engineering systems
           </span>
         </div>
@@ -99,13 +99,13 @@ export default function ProjectsPage() {
         </ul>
 
         {/* SECTION 3 / DESTINATION 3: GITHUB ARCHIVE LINK */}
-        <div className="pt-4 text-xs sm:text-sm text-foreground-muted border-t border-border/40">
+        <div className="pt-4 text-xs sm:text-sm text-[#171717] border-t border-border/40">
           Looking for older prototypes, course projects, or training modules?{" "}
           <a
             href="https://github.com/vaibhv19"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent-secondary hover:text-accent-secondary-hover underline decoration-accent-secondary/40 hover:decoration-accent-secondary font-medium transition-colors inline-flex items-center gap-1"
+            className="text-accent hover:text-accent-muted underline decoration-accent/50 hover:decoration-accent font-medium transition-colors inline-flex items-center gap-1"
           >
             Explore all projects on GitHub ↗
           </a>

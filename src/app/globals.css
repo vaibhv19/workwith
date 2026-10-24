@@ -16,8 +16,8 @@
 
   --color-foreground: #171717;
   --color-foreground-ivory: #0A0A0A;
-  --color-foreground-muted: #555555;
-  --color-foreground-subtle: #767676;
+  --color-foreground-muted: #171717;
+  --color-foreground-subtle: #262626;
 
   --color-accent: #D32F2F;
   --color-accent-muted: #B71C1C;
@@ -37,7 +37,7 @@
 }
 
 :root {
-  /* Core Palette Variables - White, Near-Black, Red & Muted Blue */
+  /* Core Palette Variables - White, Near-Black & Red */
   --bg-black: #FFFFFF;
   --bg-deep: #FAFAFA;
   
@@ -53,8 +53,8 @@
   
   --text-primary: #171717;
   --text-ivory: #0A0A0A;
-  --text-muted: #555555;
-  --text-subtle: #767676;
+  --text-muted: #171717;
+  --text-subtle: #262626;
   
   --accent-primary: #D32F2F;
   --accent-muted: #B71C1C;
@@ -123,7 +123,7 @@ input, textarea, button, select {
   line-height: 1.05;
   letter-spacing: -0.035em;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--accent-primary);
 }
 
 .font-display-h1 {
@@ -132,7 +132,7 @@ input, textarea, button, select {
   line-height: 1.1;
   letter-spacing: -0.025em;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--accent-primary);
 }
 
 .font-display-h2 {
@@ -141,7 +141,7 @@ input, textarea, button, select {
   line-height: 1.15;
   letter-spacing: -0.02em;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--accent-primary);
 }
 
 .font-display-h3 {
@@ -150,15 +150,15 @@ input, textarea, button, select {
   line-height: 1.25;
   letter-spacing: -0.015em;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--accent-primary);
 }
 
 .font-body-lead {
   font-family: var(--font-inter, var(--font-inter-fallback));
   font-size: clamp(0.95rem, 1.15vw, 1.15rem);
   line-height: 1.65;
-  font-weight: 300;
-  color: var(--text-muted);
+  font-weight: 400;
+  color: var(--text-primary);
 }
 
 .font-body {
@@ -166,7 +166,7 @@ input, textarea, button, select {
   font-size: 0.9375rem;
   line-height: 1.6;
   font-weight: 400;
-  color: var(--text-muted);
+  color: var(--text-primary);
 }
 
 .font-body-sm {
@@ -174,7 +174,7 @@ input, textarea, button, select {
   font-size: 0.8125rem;
   line-height: 1.55;
   font-weight: 400;
-  color: var(--text-subtle);
+  color: var(--text-primary);
 }
 
 .font-eyebrow {
@@ -192,7 +192,7 @@ input, textarea, button, select {
   line-height: 1;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--text-primary);
+  color: var(--accent-primary);
 }
 
 /* ==========================================================================
@@ -204,7 +204,7 @@ input, textarea, button, select {
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  background-color: #111111;
+  background-color: var(--accent-primary);
   color: #FFFFFF;
   font-family: var(--font-inter, var(--font-inter-fallback));
   font-size: 0.75rem;
@@ -218,9 +218,9 @@ input, textarea, button, select {
 }
 
 .btn-primary:hover {
-  background-color: #000000;
+  background-color: var(--accent-muted);
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px -6px rgba(211, 47, 47, 0.3);
 }
 
 .btn-secondary {
@@ -243,9 +243,9 @@ input, textarea, button, select {
 }
 
 .btn-secondary:hover {
-  border-color: var(--accent-secondary);
+  border-color: var(--accent-primary);
   background-color: var(--surface-elevated);
-  color: var(--accent-secondary);
+  color: var(--accent-primary);
 }
 
 .btn-text {

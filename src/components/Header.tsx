@@ -52,17 +52,17 @@ export function Header() {
               href={link.href}
               className={`shrink-0 px-2 sm:px-3 lg:px-4 py-1.5 text-[11px] sm:text-xs lg:text-[13px] font-medium tracking-[0.06em] sm:tracking-[0.1em] lg:tracking-[0.14em] uppercase transition-colors duration-300 relative group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm ${
                 link.isActive
-                  ? "text-foreground font-semibold"
-                  : "text-foreground-muted hover:text-accent-secondary"
+                  ? "text-accent font-semibold"
+                  : "text-[#171717] hover:text-accent"
               }`}
             >
               <span>{link.label}</span>
-              {/* Active (Red) / Hover (Muted Blue) accent line */}
+              {/* Active / Hover accent line */}
               <span
-                className={`absolute bottom-0 left-2 right-2 sm:left-3 sm:right-3 lg:left-4 lg:right-4 h-[1.5px] transition-all duration-300 ${
+                className={`absolute bottom-0 left-2 right-2 sm:left-3 sm:right-3 lg:left-4 lg:right-4 h-[1.5px] bg-accent transition-all duration-300 ${
                   link.isActive
-                    ? "bg-accent opacity-100 scale-x-100"
-                    : "bg-accent-secondary opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                    ? "opacity-100 scale-x-100"
+                    : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
                 }`}
               />
             </Link>

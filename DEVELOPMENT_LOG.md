@@ -608,3 +608,49 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.4s with 0 errors.
   - Visual Browser Verification: Checked desktop (1440x900) and mobile (390x844) viewports across `/projects`, `/case-study`, `/case-study/checkmate`, and `/start-conversation`. Verified WCAG contrast, tab hover feedback, metadata taxonomy, and responsive layout without horizontal overflow.
+
+### Milestone 28 — Final Color Palette Adjustment (Dark Black → Red, Gray → Dark Black)
+- **Objective:**
+  - Execute the final color palette transformation across the entire MyWork website:
+    - **Dark Black → Red (`#D32F2F`):** Replace former near-black and dark-black styling with the primary red accent `#D32F2F` on high-emphasis headings, project titles, active navigation states, metrics, and primary interactive buttons.
+    - **Gray → Dark Black (`#171717`):** Replace former gray text and foreground elements with near-black `#171717` for crisp, high-contrast readability against the white background.
+    - **Primary Background:** Retain clean, pure white `#FFFFFF` with the subtle, static gray wave background pattern.
+- **Global Design Tokens & CSS Centralization (`src/app/globals.css`):**
+  - Updated Tailwind v4 `@theme` and `:root` variables:
+    - `--color-foreground-muted: #171717;` / `--text-muted: #171717;`
+    - `--color-foreground-subtle: #262626;` / `--text-subtle: #262626;`
+  - Typography classes:
+    - `.font-display-hero`, `.font-display-h1`, `.font-display-h2`, `.font-display-h3`, `.font-metric`: set `color: var(--accent-primary);` (`#D32F2F`).
+    - `.font-body-lead`, `.font-body`, `.font-body-sm`: set `color: var(--text-primary);` (`#171717`).
+  - Button styling:
+    - `.btn-primary`: background `var(--accent-primary)` (`#D32F2F`), text `#FFFFFF`, hover `var(--accent-muted)` (`#B71C1C`).
+    - `.btn-secondary`: border `#E5E5E5`, text `#171717`, hover `border-[#D32F2F] text-[#D32F2F]`.
+- **Systematic Page & Component Updates:**
+  - **Navigation (`src/components/Header.tsx`):**
+    - Active link styled in red (`text-accent font-semibold`) with red active indicator line (`bg-accent`).
+    - Inactive links styled in dark black (`text-[#171717] font-medium`) transitioning to red on hover.
+  - **Buttons (`src/components/ui/Button.tsx`):**
+    - Primary and accent variants use `#D32F2F` with white text. Text button variant uses `#D32F2F` with `#B71C1C` hover. Secondary variant uses `#171717` with `#D32F2F` hover.
+  - **Projects (`src/app/projects/page.tsx`):**
+    - Headings ("Projects & Systems", "Must Checkout", "Developed Software") rendered in vivid red (`text-accent`).
+    - Project titles rendered in red (`text-accent font-medium underline decoration-accent/40 hover:text-accent-muted`).
+    - Descriptions, section scope metadata (*"8 live applications deployed on Vercel"*), and em dashes rendered in dark black (`#171717`).
+    - Archive link (*"Explore all projects on GitHub ↗"*) rendered in red (`text-accent hover:text-accent-muted`).
+  - **Case Studies (`src/app/case-study/page.tsx` & `src/app/case-study/[slug]/page.tsx`):**
+    - Headings, study titles, section titles, diagram titles, code block titles, and metrics rendered in red (`#D32F2F`).
+    - Subtitles, narrative body paragraphs, table data, and code snippets rendered in crisp dark black (`#171717`).
+    - Callout boxes styled with `border-l-2 border-l-accent` and red title text.
+  - **Start a Conversation (`src/app/start-conversation/page.tsx`):**
+    - Page and section headings rendered in red (`text-accent`).
+    - Contact email and discussion topic index numbers / titles rendered in red (`text-accent`).
+    - Explanatory copy, field labels, and location text rendered in dark black (`#171717`).
+  - **Footer (`src/components/Footer.tsx`):**
+    - Contact email in red (`text-accent`), social icons and copyright text in dark black (`#171717`) with red hover transitions.
+- **Preserved Core Constraints:**
+  - Neutral light gray structural borders (`#E5E5E5`) preserved for visual hierarchy without coloring borders red.
+  - Subtle gray wave background pattern preserved on white.
+  - Centered middle-column layout, compact text-led project lists, title-only link resolution, and 3-link mobile navigation preserved.
+  - No decorative badges, cards, or gradients introduced.
+- **Validation:**
+  - Static compilation (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.3s with 0 errors.
+  - Visual Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports across `/projects`, `/case-study`, `/case-study/checkmate`, and `/start-conversation`. Strong typographic hierarchy, high WCAG contrast, and seamless responsive layout verified.

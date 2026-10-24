@@ -29,10 +29,10 @@ export default function CaseStudiesPage() {
     <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       {/* Editorial Header */}
       <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
-        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
+        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-accent leading-[1.15]">
           Case Studies
         </h1>
-        <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
+        <p className="font-body text-sm sm:text-base text-[#171717] leading-relaxed max-w-2xl font-normal">
           Detailed accounts of project origins, architecture decisions, engineering trade-offs, and lessons learned across distributed systems, local AI, and production platforms.
         </p>
       </header>
@@ -45,14 +45,14 @@ export default function CaseStudiesPage() {
             className="group py-8 sm:py-10 first:pt-0 space-y-3.5"
           >
             {/* Top Row: Category & Period */}
-            <div className="flex items-baseline justify-between text-xs text-foreground-subtle font-mono">
-              <span className="text-accent-secondary font-medium">{study.category}</span>
+            <div className="flex items-baseline justify-between text-xs text-[#171717] font-mono">
+              <span className="font-medium text-accent">{study.category}</span>
               <span>{study.period}</span>
             </div>
 
             {/* Title & Subtitle */}
             <div>
-              <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground group-hover:text-accent transition-colors">
+              <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-accent group-hover:text-accent-muted transition-colors">
                 <Link
                   href={`/case-study/${study.slug}`}
                   className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
@@ -63,17 +63,17 @@ export default function CaseStudiesPage() {
                   </span>
                 </Link>
               </h2>
-              <p className="text-xs sm:text-sm text-foreground-muted mt-1">
+              <p className="text-xs sm:text-sm text-[#171717] mt-1 font-medium">
                 {study.subtitle}
               </p>
             </div>
 
-            <p className="font-body text-xs sm:text-sm text-foreground-muted leading-relaxed">
+            <p className="font-body text-xs sm:text-sm text-[#171717] leading-relaxed">
               {study.description}
             </p>
 
             {/* Technology Focus Row */}
-            <div className="text-xs text-foreground-subtle pt-0.5">
+            <div className="text-xs text-[#171717] font-mono pt-0.5">
               <span>{study.techFocus}</span>
             </div>
 

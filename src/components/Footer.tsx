@@ -64,13 +64,13 @@ export function Footer() {
           <div className="flex items-center space-x-2">
             <a
               href="mailto:contact@vaibhv19.dev"
-              className="text-xs sm:text-sm font-mono text-foreground hover:text-accent transition-colors"
+              className="text-xs sm:text-sm font-mono text-accent hover:text-accent-muted transition-colors font-medium"
             >
               contact@vaibhv19.dev
             </a>
           </div>
 
-          <div className="flex items-center space-x-5 text-foreground-muted">
+          <div className="flex items-center space-x-5 text-[#171717]">
             <a
               href="https://github.com/vaibhv19"
               target="_blank"
@@ -109,7 +109,7 @@ export function Footer() {
         </div>
         {/* Minimal Bottom Legal & Copyright Row */}
      
-          <div className="flex flex-col items-center sm:items-start space-y-1">
+          <div className="flex flex-col items-center sm:items-start space-y-1 text-xs text-[#171717]">
             <div>
               &copy; {currentYear} Vaibhav Gupta. All rights reserved.
           </div>

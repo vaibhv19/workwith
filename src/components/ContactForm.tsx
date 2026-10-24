@@ -269,7 +269,7 @@ export function ContactForm() {
             }`}
           />
           {fieldErrors.message && (
-            <p className="text-xs text-rose-400 font-mono mt-1">{fieldErrors.message}</p>
+            <p className="text-xs text-rose-600 font-mono mt-1">{fieldErrors.message}</p>
           )}
         </div>
 
