@@ -56,7 +56,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
   const nextStudy = currentIndex < CASE_STUDIES.length - 1 ? CASE_STUDIES[currentIndex + 1] : null;
 
   return (
-    <article className="py-10 sm:py-16 space-y-12 sm:space-y-16">
+    <article className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-12 sm:space-y-16">
       <Container size="narrow">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="text-xs font-mono text-foreground-subtle pb-6">

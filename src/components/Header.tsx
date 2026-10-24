@@ -37,11 +37,11 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#232220] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isScrolled ? "py-2.5 sm:py-3.5 shadow-[0_4px_24px_rgba(0,0,0,0.6)]" : "py-3.5 sm:py-5 lg:py-6"
+      className={`sticky top-0 left-0 right-0 z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#232220] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isScrolled ? "py-2 shadow-[0_4px_24px_rgba(0,0,0,0.6)]" : "py-2.5 sm:py-3"
       }`}
     >
-      <Container size="default" className="px-3 sm:px-8 lg:px-12 flex items-center justify-center">
+      <Container size="default" className="flex items-center justify-center">
         <nav
           aria-label="Main Navigation"
           className="flex items-center justify-center overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-w-full gap-1 sm:gap-3 md:gap-4 lg:gap-6 py-0.5"

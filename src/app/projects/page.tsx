@@ -77,14 +77,14 @@ export default function ProjectsPage() {
   const mustCheckoutProjects = PROJECTS.filter((p) => p.mustCheckout);
 
   return (
-    <div className="py-10 sm:py-16 space-y-16 sm:space-y-24">
+    <div className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       {/* Page Header */}
       <Container size="default">
-        <header className="space-y-4 border-b border-border pb-8">
-          <h1 className="font-display-h1 text-foreground">
+        <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
             Projects &amp; Systems
           </h1>
-          <p className="font-body-lead text-foreground-muted max-w-3xl">
+          <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
             A curated selection of interactive live applications alongside the complete catalog of 36 software projects, distributed systems, and developer tools.
           </p>
         </header>
@@ -92,7 +92,7 @@ export default function ProjectsPage() {
 
       {/* SECTION 1: MUST CHECKOUT (CURATED DEPLOYED EXPERIENCES) */}
       <Container size="default">
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
             <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
               Must Checkout
@@ -102,7 +102,7 @@ export default function ProjectsPage() {
             </span>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {mustCheckoutProjects.map((project) => (
               <article
                 key={project.id}
@@ -216,7 +216,7 @@ export default function ProjectsPage() {
                     {items.map((item: Project) => (
                       <article
                         key={item.id}
-                        className="py-4 px-2 -mx-2 hover:bg-surface/50 rounded-[2px] transition-colors flex flex-col md:flex-row md:items-baseline justify-between gap-3 group"
+                        className="py-3.5 hover:bg-surface/40 transition-colors flex flex-col md:flex-row md:items-baseline justify-between gap-3 group"
                       >
                         {/* Left Column: Title, Framework, Description & Stack */}
                         <div className="space-y-1.5 flex-1 max-w-3xl">

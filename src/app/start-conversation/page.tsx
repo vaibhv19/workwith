@@ -44,13 +44,13 @@ export default function StartConversationPage() {
   };
 
   return (
-    <Container size="narrow" className="py-12 sm:py-16 md:py-20 space-y-12 sm:space-y-16">
+    <Container size="narrow" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       {/* Editorial Header */}
-      <header className="space-y-4 border-b border-border pb-8">
-        <h1 className="font-display-h1 text-foreground">
+      <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
+        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
           Start a Conversation
         </h1>
-        <p className="font-body-lead text-foreground-muted max-w-2xl">
+        <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
           Open for discussions around full-time software engineering roles, complex systems challenges, technical consulting, and open-source collaboration.
         </p>
       </header>

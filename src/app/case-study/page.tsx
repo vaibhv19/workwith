@@ -27,14 +27,14 @@ export default function CaseStudiesPage() {
   );
 
   return (
-    <div className="py-10 sm:py-16 space-y-12 sm:space-y-16">
+    <div className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       {/* Editorial Header */}
       <Container size="default">
-        <header className="space-y-4 border-b border-border pb-8">
-          <h1 className="font-display-h1 text-foreground">
+        <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
             Case Studies
           </h1>
-          <p className="font-body-lead text-foreground-muted max-w-3xl">
+          <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
             Detailed accounts of project origins, architecture decisions, engineering trade-offs, and lessons learned across distributed systems, local AI, and production platforms.
           </p>
         </header>

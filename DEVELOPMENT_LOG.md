@@ -334,3 +334,29 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Narrow Mobile (320x650): Directly visible and accessible without horizontal page overflow; verified navigation to `/start-conversation`.
   - Typecheck (`npx tsc --noEmit`): 0 errors.
   - Production build (`npm run build`): All 16 static HTML routes compiled successfully in 1.4s.
+
+### Milestone 19 — Visual Balance and Spacing Correction
+- **Objective:**
+  - Execute a focused layout and spacing correction on the Projects page and site-wide headers to address header height, hero positioning, typography balance, excessive vertical gap to Section 1, and content container alignment without performing a redesign.
+- **Key Changes:**
+  - **Header Height & Vertical Padding (`src/components/Header.tsx`):**
+    - Reduced excessive vertical padding from bloated `py-3.5 sm:py-5 lg:py-6` to compact `py-2.5 sm:py-3` (and on scroll: `py-2`), lowering navbar height from ~80px to ~44-48px while keeping all 3 navigation links and active indicators intact.
+  - **Hero Positioning & Proportions (`src/app/projects/page.tsx`):**
+    - Rebalanced top spacing by reducing outer wrapper padding from `py-10 sm:py-16` to `pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24`.
+    - Refined hero typography: `font-display text-2xl sm:text-3xl md:text-[2.25rem] leading-[1.15] tracking-tight`, keeping the heading prominent without overwhelming the page.
+    - Balanced description reading width with `max-w-2xl text-sm sm:text-base leading-relaxed text-foreground-muted`, providing a natural two-line wrap.
+    - Set deliberate distance from hero text to section divider line (`pb-6 sm:pb-7 border-b border-border-subtle`).
+  - **Vertical Gap Between Hero and Section 1:**
+    - Reduced gap between hero divider line and `Must Checkout` heading from 96px (`space-y-16 sm:space-y-24`) to a comfortable, cohesive ~40-48px (`space-y-8 sm:space-y-12`), allowing the section to feel like a natural continuation.
+  - **Content Container Alignment:**
+    - Removed arbitrary negative margins (`-mx-2 px-2`) from Section 2 catalogue ledger `<article>` rows so all table lines align flush with the container and section divider lines.
+  - **Site-Wide Spacing Harmonization (`src/app/case-study/page.tsx`, `src/app/case-study/[slug]/page.tsx`, `src/app/start-conversation/page.tsx`):**
+    - Standardized outer padding across all pages to `pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24` and standardized hero spacing to `space-y-8 sm:space-y-12` for unified rhythm.
+  - **Wave Background:**
+    - Preserved subtle, static, low-contrast wave pattern without animation, rotation, or distortion.
+- **Validation Across Viewports:**
+  - Desktop (1440x900): Header is proportionate and compact; hero begins at a deliberate distance; section gap is balanced; wave background remains subtle.
+  - Tablet (768x900): Clean alignment and comfortable reading hierarchy.
+  - Mobile (390x844): Hero wraps gracefully, nav remains single-row, no overflow.
+  - Compact Mobile (320x700): Zero horizontal scroll (`scrollWidth <= innerWidth`), tight and readable.
+  - Production build (`npm run build`): All 16 static routes prerendered cleanly in Turbopack.
