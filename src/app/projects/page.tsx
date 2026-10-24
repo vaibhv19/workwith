@@ -61,13 +61,13 @@ const AREAS_OF_WORK: AreaOfWork[] = [
   {
     title: "Technical SEO & Search Visibility",
     statement:
-      "Delivered documented search visibility for 1nfinity.online with semantic HTML, JSON-LD structured schemas, and dynamic sitemaps.",
+      "Implemented semantic markup, structured schemas, and crawlable architectures, evidenced by vaibhv19.dev appearing directly in Google AI Overviews.",
     rotationClass: "rotate-[1.0deg]",
   },
   {
     title: "Web Performance Engineering",
     statement:
-      "Achieved verified 99/92 Lighthouse performance benchmarks, zero layout shift, and eliminated third-party runtime animation libraries.",
+      "Optimized web applications for speed and responsiveness under strict performance budgets, targeting 98+ Lighthouse scores and achieving 99 Desktop / 92 Mobile on 1nfinity.online.",
     rotationClass: "-rotate-[1.1deg]",
   },
 ];
@@ -144,72 +144,9 @@ export default function ProjectsPage() {
         </p>
       </header>
 
-      {/* 2. Marquee (Constrained within the Shared Middle Column) */}
-      <div
-        className="w-full overflow-hidden border-y border-border py-3 sm:py-3.5 select-none"
-        role="region"
-        aria-label="Capabilities Marquee"
-      >
-        <Marquee
-          speed="normal"
-          pauseOnHover={true}
-          fadeEdges={true}
-          className="py-0.5"
-        >
-          {Array.from({ length: 8 }).map((_, groupIdx) => (
-            <div key={groupIdx} className="flex items-center shrink-0">
-              {MARQUEE_PHRASES.map((phrase, phraseIdx) => (
-                <div key={phraseIdx} className="flex items-center shrink-0">
-                  <span className="text-xs font-sans font-medium tracking-[0.14em] text-[#171717] uppercase whitespace-nowrap px-3 sm:px-4">
-                    {phrase}
-                  </span>
-                  <span
-                    className="text-heading select-none text-xs font-bold"
-                    aria-hidden="true"
-                  >
-                    ·
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </Marquee>
-      </div>
 
-      {/* 4. Must Checkout (Preserved Intact) */}
-      <section aria-labelledby="must-checkout-heading" className="space-y-4 sm:space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
-          <h2
-            id="must-checkout-heading"
-            className="font-display text-lg sm:text-xl font-medium tracking-tight text-heading"
-          >
-            Checkout
-          </h2>
-        </div>
 
-        <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
-          {mustCheckoutProjects.map((project) => (
-            <ProjectListItem key={project.id} project={project} />
-          ))}
-        </ul>
-      </section>
-
-      {/* 5. Developed Software (Preserved Intact) */}
-      <section aria-labelledby="developed-software-heading" className="space-y-4 sm:space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
-          <h2
-            id="developed-software-heading"
-            className="font-display text-lg sm:text-xl font-medium tracking-tight text-heading"
-          >
-            Developed Software
-          </h2>
-        </div>
-
-        <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
-          {developedSoftwareProjects.map((project) => (
-            <ProjectListItem key={project.id} project={project} />
-          ))}
-        </ul>
+      {/* 3. Areas of Work Section */}
       <section aria-labelledby="areas-of-work-heading" className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
           <h2
@@ -265,19 +202,86 @@ export default function ProjectsPage() {
           ))}
         </div>
       </section>
-        {/* 6. GitHub Archive Link (Preserved Intact) */}
-        <div className="pt-4 text-xs sm:text-sm text-[#171717] border-t border-border/40">
-          Looking for older prototypes, course projects, or training modules?{" "}
-          <a
-            href="https://github.com/vaibhv19"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-interactive font-medium inline-flex items-center gap-1"
+
+      {/* 4. Must Checkout (Preserved Intact) */}
+      <section aria-labelledby="must-checkout-heading" className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
+          <h2
+            id="must-checkout-heading"
+            className="font-display text-lg sm:text-xl font-medium tracking-tight text-heading"
           >
-            Explore all projects on GitHub ↗
-          </a>
+            Checkout
+          </h2>
         </div>
+
+        <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
+          {mustCheckoutProjects.map((project) => (
+            <ProjectListItem key={project.id} project={project} />
+          ))}
+        </ul>
       </section>
+
+      {/* 5. Developed Software (Preserved Intact) */}
+      <section aria-labelledby="developed-software-heading" className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
+          <h2
+            id="developed-software-heading"
+            className="font-display text-lg sm:text-xl font-medium tracking-tight text-heading"
+          >
+            Developed Software
+          </h2>
+        </div>
+
+        <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
+          {developedSoftwareProjects.map((project) => (
+            <ProjectListItem key={project.id} project={project} />
+          ))}
+        </ul>
+      </section>
+            {/* 2. Marquee (Constrained within the Shared Middle Column) */}
+      <div
+        className="w-full overflow-hidden border-y border-border py-3 sm:py-3.5 select-none"
+        role="region"
+        aria-label="Capabilities Marquee"
+      >
+        <Marquee
+          speed="normal"
+          pauseOnHover={true}
+          fadeEdges={true}
+          className="py-0.5"
+        >
+          {Array.from({ length: 8 }).map((_, groupIdx) => (
+            <div key={groupIdx} className="flex items-center shrink-0">
+              {MARQUEE_PHRASES.map((phrase, phraseIdx) => (
+                <div key={phraseIdx} className="flex items-center shrink-0">
+                  <span className="text-xs font-sans font-medium tracking-[0.14em] text-[#171717] uppercase whitespace-nowrap px-3 sm:px-4">
+                    {phrase}
+                  </span>
+                  <span
+                    className="text-heading select-none text-xs font-bold"
+                    aria-hidden="true"
+                  >
+                    ·
+                  </span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </Marquee>
+      </div>
+
+      {/* 6. GitHub Archive Link (Preserved Intact) */}
+      <div className="pt-4 text-xs sm:text-sm text-[#171717] border-t border-border/40">
+        Looking for older prototypes, course projects, or training modules?{" "}
+        <a
+          href="https://github.com/vaibhv19"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-interactive font-medium inline-flex items-center gap-1"
+        >
+          Explore all projects on GitHub ↗
+        </a>
+      </div>
     </Container>
   );
 }

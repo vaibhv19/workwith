@@ -21,7 +21,7 @@ export function Header() {
     {
       label: "PROJECTS",
       href: "/projects",
-      isActive: pathname === "/projects" || pathname === "/",
+      isActive: pathname === "/projects",
     },
     {
       label: "CASE STUDY",
@@ -29,9 +29,9 @@ export function Header() {
       isActive: pathname === "/case-study" || pathname.startsWith("/case-study/"),
     },
     {
-      label: "START A CONVERSATION",
-      href: "/start-conversation",
-      isActive: pathname === "/start-conversation",
+      label: "WORK WITH ME",
+      href: "/",
+      isActive: pathname === "/" || pathname === "/start-conversation",
     },
   ];
 
@@ -50,6 +50,12 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => {
+                if (link.href === "/" && pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className={`shrink-0 px-2 sm:px-3 lg:px-4 py-1.5 text-[11px] sm:text-xs lg:text-[13px] font-medium tracking-[0.06em] sm:tracking-[0.1em] lg:tracking-[0.14em] uppercase transition-colors duration-300 relative group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-heading rounded-sm ${
                 link.isActive
                   ? "text-heading font-semibold"
