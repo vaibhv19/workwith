@@ -544,6 +544,24 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Three navigation links (`PROJECTS`, `CASE STUDY`, `START A CONVERSATION`) visible across all viewports without hamburger collapse.
   - Full project catalogues, case study narrative deep dives, and contact functionality intact.
 - **Validation:**
-  - Codebase audit: Zero remaining legacy `#0B0B0B`, `#070707`, `#F4EFE6`, `#C4A482`, or `hover:text-white` instances.
-  - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors.
   - Visual Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports across `/projects`, `/case-study`, `/case-study/checkmate`, and `/start-conversation`. Pure white backgrounds, crisp dark text, accessible red accents, and smooth interactive feedback verified.
+
+### Milestone 26 — Simplify Project Links and Make Titles the Only Actions
+- **Objective:**
+  - Refine project entries in Must Checkout and Developed Software so that each project title is the sole clickable action, eliminating all secondary `Live demo` and `Source code` links.
+- **Priority Resolution Strategy:**
+  - Implemented strict priority order in `ProjectListItem` (`src/app/projects/page.tsx`):
+    1. **Live Demo Priority:** If a verified live demo URL exists (`project.demoUrl`), the project title directly links to the live demo. (Applies to all 8 Must Checkout projects, e.g. CheckMate → `https://checkmate.vaibhv19.dev/`).
+    2. **Repository Fallback:** If no live demo exists but a verified repository exists (`project.githubUrl`), the project title directly links to the repository. (Applies to all 8 Developed Software projects, e.g. Phoenix → `https://github.com/vaibhv19/Phoenix`).
+    3. **Plain Text Fallback:** If neither destination exists, the title renders as an unlinked `<span>`.
+- **Secondary Link Elimination:**
+  - Completely removed inline secondary links (`Live demo ↗`, `Source code ↗`), middle dot separators (`·`), and arrow decorators from individual project items.
+  - Title is styled with an understated link underline (`decoration-border/80`), transitions to red accent on hover (`hover:text-accent hover:decoration-accent`), and includes accessible keyboard focus rings (`focus-visible:ring-1 focus-visible:ring-accent`).
+  - Em dash (`—`) and single-sentence descriptions remain plain, unlinked text.
+- **Preserved Core Context & Features:**
+  - Preserved underlying canonical project data schema and metadata in `data/projects.ts` without deletions.
+  - Preserved section-level GitHub archive link at the end of Developed Software (`Explore all projects on GitHub ↗`).
+  - Preserved centered middle-column layout (`max-w-3xl`) and compact, typography-led aesthetic across both desktop and mobile viewports.
+- **Validation:**
+  - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors in 1.3s.
+  - Visual Browser Inspection: Desktop (1440x900) and Mobile (390x844) verification confirmed CheckMate navigates to the live demo, Phoenix navigates to GitHub, secondary links are completely gone, and wrapping behaves seamlessly with zero horizontal overflow.

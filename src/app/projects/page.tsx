@@ -12,53 +12,28 @@ export const metadata: Metadata = {
 };
 
 function ProjectListItem({ project }: { project: Project }) {
-  const primaryUrl = project.demoUrl || project.githubUrl;
+  // Priority order:
+  // 1. If a verified live demo exists, link the project title directly to the live demo.
+  // 2. If no live demo exists but a verified source repository does, link the title to the repository.
+  // 3. If neither destination is verified, render the title as ordinary, non-clickable text.
+  const destinationUrl = project.demoUrl || project.githubUrl;
 
   return (
     <li className="text-xs sm:text-sm leading-relaxed text-foreground-muted">
-      <span className="font-medium text-foreground">
-        {primaryUrl ? (
-          <a
-            href={primaryUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
-          >
-            {project.title}
-          </a>
-        ) : (
-          project.title
-        )}
-      </span>
-
-      {project.demoUrl && (
-        <>
-          <span className="text-foreground-subtle mx-1.5 select-none">·</span>
-          <a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground-muted hover:text-accent underline decoration-border/60 hover:decoration-accent transition-colors"
-          >
-            Live demo ↗
-          </a>
-        </>
+      {destinationUrl ? (
+        <a
+          href={destinationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-foreground underline decoration-border/80 hover:text-accent hover:decoration-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-xs transition-colors"
+        >
+          {project.title}
+        </a>
+      ) : (
+        <span className="font-medium text-foreground">
+          {project.title}
+        </span>
       )}
-
-      {project.githubUrl && (
-        <>
-          <span className="text-foreground-subtle mx-1.5 select-none">·</span>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground-muted hover:text-accent underline decoration-border/60 hover:decoration-accent transition-colors"
-          >
-            Source code ↗
-          </a>
-        </>
-      )}
-
       <span className="text-foreground-subtle mx-1.5 sm:mx-2 select-none">—</span>
       <span className="text-foreground-muted font-light">
         {project.shortDescription || project.tagline}
