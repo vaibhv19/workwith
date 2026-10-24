@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-import { GithubIcon } from "@/components/BrandIcons";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
-import { PROJECTS } from "../../../data/projects";
+import { PROJECTS, Project } from "../../../data/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -12,6 +10,62 @@ export const metadata: Metadata = {
     canonical: "/projects",
   },
 };
+
+function ProjectListItem({ project }: { project: Project }) {
+  const primaryUrl = project.demoUrl || project.githubUrl;
+
+  return (
+    <li className="text-xs sm:text-sm leading-relaxed text-foreground-muted">
+      <span className="font-medium text-foreground">
+        {primaryUrl ? (
+          <a
+            href={primaryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            {project.title}
+          </a>
+        ) : (
+          project.title
+        )}
+      </span>
+
+      {project.demoUrl && (
+        <>
+          <span className="text-foreground-subtle mx-1.5 select-none">·</span>
+          <a
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground-muted hover:text-white underline decoration-border/60 hover:decoration-white transition-colors"
+          >
+            Live demo ↗
+          </a>
+        </>
+      )}
+
+      {project.githubUrl && (
+        <>
+          <span className="text-foreground-subtle mx-1.5 select-none">·</span>
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground-muted hover:text-white underline decoration-border/60 hover:decoration-white transition-colors"
+          >
+            Source code ↗
+          </a>
+        </>
+      )}
+
+      <span className="text-foreground-subtle mx-1.5 sm:mx-2 select-none">—</span>
+      <span className="text-foreground-muted font-light">
+        {project.shortDescription || project.tagline}
+      </span>
+    </li>
+  );
+}
 
 export default function ProjectsPage() {
   // Destination 1: All verified live projects deployed on Vercel
@@ -23,18 +77,21 @@ export default function ProjectsPage() {
   );
 
   return (
-    <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
+    <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-10 sm:space-y-14">
       {/* Page Header */}
       <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
         <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
           Projects &amp; Systems
         </h1>
+        <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
+          Live applications deployed on Vercel, a curated selection of systems and backend engineering projects, and the complete repository archive on GitHub.
+        </p>
       </header>
 
-      {/* DESTINATION 1: MUST CHECKOUT (ALL VERIFIED VERCEL DEPLOYMENTS) */}
-      <section aria-labelledby="must-checkout-heading" className="space-y-6 sm:space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
-          <h2 id="must-checkout-heading" className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+      {/* SECTION 1: MUST CHECKOUT */}
+      <section aria-labelledby="must-checkout-heading" className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
+          <h2 id="must-checkout-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground">
             Must Checkout
           </h2>
           <span className="text-xs text-foreground-muted">
@@ -42,76 +99,17 @@ export default function ProjectsPage() {
           </span>
         </div>
 
-        <div className="space-y-6 sm:space-y-8">
+        <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
           {mustCheckoutProjects.map((project) => (
-            <article
-              key={project.id}
-              className="surface-card bg-surface/90 border border-border p-6 sm:p-7 space-y-5 rounded-md hover:border-border-light transition-colors"
-            >
-              {/* Header: Title */}
-              <div>
-                <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
-                  {project.title}
-                </h3>
-              </div>
-
-              {/* Tagline */}
-              <p className="text-xs sm:text-sm font-sans italic text-foreground-muted">
-                &ldquo;{project.tagline}&rdquo;
-              </p>
-
-              {/* Technical Bullets */}
-              {project.bullets && project.bullets.length > 0 && (
-                <ul className="space-y-2 text-xs sm:text-sm text-foreground-muted leading-relaxed list-none pl-0">
-                  {project.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex items-start gap-2.5">
-                      <span className="text-foreground-subtle select-none">&bull;</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {/* Tech Stack Row */}
-              <div className="text-xs text-foreground-subtle pt-1">
-                {project.techStack.join(" · ")}
-              </div>
-
-              {/* Actions: Verified Live Application & Repository */}
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                {project.demoUrl && (
-                  <Button
-                    href={project.demoUrl}
-                    external
-                    variant="primary"
-                    size="sm"
-                    icon="arrow-up-right"
-                  >
-                    Open Application
-                  </Button>
-                )}
-
-                {project.githubUrl && (
-                  <Button
-                    href={project.githubUrl}
-                    external
-                    variant="secondary"
-                    size="sm"
-                    icon="arrow-up-right"
-                  >
-                    Source Code
-                  </Button>
-                )}
-              </div>
-            </article>
+            <ProjectListItem key={project.id} project={project} />
           ))}
-        </div>
+        </ul>
       </section>
 
-      {/* DESTINATION 2: DEVELOPED SOFTWARE (CURATED SIGNIFICANT ENGINEERING SYSTEMS) */}
-      <section aria-labelledby="developed-software-heading" className="space-y-6 sm:space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
-          <h2 id="developed-software-heading" className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+      {/* SECTION 2: DEVELOPED SOFTWARE */}
+      <section aria-labelledby="developed-software-heading" className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
+          <h2 id="developed-software-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-foreground">
             Developed Software
           </h2>
           <span className="text-xs text-foreground-muted">
@@ -119,97 +117,25 @@ export default function ProjectsPage() {
           </span>
         </div>
 
-        <div className="space-y-6 sm:space-y-8">
+        <ul className="space-y-3.5 sm:space-y-4 list-none pl-0">
           {developedSoftwareProjects.map((project) => (
-            <article
-              key={project.id}
-              className="surface-card bg-surface/90 border border-border p-6 sm:p-7 space-y-5 rounded-md hover:border-border-light transition-colors"
-            >
-              {/* Header: Title */}
-              <div>
-                <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
-                  {project.title}
-                </h3>
-              </div>
-
-              {/* Tagline */}
-              <p className="text-xs sm:text-sm font-sans italic text-foreground-muted">
-                &ldquo;{project.tagline}&rdquo;
-              </p>
-
-              {/* Technical Bullets */}
-              {project.bullets && project.bullets.length > 0 && (
-                <ul className="space-y-2 text-xs sm:text-sm text-foreground-muted leading-relaxed list-none pl-0">
-                  {project.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex items-start gap-2.5">
-                      <span className="text-foreground-subtle select-none">&bull;</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {/* Tech Stack Row */}
-              <div className="text-xs text-foreground-subtle pt-1">
-                {project.techStack.join(" · ")}
-              </div>
-
-              {/* Actions: Verified Repository & Optional Live Demo */}
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                {project.demoUrl && (
-                  <Button
-                    href={project.demoUrl}
-                    external
-                    variant="primary"
-                    size="sm"
-                    icon="arrow-up-right"
-                  >
-                    Live Demo
-                  </Button>
-                )}
-
-                {project.githubUrl && (
-                  <Button
-                    href={project.githubUrl}
-                    external
-                    variant="secondary"
-                    size="sm"
-                    icon="arrow-up-right"
-                  >
-                    Source Code
-                  </Button>
-                )}
-              </div>
-            </article>
+            <ProjectListItem key={project.id} project={project} />
           ))}
-        </div>
+        </ul>
 
-        {/* DESTINATION 3: GITHUB COMPLETE REPOSITORY ARCHIVE CALLOUT */}
-        <div className="border border-border/80 bg-surface/50 rounded-md p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-5 mt-4">
-          <div className="space-y-1.5 max-w-md">
-            <div className="flex items-center gap-2">
-              <GithubIcon className="w-4 h-4 text-foreground-muted" />
-              <h3 className="font-display text-base sm:text-lg font-medium text-foreground tracking-tight">
-                Complete Repository Archive
-              </h3>
-            </div>
-            <p className="text-xs sm:text-sm text-foreground-muted leading-relaxed">
-              Explore the broader collection of open-source projects, training modules, foundational experiments, and academic coursework on GitHub.
-            </p>
-          </div>
-          <Button
+        {/* SECTION 3 / DESTINATION 3: GITHUB ARCHIVE LINK */}
+        <div className="pt-4 text-xs sm:text-sm text-foreground-muted border-t border-border/40">
+          Looking for older prototypes, course projects, or training modules?{" "}
+          <a
             href="https://github.com/vaibhv19"
-            external
-            variant="secondary"
-            size="sm"
-            icon="arrow-up-right"
-            className="shrink-0 self-start sm:self-auto"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground hover:text-white underline decoration-border/70 hover:decoration-white font-medium transition-colors inline-flex items-center gap-1"
           >
-            Explore all projects on GitHub
-          </Button>
+            Explore all projects on GitHub ↗
+          </a>
         </div>
       </section>
     </Container>
   );
 }
-

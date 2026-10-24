@@ -30,6 +30,7 @@ export interface Project {
   parentFrameworkId?: string;
   mustCheckout?: boolean;
   curatedSoftware?: boolean;
+  shortDescription?: string;
   previewImage?: string;
 }
 
@@ -71,6 +72,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     homepagePreview: false,
     mustCheckout: true,
+    shortDescription: "A browser-based chess analysis tool powered by Stockfish 16 WebAssembly, running client-side with multi-threaded Web Workers and automated blunder detection.",
     previewImage: "/images/projects/checkmate-preview.png",
     demoUrl: "https://checkmate.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Check-Mate-Analyse"
@@ -90,6 +92,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     homepagePreview: true,
     mustCheckout: true,
+    shortDescription: "A career operations platform with Spring Boot REST microservices, dual-token JWT authentication, LLM job description extraction, and AWS EC2 hosting.",
     demoUrl: "https://trajectory.vaibhv19.dev",
     githubUrl: "https://github.com/vaibhv19/Trajectory"
   },
@@ -108,6 +111,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     homepagePreview: true,
     curatedSoftware: true,
+    shortDescription: "A hybrid RAG engine fusing pgvector semantic search with BM25 lexical scoring, a 4-tier fallback state machine, and transparent scoring traces.",
     githubUrl: "https://github.com/vaibhv19/Phoenix"
   },
   {
@@ -125,6 +129,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     homepagePreview: false,
     curatedSoftware: true,
+    shortDescription: "A real-time multi-agent consensus platform orchestrating local Ollama language models over STOMP WebSockets with pessimistic concurrency locks.",
     githubUrl: "https://github.com/vaibhv19/Conclave"
   },
   {
@@ -142,6 +147,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     homepagePreview: false,
     curatedSoftware: true,
+    shortDescription: "A stateful multi-agent evaluation pipeline with LangGraph state machine graphs, PostgreSQL checkpointing, and Celery worker queues on Redis.",
     githubUrl: "https://github.com/vaibhv19/Foundry"
   },
   {
@@ -175,6 +181,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     homepagePreview: true,
     curatedSoftware: true,
+    shortDescription: "A distributed in-memory key-value cache in Java 21 featuring Murmur3 consistent hashing on a 150-node virtual ring and Prometheus telemetry.",
     githubUrl: "https://github.com/vaibhv19/Cairn"
   },
   {
@@ -208,6 +215,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     homepagePreview: true,
     curatedSoftware: true,
+    shortDescription: "An autonomous AI agent safety harness executing tool calls inside ephemeral Docker containers with real-time shell and filesystem anomaly detection.",
     githubUrl: "https://github.com/vaibhv19/Vigil"
   },
   {
@@ -225,6 +233,7 @@ export const PROJECTS: Project[] = [
     featured: false,
     homepagePreview: false,
     mustCheckout: true,
+    shortDescription: "A distributed email scheduling platform using BullMQ worker queues, atomic Redis Lua rate limiters, and full-text Elasticsearch search.",
     demoUrl: "https://email-job-scheduler.vaibhv19.dev",
     githubUrl: "https://github.com/vaibhv19/Email-Job-Scheduler"
   },
@@ -255,6 +264,7 @@ export const PROJECTS: Project[] = [
     category: "System Integrity & DevSecOps Guardrails",
     techStack: ["k6", "JavaScript", "InfluxDB", "Grafana", "Docker", "GitHub Actions"],
     curatedSoftware: true,
+    shortDescription: "An automated load and stress testing framework using k6 to evaluate backend service degradation curves with InfluxDB and Grafana telemetry.",
     githubUrl: "https://github.com/vaibhv19/Pulse"
   },
   {
@@ -270,6 +280,7 @@ export const PROJECTS: Project[] = [
     category: "System Integrity & DevSecOps Guardrails",
     techStack: ["Python", "OWASP ZAP", "Pydantic", "Docker", "Security Audit", "Click"],
     curatedSoftware: true,
+    shortDescription: "An automated security audit suite integrating the OWASP ZAP API for evidence-based vulnerability scanning, IDOR verification, and parameter fuzzing.",
     githubUrl: "https://github.com/vaibhv19/Warden"
   },
 
@@ -346,6 +357,7 @@ export const PROJECTS: Project[] = [
     parentFrameworkId: "ibm-pbel",
     techStack: ["React", "JavaScript", "Tailwind CSS", "React Router", "Vite", "Context API"],
     mustCheckout: true,
+    shortDescription: "A client-side restaurant ordering simulation featuring deterministic pricing, React Context cart state, and printable kitchen receipts.",
     demoUrl: "https://thetiffindispatch.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/food-ordering-system"
   },
@@ -405,6 +417,7 @@ export const PROJECTS: Project[] = [
     category: "Built for No Reason Other Than Wanting To",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Canvas API"],
     mustCheckout: true,
+    shortDescription: "An interactive celebration webpage built with custom HTML5 Canvas particle physics and audio-synchronized state reveals.",
     demoUrl: "https://zoya.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Happy-Birthday-Zoya"
   },
@@ -422,6 +435,7 @@ export const PROJECTS: Project[] = [
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
     techStack: ["Java", "Spring Boot", "Spring Cloud", "RabbitMQ", "PostgreSQL", "MongoDB", "Keycloak", "React", "Gemini API"],
     curatedSoftware: true,
+    shortDescription: "A distributed microservices platform built with Spring Boot 3.4, Spring Cloud Gateway, Eureka discovery, RabbitMQ messaging, and Keycloak OAuth2.",
     githubUrl: "https://github.com/vaibhv19/AI-Powered-Fittness-application"
   },
   {
@@ -567,6 +581,7 @@ export const PROJECTS: Project[] = [
     category: "Client Work & Collaborations",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     mustCheckout: true,
+    shortDescription: "A commercial client website engineered for an influencer marketing agency using Next.js App Router under strict performance budgets.",
     previewImage: "/images/projects/1nfinity-preview.webp",
     demoUrl: "https://1nfinity.online"
   },
@@ -587,6 +602,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     homepagePreview: false,
     mustCheckout: true,
+    shortDescription: "A technical publication platform and engineering journal covering distributed systems and systems architecture on Next.js 16.",
     demoUrl: "https://vaibhv19.dev",
     githubUrl: "https://github.com/vaibhv19/Portfolio-BLog"
   },
@@ -602,6 +618,7 @@ export const PROJECTS: Project[] = [
     category: "Personal Websites & Platforms",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     mustCheckout: true,
+    shortDescription: "A personal digital scrapbook and habit archive featuring an editorial paper-grain aesthetic and responsive media galleries.",
     demoUrl: "https://life.vaibhv19.dev"
   }
 ];

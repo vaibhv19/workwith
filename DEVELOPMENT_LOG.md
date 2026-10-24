@@ -469,3 +469,25 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.3s with zero errors.
   - Responsive visual inspection (Desktop 1440x900 & Mobile 390x844): Verified 8 Must Checkout cards, 8 Developed Software cards, and the GitHub callout card. Confirmed `scrollWidth <= innerWidth` with zero horizontal overflow.
+
+### Milestone 24 — Compact Text-Led Project Listings (Card Removal & Single-Line Entries)
+- **Objective:**
+  - Redesign project entries in both Must Checkout and Developed Software from large bordered cards into compact, single-line text entries.
+  - Standardize entry format: `[Title] · [Live demo ↗] · [Source code ↗] — [Concise one-line description]`.
+- **Key Changes:**
+  - **Complete Removal of Card UI:**
+    - Eliminated large bordered containers (`surface-card bg-surface/90 border border-border p-6 sm:p-7`), individual card backgrounds, multi-item bullet lists, tech badge rows, and separate oversized action buttons.
+    - Zero card-specific hover shadows or unnecessary transitions remain in project listings.
+  - **Single-Line Project Entries:**
+    - Project title appears first in bold foreground typography, linking directly to the primary live demo or repository.
+    - Inline links (`Live demo ↗`, `Source code ↗`) are rendered conditionally with `·` separators based on verified destinations.
+    - Em dash separator (`—`) connects the links to exactly one concise, concrete descriptive sentence.
+  - **Canonical Data Augmentation (`data/projects.ts`):**
+    - Added `shortDescription?: string;` to `Project` interface.
+    - Authored concrete, single-sentence descriptions for all 8 Must Checkout projects and all 8 Developed Software projects, focusing on core engineering capabilities without marketing fluff.
+    - Preserved the full underlying catalogue metadata (taglines, technical bullets, tech stacks) intact for detailed reference and case studies.
+  - **Subtle GitHub Archive Integration:**
+    - Replaced the previous rectangular callout box with a clean, understated text invitation at the bottom of Developed Software: *"Looking for older prototypes, course projects, or training modules? Explore all projects on GitHub ↗"*.
+- **Validation:**
+  - Desktop (1440x900) & Mobile (390x844): Verified that all 16 projects occupy natural lines of text, wrap cleanly across viewports, have zero horizontal scroll (`scrollWidth <= innerWidth`), and feel like an elegant, curated personal portfolio list.
+  - Next.js Turbopack build (`npm run build`): All 16 static HTML routes compiled with 0 errors in 1.7s.
