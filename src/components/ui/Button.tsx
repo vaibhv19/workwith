@@ -34,7 +34,7 @@ export default function Button({
 }: ButtonProps) {
   // Base classes for keyboard focus, transitions, and inline display
   const baseClasses =
-    "inline-flex items-center justify-center font-sans uppercase font-medium tracking-[0.08em] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:opacity-50 disabled:pointer-events-none group";
+    "inline-flex items-center justify-center font-sans uppercase font-medium tracking-[0.08em] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-heading disabled:opacity-50 disabled:pointer-events-none group";
 
   // Size variations
   const sizeClasses: Record<ButtonSize, string> = {
@@ -53,13 +53,13 @@ export default function Button({
   // Visual variants
   const variantClasses: Record<ButtonVariant, string> = {
     primary:
-      "bg-[#D32F2F] text-white hover:bg-[#B71C1C] hover:shadow-[0_8px_24px_-6px_rgba(211,47,47,0.25)] hover:-translate-y-[1px]",
+      "bg-heading text-white hover:bg-heading-hover hover:shadow-[0_8px_24px_-6px_rgba(211,47,47,0.25)] hover:-translate-y-[1px]",
     secondary:
-      "bg-transparent text-[#171717] border border-[#E5E5E5] hover:border-[#D32F2F] hover:bg-[#FAFAFA] hover:text-[#D32F2F]",
+      "bg-transparent text-[#171717] border border-border hover:border-heading hover:bg-[#FAFAFA] hover:text-heading",
     accent:
-      "bg-[#D32F2F] text-white hover:bg-[#B71C1C] hover:shadow-[0_8px_24px_-6px_rgba(211,47,47,0.25)] hover:-translate-y-[1px]",
+      "bg-heading text-white hover:bg-heading-hover hover:shadow-[0_8px_24px_-6px_rgba(211,47,47,0.25)] hover:-translate-y-[1px]",
     text:
-      "bg-transparent text-[#D32F2F] hover:text-[#B71C1C] font-semibold border-none !p-0",
+      "bg-transparent text-link hover:text-link-hover font-semibold border-none !p-0",
   };
 
   const appliedSize = variant === "text" ? textSizeClasses[size] : sizeClasses[size];

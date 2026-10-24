@@ -684,3 +684,67 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Static compilation (`npm run build`): All 16 static HTML routes generated with 0 errors via Turbopack.
   - Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports on `/projects`. Confirmed computed styles (`rgb(53, 92, 125)` default, `rgb(38, 67, 92)` hover, `rgb(53, 92, 125)` visited), clear underline, no horizontal overflow, and responsive text wrapping.
+
+### Milestone 30 — Site-Wide Consistent Color Hierarchy Architecture
+
+- **Objective:**
+  - Establish and systematically enforce the global color hierarchy across the entire website:
+    - **White (`#FFFFFF`)** — Primary background and reading surfaces.
+    - **Red (`#D32F2F`)** — Structural emphasis: page and section headings (`h1`, `h2`, `h3`), active navigation indicator, active state markers, metric numerals, and primary CTA buttons.
+    - **Muted Blue (`#355C7D`)** — Interactive links: project titles, inline text links, "Read Case Study" links, breadcrumbs ("Back to Case Studies"), Table of Contents anchors, pagination links, and contact email/social links.
+    - **Near-black (`#171717`)** — Primary reading content: body text, project descriptions, article narrative paragraphs, technical explanations, and form inputs.
+    - **Neutral Gray (`#E5E5E5`)** — Supporting structure: subtle borders, dividers, and static wave pattern background.
+- **Centralized Semantic Design Tokens (`src/app/globals.css`):**
+  - Added semantic tokens to Tailwind v4 `@theme`:
+    - `--color-background: #FFFFFF;`
+    - `--color-text: #171717;`
+    - `--color-heading: #D32F2F;`
+    - `--color-heading-hover: #B71C1C;`
+    - `--color-link: #355C7D;`
+    - `--color-link-hover: #26435C;`
+    - `--color-link-subtle: #EBF1F5;`
+    - `--color-accent: #D32F2F;`
+    - `--color-border: #E5E5E5;`
+    - `--color-wave: #E5E5E5;`
+  - Defined corresponding `:root` semantic CSS variables for cross-component reusability.
+  - Added centralized `.link-interactive` utility class with default, visited, hover, and focus-visible states.
+  - Linked `.btn-text` to `var(--color-link)` and `var(--color-link-hover)`.
+- **Systematic Site-Wide Page & Component Refactoring:**
+  - **Navigation (`src/components/Header.tsx`):**
+    - Active link and bottom indicator line mapped to `text-heading` and `bg-heading` (`#D32F2F`).
+    - Inactive links styled in near-black (`#171717`), transitioning to `text-heading` on hover.
+  - **Button Foundation (`src/components/ui/Button.tsx`):**
+    - `text` variant wired to `text-link hover:text-link-hover` (`#355C7D` / `#26435C`).
+    - `primary` and `accent` variants mapped to `bg-heading hover:bg-heading-hover` (`#D32F2F` / `#B71C1C`).
+    - `secondary` variant mapped to `border-border text-[#171717] hover:border-heading hover:text-heading`.
+    - Focus ring updated to `focus-visible:ring-heading`.
+  - **Projects (`src/app/projects/page.tsx`):**
+    - Section headings ("Checkout", "Developed Software") mapped to `text-heading` (`#D32F2F`).
+    - Project titles use `.link-project-title` (muted blue `#355C7D`).
+    - Descriptions and separating dashes rendered in near-black (`#171717`).
+    - Archive link ("Explore all projects on GitHub ↗") updated to `.link-interactive` (`#355C7D`).
+  - **Case Studies Archive (`src/app/case-study/page.tsx`):**
+    - Case study titles mapped to `text-heading group-hover:text-heading-hover` (`#D32F2F`).
+    - Category tag and period text standardized to near-black (`#171717`).
+    - "Read Case Study" action rendered in muted blue (`#355C7D`) via `Button variant="text"`.
+  - **Individual Case Study Detail (`src/app/case-study/[slug]/page.tsx`):**
+    - "Back to Case Studies" breadcrumb rendered in muted blue (`text-link hover:text-link-hover`).
+    - Case study hero title, section headings, and callout box titles mapped to `text-heading`.
+    - Table of contents links and bottom pagination links mapped to `text-link hover:text-link-hover`.
+    - Role, category tag, metadata, narrative paragraphs, code blocks, and table cells rendered in near-black (`#171717`).
+    - Big metric values rendered in `text-heading`.
+  - **Start a Conversation (`src/app/start-conversation/page.tsx`):**
+    - Hero and section headings mapped to `text-heading`.
+    - Direct contact email and social channels (GitHub, LinkedIn, X, Bluesky) mapped to `text-link hover:text-link-hover`.
+    - Discussion topic numbers (`01`–`04`) and topic titles mapped to `text-heading`.
+    - Topic descriptions rendered in near-black (`#171717`).
+  - **Contact Form (`src/components/ContactForm.tsx`):**
+    - Required field indicators (`*`) mapped to `text-heading`.
+    - Input focus rings mapped to `focus:ring-heading focus:border-heading`.
+    - Fallback email client button mapped to `bg-heading hover:bg-heading-hover`.
+  - **Footer (`src/components/Footer.tsx`):**
+    - Direct email link and social icon buttons mapped to `text-link hover:text-link-hover`.
+    - Copyright notice preserved in near-black (`#171717`).
+- **Validation:**
+  - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.9s with 0 errors.
+  - Browser Verification: Tested `/projects`, `/case-study`, `/case-study/conclave`, and `/start-conversation` at desktop (1440x900) and mobile (390x844). Verified visual hierarchy: White background → red headings & active nav → blue clickable links → near-black body content → subtle gray structural elements.

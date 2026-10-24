@@ -166,7 +166,7 @@ export function ContactForm() {
                 )}&body=${encodeURIComponent(
                   `Hi Vaibhav,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
                 )}`}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-accent text-white font-semibold text-xs transition-colors hover:bg-accent-muted"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-heading text-white font-semibold text-xs transition-colors hover:bg-heading-hover"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>Open in Email Client ({fallbackEmail || "contact@vaibhv19.dev"})</span>
@@ -179,7 +179,7 @@ export function ContactForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <label htmlFor="contact-name" className="block text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted">
-              Your Name <span className="text-accent">*</span>
+              Your Name <span className="text-heading">*</span>
             </label>
             <input
               type="text"
@@ -189,7 +189,7 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="e.g. Jane Doe"
               disabled={status === "loading"}
-              className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent ${
+              className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors focus:outline-none focus:ring-1 focus:ring-heading focus:border-heading ${
                 fieldErrors.name ? "border-rose-500/80" : "border-border hover:border-border-light"
               }`}
             />
@@ -200,7 +200,7 @@ export function ContactForm() {
 
           <div className="space-y-1.5">
             <label htmlFor="contact-email" className="block text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted">
-              Your Email <span className="text-accent">*</span>
+              Your Email <span className="text-heading">*</span>
             </label>
             <input
               type="email"
@@ -210,7 +210,7 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="e.g. jane@company.com"
               disabled={status === "loading"}
-              className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent ${
+              className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors focus:outline-none focus:ring-1 focus:ring-heading focus:border-heading ${
                 fieldErrors.email ? "border-rose-500/80" : "border-border hover:border-border-light"
               }`}
             />
@@ -231,7 +231,7 @@ export function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             disabled={status === "loading"}
-            className="w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border border-border hover:border-border-light rounded-[2px] focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent transition-colors"
+            className="w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border border-border hover:border-border-light rounded-[2px] focus:outline-none focus:ring-1 focus:ring-heading focus:border-heading transition-colors"
           >
             <option value="Engineering Role / Opportunity" className="bg-white text-foreground">
               Full-Time Software Engineering Role
@@ -254,7 +254,7 @@ export function ContactForm() {
         {/* Message Field */}
         <div className="space-y-1.5">
           <label htmlFor="contact-message" className="block text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted">
-            Your Note <span className="text-accent">*</span>
+            Your Note <span className="text-heading">*</span>
           </label>
           <textarea
             id="contact-message"
@@ -264,7 +264,7 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder="Share details about the role, project requirements, architectural challenges, or collaboration scope..."
             disabled={status === "loading"}
-            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors resize-y min-h-[110px] focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent ${
+            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border rounded-[2px] placeholder:text-foreground-subtle/50 transition-colors resize-y min-h-[110px] focus:outline-none focus:ring-1 focus:ring-heading focus:border-heading ${
               fieldErrors.message ? "border-rose-500/80" : "border-border hover:border-border-light"
             }`}
           />

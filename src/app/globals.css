@@ -19,15 +19,29 @@
   --color-foreground-muted: #171717;
   --color-foreground-subtle: #262626;
 
+  /* Semantic Color Hierarchy Tokens */
+  --color-text: #171717;
+  --color-text-muted: #171717;
+  --color-text-subtle: #262626;
+
+  --color-heading: #D32F2F;
+  --color-heading-hover: #B71C1C;
+
   --color-accent: #D32F2F;
   --color-accent-muted: #B71C1C;
   --color-accent-tan: #C62828;
   --color-accent-champagne: #FFEBEE;
   --color-accent-dark: #8B0000;
 
+  --color-link: #355C7D;
+  --color-link-hover: #26435C;
+  --color-link-subtle: #EBF1F5;
+
   --color-accent-secondary: #355C7D;
   --color-accent-secondary-hover: #26435C;
   --color-accent-secondary-subtle: #EBF1F5;
+
+  --color-wave: #E5E5E5;
 
   --font-display: 'Clash Display', var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-numeric: 'Satoshi', var(--font-inter), sans-serif;
@@ -37,7 +51,19 @@
 }
 
 :root {
-  /* Core Palette Variables - White, Near-Black & Red */
+  /* Semantic Design Tokens */
+  --color-background: #FFFFFF;
+  --color-text: #171717;
+  --color-heading: #D32F2F;
+  --color-heading-hover: #B71C1C;
+  --color-link: #355C7D;
+  --color-link-hover: #26435C;
+  --color-accent: #D32F2F;
+  --color-accent-hover: #B71C1C;
+  --color-border: #E5E5E5;
+  --color-wave: #E5E5E5;
+
+  /* Backward Compatibility Variables */
   --bg-black: #FFFFFF;
   --bg-deep: #FAFAFA;
   
@@ -243,9 +269,9 @@ input, textarea, button, select {
 }
 
 .btn-secondary:hover {
-  border-color: var(--accent-primary);
+  border-color: var(--color-heading);
   background-color: var(--surface-elevated);
-  color: var(--accent-primary);
+  color: var(--color-heading);
 }
 
 .btn-text {
@@ -257,13 +283,40 @@ input, textarea, button, select {
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--text-primary);
+  color: var(--color-link);
   transition: color 300ms ease;
   text-decoration: none;
 }
 
 .btn-text:hover {
-  color: var(--accent-primary);
+  color: var(--color-link-hover);
+}
+
+/* ==========================================================================
+   INTERACTIVE LINK FOUNDATION
+   ========================================================================== */
+
+.link-interactive {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-color: rgba(53, 92, 125, 0.4);
+  text-underline-offset: 2px;
+  border-radius: 2px;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+.link-interactive:visited {
+  color: var(--color-link);
+}
+
+.link-interactive:hover {
+  color: var(--color-link-hover);
+  text-decoration-color: var(--color-link-hover);
+}
+
+.link-interactive:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1.5px var(--color-link);
 }
 
 /* ==========================================================================
@@ -272,7 +325,7 @@ input, textarea, button, select {
 
 .link-project-title {
   font-weight: 500;
-  color: var(--accent-secondary);
+  color: var(--color-link);
   text-decoration: underline;
   text-decoration-color: rgba(53, 92, 125, 0.4);
   text-underline-offset: 2px;
@@ -281,17 +334,17 @@ input, textarea, button, select {
 }
 
 .link-project-title:visited {
-  color: var(--accent-secondary);
+  color: var(--color-link);
 }
 
 .link-project-title:hover {
-  color: var(--accent-secondary-hover);
-  text-decoration-color: var(--accent-secondary-hover);
+  color: var(--color-link-hover);
+  text-decoration-color: var(--color-link-hover);
 }
 
 .link-project-title:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 1.5px var(--accent-secondary);
+  box-shadow: 0 0 0 1.5px var(--color-link);
 }
 
 /* ==========================================================================

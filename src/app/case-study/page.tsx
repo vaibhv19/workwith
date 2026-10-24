@@ -37,19 +37,19 @@ export default function CaseStudiesPage() {
           >
             {/* Top Row: Category & Period */}
             <div className="flex items-baseline justify-between text-xs text-[#171717] font-mono">
-              <span className="font-medium text-accent">{study.category}</span>
+              <span className="font-medium text-[#171717]">{study.category}</span>
               <span>{study.period}</span>
             </div>
 
             {/* Title & Subtitle */}
             <div>
-              <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-accent group-hover:text-accent-muted transition-colors">
+              <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading group-hover:text-heading-hover transition-colors">
                 <Link
                   href={`/case-study/${study.slug}`}
-                  className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+                  className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-heading rounded-sm"
                 >
                   <span>{study.title}</span>
-                  <span className="text-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-sm font-normal">
+                  <span className="text-heading opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-sm font-normal">
                     &rarr;
                   </span>
                 </Link>

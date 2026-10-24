@@ -50,16 +50,16 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`shrink-0 px-2 sm:px-3 lg:px-4 py-1.5 text-[11px] sm:text-xs lg:text-[13px] font-medium tracking-[0.06em] sm:tracking-[0.1em] lg:tracking-[0.14em] uppercase transition-colors duration-300 relative group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm ${
+              className={`shrink-0 px-2 sm:px-3 lg:px-4 py-1.5 text-[11px] sm:text-xs lg:text-[13px] font-medium tracking-[0.06em] sm:tracking-[0.1em] lg:tracking-[0.14em] uppercase transition-colors duration-300 relative group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-heading rounded-sm ${
                 link.isActive
-                  ? "text-accent font-semibold"
-                  : "text-[#171717] hover:text-accent"
+                  ? "text-heading font-semibold"
+                  : "text-[#171717] hover:text-heading"
               }`}
             >
               <span>{link.label}</span>
               {/* Active / Hover accent line */}
               <span
-                className={`absolute bottom-0 left-2 right-2 sm:left-3 sm:right-3 lg:left-4 lg:right-4 h-[1.5px] bg-accent transition-all duration-300 ${
+                className={`absolute bottom-0 left-2 right-2 sm:left-3 sm:right-3 lg:left-4 lg:right-4 h-[1.5px] bg-heading transition-all duration-300 ${
                   link.isActive
                     ? "opacity-100 scale-x-100"
                     : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"

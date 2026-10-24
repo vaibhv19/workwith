@@ -61,7 +61,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <nav aria-label="Breadcrumb" className="text-xs font-mono text-[#171717] pb-6">
           <Link
             href="/case-study"
-            className="text-accent hover:text-accent-muted transition-colors font-medium inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
+            className="text-link hover:text-link-hover transition-colors font-medium inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm group"
           >
             <span className="transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
             <span>Back to Case Studies</span>
@@ -71,13 +71,13 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         {/* Article Header */}
         <header className="space-y-6 border-b border-border pb-8">
           <div className="flex items-center justify-between text-xs text-[#171717]">
-            <span className="font-medium text-accent font-mono">
+            <span className="font-medium text-[#171717] font-mono">
               {study.category}
             </span>
             <span className="font-mono">{study.period}</span>
           </div>
 
-          <h1 className="font-display-hero text-accent">
+          <h1 className="font-display-hero text-heading">
             {study.title}
           </h1>
 
@@ -97,7 +97,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border text-xs">
             <div>
               <span className="text-[#171717]">Role: </span>
-              <span className="text-accent font-medium">{narrative.role}</span>
+              <span className="text-[#171717] font-medium">{narrative.role}</span>
             </div>
 
             <div className="flex items-center gap-3">
@@ -139,7 +139,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                   <div className="text-xs text-[#171717] font-medium truncate">
                     {metric.label}
                   </div>
-                  <div className="font-metric text-base sm:text-lg lg:text-xl font-bold text-accent break-words">
+                  <div className="font-metric text-base sm:text-lg lg:text-xl font-bold text-heading break-words">
                     {metric.value}
                   </div>
                   <div className="text-xs text-[#171717] leading-tight">
@@ -153,7 +153,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
         {/* Table of Contents */}
         <section className="p-5 my-8 rounded-[2px] bg-surface/60 border border-border space-y-3">
-          <h2 className="text-xs font-semibold text-accent font-mono uppercase tracking-wider">
+          <h2 className="text-xs font-semibold text-heading font-mono uppercase tracking-wider">
             Table of Contents
           </h2>
           <nav className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs font-mono">
@@ -161,7 +161,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               <a
                 key={idx}
                 href={`#${sec.id}`}
-                className="text-[#171717] hover:text-accent transition-colors truncate"
+                className="text-link hover:text-link-hover transition-colors truncate"
               >
                 {sec.title}
               </a>
@@ -169,7 +169,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             {narrative.openQuestionsAndExclusions.length > 0 && (
               <a
                 href="#scope-and-tradeoffs"
-                className="text-[#171717] hover:text-accent transition-colors truncate"
+                className="text-link hover:text-link-hover transition-colors truncate"
               >
                 Scope &amp; Trade-offs
               </a>
@@ -186,7 +186,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               className="space-y-5 scroll-mt-24 border-b border-border pb-12 last:border-b-0"
             >
               <div className="space-y-1.5">
-                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-accent">
+                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading">
                   {sec.title}
                 </h2>
                 {sec.lead && (
@@ -205,8 +205,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
               {/* Callout Box */}
               {sec.callout && (
-                <div className="p-4 sm:p-5 rounded-[2px] border border-border border-l-2 border-l-accent bg-surface-elevated/70 my-5 space-y-1.5">
-                  <div className="text-xs font-semibold text-accent font-mono">
+                <div className="p-4 sm:p-5 rounded-[2px] border border-border border-l-2 border-l-heading bg-surface-elevated/70 my-5 space-y-1.5">
+                  <div className="text-xs font-semibold text-heading font-mono">
                     {sec.callout.title}
                   </div>
                   <div className="text-xs sm:text-sm text-[#171717] leading-relaxed font-sans">
@@ -219,7 +219,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               {sec.diagram && (
                 <div className="space-y-2 my-6">
                   <div className="flex items-center justify-between text-xs font-mono text-[#171717]">
-                    <span className="font-medium text-accent">{sec.diagram.title}</span>
+                    <span className="font-medium text-heading">{sec.diagram.title}</span>
                   </div>
                   <pre className="overflow-x-auto text-[11px] sm:text-xs font-mono bg-[#F8F8F8] border border-border rounded-[2px] p-5 text-[#171717] leading-tight selection:bg-accent/20">
                     {sec.diagram.ascii}
@@ -234,8 +234,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               {sec.codeBlock && (
                 <div className="space-y-0 my-6">
                   <div className="flex items-center justify-between px-4 py-2 rounded-t-[2px] bg-surface-elevated border border-b-0 border-border text-xs font-mono text-[#171717]">
-                    <span className="font-medium text-accent">{sec.codeBlock.title}</span>
-                    <span className="text-accent text-xs font-mono font-medium">{sec.codeBlock.language}</span>
+                    <span className="font-medium text-heading">{sec.codeBlock.title}</span>
+                    <span className="text-[#171717] text-xs font-mono font-medium">{sec.codeBlock.language}</span>
                   </div>
                   <pre className="overflow-x-auto text-xs font-mono bg-[#F8F8F8] border border-border rounded-b-[2px] p-4 text-[#171717] leading-relaxed">
                     <code>{sec.codeBlock.code}</code>
@@ -248,7 +248,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 <div className="space-y-2 my-6">
                   <div className="overflow-x-auto rounded-[2px] border border-border">
                     <table className="w-full text-left text-xs sm:text-sm">
-                      <thead className="bg-surface-elevated text-accent text-xs font-medium border-b border-border">
+                      <thead className="bg-surface-elevated text-heading text-xs font-medium border-b border-border">
                         <tr>
                           {sec.table.headers.map((h, hIdx) => (
                             <th key={hIdx} className="px-4 py-3 font-semibold">
@@ -294,7 +294,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               className="space-y-5 scroll-mt-24 pt-4 border-b border-border pb-12"
             >
               <div className="space-y-1">
-                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-accent">
+                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading">
                   Scope Boundaries &amp; Engineering Trade-offs
                 </h2>
                 <p className="font-body-lead text-[#171717] text-xs sm:text-sm">
@@ -309,8 +309,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                     className="p-4 rounded-[2px] bg-surface/60 border border-border space-y-1"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-accent select-none">&bull;</span>
-                      <h3 className="font-mono text-xs sm:text-[13px] font-semibold text-accent">
+                      <span className="text-heading select-none">&bull;</span>
+                      <h3 className="font-mono text-xs sm:text-[13px] font-semibold text-heading">
                         {item.question}
                       </h3>
                     </div>
@@ -329,9 +329,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           {prevStudy ? (
             <Link
               href={`/case-study/${prevStudy.slug}`}
-              className="text-[#171717] hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
+              className="text-link hover:text-link-hover transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm group"
             >
-              <span className="transition-transform duration-300 group-hover:-translate-x-1 text-accent">&larr;</span>
+              <span className="transition-transform duration-300 group-hover:-translate-x-1 text-link">&larr;</span>
               <span>Prev: {prevStudy.title}</span>
             </Link>
           ) : (
@@ -341,10 +341,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           {nextStudy ? (
             <Link
               href={`/case-study/${nextStudy.slug}`}
-              className="text-[#171717] hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
+              className="text-link hover:text-link-hover transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm group"
             >
               <span>Next: {nextStudy.title}</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1 text-accent">&rarr;</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1 text-link">&rarr;</span>
             </Link>
           ) : (
             <span className="text-[#171717]">End of Case Studies</span>

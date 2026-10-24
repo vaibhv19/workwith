@@ -47,7 +47,7 @@ export default function StartConversationPage() {
     <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       {/* Editorial Header */}
       <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
-        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-accent leading-[1.15]">
+        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-heading leading-[1.15]">
           Start a Conversation
         </h1>
         <p className="font-body text-sm sm:text-base text-[#171717] leading-relaxed max-w-2xl font-normal">
@@ -60,18 +60,21 @@ export default function StartConversationPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-[2px] bg-surface-elevated border border-border flex items-center justify-center shrink-0">
-              <Mail className="w-4 h-4 text-accent" />
+              <Mail className="w-4 h-4 text-heading" />
             </div>
-            <span className="font-mono text-xs sm:text-sm text-accent select-all font-medium">
+            <a
+              href="mailto:contact@vaibhv19.dev"
+              className="font-mono text-xs sm:text-sm text-link hover:text-link-hover font-medium transition-colors"
+            >
               contact@vaibhv19.dev
-            </span>
+            </a>
           </div>
 
           <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={() => copyToClipboard("contact@vaibhv19.dev")}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono text-[#171717] hover:text-accent bg-surface-elevated hover:bg-surface-subtle border border-border hover:border-border-light rounded-[2px] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono text-[#171717] hover:text-link bg-surface-elevated hover:bg-surface-subtle border border-border hover:border-border-light rounded-[2px] transition-colors cursor-pointer"
               title="Copy email address"
             >
               {copiedEmail ? (
@@ -108,7 +111,7 @@ export default function StartConversationPage() {
               href="https://github.com/vaibhv19"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-link transition-colors"
             >
               <GithubIcon className="w-3.5 h-3.5 text-current" />
               <span>GitHub</span>
@@ -117,7 +120,7 @@ export default function StartConversationPage() {
               href="https://www.linkedin.com/in/vaibhav-gupta-728b93288/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-link transition-colors"
             >
               <LinkedinIcon className="w-3.5 h-3.5 text-current" />
               <span>LinkedIn</span>
@@ -126,7 +129,7 @@ export default function StartConversationPage() {
               href="https://x.com/vaibhv_19"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-link transition-colors"
             >
               <XIcon className="w-3.5 h-3.5 text-current" />
               <span>X</span>
@@ -135,7 +138,7 @@ export default function StartConversationPage() {
               href="https://bsky.app/profile/vaibhv19.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-link transition-colors"
             >
               <BlueskyIcon className="w-3.5 h-3.5 text-current" />
               <span>Bluesky</span>
@@ -147,7 +150,7 @@ export default function StartConversationPage() {
       {/* Form Section */}
       <section className="space-y-4">
         <div className="space-y-1.5">
-          <h2 className="font-display-h2 text-accent text-xl sm:text-2xl">
+          <h2 className="font-display-h2 text-heading text-xl sm:text-2xl">
             Send a Message
           </h2>
           <p className="text-xs sm:text-sm text-[#171717]">
@@ -161,7 +164,7 @@ export default function StartConversationPage() {
       {/* Welcome Conversation Topics */}
       <section className="space-y-6 pt-4 border-t border-border">
         <div className="space-y-1.5">
-          <h2 className="font-display-h2 text-accent text-xl sm:text-2xl">
+          <h2 className="font-display-h2 text-heading text-xl sm:text-2xl">
             What We Can Discuss
           </h2>
           <p className="text-xs sm:text-sm text-[#171717]">
@@ -173,10 +176,10 @@ export default function StartConversationPage() {
           {CONVERSATION_AREAS.map((topic) => (
             <div key={topic.title} className="space-y-1">
               <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs font-semibold text-accent select-none">
+                <span className="font-mono text-xs font-semibold text-heading select-none">
                   {topic.number}
                 </span>
-                <h3 className="text-sm font-semibold text-accent">
+                <h3 className="text-sm font-semibold text-heading">
                   {topic.title}
                 </h3>
               </div>

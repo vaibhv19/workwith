@@ -58,7 +58,7 @@ export default function ProjectsPage() {
       {/* SECTION 1: MUST CHECKOUT */}
       <section aria-labelledby="must-checkout-heading" className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
-          <h2 id="must-checkout-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-accent">
+          <h2 id="must-checkout-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-heading">
           Checkout
           </h2>
         </div>
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
       {/* SECTION 2: DEVELOPED SOFTWARE */}
       <section aria-labelledby="developed-software-heading" className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-2.5">
-          <h2 id="developed-software-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-accent">
+          <h2 id="developed-software-heading" className="font-display text-lg sm:text-xl font-medium tracking-tight text-heading">
             Developed Software
           </h2>
         </div>
@@ -91,7 +91,7 @@ export default function ProjectsPage() {
             href="https://github.com/vaibhv19"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent hover:text-accent-muted underline decoration-accent/50 hover:decoration-accent font-medium transition-colors inline-flex items-center gap-1"
+            className="link-interactive font-medium inline-flex items-center gap-1"
           >
             Explore all projects on GitHub ↗
           </a>

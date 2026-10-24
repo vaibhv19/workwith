@@ -64,7 +64,7 @@ export function Footer() {
           <div className="flex items-center space-x-2">
             <a
               href="mailto:contact@vaibhv19.dev"
-              className="text-xs sm:text-sm font-mono text-accent hover:text-accent-muted transition-colors font-medium"
+              className="text-xs sm:text-sm font-mono text-link hover:text-link-hover transition-colors font-medium"
             >
               contact@vaibhv19.dev
             </a>
@@ -75,7 +75,7 @@ export function Footer() {
               href="https://github.com/vaibhv19"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-link transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm"
               aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4 text-current" />
@@ -84,7 +84,7 @@ export function Footer() {
               href="https://www.linkedin.com/in/vaibhv19"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-link transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4 text-current" />
@@ -93,14 +93,14 @@ export function Footer() {
               href="https://x.com/vaibhv_19"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-link transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm"
               aria-label="X (Twitter)"
             >
               <XIcon className="w-4 h-4 text-current" />
             </a>
             <a
               href="mailto:contact@vaibhv19.dev"
-              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-link transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm"
               aria-label="Email"
             >
               <Mail className="w-4 h-4 text-current" />
