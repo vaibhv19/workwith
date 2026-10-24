@@ -19,6 +19,11 @@ export function Header() {
 
   const navLinks = [
     {
+      label: "WORK WITH ME",
+      href: "/",
+      isActive: pathname === "/" || pathname === "/start-conversation",
+    },
+    {
       label: "PROJECTS",
       href: "/projects",
       isActive: pathname === "/projects",
@@ -28,11 +33,7 @@ export function Header() {
       href: "/case-study",
       isActive: pathname === "/case-study" || pathname.startsWith("/case-study/"),
     },
-    {
-      label: "WORK WITH ME",
-      href: "/",
-      isActive: pathname === "/" || pathname === "/start-conversation",
-    },
+  
   ];
 
   return (
