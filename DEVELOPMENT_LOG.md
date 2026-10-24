@@ -793,3 +793,76 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack in 2.8s with 0 errors and 0 type warnings.
   - Verified live application rendering and metadata alignment.
 
+### Milestone 33 — Projects Page Header Restructuring, Marquee & Single-Column Areas of Work
+
+- **Objective:**
+  - Restructure the top introductory section of the Projects page (`src/app/projects/page.tsx`) to adopt the editorial composition of the 1nfinity About page.
+  - Integrate an animated full-width marquee highlighting core capabilities.
+  - Introduce an "Areas of Work" section presented as a clean, single-column vertical list aligned to the centered middle column (`Container size="default"`).
+  - Strictly preserve all existing content below Areas of Work (Checkout deployments, Developed Software catalogue, and GitHub archive link).
+- **Implementation Details (`src/app/projects/page.tsx`):**
+  - **Hero Section:** Oversized, centered heading `Projects` in red (`text-heading` `#D32F2F`) with responsive typography (`text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] font-medium tracking-tight uppercase`), accompanied by centered supporting description in near-black (`#171717`).
+  - **Capabilities Marquee:** Full-width horizontal strip (`border-y border-border bg-surface/60 py-4 sm:py-5`) with seamless continuous twin-track loop for `WEB DEVELOPMENT · BACKEND SYSTEMS · AI ENGINEERING · CLOUD & PLATFORM ENGINEERING · TECHNICAL SEO ·`, with edge fade masks, pause on hover, and reduced-motion safety.
+  - **Areas of Work:** Single vertical column list displaying 6 authentic engineering domains (Web & Product Engineering, Backend & Distributed Systems, AI Engineering & Orchestration, Cloud & Platform Engineering, Technical SEO & Search Visibility, Web Performance Engineering) with red domain titles and near-black concise descriptions.
+  - **Preserved Existing Sections:** Preserved `Checkout` (8 live Vercel deployments), `Developed Software` (curated selection), and GitHub archive link, maintaining project titles as the sole clickable elements prioritized by demo URL.
+- **Validation:**
+  - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors.
+
+### Milestone 34 — Case Study Centered Middle-Column Layout Unification
+
+- **Objective:**
+  - Refine the Case Study landing page (`src/app/case-study/page.tsx`) so that the hero heading, supporting description, animated arrow, marquee, and case-study listing all align consistently within the shared centered middle-column container (`Container size="default"`, `max-w-3xl`).
+  - Constrain the marquee to the content reading column rather than an edge-to-edge banner, preventing any layout divergence.
+- **Implementation Details (`src/app/case-study/page.tsx`):**
+  - **Unified Shared Container:** Wrapped the entire page content in `Container size="default"` with standard horizontal padding and centering.
+  - **Hero & Arrow:** Centered `Case Studies` heading (`text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-heading uppercase`) and intro description, followed by centered `ScrollDownArrow` component smoothly scrolling to `#case-studies-list`.
+  - **Contained Marquee:** Constrained the marquee's visible viewport within the middle reading column (`border-y border-border py-3 sm:py-3.5`) with gradient edge masks and seamless infinite looping.
+  - **Preserved Case Study Archive:** Retained non-clickable red project titles, near-black descriptions, and single `Read Case Study →` navigation links.
+- **Validation:**
+  - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack in 2.7s with 0 errors.
+
+### Milestone 35 — Projects Page Entire Middle-Column Layout Unification
+
+- **Objective:**
+  - Standardize the entire Projects page (`src/app/projects/page.tsx`) to follow one consistent centered middle-column structure (`Container size="default"`, `max-w-3xl`).
+  - Constrain the introductory hero heading, supporting description, capabilities marquee viewport, and single-column "Areas of Work" to the exact same content column as subsequent project listings ("Checkout", "Developed Software", and GitHub archive link).
+  - Eliminate any edge-to-edge breakout containers so that only the subtle background wave spans the viewport.
+- **Implementation Details (`src/app/projects/page.tsx`):**
+  - **Single Shared Container:** Wrapped the entire page inside `<Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-10 sm:space-y-12">`, guaranteeing identical horizontal margins, padding, and column boundaries across every section.
+  - **Hero Section:** Centered oversized heading `PROJECTS` in red (`text-heading` `#D32F2F`) with responsive typography (`text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight leading-[1.08] uppercase`), accompanied by a centered supporting description with controlled reading width (`max-w-xl mx-auto`).
+  - **Constrained Marquee:** Placed the `<Marquee>` component inside a column-bounded wrapper (`w-full overflow-hidden border-y border-border py-3 sm:py-3.5 select-none`). Left and right boundaries align with the content column, clipping repeating track text within the viewport and applying subtle edge fade masks against the white background.
+  - **Areas of Work & Project Listings:** Maintained the single vertical column list for the 6 engineering domains, followed by "Checkout" (live Vercel deployments), "Developed Software" (curated engineering systems), and the GitHub archive link, preserving all titles, descriptions, and interactive muted blue (`#355C7D`) links.
+- **Validation:**
+  - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors.
+  - Browser Verification: Tested viewports across 1440x900, 1024x768, 768x1024, 390x844, and 320x640. Verified:
+    - Bounding rects and horizontal offsets align consistently across the hero, marquee, Areas of Work, and project listings.
+    - Zero horizontal page overflow (`scrollWidth <= window.innerWidth`).
+### Milestone 36 — Areas of Work Cycling Animation, Editorial Context & Case Study Navigation
+
+- **Objective:**
+  - Enhance Areas of Work on the Projects page with a continuous horizontal cycling-card animation reproducing the motion mechanics of 1nfinity's "The Difference" section, constrained within the shared middle column.
+  - Introduce an "Inside the Engineering" editorial section on the Case Studies landing page to provide crucial narrative context across four core themes (The Problem, The Decisions, The Implementation, The Outcome).
+  - Implement full keyboard (Left/Right Arrow) and touch swipe navigation for individual case studies, preserving native scrolling and typing safety.
+- **Implementation Details:**
+  - **Areas of Work Cycling Cards (`src/app/projects/page.tsx`):**
+    - Created continuous horizontal cycling cards displaying verified credibility statements for all 6 engineering domains:
+      - *Web & Product Engineering:* Built and deployed complete production web applications, commercial client platforms, and client-side WebAssembly tools.
+      - *Backend & Distributed Systems:* Implemented Spring Boot REST microservices, BullMQ asynchronous worker queues, and Redis rate limiters.
+      - *AI Engineering & Orchestration:* Built multi-agent debate pipelines with local Ollama models, hybrid vector-lexical RAG engines, and LangGraph workflows.
+      - *Cloud & Platform Engineering:* Deployed production applications to AWS EC2 and S3, containerized services with Docker, and configured execution sandboxes.
+      - *Technical SEO & Search Visibility:* Delivered documented search visibility for 1nfinity.online with semantic HTML, JSON-LD structured schemas, and dynamic sitemaps.
+      - *Web Performance Engineering:* Achieved verified 99/92 Lighthouse performance benchmarks, zero layout shift, and eliminated third-party runtime animation libraries.
+    - Integrated subtle alternating tilt rotations (`rotate-[1.1deg]`, `-rotate-[1.3deg]`, `rotate-[0.9deg]`, `-rotate-[1.2deg]`, `rotate-[1.0deg]`, `-rotate-[1.1deg]`) that straighten on hover.
+    - Added edge gradient fade masks, pause on hover (`group-hover:[animation-play-state:paused]`), and accessible static grid fallback for `prefers-reduced-motion: reduce`.
+  - **Inside the Engineering Section (`src/app/case-study/page.tsx`):**
+    - Inserted editorial context section between the marquee and the case studies archive.
+    - Structured around four key engineering themes: The Problem, The Decisions, The Implementation, and The Outcome.
+    - Updated `ScrollDownArrow` to smoothly navigate down to `targetId="inside-the-engineering"`.
+  - **Case Study Detail Navigation (`src/components/case-study/CaseStudyNavigation.tsx`, `src/app/case-study/[slug]/page.tsx`):**
+    - Keyboard Navigation: Left Arrow navigates to the previous case study; Right Arrow navigates to the next case study.
+    - Mobile Swipe Navigation: Passive touch event handlers detect horizontal swipes with a 70px threshold and 1.75x directional dominance ratio, avoiding interference with vertical scrolling or pinch-to-zoom.
+    - Form & Shortcut Safety: Ignores modifier keys (`altKey`, `ctrlKey`, `metaKey`, `shiftKey`) and interactive targets (`input`, `textarea`, `select`, editable content).
+    - Footer Pagination: Standardized previous/next links to `← Previous case study` and `Next case study →` with disabled states at boundary entries.
+- **Validation:**
+  - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors.
+  - Browser verification: Verified middle-column constraint, smooth continuous marquee, arrow navigation, and responsive touch gestures without horizontal overflow.

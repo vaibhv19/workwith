@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import CaseStudyNavigation from "@/components/case-study/CaseStudyNavigation";
 import { CASE_STUDIES } from "@/data/caseStudies";
 
 interface PageProps {
@@ -55,6 +56,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
   return (
     <article className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-12 sm:space-y-16">
+      <CaseStudyNavigation
+        prevSlug={prevStudy?.slug ?? null}
+        nextSlug={nextStudy?.slug ?? null}
+      />
       <Container size="default">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="text-xs font-mono text-[#171717] pb-6">
@@ -252,29 +257,43 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </main>
 
         {/* Case Study Pagination */}
-        <footer className="pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
+        <footer className="pt-8 border-t border-border flex items-center justify-between gap-4 text-xs font-mono">
           {prevStudy ? (
             <Link
               href={`/case-study/${prevStudy.slug}`}
-              className="text-link hover:text-link-hover transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm group"
+              aria-label={`Previous case study: ${prevStudy.title}`}
+              className="text-link hover:text-link-hover transition-colors inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm group"
             >
-              <span className="transition-transform duration-300 group-hover:-translate-x-1 text-link">&larr;</span>
-              <span>Prev: {prevStudy.title}</span>
+              <span className="transition-transform duration-200 group-hover:-translate-x-1" aria-hidden="true">&larr;</span>
+              <span>Previous case study</span>
             </Link>
           ) : (
-            <span className="text-[#171717]">Start of Case Studies</span>
+            <span
+              aria-disabled="true"
+              className="text-[#171717]/40 select-none cursor-not-allowed inline-flex items-center gap-1.5"
+            >
+              <span aria-hidden="true">&larr;</span>
+              <span>Previous case study</span>
+            </span>
           )}
 
           {nextStudy ? (
             <Link
               href={`/case-study/${nextStudy.slug}`}
-              className="text-link hover:text-link-hover transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm group"
+              aria-label={`Next case study: ${nextStudy.title}`}
+              className="text-link hover:text-link-hover transition-colors inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-link rounded-sm group ml-auto"
             >
-              <span>Next: {nextStudy.title}</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1 text-link">&rarr;</span>
+              <span>Next case study</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
             </Link>
           ) : (
-            <span className="text-[#171717]">End of Case Studies</span>
+            <span
+              aria-disabled="true"
+              className="text-[#171717]/40 select-none cursor-not-allowed inline-flex items-center gap-1.5 ml-auto"
+            >
+              <span>Next case study</span>
+              <span aria-hidden="true">&rarr;</span>
+            </span>
           )}
         </footer>
       </Container>

@@ -160,36 +160,6 @@ export default function StartConversationPage() {
 
         <ContactForm />
       </section>
-
-      {/* Welcome Conversation Topics */}
-      <section className="space-y-6 pt-4 border-t border-border">
-        <div className="space-y-1.5">
-          <h2 className="font-display-h2 text-heading text-xl sm:text-2xl">
-            What We Can Discuss
-          </h2>
-          <p className="text-xs sm:text-sm text-[#171717]">
-            Core areas where I can contribute technical depth, engineering leadership, or architecture review.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-          {CONVERSATION_AREAS.map((topic) => (
-            <div key={topic.title} className="space-y-1">
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs font-semibold text-heading select-none">
-                  {topic.number}
-                </span>
-                <h3 className="text-sm font-semibold text-heading">
-                  {topic.title}
-                </h3>
-              </div>
-              <p className="text-xs text-[#171717] leading-relaxed pl-5 sm:pl-5">
-                {topic.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
     </Container>
   );
 }
