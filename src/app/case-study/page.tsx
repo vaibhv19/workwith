@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { CASE_STUDIES } from "@/data/caseStudies";
@@ -80,19 +79,6 @@ export default function CaseStudiesPage() {
                 <p className="font-body text-xs sm:text-sm text-foreground-muted leading-relaxed">
                   {study.description}
                 </p>
-
-                {/* Selective Genuine Project Asset Preview */}
-                {study.image && (
-                  <div className="relative mt-3 mb-2 rounded-[2px] border border-border overflow-hidden bg-surface-elevated aspect-[16/9] max-h-56 w-full">
-                    <Image
-                      src={study.image}
-                      alt={`${study.title} runtime preview`}
-                      fill
-                      className="object-cover object-top opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                      sizes="(max-width: 768px) 100vw, 650px"
-                    />
-                  </div>
-                )}
 
                 {/* Technology Focus Row */}
                 <div className="text-xs text-foreground-subtle pt-1">

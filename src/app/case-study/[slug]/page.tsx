@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import TextReveal from "@/components/ui/TextReveal";
@@ -132,29 +131,15 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             {study.excerpt}
           </p>
 
-          {/* Visual Preview */}
-          {study.image && (
-            <div className="relative rounded-[2px] border border-border overflow-hidden bg-surface-elevated aspect-[16/9] max-h-80 w-full mt-4 group">
-              <Image
-                src={study.image}
-                alt={`${study.title} visual preview`}
-                fill
-                className="object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                sizes="(max-width: 768px) 100vw, 850px"
-                priority
-              />
-            </div>
-          )}
-
           {/* Quick Metrics Strip */}
           {narrative.quickMetrics && narrative.quickMetrics.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-border">
               {narrative.quickMetrics.map((metric, idx) => (
-                <div key={idx} className="space-y-1">
-                  <div className="text-xs text-foreground-muted font-medium">
+                <div key={idx} className="space-y-1 min-w-0">
+                  <div className="text-xs text-foreground-muted font-medium truncate">
                     {metric.label}
                   </div>
-                  <div className="font-metric text-lg sm:text-xl font-bold text-foreground">
+                  <div className="font-metric text-base sm:text-lg lg:text-xl font-bold text-foreground break-words">
                     {metric.value}
                   </div>
                   <div className="text-xs text-foreground-subtle leading-tight">

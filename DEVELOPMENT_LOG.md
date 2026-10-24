@@ -357,6 +357,30 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation Across Viewports:**
   - Desktop (1440x900): Header is proportionate and compact; hero begins at a deliberate distance; section gap is balanced; wave background remains subtle.
   - Tablet (768x900): Clean alignment and comfortable reading hierarchy.
-  - Mobile (390x844): Hero wraps gracefully, nav remains single-row, no overflow.
-  - Compact Mobile (320x700): Zero horizontal scroll (`scrollWidth <= innerWidth`), tight and readable.
   - Production build (`npm run build`): All 16 static routes prerendered cleanly in Turbopack.
+
+### Milestone 20 — Removal of Project and Case Study Thumbnails (Typography-First Presentation)
+- **Objective:**
+  - Transition Projects and Case Study sections to a clean, typography-led presentation by eliminating all preview screenshots, thumbnails, and heavy visual preview blocks while preserving all substantive architecture narratives, facts, code blocks, ASCII diagrams, and links.
+- **Key Changes:**
+  - **Must Checkout Projects (`src/app/projects/page.tsx`):**
+    - Removed `next/image` dependency and the embedded preview image wrapper (`aspect-[16/9] max-h-64`).
+    - Made project title and tagline the primary visual anchor.
+    - Expanded technical bullet points to display all architecture details without arbitrary truncation.
+    - Preserved direct live application and repository action buttons and tech stack row.
+    - Rebalanced vertical spacing to eliminate empty space.
+  - **Case Study Archive (`src/app/case-study/page.tsx`):**
+    - Removed `next/image` dependency and preview asset container (`aspect-[16/9] max-h-56`).
+    - Maintained two-column editorial layout: category & period in left column; title, subtitle, narrative description, tech focus, and direct reading button in right column.
+  - **Case Study Detail Pages (`src/app/case-study/[slug]/page.tsx`):**
+    - Removed large visual preview block (`aspect-[16/9] max-h-80`) that previously separated the excerpt lead from technical data.
+    - Established an unbroken, natural reading rhythm: breadcrumb → title & subtitle → role & action links → excerpt lead → quick metrics strip → table of contents → deep narrative sections with code blocks, tables, and ASCII diagrams.
+    - Enhanced quick metrics container with `min-w-0` and `break-words` for robust cross-device display.
+  - **Asset and Hover Cleanup:**
+    - Zero `next/image` imports, zero `<img>` tags, and zero `aspect-*` preview wrappers remain in `src/`.
+    - Eliminated image-specific hover transitions (`group-hover/img:scale-105`) while preserving typography and link hover states.
+- **Validation:**
+  - Projects page verified on desktop (1440px) and mobile (390px): clean typography cards, no empty boxes, flush alignment.
+  - Case Study archive verified on desktop: elegant editorial text list.
+  - Conclave case study verified on desktop and mobile: excerpt lead immediately transitions into the quantitative metrics strip and table of contents without the intrusive screenshot.
+  - Production build (`npm run build`): 16 of 16 static HTML routes compiled with zero errors in Next.js Turbopack.

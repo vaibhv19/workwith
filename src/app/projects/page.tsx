@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { GithubIcon } from "@/components/BrandIcons";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -123,7 +122,7 @@ export default function ProjectsPage() {
                 {/* Technical Bullets */}
                 {project.bullets && project.bullets.length > 0 && (
                   <ul className="space-y-2 text-xs sm:text-sm text-foreground-muted leading-relaxed list-none pl-0">
-                    {project.bullets.slice(0, 2).map((bullet, bIdx) => (
+                    {project.bullets.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-2.5">
                         <span className="text-foreground-subtle select-none">&bull;</span>
                         <span>{bullet}</span>
@@ -132,21 +131,8 @@ export default function ProjectsPage() {
                   </ul>
                 )}
 
-                {/* Genuine Preview Asset when available */}
-                {project.previewImage && (
-                  <div className="relative rounded-[2px] border border-border overflow-hidden bg-surface-elevated aspect-[16/9] max-h-64 w-full group/img">
-                    <Image
-                      src={project.previewImage}
-                      alt={`${project.title} live interface preview`}
-                      fill
-                      className="object-cover object-top opacity-90 group-hover/img:opacity-100 group-hover/img:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                      sizes="(max-width: 768px) 100vw, 800px"
-                    />
-                  </div>
-                )}
-
                 {/* Tech Stack Row */}
-                <div className="text-xs text-foreground-muted">
+                <div className="text-xs text-foreground-subtle pt-1">
                   {project.techStack.join(" · ")}
                 </div>
 
