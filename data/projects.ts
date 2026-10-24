@@ -29,6 +29,7 @@ export interface Project {
   highlights?: string[];
   parentFrameworkId?: string;
   mustCheckout?: boolean;
+  curatedSoftware?: boolean;
   previewImage?: string;
 }
 
@@ -106,6 +107,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Java", "Spring Boot", "Python", "FastAPI", "PostgreSQL", "pgvector", "SentenceTransformers", "BM25", "Docker"],
     featured: true,
     homepagePreview: true,
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/Phoenix"
   },
   {
@@ -122,6 +124,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Java", "Spring Boot", "Spring AI", "WebSockets", "STOMP", "React", "Zustand", "Ollama", "PostgreSQL"],
     featured: false,
     homepagePreview: false,
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/Conclave"
   },
   {
@@ -138,6 +141,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Python", "Django", "LangGraph", "Celery", "Redis", "PostgreSQL", "React"],
     featured: false,
     homepagePreview: false,
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/Foundry"
   },
   {
@@ -170,6 +174,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Java", "Spring Boot", "ConcurrentHashMap", "Consistent Hashing", "Prometheus", "Grafana", "Docker"],
     featured: false,
     homepagePreview: true,
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/Cairn"
   },
   {
@@ -202,6 +207,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Python", "FastAPI", "Docker SDK", "PostgreSQL", "SQLAlchemy", "Typer", "LangGraph"],
     featured: true,
     homepagePreview: true,
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/Vigil"
   },
   {
@@ -248,6 +254,7 @@ export const PROJECTS: Project[] = [
     ],
     category: "System Integrity & DevSecOps Guardrails",
     techStack: ["k6", "JavaScript", "InfluxDB", "Grafana", "Docker", "GitHub Actions"],
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/Pulse"
   },
   {
@@ -262,6 +269,7 @@ export const PROJECTS: Project[] = [
     ],
     category: "System Integrity & DevSecOps Guardrails",
     techStack: ["Python", "OWASP ZAP", "Pydantic", "Docker", "Security Audit", "Click"],
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/Warden"
   },
 
@@ -413,6 +421,7 @@ export const PROJECTS: Project[] = [
     ],
     category: "Retired Explorations and Early Builds Used to Learn System Architecture",
     techStack: ["Java", "Spring Boot", "Spring Cloud", "RabbitMQ", "PostgreSQL", "MongoDB", "Keycloak", "React", "Gemini API"],
+    curatedSoftware: true,
     githubUrl: "https://github.com/vaibhv19/AI-Powered-Fittness-application"
   },
   {

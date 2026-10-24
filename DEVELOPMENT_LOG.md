@@ -441,3 +441,31 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Desktop (1440x900) & Mobile (390x844) visual review: All 8 Must Checkout projects display text-led cards with verified links; Developed Software lists the remaining 28 distinct projects with zero duplicate occurrences.
   - Build validation (`npm run build`): All 16 static HTML routes generated cleanly with zero errors in Next.js Turbopack.
+
+### Milestone 23 — Three-Destination Projects Page Architecture (Must Checkout, Curated Developed Software, GitHub Archive)
+- **Objective:**
+  - Refine the Projects page into three distinct destinations:
+    1. **Must Checkout:** Comprehensive collection of every distinct, eligible project deployed on the user's Vercel account (8 verified applications).
+    2. **Developed Software:** High-leverage, deliberately curated selection of significant engineering systems, distinguishing technical depth from routine repositories.
+    3. **GitHub:** Complete repository archive for visitors wishing to explore coursework, foundational prototypes, and training frameworks (`https://github.com/vaibhv19`).
+- **Curated Selection Rationale (Developed Software):**
+  - **Phoenix (`phoenix`):** Hybrid RAG engine with mathematical scoring trace; dual-backend split (Spring Boot 3.3 gateway + FastAPI retrieval engine), dense pgvector search fused with sparse BM25 (alpha=0.7/0.3), and 4-tier fallback state machine.
+  - **Conclave (`conclave`):** Multi-model agent consensus room running local Ollama inference (Llama 3, Mistral, Gemma); STOMP/WebSocket streaming, pessimistic locking (`SELECT FOR UPDATE`), dynamic prompt token adapter, and automated context compression.
+  - **Vigil (`vigil`):** Ephemeral Docker container sandboxing and runtime safety harness for autonomous AI agents; resource limits, tool call interception, and real-time anomaly detection against shell injection and path traversal.
+  - **Cairn (`cairn`):** High-concurrency distributed in-memory cache engine in Java 21; Murmur3 consistent hashing across a 150-virtual-node TreeMap ring, lock-striping, and Prometheus/Grafana metric telemetry. (Selected over `shard` to represent the caching domain with production-grade runtime concurrency).
+  - **Warden (`warden`):** Automated DevSecOps security auditing suite integrating a custom OWASP ZAP API client; evidence-based vulnerability scanners (SQLi, XSS, auth guards, IDOR verification) and parameter fuzzing.
+  - **Pulse (`pulse`):** Automated performance engineering and resilience testing framework using k6; latency degradation curves, centralized performance budgets, and InfluxDB/Grafana concurrency dashboards.
+  - **Foundry (`foundry`):** Stateful multi-agent graph evaluation workflows powered by LangGraph; PostgreSQL decision checkpointing and asynchronous background task offloading via Celery on Redis queues.
+  - **Fitness Application (`fitness-application`):** Enterprise distributed microservices architecture on Spring Boot 3.4; Spring Cloud Gateway, Eureka service discovery, RabbitMQ asynchronous event bus, polyglot persistence (PostgreSQL + MongoDB), and Keycloak OAuth2 PKCE/JWT authorization.
+- **Archive Migration to GitHub (`https://github.com/vaibhv19`):**
+  - Removed 20 smaller coursework, training module, and student demo repositories from the on-page catalog (e.g. `ecolens`, `vidyalink`, `weather-app`, `e-commerce-website`, `streamverse-ui`, `ticket-booking-system`).
+  - Preserved all 36 canonical project records in `data/projects.ts` without data loss.
+  - Added a refined, visually secondary GitHub callout card at the end of Developed Software with the clear, natural action `"Explore all projects on GitHub"` linking to `https://github.com/vaibhv19`.
+- **Implementation & Presentation:**
+  - Added `curatedSoftware?: boolean;` to the `Project` interface in `data/projects.ts` and flagged the 8 selected systems.
+  - Updated `src/app/projects/page.tsx` to render identical text-led card layouts across both Must Checkout and Developed Software, with consistent surface-card styling, title, tagline, technical bullets, tech stack row, and verified action links.
+  - Re-stated header narrative to reflect the three-tier destination model.
+  - Maintained complete separation between project cards and Case Studies (no case study links on project cards).
+- **Validation:**
+  - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.3s with zero errors.
+  - Responsive visual inspection (Desktop 1440x900 & Mobile 390x844): Verified 8 Must Checkout cards, 8 Developed Software cards, and the GitHub callout card. Confirmed `scrollWidth <= innerWidth` with zero horizontal overflow.
