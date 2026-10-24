@@ -152,33 +152,6 @@ input, textarea, button, select {
   color: var(--accent-primary);
 }
 
-.font-display-h1 {
-  font-family: var(--font-clash);
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  font-weight: 500;
-  color: var(--accent-primary);
-}
-
-.font-display-h2 {
-  font-family: var(--font-clash);
-  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  font-weight: 500;
-  color: var(--accent-primary);
-}
-
-.font-display-h3 {
-  font-family: var(--font-clash);
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  font-weight: 500;
-  color: var(--accent-primary);
-}
-
 .font-body-lead {
   font-family: var(--font-inter, var(--font-inter-fallback));
   font-size: clamp(0.95rem, 1.15vw, 1.15rem);
@@ -193,103 +166,6 @@ input, textarea, button, select {
   line-height: 1.6;
   font-weight: 400;
   color: var(--text-primary);
-}
-
-.font-body-sm {
-  font-family: var(--font-inter, var(--font-inter-fallback));
-  font-size: 0.8125rem;
-  line-height: 1.55;
-  font-weight: 400;
-  color: var(--text-primary);
-}
-
-.font-eyebrow {
-  font-family: var(--font-inter, var(--font-inter-fallback));
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent-primary);
-}
-
-.font-metric {
-  font-family: var(--font-satoshi);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--accent-primary);
-}
-
-/* ==========================================================================
-   BUTTON & CTA FOUNDATION
-   ========================================================================== */
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  background-color: var(--accent-primary);
-  color: #FFFFFF;
-  font-family: var(--font-inter, var(--font-inter-fallback));
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
-  border-radius: 2px;
-  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-}
-
-.btn-primary:hover {
-  background-color: var(--accent-muted);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px -6px rgba(211, 47, 47, 0.3);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  background-color: transparent;
-  color: var(--text-primary);
-  font-family: var(--font-inter, var(--font-inter-fallback));
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-default);
-  border-radius: 2px;
-  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-heading);
-  background-color: var(--surface-elevated);
-  color: var(--color-heading);
-}
-
-.btn-text {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-inter, var(--font-inter-fallback));
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-link);
-  transition: color 300ms ease;
-  text-decoration: none;
-}
-
-.btn-text:hover {
-  color: var(--color-link-hover);
 }
 
 /* ==========================================================================
@@ -362,40 +238,6 @@ input, textarea, button, select {
   border-color: var(--border-light);
 }
 
-.surface-glass {
-  background-color: var(--surface-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.divider-subtle {
-  height: 1px;
-  background-color: var(--border-default);
-  width: 100%;
-}
-
-.bg-ambient-glow {
-  background: 
-    radial-gradient(ellipse 60% 45% at 50% 20%, rgba(211, 47, 47, 0.04) 0%, rgba(255, 255, 255, 0) 70%),
-    #FFFFFF;
-}
-
-@keyframes pageTransitionFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-page-transition {
-  animation: pageTransitionFadeIn 360ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
 /* ==========================================================================
    1NFINITY-DERIVED MOTION SYSTEM KEYFRAMES & UTILITIES
    ========================================================================== */
@@ -449,14 +291,6 @@ input, textarea, button, select {
 
 .animate-arrow-down {
   animation: arrow-down 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.transition-editorial {
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.transition-cinematic {
-  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 

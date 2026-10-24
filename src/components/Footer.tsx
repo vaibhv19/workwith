@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { Mail } from "lucide-react";
 import {
   GithubIcon,
   LinkedinIcon,
-  BlueskyIcon,
   XIcon,
-  ThreadsIcon,
 } from "@/components/BrandIcons";
 import Container from "@/components/ui/Container";
 
@@ -25,8 +22,8 @@ export function Footer() {
     ).matches;
 
     if (prefersReducedMotion) {
-      setIsVisible(true);
-      return;
+      const id = requestAnimationFrame(() => setIsVisible(true));
+      return () => cancelAnimationFrame(id);
     }
 
     const observer = new IntersectionObserver(

@@ -1,7 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
 import Marquee from "@/components/ui/Marquee";
 
 export const metadata: Metadata = {
@@ -27,44 +25,6 @@ const MARQUEE_DOMAINS = [
   "CLIENT-SIDE WEBASSEMBLY",
 ];
 
-interface FeaturedProject {
-  title: string;
-  focus: string;
-  description: string;
-  liveUrl?: string;
-  caseStudyUrl?: string;
-  githubUrl?: string;
-}
-
-const FEATURED_PROJECTS: FeaturedProject[] = [
-  {
-    title: "CheckMate",
-    focus: "Client-Side WebAssembly · Web Workers · Concurrency",
-    description:
-      "A browser-based chess analysis workbench executing Stockfish 16 entirely inside Web Workers with SharedArrayBuffer concurrency, delivering 60 FPS UI responsiveness with zero backend servers or subscription paywalls.",
-    liveUrl: "https://checkmate.vaibhv19.dev/",
-    caseStudyUrl: "/case-study/checkmate",
-    githubUrl: "https://github.com/vaibhv19/Check-Mate-Analyse",
-  },
-  {
-    title: "Email Job Scheduler",
-    focus: "Distributed Systems · BullMQ · Redis Lua · PostgreSQL",
-    description:
-      "A multi-service scheduling and delivery platform with BullMQ worker concurrency, atomic Redis Lua rate limiters, PostgreSQL status tracking, and Elasticsearch indexing built under an intensive 48-hour turnaround.",
-    liveUrl: "https://email-job-scheduler.vaibhv19.dev",
-    caseStudyUrl: "/case-study/email-job-scheduler",
-    githubUrl: "https://github.com/vaibhv19/Email-Job-Scheduler",
-  },
-  {
-    title: "1nfinity.online",
-    focus: "Commercial Client Delivery · Next.js · 99 Desktop / 92 Mobile Lighthouse",
-    description:
-      "A bespoke client web platform designed and engineered from scratch under an uncompromising “Restraint Over Decoration” philosophy, achieving documented 99 Desktop / 92 Mobile Lighthouse performance ratings (with 100 in Best Practices and SEO) and serverless Resend email pipelines.",
-    liveUrl: "https://1nfinity.online",
-    caseStudyUrl: "/case-study/1nfinity",
-  },
-];
-
 export default function WorkWithMePage() {
   return (
     <Container
@@ -75,7 +35,7 @@ export default function WorkWithMePage() {
       <header className="space-y-4 sm:space-y-5 text-center">
         <div className="space-y-1.5 sm:space-y-2">
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-heading leading-[1.1] uppercase">
-            Hi, I'm @Vaibhv19
+            Hi, I&apos;m @Vaibhv19
           </h1>
         </div>
 

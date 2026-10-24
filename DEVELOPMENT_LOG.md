@@ -968,3 +968,35 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:**
   - Production build (`npm run build`) succeeded with 0 errors across all 16 static/SSG routes.
 
+---
+
+### Milestone 43: Final Codebase Cleanup, Dead Code & Asset Removal, and LOC Reduction (2026-10-24)
+- **Dead Component Files Removed:**
+  - `src/components/ui/SectionReveal.tsx` (70 LOC): Completely unreferenced; replaced earlier with instant, non-stuttering rendering in the anti-AI-slop audit.
+  - `src/components/ui/TextReveal.tsx` (102 LOC): Completely unreferenced; superseded in editorial typography refactors.
+  - `src/components/PageTransition.tsx` (15 LOC): Completely unreferenced; unused in layout or route wrappers.
+- **Unused Starter Asset Cleanup:**
+  - Removed boilerplate starter SVGs from `public/`: `file.svg`, `globe.svg`, `next.svg`, `vercel.svg`, and `window.svg` (all 0-reference Next.js template artifacts).
+- **Dead Code & Unused Imports Removed:**
+  - `src/app/page.tsx`: Removed unused `Link` and `Button` imports; removed unused `FeaturedProject` interface and dead `FEATURED_PROJECTS` array (38 LOC eliminated). Escaped unescaped apostrophe in `Hi, I&apos;m @Vaibhv19`.
+  - `src/app/case-study/[slug]/page.tsx`: Removed unused `import Link from "next/link";`.
+  - `src/components/Footer.tsx`: Removed unused `import Link from "next/link";`; removed unreferenced `BlueskyIcon` and `ThreadsIcon` imports; eliminated synchronous `setState` in effect for reduced-motion using `requestAnimationFrame`.
+  - `src/components/BrandIcons.tsx`: Removed unreferenced `BlueskyIcon` and `ThreadsIcon` SVG functions (15 LOC eliminated).
+  - `src/data/caseStudiesData/index.ts`: Consolidated duplicate import/export statements into a clean single pass.
+- **Obsolete Styles Pruned ([globals.css](file:///d:/Work/Projects----Personal/MyWork/src/app/globals.css)):**
+  - Removed obsolete `@keyframes pageTransitionFadeIn` and `.animate-page-transition` classes.
+  - Removed superseded button classes (`.btn-primary`, `.btn-secondary`, `.btn-text`), which were replaced by Tailwind utility classes inside `Button.tsx`.
+  - Removed unused typography classes (`.font-display-h1`, `.font-display-h2`, `.font-display-h3`, `.font-body-sm`, `.font-eyebrow`, `.font-metric`) and unused utility classes (`.surface-glass`, `.divider-subtle`, `.bg-ambient-glow`, `.transition-editorial`, `.transition-cinematic`).
+  - Preserved all active tokens, animations (`@keyframes marquee`, `@keyframes arrow-down`), typography (`.font-display-hero`, `.font-body-lead`, `.font-body`), interactive link styles, and accessibility overrides.
+- **Deliberately Retained Candidates:**
+  - `src/app/api/contact/route.ts` (106 LOC) & `src/components/ContactForm.tsx` (306 LOC): Retained because `/api/contact` is an active serverless endpoint powered by Resend SDK and documented in the 1nfinity case study architecture, and `ContactForm` is its complete, verified UI pairing.
+  - All favicon assets (`favicon.ico`, `favicon.svg`, `favicon-16x16.png`, `favicon-32x32.png`, `favicon-48x48.png`, `apple-touch-icon.png`, `android-chrome-*.png`, `site.webmanifest`) preserved intact.
+- **Code Metrics & LOC Impact:**
+  - Baseline source LOC: 4,302 lines across 32 files.
+  - Post-cleanup source LOC: 3,893 lines across 29 files.
+  - Net source reduction: **-409 LOC (-9.5%)**, 3 dead component files deleted, 5 boilerplate assets deleted.
+- **Verification:**
+  - `npm run lint`: Passed with 0 errors and 0 warnings.
+  - `npm run build`: Production build succeeded in ~3.5s with all 16 static/SSG routes rendered cleanly.
+
+

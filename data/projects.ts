@@ -356,7 +356,7 @@ export const PROJECTS: Project[] = [
     category: "Technical Training Frameworks and Practical Modules",
     parentFrameworkId: "ibm-pbel",
     techStack: ["React", "JavaScript", "Tailwind CSS", "React Router", "Vite", "Context API"],
-    mustCheckout: true,
+    mustCheckout: false,
     shortDescription: "A client-side restaurant ordering simulation featuring deterministic pricing, React Context cart state, and printable kitchen receipts.",
     demoUrl: "https://thetiffindispatch.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/food-ordering-system"
@@ -416,7 +416,7 @@ export const PROJECTS: Project[] = [
     ],
     category: "Built for No Reason Other Than Wanting To",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Canvas API"],
-    mustCheckout: true,
+    mustCheckout: false,
     shortDescription: "An interactive celebration webpage built with custom HTML5 Canvas particle physics and audio-synchronized state reveals.",
     demoUrl: "https://zoya.vaibhv19.dev/",
     githubUrl: "https://github.com/vaibhv19/Happy-Birthday-Zoya"
