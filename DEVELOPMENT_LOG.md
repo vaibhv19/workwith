@@ -381,6 +381,31 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
     - Eliminated image-specific hover transitions (`group-hover/img:scale-105`) while preserving typography and link hover states.
 - **Validation:**
   - Projects page verified on desktop (1440px) and mobile (390px): clean typography cards, no empty boxes, flush alignment.
-  - Case Study archive verified on desktop: elegant editorial text list.
-  - Conclave case study verified on desktop and mobile: excerpt lead immediately transitions into the quantitative metrics strip and table of contents without the intrusive screenshot.
   - Production build (`npm run build`): 16 of 16 static HTML routes compiled with zero errors in Next.js Turbopack.
+
+### Milestone 21 — Centered Middle-Column Layout (Consistent Shared Width)
+- **Objective:**
+  - Transition the entire site from a wide, stretched layout to a focused, centered reading column (`768px` / `max-w-3xl`) with generous desktop side margins and consistent alignment across all pages.
+- **Key Changes:**
+  - **Shared Container (`src/components/ui/Container.tsx`):**
+    - Standardized `size="default"` to `max-w-3xl` (`768px` / `48rem`), providing the optimal typographic measure (65–80 characters per line) and generous outer margins on desktop viewports.
+    - Set responsive horizontal padding to `px-4 sm:px-6` for comfortable margins without horizontal overflow.
+  - **Projects Landing Page (`src/app/projects/page.tsx`):**
+    - Unified the entire page under a single `<Container size="default">` root, eliminating multiple disjointed section containers.
+    - Centered the hero, `Must Checkout` cards, and `Developed Software` catalogue ledger along the exact same middle column.
+    - Updated Developed Software article layout from `md:flex-row` to `sm:flex-row` so items present title and stack on the left and verified action links on the right across all tablet and desktop widths.
+  - **Case Studies Archive (`src/app/case-study/page.tsx`):**
+    - Unified the page under a single `<Container size="default">` root.
+    - Streamlined the article list into a clean, linear reading flow with category & period at the top, bold heading, concise summary, tech focus, and direct reading action.
+  - **Individual Case Study Pages (`src/app/case-study/[slug]/page.tsx`):**
+    - Updated container size to `default` (`max-w-3xl`), ensuring long-form case study narratives, tables, code blocks, ASCII diagrams, and trade-offs align perfectly with the site-wide column.
+  - **Start a Conversation (`src/app/start-conversation/page.tsx`):**
+    - Updated container size to `default` (`max-w-3xl`), seamlessly aligning direct contact actions, the contact form, and conversation topic cards to the exact same middle column.
+  - **Header & Footer:**
+    - Header navigation and footer contact bar/copyright lines naturally match and connect to the centered `max-w-3xl` column width.
+- **Validation:**
+  - Desktop (1440x900): Focused, centered reading column with generous, balanced margins.
+  - Laptop (1024x768): Centered column with ~128px margins.
+  - Tablet (768x1024): Fluid column utilizing width with `sm:px-6` side padding.
+  - Mobile (390x844 & 320x650): Clean readability; verified zero horizontal overflow (`scrollWidth <= innerWidth`).
+  - Production build (`npm run build`): All 16 static HTML routes compiled cleanly via Turbopack with zero errors.

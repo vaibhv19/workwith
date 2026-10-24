@@ -56,7 +56,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
   return (
     <article className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-12 sm:space-y-16">
-      <Container size="narrow">
+      <Container size="default">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="text-xs font-mono text-foreground-subtle pb-6">
           <Link

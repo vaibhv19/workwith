@@ -44,7 +44,7 @@ export default function StartConversationPage() {
   };
 
   return (
-    <Container size="narrow" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
+    <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       {/* Editorial Header */}
       <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
         <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">

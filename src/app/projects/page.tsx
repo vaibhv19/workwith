@@ -76,193 +76,187 @@ export default function ProjectsPage() {
   const mustCheckoutProjects = PROJECTS.filter((p) => p.mustCheckout);
 
   return (
-    <div className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
+    <Container size="default" className="pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       {/* Page Header */}
-      <Container size="default">
-        <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
-          <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
-            Projects &amp; Systems
-          </h1>
-          <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
-            A curated selection of interactive live applications alongside the complete catalog of 36 software projects, distributed systems, and developer tools.
-          </p>
-        </header>
-      </Container>
+      <header className="space-y-2.5 sm:space-y-3 border-b border-border pb-6 sm:pb-7">
+        <h1 className="font-display text-2xl sm:text-3xl md:text-[2.25rem] font-medium tracking-tight text-foreground leading-[1.15]">
+          Projects &amp; Systems
+        </h1>
+        <p className="font-body text-sm sm:text-base text-foreground-muted leading-relaxed max-w-2xl font-light">
+          A curated selection of interactive live applications alongside the complete catalog of 36 software projects, distributed systems, and developer tools.
+        </p>
+      </header>
 
       {/* SECTION 1: MUST CHECKOUT (CURATED DEPLOYED EXPERIENCES) */}
-      <Container size="default">
+      <section aria-labelledby="must-checkout-heading" className="space-y-6 sm:space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
+          <h2 id="must-checkout-heading" className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+            Must Checkout
+          </h2>
+          <span className="text-xs text-foreground-muted">
+            Live applications you can explore
+          </span>
+        </div>
+
         <div className="space-y-6 sm:space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
-            <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
-              Must Checkout
-            </h2>
-            <span className="text-xs text-foreground-muted">
-              Live applications you can explore
-            </span>
-          </div>
+          {mustCheckoutProjects.map((project) => (
+            <article
+              key={project.id}
+              className="surface-card bg-surface/90 border border-border p-6 sm:p-7 space-y-5 rounded-md hover:border-border-light transition-colors"
+            >
+              {/* Header: Title */}
+              <div>
+                <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+                  {project.title}
+                </h3>
+              </div>
 
-          <div className="space-y-6 sm:space-y-8">
-            {mustCheckoutProjects.map((project) => (
-              <article
-                key={project.id}
-                className="surface-card bg-surface/90 border border-border p-6 sm:p-8 space-y-5 rounded-md hover:border-border-light transition-colors"
-              >
-                {/* Header: Title */}
-                <div>
-                  <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
-                    {project.title}
-                  </h3>
-                </div>
+              {/* Tagline */}
+              <p className="text-xs sm:text-sm font-sans italic text-foreground-muted">
+                &ldquo;{project.tagline}&rdquo;
+              </p>
 
-                {/* Tagline */}
-                <p className="text-xs sm:text-sm font-sans italic text-foreground-muted">
-                  &ldquo;{project.tagline}&rdquo;
-                </p>
+              {/* Technical Bullets */}
+              {project.bullets && project.bullets.length > 0 && (
+                <ul className="space-y-2 text-xs sm:text-sm text-foreground-muted leading-relaxed list-none pl-0">
+                  {project.bullets.map((bullet, bIdx) => (
+                    <li key={bIdx} className="flex items-start gap-2.5">
+                      <span className="text-foreground-subtle select-none">&bull;</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-                {/* Technical Bullets */}
-                {project.bullets && project.bullets.length > 0 && (
-                  <ul className="space-y-2 text-xs sm:text-sm text-foreground-muted leading-relaxed list-none pl-0">
-                    {project.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2.5">
-                        <span className="text-foreground-subtle select-none">&bull;</span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Tech Stack Row */}
+              <div className="text-xs text-foreground-subtle pt-1">
+                {project.techStack.join(" · ")}
+              </div>
+
+              {/* Actions: Verified Live Application & Repository */}
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                {project.demoUrl && (
+                  <Button
+                    href={project.demoUrl}
+                    external
+                    variant="primary"
+                    size="sm"
+                    icon="arrow-up-right"
+                  >
+                    Open Application
+                  </Button>
                 )}
 
-                {/* Tech Stack Row */}
-                <div className="text-xs text-foreground-subtle pt-1">
-                  {project.techStack.join(" · ")}
-                </div>
-
-                {/* Actions: Verified Live Application & Repository */}
-                <div className="flex flex-wrap items-center gap-3 pt-1">
-                  {project.demoUrl && (
-                    <Button
-                      href={project.demoUrl}
-                      external
-                      variant="primary"
-                      size="sm"
-                      icon="arrow-up-right"
-                    >
-                      Open Application
-                    </Button>
-                  )}
-
-                  {project.githubUrl && (
-                    <Button
-                      href={project.githubUrl}
-                      external
-                      variant="secondary"
-                      size="sm"
-                      icon="arrow-up-right"
-                    >
-                      Source Code
-                    </Button>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
+                {project.githubUrl && (
+                  <Button
+                    href={project.githubUrl}
+                    external
+                    variant="secondary"
+                    size="sm"
+                    icon="arrow-up-right"
+                  >
+                    Source Code
+                  </Button>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
-      </Container>
+      </section>
 
       {/* SECTION 2: DEVELOPED SOFTWARE (HIGH-DENSITY EDITORIAL CATALOGUE LEDGER) */}
-      <Container size="default">
-        <div className="space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
-            <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
-              Developed Software
-            </h2>
-            <span className="text-xs text-foreground-muted">
-              Complete catalogue of {PROJECTS.length} projects and systems
-            </span>
-          </div>
+      <section aria-labelledby="developed-software-heading" className="space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border pb-3">
+          <h2 id="developed-software-heading" className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+            Developed Software
+          </h2>
+          <span className="text-xs text-foreground-muted">
+            Complete catalogue of {PROJECTS.length} projects and systems
+          </span>
+        </div>
 
-          <div className="space-y-12">
-            {CATALOG_GROUPS.map((group) => {
-              const items = PROJECTS.filter((p) => p.category === group.category);
-              if (items.length === 0) return null;
+        <div className="space-y-12">
+          {CATALOG_GROUPS.map((group) => {
+            const items = PROJECTS.filter((p) => p.category === group.category);
+            if (items.length === 0) return null;
 
-              return (
-                <div key={group.category} className="space-y-4">
-                  {/* Category Header */}
-                  <div className="border-b border-border pb-2">
-                    <h3 className="font-display text-base sm:text-lg font-medium text-foreground tracking-tight">
-                      {group.name}
-                    </h3>
-                    <p className="text-xs text-foreground-muted pt-0.5">
-                      {group.description}
-                    </p>
-                  </div>
+            return (
+              <div key={group.category} className="space-y-4">
+                {/* Category Header */}
+                <div className="border-b border-border pb-2">
+                  <h3 className="font-display text-base sm:text-lg font-medium text-foreground tracking-tight">
+                    {group.name}
+                  </h3>
+                  <p className="text-xs text-foreground-muted pt-0.5">
+                    {group.description}
+                  </p>
+                </div>
 
-                  {/* Clean Editorial Catalogue Ledger */}
-                  <div className="divide-y divide-border/60">
-                    {items.map((item: Project) => (
-                      <article
-                        key={item.id}
-                        className="py-3.5 hover:bg-surface/40 transition-colors flex flex-col md:flex-row md:items-baseline justify-between gap-3 group"
-                      >
-                        {/* Left Column: Title, Framework, Description & Stack */}
-                        <div className="space-y-1.5 flex-1 max-w-3xl">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <h4 className="font-sans text-sm font-semibold text-foreground group-hover:text-white transition-colors">
-                              {item.title}
-                            </h4>
-                            {item.parentFrameworkId && (
-                              <span className="text-xs text-foreground-subtle">
-                                ({PARENT_FRAMEWORK_MAP[item.parentFrameworkId] || item.parentFrameworkId})
-                              </span>
-                            )}
-                          </div>
-
-                          <p className="text-xs text-foreground-muted leading-relaxed">
-                            {item.tagline}
-                          </p>
-
-                          <div className="text-xs text-foreground-subtle pt-0.5">
-                            {item.techStack.join(" · ")}
-                          </div>
-                        </div>
-
-                        {/* Right Column: Direct Verified Actions */}
-                        <div className="flex items-center gap-4 shrink-0 pt-1 md:pt-0 self-start md:self-baseline">
-                          {item.demoUrl && (
-                            <a
-                              href={item.demoUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-xs font-mono text-accent hover:text-white transition-colors"
-                            >
-                              <span>Live Demo ↗</span>
-                            </a>
-                          )}
-                          {item.githubUrl ? (
-                            <a
-                              href={item.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs text-foreground-muted hover:text-white transition-colors"
-                            >
-                              <GithubIcon className="w-3.5 h-3.5 text-current" />
-                              <span>Source ↗</span>
-                            </a>
-                          ) : (
-                            <span className="text-xs text-foreground-subtle italic">
-                              Private repository
+                {/* Clean Editorial Catalogue Ledger */}
+                <div className="divide-y divide-border/60">
+                  {items.map((item: Project) => (
+                    <article
+                      key={item.id}
+                      className="py-3.5 hover:bg-surface/40 transition-colors flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group"
+                    >
+                      {/* Left Column: Title, Framework, Description & Stack */}
+                      <div className="space-y-1.5 flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h4 className="font-sans text-sm font-semibold text-foreground group-hover:text-white transition-colors">
+                            {item.title}
+                          </h4>
+                          {item.parentFrameworkId && (
+                            <span className="text-xs text-foreground-subtle">
+                              ({PARENT_FRAMEWORK_MAP[item.parentFrameworkId] || item.parentFrameworkId})
                             </span>
                           )}
                         </div>
-                      </article>
-                    ))}
-                  </div>
+
+                        <p className="text-xs text-foreground-muted leading-relaxed">
+                          {item.tagline}
+                        </p>
+
+                        <div className="text-xs text-foreground-subtle pt-0.5">
+                          {item.techStack.join(" · ")}
+                        </div>
+                      </div>
+
+                      {/* Right Column: Direct Verified Actions */}
+                      <div className="flex items-center gap-4 shrink-0 pt-1 sm:pt-0 self-start sm:self-baseline">
+                        {item.demoUrl && (
+                          <a
+                            href={item.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs font-mono text-accent hover:text-white transition-colors"
+                          >
+                            <span>Live Demo ↗</span>
+                          </a>
+                        )}
+                        {item.githubUrl ? (
+                          <a
+                            href={item.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs text-foreground-muted hover:text-white transition-colors"
+                          >
+                            <GithubIcon className="w-3.5 h-3.5 text-current" />
+                            <span>Source ↗</span>
+                          </a>
+                        ) : (
+                          <span className="text-xs text-foreground-subtle italic">
+                            Private repository
+                          </span>
+                        )}
+                      </div>
+                    </article>
+                  ))}
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
-      </Container>
-    </div>
+      </section>
+    </Container>
   );
 }

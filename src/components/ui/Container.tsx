@@ -12,14 +12,14 @@ export default function Container({
   size = "default",
 }: ContainerProps) {
   const sizeClasses = {
-    default: "max-w-6xl",
-    wide: "max-w-[1440px]",
-    narrow: "max-w-4xl",
+    default: "max-w-3xl", // 768px — centered middle-column for personal reading layout
     reading: "max-w-3xl",
+    narrow: "max-w-2xl",  // 672px
+    wide: "max-w-4xl",    // 896px
   };
 
   return (
-    <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 ${sizeClasses[size]} ${className}`}>
+    <div className={`w-full mx-auto px-4 sm:px-6 ${sizeClasses[size]} ${className}`}>
       {children}
     </div>
   );
