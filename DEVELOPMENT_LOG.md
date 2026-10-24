@@ -956,3 +956,15 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Verification:**
   - `npm run build` executed cleanly with 0 errors across all 16 static and dynamic routes.
 
+---
+
+### Milestone 42: Compact Google Calendar Booking Embed (2026-10-24)
+- **Container Dimension Reduction ([page.tsx](file:///d:/Work/Projects----Personal/MyWork/src/app/page.tsx)):**
+  - Constrained the booking section width to `max-w-[720px] mx-auto` to eliminate oversized horizontal spread on desktop screens while preserving fluid full-width responsiveness on tablet and mobile viewports.
+  - Reduced outer vertical spacing and padding (`pt-6 sm:pt-7`, `space-y-3 sm:space-y-3.5`).
+- **Streamlined Presentation & Usability:**
+  - Added a concise introductory sentence (*"Select a date and time that works best for your schedule."*) and kept the discreet `Open booking calendar ↗` external fallback link in the header.
+  - Reduced iframe height to `550px` (min-height `540px`) to eliminate dead vertical whitespace while preserving full usability for date selection, time picking, and Google Meet details.
+- **Verification:**
+  - Production build (`npm run build`) succeeded with 0 errors across all 16 static/SSG routes.
+

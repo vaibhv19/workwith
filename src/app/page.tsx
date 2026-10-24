@@ -99,16 +99,19 @@ export default function WorkWithMePage() {
       <section
         id="book-meeting"
         aria-labelledby="book-meeting-heading"
-        className="space-y-4 sm:space-y-5 border-t border-border pt-8 sm:pt-10"
+        className="max-w-[720px] mx-auto w-full space-y-3 sm:space-y-3.5 border-t border-border pt-6 sm:pt-7"
       >
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-2.5">
-          <div className="space-y-1">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 border-b border-border pb-2">
+          <div className="space-y-0.5">
             <h2
               id="book-meeting-heading"
-              className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading uppercase"
+              className="font-display text-lg sm:text-xl font-medium tracking-tight text-heading uppercase"
             >
               Book a Meeting
             </h2>
+            <p className="text-xs text-[#171717]/80 font-normal">
+              Select a date and time that works best for your schedule.
+            </p>
           </div>
         </div>
 
@@ -118,12 +121,12 @@ export default function WorkWithMePage() {
             src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Z-l5Ev8LHzyxn4ZiIv8APZDEqI7ES5_XmRJKdy_5W7XnAru7iM4pV9srd4kIZU1QneAY8UDws?gv=true"
             title="Book an appointment with Vaibhav Gupta via Google Calendar"
             className="w-full border-0 block"
-            style={{ minHeight: "600px", height: "600px" }}
+            style={{ minHeight: "540px", height: "550px" }}
             loading="lazy"
           />
         </div>
 
-        <p className="text-[11px] font-mono text-[#171717]/60 text-center">
+        <p className="text-[11px] font-mono text-[#171717]/60 text-center pt-0.5">
           Schedule managed directly by Google Calendar. If the scheduler does not load, use the{" "}
           <a
             href="https://calendar.app.google/9SPAp6kwTNYcksBb8"
