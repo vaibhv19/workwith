@@ -771,3 +771,25 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors.
   - Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports at `http://localhost:3000/case-study`. Verified that project titles are non-clickable plain text, no category/date/tech tags remain, and clicking "Read Case Study →" correctly navigates to individual case-study pages.
+
+### Milestone 32 — Case Study Detail Layout Streamlining & Project Metadata Update
+
+- **Objective:**
+  - Streamline individual case study detail pages (`src/app/case-study/[slug]/page.tsx`) to align with the core architectural principle of restraint and typography-driven editorial presentation.
+  - Update verified metadata for the `emailJobScheduler` project narrative (`src/data/caseStudiesData/emailJobScheduler.ts`).
+- **Implementation Details:**
+  - **Case Study Detail Page (`src/app/case-study/[slug]/page.tsx`):**
+    - Expanded page reading container to `size="default"`.
+    - Removed redundant header metadata: category badge, project timeline/period, subtitle, and tech-focus tag row.
+    - Removed large decorative visual preview image block from the header.
+    - Removed quick metrics grid strip from the header.
+    - Removed "Scope Boundaries & Engineering Trade-offs" section.
+    - Cleaned up unused imports (`TextReveal`, `Image`).
+    - Retained core editorial reading experience: article title, role/organization, primary live/source actions, narrative lead, table of contents, in-depth technical narrative sections (with code blocks, architecture diagrams, callouts, and comparisons), and previous/next pagination.
+  - **Email Job Scheduler Data (`src/data/caseStudiesData/emailJobScheduler.ts`):**
+    - Set verified live URL `liveUrl: "https://email-job-scheduler.vaibhv19.dev"`.
+    - Fixed property typo `content_after` to `contentAfter` to ensure narrative commentary renders properly after SQL snippets.
+- **Validation:**
+  - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack in 2.8s with 0 errors and 0 type warnings.
+  - Verified live application rendering and metadata alignment.
+

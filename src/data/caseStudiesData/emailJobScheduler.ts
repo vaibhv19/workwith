@@ -13,7 +13,7 @@ export const emailJobSchedulerNarrative: CaseStudyNarrative = {
   image: undefined,
   excerpt: "A multi-service distributed scheduling pipeline engineered under an intensive 48-hour hiring constraint, exploring queue idempotency, Redis Lua rate limits, and post-acceptance crash recovery.",
   metaDescription: "Detailed engineering retrospective of Email Job Scheduler: building a distributed 5-service queue system under 48-hour constraints, BullMQ atomic claims, Redis Lua rate limiting, and post-submission debranding.",
-  liveUrl: undefined,
+  liveUrl: "https://email-job-scheduler.vaibhv19.dev",
   repoUrl: "https://github.com/vaibhv19/email-job-scheduler",
   role: "Sole Systems Engineer (Monorepo Architect)",
   evidenceTags: [

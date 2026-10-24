@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import TextReveal from "@/components/ui/TextReveal";
 import { CASE_STUDIES } from "@/data/caseStudies";
 
 interface PageProps {
@@ -70,28 +69,11 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
         {/* Article Header */}
         <header className="space-y-6 border-b border-border pb-8">
-          <div className="flex items-center justify-between text-xs text-[#171717]">
-            <span className="font-medium text-[#171717] font-mono">
-              {study.category}
-            </span>
-            <span className="font-mono">{study.period}</span>
-          </div>
 
           <h1 className="font-display-hero text-heading">
             {study.title}
           </h1>
 
-          <TextReveal
-            text={study.subtitle}
-            as="p"
-            charDelayMs={14}
-            className="font-display text-lg sm:text-2xl text-[#171717] leading-snug"
-          />
-
-          {/* Metadata Row */}
-          <div className="pt-1 flex flex-wrap items-center gap-2 text-xs font-mono text-[#171717]">
-            <span>{study.techFocus}</span>
-          </div>
 
           {/* Role & Links */}
           <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border text-xs">
@@ -130,25 +112,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           <p className="text-base sm:text-lg text-[#171717] font-sans leading-relaxed pt-1">
             {study.excerpt}
           </p>
-
-          {/* Quick Metrics Strip */}
-          {narrative.quickMetrics && narrative.quickMetrics.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-border">
-              {narrative.quickMetrics.map((metric, idx) => (
-                <div key={idx} className="space-y-1 min-w-0">
-                  <div className="text-xs text-[#171717] font-medium truncate">
-                    {metric.label}
-                  </div>
-                  <div className="font-metric text-base sm:text-lg lg:text-xl font-bold text-heading break-words">
-                    {metric.value}
-                  </div>
-                  <div className="text-xs text-[#171717] leading-tight">
-                    {metric.detail}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </header>
 
         {/* Table of Contents */}
@@ -286,42 +249,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               )}
             </section>
           ))}
-
-          {/* Scope Boundaries & Engineering Trade-offs */}
-          {narrative.openQuestionsAndExclusions.length > 0 && (
-            <section
-              id="scope-and-tradeoffs"
-              className="space-y-5 scroll-mt-24 pt-4 border-b border-border pb-12"
-            >
-              <div className="space-y-1">
-                <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading">
-                  Scope Boundaries &amp; Engineering Trade-offs
-                </h2>
-                <p className="font-body-lead text-[#171717] text-xs sm:text-sm">
-                  Documented trade-offs, scope decisions, and architectural boundaries.
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {narrative.openQuestionsAndExclusions.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 rounded-[2px] bg-surface/60 border border-border space-y-1"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-heading select-none">&bull;</span>
-                      <h3 className="font-mono text-xs sm:text-[13px] font-semibold text-heading">
-                        {item.question}
-                      </h3>
-                    </div>
-                    <p className="text-xs text-[#171717] leading-relaxed pl-3.5">
-                      {item.resolutionOrLimitation}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
         </main>
 
         {/* Case Study Pagination */}
