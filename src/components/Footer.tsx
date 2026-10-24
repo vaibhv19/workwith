@@ -90,15 +90,6 @@ export function Footer() {
               <LinkedinIcon className="w-4 h-4 text-current" />
             </a>
             <a
-              href="https://bsky.app/profile/vaibhv19.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
-              aria-label="Bluesky"
-            >
-              <BlueskyIcon className="w-4 h-4 text-current" />
-            </a>
-            <a
               href="https://x.com/vaibhv_19"
               target="_blank"
               rel="noopener noreferrer"
@@ -106,15 +97,6 @@ export function Footer() {
               aria-label="X (Twitter)"
             >
               <XIcon className="w-4 h-4 text-current" />
-            </a>
-            <a
-              href="https://www.threads.com/@vaibhv_19"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
-              aria-label="Threads"
-            >
-              <ThreadsIcon className="w-4 h-4 text-current" />
             </a>
             <a
               href="mailto:contact@vaibhv19.dev"
@@ -125,34 +107,11 @@ export function Footer() {
             </a>
           </div>
         </div>
-
-        {/* Large Editorial Wordmark Display (1nfinity Signature) */}
-        <div className="py-6 sm:py-10 text-center select-none overflow-hidden">
-          <div className="text-[10vw] sm:text-[9vw] font-display font-medium tracking-tighter text-foreground/15 leading-none uppercase">
-            VAIBHAV GUPTA
-          </div>
-        </div>
-
         {/* Minimal Bottom Legal & Copyright Row */}
-        <div className="pt-6 border-t border-[#232220] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans tracking-[0.15em] text-foreground-subtle uppercase">
+     
           <div className="flex flex-col items-center sm:items-start space-y-1">
             <div>
               &copy; {currentYear} Vaibhav Gupta. All rights reserved.
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-6 text-[11px]">
-            <Link href="/projects" className="text-foreground-muted hover:text-foreground transition-colors">
-              Projects
-            </Link>
-            <span className="text-foreground-subtle/50 select-none" aria-hidden="true">&bull;</span>
-            <Link href="/case-study" className="text-foreground-muted hover:text-foreground transition-colors">
-              Case Study
-            </Link>
-            <span className="text-foreground-subtle/50 select-none" aria-hidden="true">&bull;</span>
-            <Link href="/start-conversation" className="text-foreground-muted hover:text-foreground transition-colors">
-              Start a Conversation
-            </Link>
           </div>
         </div>
       </Container>

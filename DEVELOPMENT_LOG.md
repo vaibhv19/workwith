@@ -317,7 +317,20 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
   - Removed developer portfolio note "MYWORK.VAIBHV19.DEV · STANDALONE PORTFOLIO" from the copyright area.
 - **Verification & Git Hygiene:**
   - `npx tsc --noEmit` exited code 0 (0 errors).
-  - `npm run build` compiled all 16 static HTML routes successfully in 1.2s.
-  - Browser subagent verified smooth, uncluttered visitor experience across all routes.
-
-
+### Milestone 18 — Always-Visible Responsive Primary Navigation (No Hamburger Collapse)
+- **Objective & Layout Correction:**
+  - Removed hamburger button and mobile drawer overlay from navigation, ensuring that all three primary destinations (`PROJECTS`, `CASE STUDY`, `START A CONVERSATION`) remain directly visible and clickable as primary links across all screen sizes.
+  - Eliminated unused mobile menu state (`mobileMenuOpen`), body scroll locks, and escape key event listeners.
+- **Responsive Layout Adaptation (`src/components/Header.tsx`):**
+  - Configured a single horizontal navigation row that responsively adjusts spacing, horizontal link padding, font size, and letter tracking (`px-2 sm:px-3 lg:px-4 py-1.5`, `text-[11px] sm:text-xs lg:text-[13px]`, `tracking-[0.06em] sm:tracking-[0.1em] lg:tracking-[0.14em]`).
+  - Added hidden-scrollbar horizontal scroll capability (`[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden`) to prevent text clipping or page-level horizontal overflow on ultra-narrow viewports down to 320px.
+  - Preserved active-state accent indicator line, hover feedback, and keyboard focus outlines.
+  - Preserved recent user modifications to footer.
+- **Verification Across Viewports:**
+  - Desktop (1440x900): All 3 links directly visible and centered; active indicator functional.
+  - Tablet Landscape (1024x768): All 3 links directly visible with balanced proportions.
+  - Tablet Portrait (768x1024): Clean single-row presentation.
+  - Mobile (390x844): Sits cleanly on a single row without wrapping or clipping; verified interactive navigation to `/case-study`.
+  - Narrow Mobile (320x650): Directly visible and accessible without horizontal page overflow; verified navigation to `/start-conversation`.
+  - Typecheck (`npx tsc --noEmit`): 0 errors.
+  - Production build (`npm run build`): All 16 static HTML routes compiled successfully in 1.4s.
