@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { CASE_STUDIES } from "@/data/caseStudies";
@@ -33,43 +32,20 @@ export default function CaseStudiesPage() {
         {studies.map((study) => (
           <article
             key={study.slug}
-            className="group py-8 sm:py-10 first:pt-0 space-y-3.5"
+            className="py-6 sm:py-8 first:pt-0 space-y-2.5 sm:space-y-3"
           >
-            {/* Top Row: Category & Period */}
-            <div className="flex items-baseline justify-between text-xs text-[#171717] font-mono">
-              <span className="font-medium text-[#171717]">{study.category}</span>
-              <span>{study.period}</span>
-            </div>
+            {/* 1. Project title (non-clickable heading in red) */}
+            <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading">
+              {study.title}
+            </h2>
 
-            {/* Title & Subtitle */}
-            <div>
-              <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading group-hover:text-heading-hover transition-colors">
-                <Link
-                  href={`/case-study/${study.slug}`}
-                  className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-heading rounded-sm"
-                >
-                  <span>{study.title}</span>
-                  <span className="text-heading opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-sm font-normal">
-                    &rarr;
-                  </span>
-                </Link>
-              </h2>
-              <p className="text-xs sm:text-sm text-[#171717] mt-1 font-medium">
-                {study.subtitle}
-              </p>
-            </div>
-
+            {/* 2. Description */}
             <p className="font-body text-xs sm:text-sm text-[#171717] leading-relaxed">
               {study.description}
             </p>
 
-            {/* Technology Focus Row */}
-            <div className="text-xs text-[#171717] font-mono pt-0.5">
-              <span>{study.techFocus}</span>
-            </div>
-
-            {/* Read Action */}
-            <div className="pt-1.5">
+            {/* 3. Read Case Study (single clickable link) */}
+            <div className="pt-0.5">
               <Button
                 href={`/case-study/${study.slug}`}
                 variant="text"

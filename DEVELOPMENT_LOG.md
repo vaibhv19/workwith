@@ -748,3 +748,26 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack in 1.9s with 0 errors.
   - Browser Verification: Tested `/projects`, `/case-study`, `/case-study/conclave`, and `/start-conversation` at desktop (1440x900) and mobile (390x844). Verified visual hierarchy: White background → red headings & active nav → blue clickable links → near-black body content → subtle gray structural elements.
+
+### Milestone 31 — Simplified Case Study Listing (Title, Description, Read Action)
+
+- **Objective:**
+  - Simplify the case-study archive listing (`src/app/case-study/page.tsx`) so each entry contains strictly three elements:
+    1. **Project title** — non-clickable plain heading (`h2`) rendered in `text-heading` (`#D32F2F`).
+    2. **Description** — concise narrative description rendered in near-black body typography (`#171717`).
+    3. **Read Case Study →** — the single, functional navigation link rendered in muted blue (`text-link hover:text-link-hover`, `#355C7D`).
+  - Strip all extraneous surrounding metadata:
+    - Removed category taxonomy labels (e.g. `Commercial Client Work`, `Distributed Systems & Queues`).
+    - Removed dates (e.g. `October 2026`).
+    - Removed secondary subtitles.
+    - Removed technology-stack chips and rows.
+    - Removed redundant title anchor link and group-hover states from the entry cards.
+- **Implementation Details (`src/app/case-study/page.tsx`):**
+  - Rendered `study.title` as `<h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-heading">{study.title}</h2>` without any wrapping anchor or hover effect.
+  - Retained `study.description` in `font-body text-xs sm:text-sm text-[#171717] leading-relaxed`.
+  - Maintained single action `<Button href={`/case-study/${study.slug}`} variant="text" size="sm" icon="arrow-right">Read Case Study</Button>`.
+  - Removed unused `next/link` import.
+  - Preserved intact: all underlying case study databases, individual case-study detail pages (`/case-study/[slug]`), and global color/spacing hierarchy.
+- **Validation:**
+  - Production build (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors.
+  - Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports at `http://localhost:3000/case-study`. Verified that project titles are non-clickable plain text, no category/date/tech tags remain, and clicking "Read Case Study →" correctly navigates to individual case-study pages.
