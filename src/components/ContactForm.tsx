@@ -140,11 +140,11 @@ export function ContactForm() {
 
         {/* Inline Success Notification */}
         {status === "success" && (
-          <div className="flex items-start gap-3 p-4 bg-emerald-950/30 border border-emerald-500/30 rounded text-emerald-200 text-sm">
-            <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-400 mt-0.5" />
+          <div className="flex items-start gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded text-emerald-900 text-sm">
+            <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-600 mt-0.5" />
             <div>
-              <p className="font-semibold text-emerald-100">Message sent successfully</p>
-              <p className="text-xs text-emerald-300/80 mt-1 leading-relaxed">
+              <p className="font-semibold text-emerald-950">Message sent successfully</p>
+              <p className="text-xs text-emerald-800 mt-1 leading-relaxed">
                 Thank you for reaching out. I review all inquiries and will respond within 24–48 hours.
               </p>
             </div>
@@ -153,12 +153,12 @@ export function ContactForm() {
 
         {/* Inline Error Notification */}
         {status === "error" && (
-          <div className="flex items-start gap-3 p-4 bg-rose-950/30 border border-rose-500/30 rounded text-rose-200 text-sm">
-            <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400 mt-0.5" />
+          <div className="flex items-start gap-3 p-4 bg-rose-50 border border-rose-200 rounded text-rose-900 text-sm">
+            <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600 mt-0.5" />
             <div className="space-y-3 flex-1">
               <div>
-                <p className="font-semibold text-rose-100">Unable to send message</p>
-                <p className="text-xs text-rose-300/80 mt-1 leading-relaxed">{errorMessage}</p>
+                <p className="font-semibold text-rose-950">Unable to send message</p>
+                <p className="text-xs text-rose-800 mt-1 leading-relaxed">{errorMessage}</p>
               </div>
               <a
                 href={`mailto:${fallbackEmail || "contact@vaibhv19.dev"}?subject=${encodeURIComponent(
@@ -166,7 +166,7 @@ export function ContactForm() {
                 )}&body=${encodeURIComponent(
                   `Hi Vaibhav,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
                 )}`}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-accent text-[#0B0B0B] font-semibold text-xs transition-colors hover:bg-accent-champagne"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-accent text-white font-semibold text-xs transition-colors hover:bg-accent-muted"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>Open in Email Client ({fallbackEmail || "contact@vaibhv19.dev"})</span>
@@ -194,7 +194,7 @@ export function ContactForm() {
               }`}
             />
             {fieldErrors.name && (
-              <p className="text-xs text-rose-400 font-mono mt-1">{fieldErrors.name}</p>
+              <p className="text-xs text-rose-600 font-mono mt-1">{fieldErrors.name}</p>
             )}
           </div>
 
@@ -215,7 +215,7 @@ export function ContactForm() {
               }`}
             />
             {fieldErrors.email && (
-              <p className="text-xs text-rose-400 font-mono mt-1">{fieldErrors.email}</p>
+              <p className="text-xs text-rose-600 font-mono mt-1">{fieldErrors.email}</p>
             )}
           </div>
         </div>
@@ -233,19 +233,19 @@ export function ContactForm() {
             disabled={status === "loading"}
             className="w-full px-3.5 py-2.5 text-xs sm:text-sm text-foreground bg-surface-elevated border border-border hover:border-border-light rounded-[2px] focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent transition-colors"
           >
-            <option value="Engineering Role / Opportunity" className="bg-[#121212] text-[#F4EFE6]">
+            <option value="Engineering Role / Opportunity" className="bg-white text-foreground">
               Full-Time Software Engineering Role
             </option>
-            <option value="System Architecture / Consulting" className="bg-[#121212] text-[#F4EFE6]">
+            <option value="System Architecture / Consulting" className="bg-white text-foreground">
               Technical Architecture / Consulting
             </option>
-            <option value="Freelance / Contract Project" className="bg-[#121212] text-[#F4EFE6]">
+            <option value="Freelance / Contract Project" className="bg-white text-foreground">
               Contract / Full-Stack Web Platform
             </option>
-            <option value="Open-Source Collaboration" className="bg-[#121212] text-[#F4EFE6]">
+            <option value="Open-Source Collaboration" className="bg-white text-foreground">
               Open-Source Collaboration
             </option>
-            <option value="General Technical Inquiry" className="bg-[#121212] text-[#F4EFE6]">
+            <option value="General Technical Inquiry" className="bg-white text-foreground">
               General Technical Inquiry
             </option>
           </select>

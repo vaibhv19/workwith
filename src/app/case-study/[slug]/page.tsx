@@ -61,7 +61,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <nav aria-label="Breadcrumb" className="text-xs font-mono text-foreground-subtle pb-6">
           <Link
             href="/case-study"
-            className="text-accent hover:text-white transition-colors font-medium inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
+            className="text-accent hover:text-foreground transition-colors font-medium inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm group"
           >
             <span className="transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
             <span>Back to Case Studies</span>
@@ -221,7 +221,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                   <div className="flex items-center justify-between text-xs font-mono text-foreground-subtle">
                     <span className="font-medium text-foreground">{sec.diagram.title}</span>
                   </div>
-                  <pre className="overflow-x-auto text-[11px] sm:text-xs font-mono bg-[#070707] border border-border rounded-[2px] p-5 text-foreground-muted leading-tight selection:bg-accent/20">
+                  <pre className="overflow-x-auto text-[11px] sm:text-xs font-mono bg-[#F8F8F8] border border-border rounded-[2px] p-5 text-foreground leading-tight selection:bg-accent/20">
                     {sec.diagram.ascii}
                   </pre>
                   <p className="text-[11px] text-foreground-subtle italic">
@@ -237,7 +237,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                     <span className="font-medium text-foreground">{sec.codeBlock.title}</span>
                     <span className="text-foreground-muted text-xs font-mono">{sec.codeBlock.language}</span>
                   </div>
-                  <pre className="overflow-x-auto text-xs font-mono bg-[#070707] border border-border rounded-b-[2px] p-4 text-foreground-muted leading-relaxed">
+                  <pre className="overflow-x-auto text-xs font-mono bg-[#F8F8F8] border border-border rounded-b-[2px] p-4 text-foreground leading-relaxed">
                     <code>{sec.codeBlock.code}</code>
                   </pre>
                 </div>

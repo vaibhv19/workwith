@@ -491,3 +491,59 @@ This journal maintains a chronological, milestone-by-milestone record of the arc
 - **Validation:**
   - Desktop (1440x900) & Mobile (390x844): Verified that all 16 projects occupy natural lines of text, wrap cleanly across viewports, have zero horizontal scroll (`scrollWidth <= innerWidth`), and feel like an elegant, curated personal portfolio list.
   - Next.js Turbopack build (`npm run build`): All 16 static HTML routes compiled with 0 errors in 1.7s.
+
+### Milestone 25 — Global Color Palette Replacement (White Background, Dark Text, Red Accents)
+- **Objective:**
+  - Execute a comprehensive, site-wide color scheme transformation across the entire MyWork website:
+    - **Black → White:** Replace black and near-black surfaces with pure white (`#FFFFFF`) or appropriate subtle light surfaces.
+    - **White → Black:** Replace white and near-white text and icons with dark black (`#111111`) or appropriate dark tones.
+    - **Gold → Red:** Replace all gold, bronze, and champagne accents with red (`#D32F2F`) for accessible high-contrast accents.
+- **Design Token & Global Style Centralization:**
+  - **`src/app/globals.css`:**
+    - Defined Tailwind v4 `@theme` tokens:
+      - `--color-background: #FFFFFF`
+      - `--color-canvas-deep: #FAFAFA`
+      - `--color-surface: #FFFFFF`
+      - `--color-surface-elevated: #F6F6F6`
+      - `--color-surface-subtle: #EEEEEE`
+      - `--color-surface-glass: rgba(255, 255, 255, 0.85)`
+      - `--color-border: #E5E5E5`
+      - `--color-border-light: #D4D4D4`
+      - `--color-border-subtle: #F0F0F0`
+      - `--color-border-accent: #D32F2F`
+      - `--color-foreground: #111111`
+      - `--color-foreground-ivory: #000000`
+      - `--color-foreground-muted: #555555`
+      - `--color-foreground-subtle: #767676`
+      - `--color-accent: #D32F2F`
+      - `--color-accent-muted: #B71C1C`
+      - `--color-accent-tan: #C62828`
+      - `--color-accent-champagne: #FFEBEE`
+      - `--color-accent-dark: #8B0000`
+    - Synchronized `:root` CSS custom variables to ensure non-Tailwind consumers match seamlessly.
+    - Updated `.fixed-bg-layer` to pure white with subtle center radial lighting and light scrollbar tracks.
+    - Configured inverse surfaces: `.btn-primary` uses black background with white text (`#111111` / `#FFFFFF`), `.btn-secondary` uses subtle borders with red hover, and `.btn-accent` uses vivid `#D32F2F` with white text.
+  - **`public/subtle-wave-pattern.svg`:**
+    - Converted all 13 SVG path strokes from `#F4EFE6` to `#111111` with 0.045 CSS opacity, rendering clean, subtle gray ripples across the white background.
+  - **`src/app/layout.tsx`:**
+    - Updated `viewport.themeColor = "#FFFFFF"`.
+    - Removed `dark` class from `<html>` element.
+- **Component Audit & Palette Application:**
+  - **`src/components/Header.tsx`:** Sticky header styled with `bg-white/90 backdrop-blur-md border-b border-border` and light elevation shadow. Inactive navigation links transition to `#111111` on hover; active indicator bar uses `#D32F2F`.
+  - **`src/components/Footer.tsx`:** Updated to `bg-background text-foreground-muted border-t border-border` with red hover accents across all social brand icons.
+  - **`src/components/ui/Button.tsx`:** Refactored all button variants (primary, secondary, accent, text) to light surfaces, dark text, and red accents.
+  - **`src/components/ui/Marquee.tsx`:** Updated edge fade masks from legacy dark `#0B0B0B` to `from-background`.
+  - **`src/components/ContactForm.tsx`:** Form input fields use `bg-surface-elevated` with subtle borders and red focus rings; status alerts use high-contrast light backgrounds (`bg-emerald-50`, `bg-rose-50`); select options styled with clean white background and dark text.
+  - **`src/app/projects/page.tsx`:** Link hovers updated from legacy `hover:text-white` to `hover:text-accent` and `hover:decoration-accent`.
+  - **`src/app/case-study/page.tsx`:** Case study titles transition to red accent on hover.
+  - **`src/app/case-study/[slug]/page.tsx`:** Breadcrumb links, table of contents, and ASCII architecture / code block containers updated from dark boxes (`#070707`) to clean light containers (`#F8F8F8` with subtle border and crisp dark text).
+- **Preserved Core Constraints:**
+  - Centered middle-column layout (`Container` default `max-w-3xl`) retained across all pages.
+  - Static subtle wave background preserved as fine gray lines on white.
+  - Compact, single-line text-led project listings preserved without cards, badges, or thumbnails.
+  - Three navigation links (`PROJECTS`, `CASE STUDY`, `START A CONVERSATION`) visible across all viewports without hamburger collapse.
+  - Full project catalogues, case study narrative deep dives, and contact functionality intact.
+- **Validation:**
+  - Codebase audit: Zero remaining legacy `#0B0B0B`, `#070707`, `#F4EFE6`, `#C4A482`, or `hover:text-white` instances.
+  - Build validation (`npm run build`): All 16 static HTML routes compiled with Turbopack with 0 errors.
+  - Visual Browser Verification: Verified desktop (1440x900) and mobile (390x844) viewports across `/projects`, `/case-study`, `/case-study/checkmate`, and `/start-conversation`. Pure white backgrounds, crisp dark text, accessible red accents, and smooth interactive feedback verified.

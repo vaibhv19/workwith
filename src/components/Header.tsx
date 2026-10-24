@@ -37,8 +37,8 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#232220] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isScrolled ? "py-2 shadow-[0_4px_24px_rgba(0,0,0,0.6)]" : "py-2.5 sm:py-3"
+      className={`sticky top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isScrolled ? "py-2 shadow-[0_2px_12px_rgba(0,0,0,0.06)]" : "py-2.5 sm:py-3"
       }`}
     >
       <Container size="default" className="flex items-center justify-center">
@@ -53,7 +53,7 @@ export function Header() {
               className={`shrink-0 px-2 sm:px-3 lg:px-4 py-1.5 text-[11px] sm:text-xs lg:text-[13px] font-medium tracking-[0.06em] sm:tracking-[0.1em] lg:tracking-[0.14em] uppercase transition-colors duration-300 relative group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm ${
                 link.isActive
                   ? "text-foreground font-semibold"
-                  : "text-foreground-muted hover:text-white"
+                  : "text-foreground-muted hover:text-foreground"
               }`}
             >
               <span>{link.label}</span>

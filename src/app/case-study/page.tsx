@@ -52,7 +52,7 @@ export default function CaseStudiesPage() {
 
             {/* Title & Subtitle */}
             <div>
-              <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground group-hover:text-white transition-colors">
+              <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-foreground group-hover:text-accent transition-colors">
                 <Link
                   href={`/case-study/${study.slug}`}
                   className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"

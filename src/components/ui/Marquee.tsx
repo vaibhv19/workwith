@@ -39,7 +39,7 @@ export default function Marquee({
       {/* Left gradient mask for seamless entry */}
       {fadeEdges && (
         <div
-          className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-r from-[#0B0B0B] to-transparent"
+          className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-r from-background to-transparent"
           aria-hidden="true"
         />
       )}
@@ -71,7 +71,7 @@ export default function Marquee({
       {/* Right gradient mask for seamless departure */}
       {fadeEdges && (
         <div
-          className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-l from-[#0B0B0B] to-transparent"
+          className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 z-10 bg-gradient-to-l from-background to-transparent"
           aria-hidden="true"
         />
       )}

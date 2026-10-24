@@ -22,7 +22,7 @@ function ProjectListItem({ project }: { project: Project }) {
             href={primaryUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            className="hover:text-accent transition-colors"
           >
             {project.title}
           </a>
@@ -38,7 +38,7 @@ function ProjectListItem({ project }: { project: Project }) {
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground-muted hover:text-white underline decoration-border/60 hover:decoration-white transition-colors"
+            className="text-foreground-muted hover:text-accent underline decoration-border/60 hover:decoration-accent transition-colors"
           >
             Live demo ↗
           </a>
@@ -52,7 +52,7 @@ function ProjectListItem({ project }: { project: Project }) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground-muted hover:text-white underline decoration-border/60 hover:decoration-white transition-colors"
+            className="text-foreground-muted hover:text-accent underline decoration-border/60 hover:decoration-accent transition-colors"
           >
             Source code ↗
           </a>
@@ -130,7 +130,7 @@ export default function ProjectsPage() {
             href="https://github.com/vaibhv19"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:text-white underline decoration-border/70 hover:decoration-white font-medium transition-colors inline-flex items-center gap-1"
+            className="text-foreground hover:text-accent underline decoration-border/70 hover:decoration-accent font-medium transition-colors inline-flex items-center gap-1"
           >
             Explore all projects on GitHub ↗
           </a>

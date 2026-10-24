@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0B0B0B;
-  --color-canvas-deep: #070707;
+  --color-background: #FFFFFF;
+  --color-canvas-deep: #FAFAFA;
   
-  --color-surface: #121212;
-  --color-surface-elevated: #181716;
-  --color-surface-subtle: #1F1E1C;
-  --color-surface-glass: rgba(18, 18, 18, 0.75);
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F6F6F6;
+  --color-surface-subtle: #EEEEEE;
+  --color-surface-glass: rgba(255, 255, 255, 0.85);
 
-  --color-border: #232220;
-  --color-border-light: #32302C;
-  --color-border-subtle: #1A1918;
-  --color-border-accent: #8C7355;
+  --color-border: #E5E5E5;
+  --color-border-light: #D4D4D4;
+  --color-border-subtle: #F0F0F0;
+  --color-border-accent: #D32F2F;
 
-  --color-foreground: #F4EFE6;
-  --color-foreground-ivory: #F9F6EE;
-  --color-foreground-muted: #9E9A91;
-  --color-foreground-subtle: #66635D;
+  --color-foreground: #111111;
+  --color-foreground-ivory: #000000;
+  --color-foreground-muted: #555555;
+  --color-foreground-subtle: #767676;
 
-  --color-accent: #C4A482;
-  --color-accent-muted: #8C7355;
-  --color-accent-tan: #A38F78;
-  --color-accent-champagne: #E3D7C7;
-  --color-accent-dark: #5D4822;
+  --color-accent: #D32F2F;
+  --color-accent-muted: #B71C1C;
+  --color-accent-tan: #C62828;
+  --color-accent-champagne: #FFEBEE;
+  --color-accent-dark: #8B0000;
 
   --font-display: 'Clash Display', var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-numeric: 'Satoshi', var(--font-inter), sans-serif;
@@ -33,30 +33,30 @@
 }
 
 :root {
-  /* 1nfinity Core Palette Variables */
-  --bg-black: #0B0B0B;
-  --bg-deep: #070707;
+  /* Core Palette Variables - White, Black & Red */
+  --bg-black: #FFFFFF;
+  --bg-deep: #FAFAFA;
   
-  --surface-default: #121212;
-  --surface-elevated: #181716;
-  --surface-subtle: #1F1E1C;
-  --surface-glass: rgba(18, 18, 18, 0.75);
+  --surface-default: #FFFFFF;
+  --surface-elevated: #F6F6F6;
+  --surface-subtle: #EEEEEE;
+  --surface-glass: rgba(255, 255, 255, 0.85);
   
-  --border-default: #232220;
-  --border-light: #32302C;
-  --border-subtle: #1A1918;
-  --border-accent: #8C7355;
+  --border-default: #E5E5E5;
+  --border-light: #D4D4D4;
+  --border-subtle: #F0F0F0;
+  --border-accent: #D32F2F;
   
-  --text-primary: #F4EFE6;
-  --text-ivory: #F9F6EE;
-  --text-muted: #9E9A91;
-  --text-subtle: #66635D;
+  --text-primary: #111111;
+  --text-ivory: #000000;
+  --text-muted: #555555;
+  --text-subtle: #767676;
   
-  --accent-primary: #C4A482;
-  --accent-muted: #8C7355;
-  --accent-tan: #A38F78;
-  --accent-champagne: #E3D7C7;
-  --accent-subtle: rgba(196, 164, 130, 0.08);
+  --accent-primary: #D32F2F;
+  --accent-muted: #B71C1C;
+  --accent-tan: #C62828;
+  --accent-champagne: #FFEBEE;
+  --accent-subtle: rgba(211, 47, 47, 0.08);
 
   /* Font stacks */
   --font-clash: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -96,9 +96,9 @@ input, textarea, button, select {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  background-color: #0B0B0B;
+  background-color: #FFFFFF;
   background-image: 
-    radial-gradient(ellipse 90% 80% at 50% 20%, rgba(11, 11, 11, 0) 30%, rgba(11, 11, 11, 0.5) 100%),
+    radial-gradient(ellipse 90% 80% at 50% 20%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.6) 100%),
     url("/subtle-wave-pattern.svg");
   background-repeat: no-repeat, repeat;
   background-size: 100% 100%, 320px 180px;
@@ -196,8 +196,8 @@ input, textarea, button, select {
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  background-color: var(--text-primary);
-  color: var(--bg-black);
+  background-color: #111111;
+  color: #FFFFFF;
   font-family: var(--font-inter, var(--font-inter-fallback));
   font-size: 0.75rem;
   font-weight: 600;
@@ -210,9 +210,9 @@ input, textarea, button, select {
 }
 
 .btn-primary:hover {
-  background-color: #FFFFFF;
+  background-color: #000000;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px -6px rgba(244, 239, 230, 0.15);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
@@ -228,7 +228,7 @@ input, textarea, button, select {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-default);
   border-radius: 2px;
   transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
@@ -237,7 +237,7 @@ input, textarea, button, select {
 .btn-secondary:hover {
   border-color: var(--accent-primary);
   background-color: var(--surface-elevated);
-  color: #FFFFFF;
+  color: var(--accent-primary);
 }
 
 .btn-text {
@@ -277,7 +277,7 @@ input, textarea, button, select {
   background-color: var(--surface-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .divider-subtle {
@@ -288,8 +288,8 @@ input, textarea, button, select {
 
 .bg-ambient-glow {
   background: 
-    radial-gradient(ellipse 60% 45% at 50% 20%, rgba(196, 164, 130, 0.04) 0%, rgba(11, 11, 11, 0) 70%),
-    #0B0B0B;
+    radial-gradient(ellipse 60% 45% at 50% 20%, rgba(211, 47, 47, 0.04) 0%, rgba(255, 255, 255, 0) 70%),
+    #FFFFFF;
 }
 
 @keyframes pageTransitionFadeIn {
@@ -373,16 +373,16 @@ input, textarea, button, select {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0B0B;
+  background: #FFFFFF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #232220;
+  background: #E5E5E5;
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #32302C;
+  background: #CCCCCC;
 }
 
 /* Accessibility: Reduced Motion */

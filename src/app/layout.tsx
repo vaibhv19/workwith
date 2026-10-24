@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0B0B0B",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -85,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
+    <html lang="en" className={inter.variable}>
       <head>
         {/* Fontshare CDN for Clash Display (Headings) and Satoshi (Numerals & Accents) */}
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
@@ -94,7 +94,7 @@ export default function RootLayout({
           href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=satoshi@300,400,500,700,900&display=swap"
         />
       </head>
-      <body className="min-h-screen bg-[#0B0B0B] text-[#F4EFE6] font-sans selection:bg-[#C4A482]/25 selection:text-[#F9F6EE] antialiased relative">
+      <body className="min-h-screen bg-background text-foreground font-sans selection:bg-accent/20 selection:text-foreground antialiased relative">
         {/* Fixed subtle wave texture background (Narrow Design inspired) */}
         <WaveBackground />
 

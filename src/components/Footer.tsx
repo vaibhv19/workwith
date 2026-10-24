@@ -48,7 +48,7 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative w-full bg-[#070707] text-foreground-muted border-t border-[#232220] overflow-hidden mt-auto"
+      className="relative w-full bg-background text-foreground-muted border-t border-border overflow-hidden mt-auto"
       style={{
         clipPath: isVisible ? "inset(0 0% 0 0%)" : "inset(0 4% 0 4%)",
         transform: isVisible ? "scale(1)" : "scale(0.98)",
@@ -60,7 +60,7 @@ export function Footer() {
     >
       <Container size="default" className="pt-10 sm:pt-14 pb-12 sm:pb-16 space-y-10">
         {/* Contact Bar & Social Row */}
-        <div className="py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-[#232220]">
+        <div className="py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-border">
           <div className="flex items-center space-x-2">
             <a
               href="mailto:contact@vaibhv19.dev"
@@ -75,7 +75,7 @@ export function Footer() {
               href="https://github.com/vaibhv19"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
               aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4 text-current" />
@@ -84,7 +84,7 @@ export function Footer() {
               href="https://www.linkedin.com/in/vaibhv19"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4 text-current" />
@@ -93,14 +93,14 @@ export function Footer() {
               href="https://x.com/vaibhv_19"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
               aria-label="X (Twitter)"
             >
               <XIcon className="w-4 h-4 text-current" />
             </a>
             <a
               href="mailto:contact@vaibhv19.dev"
-              className="hover:text-white transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+              className="hover:text-accent transition-colors duration-300 p-1 -m-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
               aria-label="Email"
             >
               <Mail className="w-4 h-4 text-current" />
